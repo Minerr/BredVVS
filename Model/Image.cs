@@ -14,10 +14,10 @@ namespace Model
         public string decription = "";
         public string employeeID = "";
 
-        public Image(DateTime datetime, string location, string decription, string employeeID)
+        public Image(DateTime dateTime, string location, string decription, string employeeID)
         {
-            date = datetime.Date;
-            time = datetime;
+            date = dateTime;
+            time = dateTime;
 
             GPSLocation = location;
             this.decription  = decription;
