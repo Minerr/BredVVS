@@ -8,5 +8,6 @@ namespace BredVVS
 {
     public class Fitter : Employee
     {
+		public string QualificationType { get; private set; }
     }
 }
