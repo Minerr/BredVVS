@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BredVVS
 {
-    class Fitter : Employee
+    public class Fitter : Employee
     {
     }
 }

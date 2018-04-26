@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BredVVS
 {
-    class Material
+	public class Material
     {
         public string ID { get {return ID;} set {} }
         public string name { get {return name;} set {} }

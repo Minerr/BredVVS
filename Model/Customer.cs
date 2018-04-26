@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BredVVS
 {
-	class Customer
+	 public class Customer
 	{
 		public string ID { get { return ID; } private set { } }
 		public string FirstName { get { return FirstName; } private set { } }

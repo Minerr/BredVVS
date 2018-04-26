@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace BredVVS
 {
-    class Employee
+    public class Employee
     {
-        public string ID { get { return ID; } set {} }
-        public string firstName { get { return firstName; } set {} }
-        public string lastName { get { return LastName; } set {} }
+        public string ID { get { return ID; } private set {} }
+        public string FirstName { get { return FirstName; } private set {} }
+        public string LastName { get { return LastName; } private set {} }
     }
 }

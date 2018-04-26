@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BredVVS
 {
-    class Termsheet
+	public class Termsheet
     {
         public Customer customerInfo { get { return customerInfo; } set {} }
         public DateTime dateTime { get { return dateTime; } set {} }

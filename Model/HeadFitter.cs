@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BredVVS
 {
-    class HeadFitter: Employee
-    {
-    }
+	public class HeadFitter : Employee
+	{
+	}
 }

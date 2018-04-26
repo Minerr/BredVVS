@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BredVVS
 {
-    class OfficeWorker: Employee
+	public class OfficeWorker: Employee
     {
     }
 }

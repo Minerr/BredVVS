@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BredVVS
 {
-    class WorkTime
+	public class WorkTime
     {
         public string employeeID = "";
         public string name = "";
