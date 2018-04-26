@@ -22,11 +22,11 @@ namespace Model
 
 		public Worksheet(Customer customerinfo, string workDescription, string workPlace, DateTime startDateTime, DateTime endDateTime)
         {
-            this.Customerinfo = customerinfo;
-            this.WorkDescription = workDescription;
-            this.WorkPlace = workPlace;
-            this.StartDateTime = startDateTime;
-            this.EndDateTime = endDateTime;
+            Customerinfo = customerinfo;
+            WorkDescription = workDescription;
+            WorkPlace = workPlace;
+            StartDateTime = startDateTime;
+            EndDateTime = endDateTime;
         }
 
         public void AddImage(Image image)
