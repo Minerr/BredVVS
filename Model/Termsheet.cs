@@ -20,7 +20,7 @@ namespace Model
         public Termsheet(Customer customerInfo, DateTime dateTime, string worksheetID, string builderInfo, string entrepreneur)
         {
             CustomerInfo = customerInfo;
-            DateTime = dateTime;
+            TimeAndDate = dateTime;
             WorksheetID = worksheetID;
             BuilderInfo = builderInfo;
             Entrepreneur = entrepreneur;
