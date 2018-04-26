@@ -8,12 +8,12 @@ namespace BredVVS
 {
 	class Customer
 	{
-		public string ID { get { return ID; } set { } }
-		public string FirstName { get { return FirstName; } set { } }
-		public string LastName { get { return LastName; } set { } }
-		public string Address { get { return Address; } set { } }
-		public string Zipcode { get { return Zipcode; } set { } }
-		public string City { get { return City; } set { } }
-		public string Phonenumber { get { return Phonenumber; } set { } }
+		public string ID { get { return ID; } private set { } }
+		public string FirstName { get { return FirstName; } private set { } }
+		public string LastName { get { return LastName; } private set { } }
+		public string Address { get { return Address; } private set { } }
+		public string Zipcode { get { return Zipcode; } private set { } }
+		public string City { get { return City; } private set { } }
+		public string Phonenumber { get { return Phonenumber; } private set { } }
 	}
 }
