@@ -8,10 +8,10 @@ namespace Model
 {
 	public class WorkTime
     {
-        public string employeeID = "";
-        public string name = "";
-        public float time = 0;
-        public string type = "";
+        public string EmployeeID {get; private set;}
+        public string Name {get; private set;}
+        public float Time {get; private set;}
+        public string Type {get; private set;}
 
         public WorkTime(string id, string name, string description, string type)
         {
