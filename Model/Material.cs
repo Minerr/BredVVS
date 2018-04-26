@@ -8,15 +8,15 @@ namespace Model
 {
 	public class Material
     {
-        public string ID { get {return ID;} set {} }
-        public string name { get {return name;} set {} }
-        public string description { get {return description;} set {} }
+        public string ID { get; private set; }
+	    public string Name { get; private set; }
+	    public string Description { get; private set; }
 
-        public Material(string ID, string name, string description)
+        public Material(string ID, string Name, string Description)
         {
             this.ID = ID;
-            this.name = name;
-            this.description = description;
+            this.Name = Name;
+            this.Description = Description;
         }
     }
 }
