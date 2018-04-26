@@ -8,22 +8,22 @@ namespace Model
 {
 	public class Termsheet
     {
-        public Customer customerInfo { get { return customerInfo; } set {} }
-        public DateTime dateTime { get { return dateTime; } set {} }
-        public string worksheetID { get { return worksheetID; } set {} }
-        public string builderInfo { get { return builderInfo; } set {} }
-        public string entrepreneur { get { return entrepreneur; } set {} }
-        public string workDescription { get { return workDescription; } set {} }
-        public bool isDraft { get { return isDraft; } set {} }
-        public string priceType { get { return priceType; } set {} }
+        public Customer CustomerInfo {get; private set;}
+        public DateTime TimeAndDate {get; private set;}
+        public string WorksheetID {get; private set;}
+        public string BuilderInfo {get; private set;}
+        public string Entrepreneur {get; private set;}
+        public string WorkDescription {get; private set;}
+        public bool IsDraft {get; private set;}
+        public string PriceType {get; private set;}
 
         public Termsheet(Customer customerInfo, DateTime dateTime, string worksheetID, string builderInfo, string entrepreneur)
         {
-            this.customerInfo = customerInfo;
-            this.dateTime = dateTime;
-            this.worksheetID = worksheetID;
-            this.builderInfo = builderInfo;
-            this.entrepreneur = entrepreneur;
+            CustomerInfo = customerInfo;
+            DateTime = dateTime;
+            WorksheetID = worksheetID;
+            BuilderInfo = builderInfo;
+            Entrepreneur = entrepreneur;
         }
 
 
