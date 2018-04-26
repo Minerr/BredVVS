@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    class Image
+	public class Image
     {
         public DateTime time;
         public DateTime date;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    class OfficeWorker: Employee
+	public class OfficeWorker: Employee
     {
     }
 }

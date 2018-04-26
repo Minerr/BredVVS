@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-	class Customer
+	 public class Customer
 	{
-		public string ID { get { return ID; } set { } }
-		public string firstName { get { return firstName; } set { } }
-		public string lastName { get { return lastName; } set { } }
-		public string address { get { return address; } set { } }
-		public string zipcode { get { return zipcode; } set { } }
-		public string city { get { return city; } set { } }
-		public string phonenumber { get { return phonenumber; } set { } }
+		public string ID { get { return ID; } private set { } }
+		public string FirstName { get { return FirstName; } private set { } }
+		public string LastName { get { return LastName; } private set { } }
+		public string Address { get { return Address; } private set { } }
+		public string Zipcode { get { return Zipcode; } private set { } }
+		public string City { get { return City; } private set { } }
+		public string Phonenumber { get { return Phonenumber; } private set { } }
 	}
 }
