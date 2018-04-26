@@ -20,9 +20,9 @@ namespace Model
 		public List<Material> Materials { get; private set; }
 		public List<WorkTime> WorkTime { get; private set; }
 
-		public Worksheet(Customer customerinfo, string workDescription, string workPlace, DateTime startDateTime, DateTime endDateTime)
+		public Worksheet(Customer customerInfo, string workDescription, string workPlace, DateTime startDateTime, DateTime endDateTime)
         {
-            Customerinfo = customerinfo;
+            Customerinfo = customerInfo;
             WorkDescription = workDescription;
             WorkPlace = workPlace;
             StartDateTime = startDateTime;

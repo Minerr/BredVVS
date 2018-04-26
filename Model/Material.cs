@@ -15,8 +15,8 @@ namespace Model
         public Material(string ID, string name, string description)
         {
             this.ID = ID;
-            this.Name = name;
-            this.Description = description;
+            Name = name;
+            Description = description;
         }
     }
 }
