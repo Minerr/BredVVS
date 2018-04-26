@@ -13,10 +13,10 @@ namespace Model
 		public string Description { get; private set; }
 		public string EmployeeID { get; private set; }
 
-		public Image(DateTime dateTime, string location, string description, string employeeID)
+		public Image(DateTime dateTime, string GPSlocation, string description, string employeeID)
         {
 			TimeAndDate = dateTime;
-            GPSLocation = location;
+            this.GPSLocation = GPSlocation;
 			Description  = description;
 			EmployeeID = employeeID;
         }

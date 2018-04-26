@@ -12,11 +12,11 @@ namespace Model
 	    public string Name { get; private set; }
 	    public string Description { get; private set; }
 
-        public Material(string ID, string Name, string Description)
+        public Material(string ID, string name, string description)
         {
             this.ID = ID;
-            this.Name = Name;
-            this.Description = Description;
+            Name = name;
+            Description = description;
         }
     }
 }

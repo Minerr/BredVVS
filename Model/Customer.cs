@@ -10,10 +10,20 @@ namespace Model
 	{
 		public string ID { get; private set; }
 		public string FirstName { get; private set; }
-		public string LastNameD { get; private set; }
+		public string LastName { get; private set; }
 		public string Address { get; private set; }
-		public string Zipcode { get; private set; }
+		public string ZIPcode { get; private set; }
 		public string City { get; private set; }
-		public string Phonenumber { get; private set; }
+		public string PhoneNumber { get; private set; }
+
+		public Customer(string firstName, string lastName, string address, string ZIPcode, string city, string phoneNumer)
+		{
+			FirstName = firstName;
+			LastName = LastName;
+			Address = address;
+			this.ZIPcode = ZIPcode;
+			City = city;
+			PhoneNumber = phoneNumer;
+		}
 	}
 }

@@ -8,14 +8,17 @@ namespace Model
 {
 	public class WorkTime
     {
-        public string EmployeeID {get; private set;}
-        public string Name {get; private set;}
-        public float Time {get; private set;}
-        public string Type {get; private set;}
+        public string EmployeeID { get; private set; }
+		public string Name { get; private set; }
+		public double Time { get; private set; }
+		public string Type { get; private set; }
 
-        public WorkTime(string id, string name, string description, string type)
+		public WorkTime(string ID, string name, double time, string type)
         {
-
+			EmployeeID = ID;
+			Name = name;
+			Time = time;
+			Type = type;
         }
     }
 }
