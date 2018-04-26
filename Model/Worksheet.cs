@@ -8,25 +8,25 @@ namespace Model
 {
 	public class Worksheet
     {
-        public string ID { get { return ID; } set { } }
-        public Customer customerinfo { get { return customerinfo; } set { } }
-        public List<Image> imageDocumentation { get { return imageDocumentation; } set { } }
-        public List<Fitter> assignedFitters { get { return assignedFitters; } set { } }
-        public List<HeadFitter> assignedHeadFitter { get { return assignedHeadFitter; } set { } }
-        public string workDescription { get { return workDescription; } set { } }
-        public string workPlace { get { return workPlace; } set { } }
-        public DateTime endDateTime { get { return endDateTime; } set { } }
-        public DateTime startDateTime { get { return startDateTime; } set { } }
-        public List<Material> materials { get { return materials; } set { } }
-        public List<WorkTime> workTime{ get { return workTime; } set { } }
+        public string ID { get; private set; }
+        public Customer Customerinfo { get; private set; }
+		public List<Image> ImageDocumentation { get; private set; }
+		public List<Fitter> AssignedFitters { get; private set; }
+		public List<HeadFitter> AssignedHeadFitter { get; private set; }
+		public string WorkDescription { get; private set; }
+		public string WorkPlace { get; private set; }
+		public DateTime EndDateTime { get; private set; }
+		public DateTime StartDateTime { get; private set; }
+		public List<Material> Materials { get; private set; }
+		public List<WorkTime> WorkTime { get; private set; }
 
-        public Worksheet(Customer customerinfo, string workDescription, string workPlace, DateTime startDateTime, DateTime endDateTime)
+		public Worksheet(Customer customerinfo, string workDescription, string workPlace, DateTime startDateTime, DateTime endDateTime)
         {
-            this.customerinfo = customerinfo;
-            this.workDescription = workDescription;
-            this.workPlace = workPlace;
-            this.startDateTime = startDateTime;
-            this.endDateTime = endDateTime;
+            this.Customerinfo = customerinfo;
+            this.WorkDescription = workDescription;
+            this.WorkPlace = workPlace;
+            this.StartDateTime = startDateTime;
+            this.EndDateTime = endDateTime;
         }
 
         public void AddImage(Image image)
