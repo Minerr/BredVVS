@@ -8,20 +8,17 @@ namespace Model
 {
 	public class Image
     {
-        public DateTime time;
-        public DateTime date;
-        public string GPSLocation = "";
-        public string decription = "";
-        public string employeeID = "";
+		public DateTime TimeAndDate { get; private set; }
+        public string GPSLocation { get; private set; }
+		public string Decription { get; private set; }
+		public string EmployeeID { get; private set; }
 
-        public Image(DateTime datetime, string location, string decription, string employeeID)
+		public Image(DateTime dateTime, string location, string decription, string employeeID)
         {
-            date = datetime.Date;
-            time = datetime;
-
+			TimeAndDate = dateTime;
             GPSLocation = location;
-            this.decription  = decription;
-            this.employeeID = employeeID;
+			Decription  = decription;
+			EmployeeID = employeeID;
         }
     }
 }
