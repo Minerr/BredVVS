@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace BredVVS
 {
-    class Customer
-    {
-        public string ID = "";
-        public string firstname = "";
-        public string lastName = "";
-        public string adress = "";
-        public string zipcode = "";
-        public string city = "";
-        public string phonenumber = "";
-    }
+	class Customer
+	{
+		public string ID { get { return ID; } set { } }
+		public string firstName { get { return firstName; } set { } }
+		public string lastName { get { return lastName; } set { } }
+		public string address { get { return address; } set { } }
+		public string zipcode { get { return zipcode; } set { } }
+		public string city { get { return city; } set { } }
+		public string phonenumber { get { return phonenumber; } set { } }
+	}
 }
