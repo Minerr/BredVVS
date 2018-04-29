@@ -54,9 +54,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddNewCustomerView.xaml.cs">
+      <DependentUpon>AddNewCustomerView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SearchForCustomerView.xaml.cs">
       <DependentUpon>SearchForCustomerView.xaml</DependentUpon>
     </Compile>
+    <Page Include="AddNewCustomerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
