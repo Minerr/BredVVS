@@ -1,11 +1,11 @@
-﻿<Window x:Class="View.AddNewCustomer"
+﻿<Window x:Class="View.AddNewCustomerView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="AddNewCustomer" Height="600" Width="800">
+        Title="AddNewCustomerView" Height="600" Width="800">
     <Grid>
         <Label Content="Telefon:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="96,117,0,0"/>
         <TextBox x:Name="PhoneNumberBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" Margin="156,120,0,0"/>
@@ -27,7 +27,7 @@
 
         <Button x:Name="SaveCustomerButton" Content="Gem kunde" HorizontalAlignment="Left" Margin="156,314,0,0" VerticalAlignment="Top" Height="24" Width="77" IsEnabled="False"/>
 
-        <TextBox x:Name="SearchForCustomerBar"  Text="Søg på kunde" HorizontalAlignment="Left" Height="24" Padding="3" Margin="399,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="278"/>
+        <TextBox x:Name="SearchForCustomerBar" Text="Søg på kunde" HorizontalAlignment="Left" Height="24" Padding="3" Margin="399,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="278"/>
         <Button x:Name="SearchForCustomerButton" Content="Søg" HorizontalAlignment="Left" Margin="682,71,0,0" VerticalAlignment="Top" Width="69" Height="24" Click="SearchForCustomerButton_Click"/>
         <ListView SelectedItem="{Binding SelectedCustomer}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Left" Height="374" VerticalAlignment="Top" Width="351" Margin="400,100,0,0">
             <ListView.View>

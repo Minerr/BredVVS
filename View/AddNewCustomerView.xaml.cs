@@ -17,9 +17,9 @@ namespace View
 	/// <summary>
 	/// Interaction logic for AddNewCustomer.xaml
 	/// </summary>
-	public partial class AddNewCustomer : Window
+	public partial class AddNewCustomerView : Window
 	{
-		public AddNewCustomer()
+		public AddNewCustomerView()
 		{
 			InitializeComponent();
 		}
