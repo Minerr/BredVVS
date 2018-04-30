@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="LoginView" Height="600" Width="800">
+        Title="Login" Height="600" Width="800">
     <Grid>
         <Grid HorizontalAlignment="Left" Height="102" Margin="300,263,0,0" VerticalAlignment="Top" Width="206">
             <Label Content="Brugernavn:" HorizontalAlignment="Left" Margin="0,1,0,0" VerticalAlignment="Top" Height="24"/>

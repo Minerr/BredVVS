@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="SearchForCustomerView" Height="600" Width="800">
+        Title="SearchForCustomer" Height="600" Width="800">
     <Grid>
         <Button x:Name="CreateNewCustomerButton" Content="Opret ny kunde" HorizontalAlignment="Left" Margin="515,48,0,0" VerticalAlignment="Top" Width="147" Height="24" RenderTransformOrigin="0.485,-1.022"/>
         <TextBox x:Name="SearchForCustomerBar"  Text="Søg på kunde" HorizontalAlignment="Left" Height="24" Padding="3" Margin="130,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="306"/>
