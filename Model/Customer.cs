@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Model
 {
 	 public class Customer
@@ -18,8 +19,9 @@ namespace Model
 
 		public Customer(string firstName, string lastName, string address, string ZIPcode, string city, string phoneNumer)
 		{
+            ID = Guid.NewGuid().ToString();
 			FirstName = firstName;
-			LastName = LastName;
+			LastName = lastName;
 			Address = address;
 			this.ZIPcode = ZIPcode;
 			City = city;

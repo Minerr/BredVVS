@@ -8,8 +8,8 @@
         Title="OfficeWorkerMenuView" Height="600" Width="800">
     <Grid>
         <Grid>
-            <Button x:Name="CreateWorksheetButton" Content=" Opret Arbejdesseddel " HorizontalAlignment="Left" Margin="325,221,0,0" VerticalAlignment="Top" Width="133" RenderTransformOrigin="0.5,0.5" Height="24"/>
-
+            <Button x:Name="CreateWorksheetButton" Content=" Opret Arbejdesseddel " HorizontalAlignment="Left" Margin="327,257,0,0" VerticalAlignment="Top" Width="133" RenderTransformOrigin="0.5,0.5" Height="24" Click="CreateWorksheetButton_Click"/>
+            
         </Grid>
     </Grid>
 </Window>

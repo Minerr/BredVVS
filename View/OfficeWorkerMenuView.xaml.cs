@@ -23,5 +23,13 @@ namespace View
         {
             InitializeComponent();
         }
+
+        private void CreateWorksheetButton_Click(object sender, RoutedEventArgs e)
+        {
+            SearchForCustomerView searchForCustomerView = new SearchForCustomerView();
+            searchForCustomerView.Show();
+
+            this.Close();
+        }
     }
 }

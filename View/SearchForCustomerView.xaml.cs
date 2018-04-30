@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ViewModel;
 
 namespace View
 {
@@ -19,14 +20,20 @@ namespace View
 	/// </summary>
 	public partial class SearchForCustomerView : Window
 	{
+        SearchForCustomerViewModel searchForCustomerViewModel;
+
 		public SearchForCustomerView()
 		{
-			InitializeComponent();
+            searchForCustomerViewModel = new SearchForCustomerViewModel();
+            InitializeComponent();
+            DataContext = searchForCustomerViewModel;
 		}
 
 		private void SearchForCustomerButton_Click(object sender, RoutedEventArgs e)
 		{
 
-		}
+            searchForCustomerViewModel.RetrieveCustomers(SearchForCustomerBar.Text);
+
+        }
 	}
 }
