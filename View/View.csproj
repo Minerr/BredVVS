@@ -54,6 +54,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="OfficeWorkerMenu.xaml.cs">
+      <DependentUpon>OfficeWorkerMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SearchForCustomerView.xaml.cs">
       <DependentUpon>SearchForCustomerView.xaml</DependentUpon>
     </Compile>
@@ -68,6 +71,10 @@
     <Compile Include="LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
+    <Page Include="OfficeWorkerMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SearchForCustomerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
