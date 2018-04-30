@@ -5,41 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="AddNewCustomerView" Height="600" Width="800">
+        Title="AddNewCustomerView" Height="400" Width="600">
     <Grid>
-        <Label Content="Telefon:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="96,117,0,0"/>
-        <TextBox x:Name="PhoneNumberBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" Margin="156,120,0,0"/>
+        <Label Content="Telefon:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="168,59,0,0"/>
+        <TextBox x:Name="PhoneNumberBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" Margin="228,62,0,0"/>
 
-        <Label Content="Fornavn(e):" HorizontalAlignment="Left" Margin="81,148,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="FirstNameBox"  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" Margin="156,152,0,0"/>
+        <Label Content="Fornavn(e):" HorizontalAlignment="Left" Margin="153,90,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="FirstNameBox"  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" Margin="228,94,0,0"/>
 
-        <Label Content="Efternavn:" HorizontalAlignment="Left" Margin="87,179,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="LastNameBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" Margin="156,183,0,0"/>
+        <Label Content="Efternavn:" HorizontalAlignment="Left" Margin="159,121,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="LastNameBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" Margin="228,125,0,0"/>
 
-        <Label Content="Postnummer:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="67,210,0,0"/>
-        <TextBox x:Name="ZipcodeBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" Margin="156,214,0,0"/>
+        <Label Content="Postnummer:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="139,152,0,0"/>
+        <TextBox x:Name="ZipcodeBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" Margin="228,156,0,0"/>
 
-        <Label Content="By:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="122,241,0,0"/>
-        <TextBox x:Name="CityBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" Margin="156,244,0,0"/>
+        <Label Content="By:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="194,183,0,0"/>
+        <TextBox x:Name="CityBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" Margin="228,186,0,0"/>
 
-        <Label Content="Adresse:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="93,272,0,0"/>
-        <TextBox x:Name="AddresseBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" Margin="156,276,0,0"/>
+        <Label Content="Adresse:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="165,214,0,0"/>
+        <TextBox x:Name="AddresseBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" Margin="228,218,0,0"/>
 
-        <Button x:Name="SaveCustomerButton" Content="Gem kunde" HorizontalAlignment="Left" Margin="156,314,0,0" VerticalAlignment="Top" Height="24" Width="77" IsEnabled="False"/>
+        <Button x:Name="SaveCustomerButton" Content="Gem kunde" HorizontalAlignment="Left" Margin="228,256,0,0" VerticalAlignment="Top" Height="24" Width="75" IsEnabled="False"/>
 
-        <TextBox x:Name="SearchForCustomerBar" Text="Søg på kunde" HorizontalAlignment="Left" Height="24" Padding="3" Margin="399,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="278"/>
-        <Button x:Name="SearchForCustomerButton" Content="Søg" HorizontalAlignment="Left" Margin="682,71,0,0" VerticalAlignment="Top" Width="69" Height="24" Click="SearchForCustomerButton_Click"/>
-        <ListView SelectedItem="{Binding SelectedCustomer}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Left" Height="374" VerticalAlignment="Top" Width="351" Margin="400,100,0,0">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Fornavn" DisplayMemberBinding="{Binding FirstName}" Width="150"/>
-                    <GridViewColumn Header="Efternavn" DisplayMemberBinding="{Binding LastName}" Width="200"/>
-                </GridView>
-            </ListView.View>
-            <Button Content="Button" Height="100" Width="75"/>
-        </ListView>
-
-        <Button x:Name="AnnullerButton" Content="Annuller" HorizontalAlignment="Left" Margin="676,479,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="AnnullerButton" Content="Annuller" HorizontalAlignment="Left" Margin="333,256,0,0" VerticalAlignment="Top" Width="75" Height="24"/>
 
     </Grid>
 </Window>
