@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="AddNewCustomer" Height="600" Width="800">
+        Title="AddNewCustomerView" Height="600" Width="800">
     <Grid>
         <Label Content="Telefon:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="96,117,0,0"/>
         <TextBox x:Name="PhoneNumberBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" Margin="156,120,0,0"/>
