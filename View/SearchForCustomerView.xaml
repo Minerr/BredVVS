@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="SearchForCustomer" Height="600" Width="800">
+        Title="SearchForCustomerView" Height="600" Width="800">
     <Grid>
         <Button x:Name="CreateNewCustomerButton" Content="Opret ny kunde" HorizontalAlignment="Left" Margin="515,48,0,0" VerticalAlignment="Top" Width="147" Height="24" RenderTransformOrigin="0.485,-1.022"/>
         <TextBox x:Name="SearchForCustomerBar"  Text="Søg på kunde" HorizontalAlignment="Left" Height="24" Padding="3" Margin="130,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="306"/>
@@ -16,7 +16,7 @@
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Kundenummer" DisplayMemberBinding="{Binding ID}" Width="100"/>
-                        <GridViewColumn Header="Fornavn" DisplayMemberBinding="{Binding FirstName}" Width="70"/>
+                        <GridViewColumn Header="Fornavn" DisplayMemberBinding="{Binding FirstName}" Width="75"/>
                         <GridViewColumn Header="Efternavn" DisplayMemberBinding="{Binding LastName}" Width="100"/>
                         <GridViewColumn Header="Adresse" DisplayMemberBinding="{Binding Address}" Width="200"/>
                         <GridViewColumn Header="Postnummer" DisplayMemberBinding="{Binding ZIPcode}" Width="80"/>
@@ -29,5 +29,6 @@
 
         <Button x:Name="EditCustomerButton" Content="Redigér kunde" HorizontalAlignment="Left" Margin="441,525,0,0" VerticalAlignment="Top" Height="24" Width="108" IsEnabled="False"/>
         <Button x:Name="SelectCustomerButton" Content="Vælg kunde" HorizontalAlignment="Left" Margin="554,525,0,0" VerticalAlignment="Top" Height="24" Width="108" IsEnabled="False"/>
+        <Button x:Name="CancelButton" Content="Annuller" HorizontalAlignment="Left" Margin="667,525,0,0" VerticalAlignment="Top" Width="93" Height="24"/>
     </Grid>
 </Window>
