@@ -49,5 +49,13 @@ namespace View
 				EditCustomerButton.IsEnabled = false;
 			}
 		}
+
+		private void SelectCustomerButton_Click(object sender, RoutedEventArgs e)
+		{
+			WorksheetView worksheetView = new WorksheetView();
+			worksheetView.Show();
+
+			this.Close();
+		}
 	}
 }

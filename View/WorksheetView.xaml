@@ -8,12 +8,17 @@
         Title="Worksheet" Height="600" Width="800">
     <Grid>
         <Grid HorizontalAlignment="Left" Height="504" Margin="10,22,0,0" VerticalAlignment="Top" Width="772" RenderTransformOrigin="0.476,0.514">
-            <TextBox x:Name="CustomerTextBox" HorizontalAlignment="Left" Height="55" Margin="10,36,0,0" TextWrapping="Wrap" Text="Customer" VerticalAlignment="Top" Width="200"/>
-            <TextBox x:Name="WorkplaceTextBox" HorizontalAlignment="Left" Height="55" Margin="10,122,0,0" TextWrapping="Wrap" Text="Workplace" VerticalAlignment="Top" Width="200"/>
-            <Label Content="Kundeinformation" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="200"/>
-            <Label Content="Label" HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top" Width="200"/>
-            <TextBox x:Name="DescriptionTextBox" HorizontalAlignment="Left" Height="100" Margin="10,208,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" Width="752"/>
-            <Label Content="Arbejdsbeskrivelse og øvrig info" HorizontalAlignment="Left" Margin="10,182,0,0" VerticalAlignment="Top" Width="200"/>
+            <Label Content="Navn:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,36,0,0" Width="40" RenderTransformOrigin="0.861,0.469"/>
+            <TextBox x:Name="CustomerNameTextBox" HorizontalAlignment="Left" Height="23" Margin="65,41,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="145"/>
+            <Label Content="Adresse:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,70,0,0" Width="60"/>
+            <TextBox x:Name="CustomerAddressTextBox" HorizontalAlignment="Left" Height="36" Margin="65,66,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="145"/>
+            <Label Content="Telefon:" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Width="50"/>
+            <TextBox x:Name="CustomerPhoneTextBox" HorizontalAlignment="Left" Height="23" Margin="65,104,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="145"/>
+            <Label Content="Arbejdssted:" HorizontalAlignment="Left" Margin="10,131,0,0" VerticalAlignment="Top" Width="92"/>
+            <TextBox x:Name="WorkplaceTextBox" HorizontalAlignment="Left" Height="40" Margin="10,157,0,0" TextWrapping="Wrap" Text="Workplace" VerticalAlignment="Top" Width="200"/>
+            <Label Content="Kundeinformation" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="130"/>
+            <TextBox x:Name="DescriptionTextBox" HorizontalAlignment="Left" Height="100" Margin="10,223,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" Width="752"/>
+            <Label Content="Arbejdsbeskrivelse og øvrig info" HorizontalAlignment="Left" Margin="10,197,0,0" VerticalAlignment="Top" Width="200"/>
             <DatePicker x:Name="StartDateDatePicker" HorizontalAlignment="Left" Margin="248,33,0,0" VerticalAlignment="Top" Width="120"/>
             <Label Content="Projektnummer" HorizontalAlignment="Left" Margin="562,10,0,0" VerticalAlignment="Top" Width="200"/>
             <TextBox x:Name="WorksheetIDtextBox" HorizontalAlignment="Left" Height="30" Margin="562,36,0,0" TextWrapping="Wrap" Text="WorksheetID" VerticalAlignment="Top" Width="200"/>
@@ -33,7 +38,8 @@
             <CheckBox x:Name="GuaranteeCheckBox" FlowDirection="RightToLeft" Content="Garanti" HorizontalAlignment="Left" Margin="704,436,0,0" VerticalAlignment="Top"/>
             <CheckBox x:Name="OngoingCheckBox" FlowDirection="RightToLeft" Content="Igangværende" HorizontalAlignment="Left" Margin="665,460,0,0" VerticalAlignment="Top"/>
             <CheckBox x:Name="DoneCheckbox" FlowDirection="RightToLeft" Content="Færdig" HorizontalAlignment="Left" Margin="705,485,0,0" VerticalAlignment="Top"/>
-            <Button x:Name="AddFitterButton" Content="Montør" HorizontalAlignment="Left" Margin="562,92,0,0" VerticalAlignment="Top" Width="200" Click="AddFitterButton_Click"/>
+            <Button x:Name="AddFitterButton" Content="Tilføj Montør" HorizontalAlignment="Left" Margin="562,92,0,0" VerticalAlignment="Top" Width="200" Click="AddFitterButton_Click"/>
+
         </Grid>
         <Button x:Name="CreateTermsheetButton" Content="Opret aftaleseddel" HorizontalAlignment="Left" Margin="200,531,0,0" VerticalAlignment="Top" Width="107" Height="28" Click="CreateTermsheetButton_Click"/>
         <Button x:Name="SaveWorksheetButton" Content="Gem" HorizontalAlignment="Right" Margin="0,531,200,0" VerticalAlignment="Top" Width="107" Height="28" Click="SaveWorksheetButton_Click"/>
