@@ -31,7 +31,7 @@ namespace ViewModel
 			{
 				return _selectedCustomer;
 			}
-			private set
+			set
 			{
 				_selectedCustomer = value;
 			}

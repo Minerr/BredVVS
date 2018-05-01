@@ -40,12 +40,12 @@ namespace View
 		{
 			if (CustomerListView.SelectedItem != null)
 			{
-				SearchForCustomerButton.IsEnabled = true;
+				SelectCustomerButton.IsEnabled = true;
 				EditCustomerButton.IsEnabled = true;
 			}
 			else
 			{
-				SearchForCustomerButton.IsEnabled = false;
+				SelectCustomerButton.IsEnabled = false;
 				EditCustomerButton.IsEnabled = false;
 			}
 		}
