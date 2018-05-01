@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace View
 {
 	/// <summary>
-	/// Interaction logic for Window1.xaml
+	/// Interaction logic for WorksheetView.xaml
 	/// </summary>
-	public partial class Window1 : Window
+	public partial class WorksheetView : Window
 	{
-		public Window1()
+		public WorksheetView()
 		{
 			InitializeComponent();
 		}
@@ -50,6 +50,16 @@ namespace View
 		}
 
 		private void SaveWorksheetButton_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void AddFitter_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void AddFitter_Click_1(object sender, RoutedEventArgs e)
 		{
 
 		}
