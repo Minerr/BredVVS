@@ -24,16 +24,6 @@ namespace View
 			InitializeComponent();
 		}
 
-		private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-		{
-
-		}
-
-		private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-		{
-
-		}
-
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
 
@@ -54,12 +44,7 @@ namespace View
 
 		}
 
-		private void AddFitter_Click(object sender, RoutedEventArgs e)
-		{
-
-		}
-
-		private void AddFitter_Click_1(object sender, RoutedEventArgs e)
+		private void AddFitterButton_Click(object sender, RoutedEventArgs e)
 		{
 
 		}
