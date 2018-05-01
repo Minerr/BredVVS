@@ -63,6 +63,9 @@
     <Compile Include="SearchForCustomerView.xaml.cs">
       <DependentUpon>SearchForCustomerView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Worksheet.xaml.cs">
+      <DependentUpon>Worksheet.xaml</DependentUpon>
+    </Compile>
     <Page Include="AddNewCustomerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -83,6 +86,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SearchForCustomerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Worksheet.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
