@@ -48,5 +48,15 @@ namespace View
 		{
 
 		}
+
+		private void TakePictureButton_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void AddMaterialsButton_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
 	}
 }
