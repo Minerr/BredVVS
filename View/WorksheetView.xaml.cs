@@ -19,11 +19,11 @@ namespace View
 	/// </summary>
 	public partial class WorksheetView : Window
 	{
-		public WorksheetView()
+		public WorksheetView(object selectedItem)
 		{
 			InitializeComponent();
 		}
-
+		
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
 

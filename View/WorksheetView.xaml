@@ -9,9 +9,16 @@
     <Grid>
         <Grid HorizontalAlignment="Left" Height="504" Margin="10,22,0,0" VerticalAlignment="Top" Width="772" RenderTransformOrigin="0.476,0.514">
             <Label Content="Navn:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,36,0,0" Width="40" RenderTransformOrigin="0.861,0.469"/>
-            <TextBox x:Name="CustomerNameTextBox" HorizontalAlignment="Left" Height="23" Margin="65,41,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="145"/>
+            <TextBox x:Name="CustomerNameTextBox" HorizontalAlignment="Left" Height="23" Margin="65,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145">
+                <TextBox.Text>
+                    <MultiBinding StringFormat="{}{0} + {1}">
+                        <Binding Path="Customer.FirstName" />
+                        <Binding Path="Customer.LastName" />
+                    </MultiBinding>
+                </TextBox.Text>
+            </TextBox>
             <Label Content="Adresse:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,70,0,0" Width="60"/>
-            <TextBox x:Name="CustomerAddressTextBox" HorizontalAlignment="Left" Height="36" Margin="65,66,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="145"/>
+            <TextBox x:Name="CustomerAddressTextBox" HorizontalAlignment="Left" Height="36" Margin="65,66,0,0" TextWrapping="Wrap" Text="{}" VerticalAlignment="Top" Width="145"/>
             <Label Content="Telefon:" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Width="50"/>
             <TextBox x:Name="CustomerPhoneTextBox" HorizontalAlignment="Left" Height="23" Margin="65,104,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="145"/>
             <Label Content="Arbejdssted:" HorizontalAlignment="Left" Margin="10,131,0,0" VerticalAlignment="Top" Width="92"/>
