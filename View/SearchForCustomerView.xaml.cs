@@ -35,5 +35,19 @@ namespace View
             searchForCustomerViewModel.RetrieveCustomers(SearchForCustomerBar.Text);
 
         }
+
+		private void Selector_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			if (CustomerListView.SelectedItem != null)
+			{
+				SearchForCustomerButton.IsEnabled = true;
+				EditCustomerButton.IsEnabled = true;
+			}
+			else
+			{
+				SearchForCustomerButton.IsEnabled = false;
+				EditCustomerButton.IsEnabled = false;
+			}
+		}
 	}
 }
