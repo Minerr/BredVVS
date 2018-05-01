@@ -25,7 +25,7 @@
             <Label Content="Sluttid" HorizontalAlignment="Right" Margin="0,65,248,0" VerticalAlignment="Top" Width="120"/>
             <DatePicker x:Name="StartTimeTimePicker" HorizontalAlignment="Left" Margin="248,88,0,0" VerticalAlignment="Top" Width="120"/>
             <DatePicker x:Name="EndTimeTimePicker" HorizontalAlignment="Left" Margin="404,88,0,0" VerticalAlignment="Top" Width="120"/>
-            <Button x:Name="TakePictureButton" Content="Tag billede" HorizontalAlignment="Left" Margin="248,122,0,0" VerticalAlignment="Top" Width="276" Height="81" Click="OpenCameraButton_Click"/>
+            <Button x:Name="TakePictureButton" Content="Tag billede" HorizontalAlignment="Left" Margin="248,122,0,0" VerticalAlignment="Top" Width="276" Height="81" Click="TakePictureButton_Click"/>
             <Button x:Name="AddMaterialsButton" Content="Tilføj materialer" HorizontalAlignment="Left" Margin="10,328,0,0" VerticalAlignment="Top" Width="130" Height="37" Click="AddMaterialsButton_Click"/>
             <Button x:Name="AddHoursButton" Content="Tilføj timer" HorizontalAlignment="Left" Margin="10,383,0,0" VerticalAlignment="Top" Width="130" Height="37" Click="AddHoursButton_Click"/>
             <CheckBox x:Name="ServiceVehicleCheckBox" Content="Servicevogn" HorizontalAlignment="Left" Margin="10,436,0,0" VerticalAlignment="Top" Height="24" Width="130"/>
