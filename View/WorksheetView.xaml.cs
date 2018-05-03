@@ -62,5 +62,13 @@ namespace View
 		{
 
 		}
+
+		private void CancelButton_Click(object sender, RoutedEventArgs e)
+		{
+			OfficeWorkerMenuView officeWorkerMenuView = new OfficeWorkerMenuView();
+			officeWorkerMenuView.Show();
+
+			this.Close();
+		}
 	}
 }

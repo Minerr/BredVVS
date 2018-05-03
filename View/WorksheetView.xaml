@@ -41,7 +41,8 @@
             <Button x:Name="AddFitterButton" Content="Tilføj Montør" HorizontalAlignment="Left" Margin="562,92,0,0" VerticalAlignment="Top" Width="200" Click="AddFitterButton_Click"/>
 
         </Grid>
-        <Button x:Name="CreateTermsheetButton" Content="Opret aftaleseddel" HorizontalAlignment="Left" Margin="200,531,0,0" VerticalAlignment="Top" Width="107" Height="28" Click="CreateTermsheetButton_Click"/>
-        <Button x:Name="SaveWorksheetButton" Content="Gem" HorizontalAlignment="Right" Margin="0,531,200,0" VerticalAlignment="Top" Width="107" Height="28" Click="SaveWorksheetButton_Click"/>
+        <Button x:Name="CreateTermsheetButton" Content="Opret aftaleseddel" HorizontalAlignment="Left" Margin="200,531,0,0" VerticalAlignment="Top" Width="107" Height="24" Click="CreateTermsheetButton_Click"/>
+        <Button x:Name="SaveWorksheetButton" Content="Gem" HorizontalAlignment="Right" Margin="0,531,316,0" VerticalAlignment="Top" Width="107" Height="24" Click="SaveWorksheetButton_Click"/>
+        <Button x:Name="CancelButton" Content="Annuller" HorizontalAlignment="Right" Margin="0,531,139,0" VerticalAlignment="Top" Width="107" Height="24" Click="CancelButton_Click"/>
     </Grid>
 </Window>
