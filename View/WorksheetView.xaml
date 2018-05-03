@@ -8,19 +8,12 @@
         Title="Worksheet" Height="600" Width="800">
     <Grid>
         <Grid HorizontalAlignment="Left" Height="504" Margin="10,22,0,0" VerticalAlignment="Top" Width="772" RenderTransformOrigin="0.476,0.514">
-            <Label Content="Navn:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,36,0,0" Width="40" RenderTransformOrigin="0.861,0.469"/>
-            <TextBox x:Name="CustomerNameTextBox" HorizontalAlignment="Left" Height="23" Margin="65,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145">
-                <TextBox.Text>
-                    <MultiBinding StringFormat="{}{0} + {1}">
-                        <Binding Path="Customer.FirstName" />
-                        <Binding Path="Customer.LastName" />
-                    </MultiBinding>
-                </TextBox.Text>
-            </TextBox>
+            <Label Content="Navn:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,41,0,0" Width="40" RenderTransformOrigin="0.861,0.469"/>
+            <TextBox x:Name="CustomerNameTextBox" Text="{Binding CustomerFullName}" HorizontalAlignment="Left" Height="23" Margin="65,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" IsEnabled="False" />
             <Label Content="Adresse:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,70,0,0" Width="60"/>
-            <TextBox x:Name="CustomerAddressTextBox" HorizontalAlignment="Left" Height="36" Margin="65,66,0,0" TextWrapping="Wrap" Text="{}" VerticalAlignment="Top" Width="145"/>
-            <Label Content="Telefon:" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Width="50"/>
-            <TextBox x:Name="CustomerPhoneTextBox" HorizontalAlignment="Left" Height="23" Margin="65,104,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="145"/>
+            <TextBox x:Name="CustomerAddressTextBox" Text="{Binding CustomerFullAdress}" HorizontalAlignment="Left" Height="36" Margin="65,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" IsEnabled="False"/>
+            <Label Content="Telefon:"  HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Width="50"/>
+            <TextBox x:Name="CustomerPhoneTextBox" Text="{Binding Customer.PhoneNumber}" HorizontalAlignment="Left" Height="23" Margin="65,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" IsEnabled="False"/>
             <Label Content="Arbejdssted:" HorizontalAlignment="Left" Margin="10,131,0,0" VerticalAlignment="Top" Width="92"/>
             <TextBox x:Name="WorkplaceTextBox" HorizontalAlignment="Left" Height="40" Margin="10,157,0,0" TextWrapping="Wrap" Text="Workplace" VerticalAlignment="Top" Width="200"/>
             <Label Content="Kundeinformation" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="130"/>
@@ -28,7 +21,7 @@
             <Label Content="Arbejdsbeskrivelse og øvrig info" HorizontalAlignment="Left" Margin="10,197,0,0" VerticalAlignment="Top" Width="200"/>
             <DatePicker x:Name="StartDateDatePicker" HorizontalAlignment="Left" Margin="248,33,0,0" VerticalAlignment="Top" Width="120"/>
             <Label Content="Projektnummer" HorizontalAlignment="Left" Margin="562,10,0,0" VerticalAlignment="Top" Width="200"/>
-            <TextBox x:Name="WorksheetIDtextBox" HorizontalAlignment="Left" Height="30" Margin="562,36,0,0" TextWrapping="Wrap" Text="WorksheetID" VerticalAlignment="Top" Width="200"/>
+            <TextBox x:Name="WorksheetIDtextBox" HorizontalAlignment="Left" Height="30" Margin="562,36,0,0" TextWrapping="Wrap" Text="WorksheetID" VerticalAlignment="Top" Width="200" IsEnabled="False"/>
             <ListBox x:Name="FitterListBox" HorizontalAlignment="Left" Height="55" Margin="562,122,0,0" VerticalAlignment="Top" Width="200"/>
             <Label Content="Startdato" HorizontalAlignment="Left" Margin="248,10,0,0" VerticalAlignment="Top" Width="117"/>
             <DatePicker x:Name="EndDateDatePicker" HorizontalAlignment="Left" Margin="404,33,0,0" VerticalAlignment="Top" Width="120"/>

@@ -52,7 +52,9 @@ namespace View
 
 		private void SelectCustomerButton_Click(object sender, RoutedEventArgs e)
 		{
-			WorksheetView worksheetView = new WorksheetView(CustomerListView.SelectedItem);
+
+			WorksheetView worksheetView = new WorksheetView();
+			worksheetView.DataContext = new WorksheetViewModel(CustomerListView.SelectedItem);
 			worksheetView.Show();
 
 			this.Close();
