@@ -59,5 +59,15 @@ namespace View
 
 			this.Close();
 		}
-	}
+
+        private void CreateNewCustomerButton_Click(object sender, RoutedEventArgs e)
+        {
+            CreateNewCustomerViewModel createNewCustomerViewModel = new CreateNewCustomerViewModel();
+            CreateNewCustomerView createNewCustomerView = new CreateNewCustomerView();
+
+            createNewCustomerView.Show();
+            this.Close();
+
+        }
+    }
 }
