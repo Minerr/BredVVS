@@ -35,7 +35,7 @@ namespace ViewModel
 
 		public void CreateNewCustomer()
 		{
-			Customer customer = new Customer(FirstName, LastName, Address, ZIPcode, City, PhoneNumber);
+			Customer customer = new Customer(new Name(FirstName, LastName), Address, ZIPcode, City, PhoneNumber);
 
 			WorksheetViewModel.Instance.Customer = customer;
 

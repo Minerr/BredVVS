@@ -9,8 +9,8 @@ namespace Model
 	public class Material
     {
         public string ID { get; private set; }
-	    public string Name { get; private set; }
-	    public string Description { get; private set; }
+	    public string Name { get; set; }
+	    public string Description { get; set; }
 
         public Material(string ID, string name, string description)
         {
