@@ -23,21 +23,7 @@ namespace ViewModel
 				OnPropertyChanged("CustomerList");
 			}
 		}
-
-		private Customer _selectedCustomer;
-		public Customer SelectedCustomer
-		{
-			get
-			{
-				return _selectedCustomer;
-			}
-			set
-			{
-				_selectedCustomer = value;
-			}
-		}
-
-
+		public Customer SelectedCustomer { get; set; }
 
 		public SearchForCustomerViewModel()
 		{
