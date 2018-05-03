@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
+using System.ComponentModel;
 
 namespace ViewModel
 {
-    public class CreateNewCustomerViewModel
+    public class CreateNewCustomerViewModel : INotifyPropertyChanged
     {
-        public string FirstName { get; set; }
+        public string FirstName { get; set {  } }
         public string LastName { get; set; }
         public string Address { get; set; }
         public string ZIPcode { get; set; }
@@ -24,17 +25,28 @@ namespace ViewModel
 
         public bool IsCustomerDataNotNull()
         {
-            bool result = false;
-            if(FirstName != null && LastName !=null && Address != null && ZIPcode != null && City != null && PhoneNumber != null)
+            bool result = true;
+            if(string.IsNullOrEmpty(FirstName) || 
+                string.IsNullOrEmpty(LastName) ||
+                string.IsNullOrEmpty(Address) ||
+                string.IsNullOrEmpty(ZIPcode) ||
+                string.IsNullOrEmpty(City) ||
+                string.IsNullOrEmpty(PhoneNumber))
             {
-                result = true;
-            }
-
-            if (FirstName != " " && LastName != " " && Address != " " && ZIPcode != " " && City != " " && PhoneNumber != " ")
-            {
-                result = true;
+                result = false;
             }
             return result;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
 }
