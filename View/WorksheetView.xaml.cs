@@ -22,7 +22,10 @@ namespace View
 	{
 		public WorksheetView()
 		{
+			WorksheetViewModel worksheetViewModel = WorksheetViewModel.Instance;
 			InitializeComponent();
+
+			DataContext = worksheetViewModel;
 		}
 		
 		private void Button_Click(object sender, RoutedEventArgs e)

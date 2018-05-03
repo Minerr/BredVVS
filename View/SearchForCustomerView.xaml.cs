@@ -54,15 +54,15 @@ namespace View
 		{
 
 			WorksheetView worksheetView = new WorksheetView();
-			worksheetView.DataContext = new WorksheetViewModel(CustomerListView.SelectedItem);
+			
 			worksheetView.Show();
 
 			this.Close();
 		}
 
-        private void CreateNewCustomerButton_Click(object sender, RoutedEventArgs e)
-        {
-            CreateNewCustomerViewModel createNewCustomerViewModel = new CreateNewCustomerViewModel();
+	private void CreateNewCustomerButton_Click(object sender, RoutedEventArgs e)
+	{
+		CreateNewCustomerViewModel createNewCustomerViewModel = CreateNewCustomerViewModel.Instance;
             CreateNewCustomerView createNewCustomerView = new CreateNewCustomerView();
 
             createNewCustomerView.Show();

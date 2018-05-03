@@ -24,7 +24,7 @@ namespace View
 
 		public CreateNewCustomerView()
 		{
-            createNewCustomerViewModel = new CreateNewCustomerViewModel();
+            createNewCustomerViewModel = CreateNewCustomerViewModel.Instance;
             InitializeComponent();
             DataContext = createNewCustomerViewModel;
 		}
@@ -37,6 +37,10 @@ namespace View
         private void SaveCustomerButton_Click(object sender, RoutedEventArgs e)
         {
             createNewCustomerViewModel.CreateNewCustomer();
+
+			WorksheetView worksheet = new WorksheetView();
+			worksheet.Show();
+			this.Close();
         }
 
         private void TextBoxChanged(object sender, RoutedEventArgs e)

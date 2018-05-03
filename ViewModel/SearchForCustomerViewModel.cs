@@ -39,6 +39,10 @@ namespace ViewModel
 			CustomerList = customers;
 		}
 
+		public void SelectCustomer()
+		{
+			WorksheetViewModel.Instance.Customer = SelectedCustomer;
+		}
 		public event PropertyChangedEventHandler PropertyChanged;
 
 		private void OnPropertyChanged(string propertyName)
