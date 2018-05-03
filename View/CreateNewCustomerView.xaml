@@ -27,7 +27,7 @@
 
         <Button x:Name="SaveCustomerButton" Content="Gem kunde" HorizontalAlignment="Left" Margin="228,256,0,0" VerticalAlignment="Top" Height="24" Width="75" IsEnabled="False" Click="SaveCustomerButton_Click"/>
 
-        <Button x:Name="AnnullerButton" Content="Annuller" HorizontalAlignment="Left" Margin="333,256,0,0" VerticalAlignment="Top" Width="75" Height="24"/>
+        <Button x:Name="CancelButton" Content="Annuller" HorizontalAlignment="Left" Margin="333,256,0,0" VerticalAlignment="Top" Width="75" Height="24" Click="CancelButton_Click"/>
 
     </Grid>
 </Window>

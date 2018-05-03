@@ -43,5 +43,12 @@ namespace View
         {
             SaveCustomerButton.IsEnabled = createNewCustomerViewModel.IsCustomerDataNotNull();
         }
-    }
+
+		private void CancelButton_Click(object sender, RoutedEventArgs e)
+		{
+			SearchForCustomerView searchForCustomer = new SearchForCustomerView();
+			searchForCustomer.Show();
+			this.Close();
+		}
+	}
 }
