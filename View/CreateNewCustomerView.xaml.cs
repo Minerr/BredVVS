@@ -11,22 +11,33 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ViewModel;
 
 namespace View
 {
 	/// <summary>
 	/// Interaction logic for AddNewCustomer.xaml
 	/// </summary>
-	public partial class AddNewCustomerView : Window
+	public partial class CreateNewCustomerView : Window
 	{
-		public AddNewCustomerView()
+        private CreateNewCustomerViewModel createNewCustomerViewModel;
+
+		public CreateNewCustomerView()
 		{
-			InitializeComponent();
+            createNewCustomerViewModel = new CreateNewCustomerViewModel();
+            InitializeComponent();
+            DataContext = createNewCustomerViewModel;
 		}
 
 		private void SearchForCustomerButton_Click(object sender, RoutedEventArgs e)
 		{
 			throw new NotImplementedException();
 		}
-	}
+
+        private void SaveCustomerButton_Click(object sender, RoutedEventArgs e)
+        {
+            createNewCustomerViewModel.CreateNewCustomer();
+        }
+
+    }
 }
