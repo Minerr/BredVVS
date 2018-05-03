@@ -39,5 +39,9 @@ namespace View
             createNewCustomerViewModel.CreateNewCustomer();
         }
 
+        private void TextBoxChanged(object sender, RoutedEventArgs e)
+        {
+            SaveCustomerButton.IsEnabled = createNewCustomerViewModel.IsCustomerDataNotNull();
+        }
     }
 }

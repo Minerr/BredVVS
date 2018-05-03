@@ -29,6 +29,11 @@ namespace ViewModel
             {
                 result = true;
             }
+
+            if (FirstName != " " && LastName != " " && Address != " " && ZIPcode != " " && City != " " && PhoneNumber != " ")
+            {
+                result = true;
+            }
             return result;
         }
     }
