@@ -10,6 +10,7 @@ namespace ViewModel
 {
 	public class SearchForCustomerViewModel : INotifyPropertyChanged
 	{
+		private SearchForCustomerViewModel _instance;
 		private List<Customer> _customers;
 		public List<Customer> CustomerList
 		{
@@ -24,8 +25,18 @@ namespace ViewModel
 			}
 		}
 		public Customer SelectedCustomer { get; set; }
-
-		public SearchForCustomerViewModel()
+		public SearchForCustomerViewModel Instance
+		{
+			get
+			{
+				if (_instance == null)
+				{
+					_instance = new SearchForCustomerViewModel();
+				}
+				return _instance;
+			}
+		}
+		private SearchForCustomerViewModel()
 		{
 			CustomerList = new List<Customer>();
 		}
