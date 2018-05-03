@@ -20,19 +20,16 @@ namespace View
 	/// </summary>
 	public partial class SearchForCustomerView : Window
 	{
-        SearchForCustomerViewModel searchForCustomerViewModel;
-
 		public SearchForCustomerView()
 		{
-            searchForCustomerViewModel = new SearchForCustomerViewModel();
             InitializeComponent();
-            DataContext = searchForCustomerViewModel;
+            DataContext = SearchForCustomerViewModel.Instance;
 		}
 
 		private void SearchForCustomerButton_Click(object sender, RoutedEventArgs e)
 		{
 
-            searchForCustomerViewModel.RetrieveCustomers(SearchForCustomerBar.Text);
+			SearchForCustomerViewModel.Instance.RetrieveCustomers(SearchForCustomerBar.Text);
 
         }
 
@@ -52,9 +49,8 @@ namespace View
 
 		private void SelectCustomerButton_Click(object sender, RoutedEventArgs e)
 		{
-
+			SearchForCustomerViewModel.Instance.SelectCustomer();
 			WorksheetView worksheetView = new WorksheetView();
-			
 			worksheetView.Show();
 
 			this.Close();

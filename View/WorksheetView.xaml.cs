@@ -45,7 +45,7 @@ namespace View
 
 		private void SaveWorksheetButton_Click(object sender, RoutedEventArgs e)
 		{
-
+			WorksheetViewModel.Instance.CreateWorksheet();
 		}
 
 		private void AddFitterButton_Click(object sender, RoutedEventArgs e)

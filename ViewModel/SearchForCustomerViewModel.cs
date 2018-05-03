@@ -10,7 +10,7 @@ namespace ViewModel
 {
 	public class SearchForCustomerViewModel : INotifyPropertyChanged
 	{
-		private SearchForCustomerViewModel _instance;
+		private static SearchForCustomerViewModel _instance;
 		private List<Customer> _customers;
 		public List<Customer> CustomerList
 		{
@@ -25,7 +25,7 @@ namespace ViewModel
 			}
 		}
 		public Customer SelectedCustomer { get; set; }
-		public SearchForCustomerViewModel Instance
+		public static SearchForCustomerViewModel Instance
 		{
 			get
 			{
@@ -54,6 +54,13 @@ namespace ViewModel
 		{
 			WorksheetViewModel.Instance.Customer = SelectedCustomer;
 		}
+
+
+
+
+
+
+
 		public event PropertyChangedEventHandler PropertyChanged;
 
 		private void OnPropertyChanged(string propertyName)
