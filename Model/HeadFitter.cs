@@ -8,5 +8,8 @@ namespace Model
 {
 	public class HeadFitter : Employee
 	{
+		public HeadFitter(Name name) : base(name)
+		{
+		}
 	}
 }
