@@ -45,6 +45,8 @@ namespace ViewModel
 
 		private WorksheetViewModel()
 		{
+			Worksheet = new Worksheet();
+
 			List<Fitter> assignedFitters = new List<Fitter>();
 			assignedFitters.Add(new Fitter(new Name("Søren", "Hansen")));
 			assignedFitters.Add(new Fitter(new Name("Tim", "Timsen")));
@@ -71,7 +73,7 @@ namespace ViewModel
 
 		public void CreateWorksheet()
 		{
-			//
+			//TODO: Save worksheet in database
 		}
 
 
