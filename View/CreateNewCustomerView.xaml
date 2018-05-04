@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
-        Title="AddNewCustomerView" Height="400" Width="600">     
+        Title="AddNewCustomerView" Height="400" Width="600">
     <Grid>
         <Label Content="Telefon:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="168,59,0,0"/>
         <TextBox x:Name="PhoneNumberBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding PhoneNumber, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="180" Margin="228,62,0,0" TextChanged="TextBoxChanged"/>

@@ -44,9 +44,9 @@ namespace ViewModel
 		public void RetrieveCustomers(string keyword)
 		{
 			List<Customer> customers = new List<Customer>();
-			customers.Add(new Customer("Daniel", "Gierahn", "Skt. Knudsgade 44", "5000", "Odense", "76543278"));
-			customers.Add(new Customer("bo", "Hansen", "Skt. Knudsgade 56", "5000", "Odense", "12343458"));
-			customers.Add(new Customer("Tim", "Timsen", "Skt. Knudsgade 111", "5000", "Odense", "12345654"));
+			customers.Add(new Customer(new Name("Daniel", "Gierahn"), "Skt. Knudsgade 44", "5000", "Odense", "76543278"));
+			customers.Add(new Customer(new Name("bo", "Hansen"), "Skt. Knudsgade 56", "5000", "Odense", "12343458"));
+			customers.Add(new Customer(new Name("Tim", "Timsen"), "Skt. Knudsgade 111", "5000", "Odense", "12345654"));
 			CustomerList = customers;
 		}
 
@@ -62,7 +62,6 @@ namespace ViewModel
 
 
 		public event PropertyChangedEventHandler PropertyChanged;
-
 		private void OnPropertyChanged(string propertyName)
 		{
 			PropertyChangedEventHandler handler = PropertyChanged;

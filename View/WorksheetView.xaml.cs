@@ -27,11 +27,6 @@ namespace View
 
 			DataContext = worksheetViewModel;
 		}
-		
-		private void Button_Click(object sender, RoutedEventArgs e)
-		{
-
-		}
 
 		private void AddHoursButton_Click(object sender, RoutedEventArgs e)
 		{
@@ -69,6 +64,37 @@ namespace View
 			officeWorkerMenuView.Show();
 
 			this.Close();
+		}
+
+		private void RemoveFitterButton_Click(object sender, RoutedEventArgs e)
+		{
+			// Remove fitter from AssignedFitters.
+		}
+
+		private void FitterListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			// if selected fitter != null
+			// Set RemoveFitterButton.IsEnabled = true;
+		}
+
+		private void RemoveSelectedHourButton_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void RemoveSelectedMaterialButton_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void WorkTimeListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+
+		}
+
+		private void MaterialsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+
 		}
 	}
 }

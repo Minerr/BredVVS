@@ -9,16 +9,15 @@ namespace Model
 	public class Worksheet
     {
         public string ID { get; private set; }
-        public Customer Customerinfo { get; private set; }
-		public List<Image> ImageDocumentation { get; private set; }
-		public List<Fitter> AssignedFitters { get; private set; }
-		public List<HeadFitter> AssignedHeadFitter { get; private set; }
-		public string WorkDescription { get; private set; }
-		public string WorkPlace { get; private set; }
-		public DateTime EndDateTime { get; private set; }
-		public DateTime StartDateTime { get; private set; }
-		public List<Material> Materials { get; private set; }
-		public List<WorkTime> WorkTime { get; private set; }
+        public Customer Customerinfo { get; set; }
+		public List<Image> ImageDocumentation { get; set; }
+		public List<Fitter> AssignedFitters { get; set; }
+		public string WorkDescription { get; set; }
+		public string WorkPlace { get; set; }
+		public DateTime EndDateTime { get; set; }
+		public DateTime StartDateTime { get; set; }
+		public List<Material> Materials { get; set; }
+		public List<WorkTime> WorkTime { get; set; }
 
 		public Worksheet(Customer customerInfo, string workDescription, string workPlace, DateTime startDateTime, DateTime endDateTime)
         {
