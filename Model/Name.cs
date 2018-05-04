@@ -17,6 +17,11 @@ namespace Model
 				return FirstName + " " + LastName;
 			}
 		}
+		public Name()
+		{
+			FirstName = "";
+			LastName = "";
+		}
 
 		public Name(string firstName, string lastName)
 		{

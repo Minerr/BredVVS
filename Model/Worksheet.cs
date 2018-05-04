@@ -24,6 +24,7 @@ namespace Model
 		public Worksheet()
         {
 			//TODO: Give worksheet an unique ID
+			ID = Guid.NewGuid().ToString();
         }
 
         public void AddImage(Image image)

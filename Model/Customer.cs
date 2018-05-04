@@ -20,6 +20,7 @@ namespace Model
 		public Customer()
 		{
 			ID = GenerateID();
+			Name = new Name();
 		}
 
 		public Customer(Name name, string address, string ZIPcode, string city, string phoneNumer, string email)

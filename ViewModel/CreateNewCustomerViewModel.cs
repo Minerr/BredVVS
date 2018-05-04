@@ -29,6 +29,7 @@ namespace ViewModel
 
 		private CreateNewCustomerViewModel()
 		{
+			Customer = new Customer();
 		}
 
 		public void CreateNewCustomer()
