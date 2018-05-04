@@ -48,6 +48,7 @@
     <Compile Include="HeadFitter.cs" />
     <Compile Include="Image.cs" />
     <Compile Include="Material.cs" />
+    <Compile Include="Name.cs" />
     <Compile Include="OfficeWorker.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -6,10 +6,15 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Employee
+    public abstract class Employee
     {
         public string ID { get; private set; }
-        public string FirstName { get; private set; }
-        public string LastName { get; private set; }
+        public Name Name { get; set; }
+
+		public Employee(Name name)
+		{
+			ID = Guid.NewGuid().ToString();
+			Name = name;
+		}
     }
 }

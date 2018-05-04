@@ -8,6 +8,10 @@ namespace Model
 {
     public class Fitter : Employee
     {
-		public string QualificationType { get; private set; }
+		public string QualificationType { get; set; }
+
+		public Fitter(Name name) : base(name)
+		{
+		}
     }
 }

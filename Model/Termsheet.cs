@@ -8,14 +8,14 @@ namespace Model
 {
 	public class Termsheet
     {
-        public Customer CustomerInfo {get; private set;}
-        public DateTime TimeAndDate {get; private set;}
-        public string WorksheetID {get; private set;}
-        public string BuilderInfo {get; private set;}
-        public string Entrepreneur {get; private set;}
-        public string WorkDescription {get; private set;}
-        public bool IsDraft {get; private set;}
-        public string PriceType {get; private set;}
+        public Customer CustomerInfo {get; set;}
+        public DateTime TimeAndDate {get; set;}
+        public string WorksheetID {get; set;}
+        public string BuilderInfo {get; set;}
+        public string Entrepreneur {get; set;}
+        public string WorkDescription {get; set;}
+        public bool IsDraft {get; set;}
+        public string PriceType {get; set;}
 
         public Termsheet(Customer customerInfo, DateTime dateTime, string worksheetID, string builderInfo, string entrepreneur)
         {
