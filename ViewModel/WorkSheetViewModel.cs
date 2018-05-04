@@ -14,7 +14,7 @@ namespace ViewModel
 		private static WorksheetViewModel _instance;
 		public Customer Customer { get; set; }
 
-		public string CustomerFullAdress
+		public string CustomerFullAddress
 		{
 			get
 			{
@@ -30,15 +30,6 @@ namespace ViewModel
 		}
 
 		public Worksheet Worksheet { get; set; }
-
-		public string WorkDescription { get; set; }
-		public string WorkPlace { get; set; }
-		public DateTime StartDateTime { get; set; }
-		public DateTime EndDateTime { get; set; }
-		public List<Fitter> AssignedFitters { get; set; }
-		public List<Material> Materials { get; set; }
-		public List<WorkTime> WorkTime { get; set; }
-
 
 		public static WorksheetViewModel Instance
 		{
@@ -59,18 +50,20 @@ namespace ViewModel
 			assignedFitters.Add(new Fitter(new Name("Tim", "Timsen")));
 
 			List<Material> materials = new List<Material>();
-			materials.Add(new Material("1240550", "Panometric Tube", "11.5mm Ø, 10500mm L, Plastic."));
-			materials.Add(new Material("4420301", "Enhanced Flail Socket", "35.2mm Ø, 30mm L, Plastic"));
-			materials.Add(new Material("8942377", "Hydrocoptic Ringdisc", "20mm Ø, Rubber"));
+			materials.Add(new Material("Panometric Tube", "11.5mm Ø, 10500mm L, Plastic."));
+			materials.Add(new Material("Enhanced Flail Socket", "35.2mm Ø, 30mm L, Plastic"));
+			materials.Add(new Material("Hydrocoptic Ringdisc", "20mm Ø, Rubber"));
 
 			List<WorkTime> workTime = new List<WorkTime>();
-			workTime.Add(new WorkTime(assignedFitters[0], 2.5, "Normal time"));
-			workTime.Add(new WorkTime(assignedFitters[0], 1.0, "Normal time"));
-			workTime.Add(new WorkTime(assignedFitters[1], 3.0, "Normal time"));
+			workTime.Add(new WorkTime(assignedFitters[0], 2.5, "Normal time", new DateTime(2018, 04, 23)));
+			workTime.Add(new WorkTime(assignedFitters[0], 1.0, "Normal time", new DateTime(2018, 04, 24)));
+			workTime.Add(new WorkTime(assignedFitters[1], 3.0, "Normal time", new DateTime(2018, 04, 28)));
 
-			AssignedFitters = assignedFitters;
-			Materials = materials;
-			WorkTime = workTime;
+			Worksheet.AssignedFitters = assignedFitters;
+			Worksheet.Materials = materials;
+			Worksheet.WorkTime = workTime;
+
+			//TODO: move OnPropertyChanged into Model layer
 			OnPropertyChanged("AssignedFitters");
 			OnPropertyChanged("Materials");
 			OnPropertyChanged("WorkTime");
@@ -78,7 +71,7 @@ namespace ViewModel
 
 		public void CreateWorksheet()
 		{
-			new Worksheet()
+			//
 		}
 
 

@@ -15,15 +15,27 @@ namespace Model
 		public string ZIPcode { get; set; }
 		public string City { get; set; }
 		public string PhoneNumber { get; set; }
+		public string Email { get; set; }
 
-		public Customer(Name name, string address, string ZIPcode, string city, string phoneNumer)
+		public Customer()
 		{
-            ID = Guid.NewGuid().ToString();
+			ID = GenerateID();
+		}
+
+		public Customer(Name name, string address, string ZIPcode, string city, string phoneNumer, string email)
+		{
+			ID = GenerateID();
 			Name = name;
 			Address = address;
 			this.ZIPcode = ZIPcode;
 			City = city;
 			PhoneNumber = phoneNumer;
+			Email = email;
+		}
+
+		private string GenerateID()
+		{
+			return Guid.NewGuid().ToString();
 		}
 	}
 }

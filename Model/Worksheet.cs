@@ -9,7 +9,7 @@ namespace Model
 	public class Worksheet
     {
         public string ID { get; private set; }
-        public Customer Customerinfo { get; set; }
+        public Customer Customer { get; set; }
 		public List<Image> ImageDocumentation { get; set; }
 		public List<Fitter> AssignedFitters { get; set; }
 		public string WorkDescription { get; set; }
@@ -18,14 +18,12 @@ namespace Model
 		public DateTime StartDateTime { get; set; }
 		public List<Material> Materials { get; set; }
 		public List<WorkTime> WorkTime { get; set; }
+		public List<Status> Status { get; set; }
+		public List<AdditionalMaterials> AdditionalMaterials { get; set; }
 
-		public Worksheet(Customer customerInfo, string workDescription, string workPlace, DateTime startDateTime, DateTime endDateTime)
+		public Worksheet()
         {
-            Customerinfo = customerInfo;
-            WorkDescription = workDescription;
-            WorkPlace = workPlace;
-            StartDateTime = startDateTime;
-            EndDateTime = endDateTime;
+			//TODO: Give worksheet an unique ID
         }
 
         public void AddImage(Image image)
@@ -38,19 +36,24 @@ namespace Model
 
         }
 
-        public void AddHeadFitter(HeadFitter head)
-        {
-
-        }
-
         public void AddMaterial(Material material)
         {
-
+			
         }
 
-        public void AddWork(float time, string employeeID, string name, string type)
+        public void AddWorkTime(WorkTime workTime)
         {
 
         }
-    }
+
+		public void AddStatus(Status status)
+		{
+
+		}
+
+		public void AddAdditonalMaterial(AdditionalMaterials additionalMaterial)
+		{
+
+		}
+	}
 }

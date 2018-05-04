@@ -9,14 +9,16 @@ namespace Model
 	public class WorkTime
     {
         public Employee Employee { get; set; }
-		public double Time { get; set; }
+		public double Hours { get; set; }
 		public string Type { get; set; }
+		public DateTime Date { get; set; }
 
-		public WorkTime(Employee employee, double time, string type)
+		public WorkTime(Employee employee, double hours, string type, DateTime date)
         {
 			Employee = employee;
-			Time = time;
+			Hours = hours;
 			Type = type;
+			Date = date;
         }
     }
 }

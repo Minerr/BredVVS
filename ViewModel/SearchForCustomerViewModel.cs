@@ -10,7 +10,22 @@ namespace ViewModel
 {
 	public class SearchForCustomerViewModel : INotifyPropertyChanged
 	{
+
+		#region Singleton code here
 		private static SearchForCustomerViewModel _instance;
+		public static SearchForCustomerViewModel Instance
+		{
+			get
+			{
+				if(_instance == null)
+				{
+					_instance = new SearchForCustomerViewModel();
+				}
+				return _instance;
+			}
+		}
+		#endregion
+
 		private List<Customer> _customers;
 		public List<Customer> CustomerList
 		{
@@ -24,18 +39,9 @@ namespace ViewModel
 				OnPropertyChanged("CustomerList");
 			}
 		}
+
 		public Customer SelectedCustomer { get; set; }
-		public static SearchForCustomerViewModel Instance
-		{
-			get
-			{
-				if (_instance == null)
-				{
-					_instance = new SearchForCustomerViewModel();
-				}
-				return _instance;
-			}
-		}
+
 		private SearchForCustomerViewModel()
 		{
 			CustomerList = new List<Customer>();
@@ -44,9 +50,9 @@ namespace ViewModel
 		public void RetrieveCustomers(string keyword)
 		{
 			List<Customer> customers = new List<Customer>();
-			customers.Add(new Customer(new Name("Daniel", "Gierahn"), "Skt. Knudsgade 44", "5000", "Odense", "76543278"));
-			customers.Add(new Customer(new Name("bo", "Hansen"), "Skt. Knudsgade 56", "5000", "Odense", "12343458"));
-			customers.Add(new Customer(new Name("Tim", "Timsen"), "Skt. Knudsgade 111", "5000", "Odense", "12345654"));
+			customers.Add(new Customer(new Name("Daniel", "Gierahn"), "Skt. Knudsgade 44", "5000", "Odense", "76543278", "FedtMandSpa@AOL.com"));
+			customers.Add(new Customer(new Name("bo", "Hansen"), "Skt. Knudsgade 56", "5000", "Odense", "12343458", "BoHansen@mail.dk"));
+			customers.Add(new Customer(new Name("Tim", "Timsen"), "Skt. Knudsgade 111", "5000", "Odense", "12345654", "Timmy@gmail.com"));
 			CustomerList = customers;
 		}
 

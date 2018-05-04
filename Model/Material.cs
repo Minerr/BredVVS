@@ -12,9 +12,9 @@ namespace Model
 	    public string Name { get; set; }
 	    public string Description { get; set; }
 
-        public Material(string ID, string name, string description)
+        public Material(string name, string description)
         {
-            this.ID = ID;
+			ID = Guid.NewGuid().ToString();
             Name = name;
             Description = description;
         }

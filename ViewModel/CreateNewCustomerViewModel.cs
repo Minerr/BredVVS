@@ -9,47 +9,43 @@ namespace ViewModel
 {
 	public class CreateNewCustomerViewModel
 	{
+		#region Singleton code here
 		private static CreateNewCustomerViewModel _instance;
-		public string FirstName { get; set; }
-		public string LastName { get; set; }
-		public string Address { get; set; }
-		public string ZIPcode { get; set; }
-		public string City { get; set; }
-		public string PhoneNumber { get; set; }
 		public static CreateNewCustomerViewModel Instance
 		{
 			get
 			{
-				if (_instance == null)
+				if(_instance == null)
 				{
 					_instance = new CreateNewCustomerViewModel();
 				}
 				return _instance;
 			}
 		}
+		#endregion
+
+		public Customer Customer { get; set; }
+
 
 		private CreateNewCustomerViewModel()
 		{
-
 		}
 
 		public void CreateNewCustomer()
 		{
-			Customer customer = new Customer(new Name(FirstName, LastName), Address, ZIPcode, City, PhoneNumber);
-
-			WorksheetViewModel.Instance.Customer = customer;
-
+			WorksheetViewModel.Instance.Customer = Customer;
 		}
 
 		public bool IsCustomerDataNotNull()
 		{
 			bool result = true;
-			if(string.IsNullOrEmpty(FirstName) ||
-				string.IsNullOrEmpty(LastName) ||
-				string.IsNullOrEmpty(Address) ||
-				string.IsNullOrEmpty(ZIPcode) ||
-				string.IsNullOrEmpty(City) ||
-				string.IsNullOrEmpty(PhoneNumber))
+			if(string.IsNullOrEmpty(Customer.Name.FirstName) ||
+				string.IsNullOrEmpty(Customer.Name.LastName) ||
+				string.IsNullOrEmpty(Customer.Address) ||
+				string.IsNullOrEmpty(Customer.ZIPcode) ||
+				string.IsNullOrEmpty(Customer.City) ||
+				string.IsNullOrEmpty(Customer.PhoneNumber) ||
+				string.IsNullOrEmpty(Customer.Email))
 			{
 				result = false;
 			}

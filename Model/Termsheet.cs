@@ -8,8 +8,9 @@ namespace Model
 {
 	public class Termsheet
     {
-        public Customer CustomerInfo {get; set;}
-        public DateTime TimeAndDate {get; set;}
+        public string ID {get; set;}
+        public Customer CustomerInfo {get; set; }
+		public DateTime TimeAndDate {get; set;}
         public string WorksheetID {get; set;}
         public string BuilderInfo {get; set;}
         public string Entrepreneur {get; set;}

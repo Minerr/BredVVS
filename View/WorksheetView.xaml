@@ -59,7 +59,7 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <ListView x:Name="MaterialsListBox" ItemsSource="{Binding Materials}" SelectedItem="{Binding SelectedMaterial}" HorizontalAlignment="Left" Height="215" Margin="237,279,0,0" VerticalAlignment="Top" Width="260" SelectionChanged="MaterialsListBox_SelectionChanged">
+            <ListView x:Name="MaterialsListBox" ItemsSource="{Binding Worksheet.Materials}" SelectedItem="{Binding SelectedMaterial}" HorizontalAlignment="Left" Height="215" Margin="237,279,0,0" VerticalAlignment="Top" Width="260" SelectionChanged="MaterialsListBox_SelectionChanged">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="50"/>
