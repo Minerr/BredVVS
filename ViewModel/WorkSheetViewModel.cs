@@ -56,14 +56,14 @@ namespace ViewModel
 			materials.Add(new Material("Enhanced Flail Socket", "35.2mm Ø, 30mm L, Plastic"));
 			materials.Add(new Material("Hydrocoptic Ringdisc", "20mm Ø, Rubber"));
 
-			List<WorkTime> workTime = new List<WorkTime>();
-			workTime.Add(new WorkTime(assignedFitters[0], 2.5, "Normal time", new DateTime(2018, 04, 23)));
-			workTime.Add(new WorkTime(assignedFitters[0], 1.0, "Normal time", new DateTime(2018, 04, 24)));
-			workTime.Add(new WorkTime(assignedFitters[1], 3.0, "Normal time", new DateTime(2018, 04, 28)));
+			List<WorkHours> workHours = new List<WorkHours>();
+			workHours.Add(new WorkHours(assignedFitters[0], 2.5, "Normal time", new DateTime(2018, 04, 23)));
+			workHours.Add(new WorkHours(assignedFitters[0], 1.0, "Normal time", new DateTime(2018, 04, 24)));
+			workHours.Add(new WorkHours(assignedFitters[1], 3.0, "Normal time", new DateTime(2018, 04, 28)));
 
 			Worksheet.AssignedFitters = assignedFitters;
 			Worksheet.Materials = materials;
-			Worksheet.WorkTime = workTime;
+			Worksheet.WorkHours = workHours;
 
 			//TODO: move OnPropertyChanged into Model layer
 			OnPropertyChanged("AssignedFitters");

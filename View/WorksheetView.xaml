@@ -50,7 +50,7 @@
             <Button x:Name="RemoveFitterButton" Content="Fjern Montør" HorizontalAlignment="Left" Margin="502,94,0,0" VerticalAlignment="Top" Height="24" Width="260" IsEnabled="False" Click="RemoveFitterButton_Click"/>
             <Button x:Name="RemoveSelectedHourButton" Content="Fjern time" HorizontalAlignment="Left" Margin="502,250,0,0" VerticalAlignment="Top" Width="260" Height="24" IsEnabled="False" Click="RemoveSelectedHourButton_Click"/>
             <Button x:Name="RemoveSelectedMaterialButton" Content="Fjern materiale" HorizontalAlignment="Left" Margin="237,250,0,0" VerticalAlignment="Top" Width="260" Height="24" IsEnabled="False" Click="RemoveSelectedMaterialButton_Click"/>
-            <ListView x:Name="WorkTimeListBox" ItemsSource="{Binding Worksheet.WorkTime}" SelectedItem="{Binding SelectedWorkTime}" HorizontalAlignment="Left" Height="215" Margin="502,279,0,0" VerticalAlignment="Top" Width="260" SelectionChanged="WorkTimeListBox_SelectionChanged">
+            <ListView x:Name="WorkTimeListBox" ItemsSource="{Binding Worksheet.WorkHours}" SelectedItem="{Binding SelectedWorkTime}" HorizontalAlignment="Left" Height="215" Margin="502,279,0,0" VerticalAlignment="Top" Width="260" SelectionChanged="WorkTimeListBox_SelectionChanged">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Navn" DisplayMemberBinding="{Binding Employee.Name.FullName}" Width="80"/>
@@ -64,7 +64,7 @@
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="50"/>
-                        <GridViewColumn Header="Navn" DisplayMemberBinding="{Binding Name}" Width="100"/>
+                        <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Type}" Width="100"/>
                         <GridViewColumn Header="Beskrivelse" DisplayMemberBinding="{Binding Description}" Width="100"/>
                     </GridView>
                 </ListView.View>

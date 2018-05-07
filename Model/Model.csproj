@@ -46,7 +46,6 @@
     <Compile Include="Customer.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Fitter.cs" />
-    <Compile Include="HeadFitter.cs" />
     <Compile Include="Image.cs" />
     <Compile Include="Material.cs" />
     <Compile Include="Name.cs" />
@@ -56,7 +55,7 @@
     <Compile Include="Status.cs" />
     <Compile Include="Termsheet.cs" />
     <Compile Include="Worksheet.cs" />
-    <Compile Include="WorkTime.cs" />
+    <Compile Include="WorkHours.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

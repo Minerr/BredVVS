@@ -8,7 +8,6 @@ namespace Model
 {
 	public enum Status
 	{
-		Guarentee,
 		Ongoing,
 		Done
 	}

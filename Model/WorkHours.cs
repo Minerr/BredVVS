@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-	public class WorkTime
+	public class WorkHours
     {
         public Employee Employee { get; set; }
 		public double Hours { get; set; }
 		public string Type { get; set; }
 		public DateTime Date { get; set; }
 
-		public WorkTime(Employee employee, double hours, string type, DateTime date)
+		public WorkHours(Employee employee, double hours, string type, DateTime date)
         {
 			Employee = employee;
 			Hours = hours;

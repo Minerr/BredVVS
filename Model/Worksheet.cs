@@ -17,8 +17,9 @@ namespace Model
 		public DateTime EndDateTime { get; set; }
 		public DateTime StartDateTime { get; set; }
 		public List<Material> Materials { get; set; }
-		public List<WorkTime> WorkTime { get; set; }
-		public List<Status> Status { get; set; }
+		public List<WorkHours> WorkHours { get; set; }
+		public bool IsGuarantee { get; set; }
+		public Status Status { get; set; }
 		public List<AdditionalMaterials> AdditionalMaterials { get; set; }
 
 		public Worksheet()
@@ -42,15 +43,10 @@ namespace Model
 			
         }
 
-        public void AddWorkTime(WorkTime workTime)
+        public void AddWorkHours(WorkHours workHours)
         {
 
         }
-
-		public void AddStatus(Status status)
-		{
-
-		}
 
 		public void AddAdditonalMaterial(AdditionalMaterials additionalMaterial)
 		{
