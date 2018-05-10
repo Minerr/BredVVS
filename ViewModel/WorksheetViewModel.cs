@@ -78,7 +78,7 @@ namespace ViewModel
 
 		public void CreateWorksheet()
 		{
-
+			new Worksheet()
 		}
 
 
