@@ -14,11 +14,23 @@ namespace ViewModel
 		private static WorksheetViewModel _instance;
 		public Customer Customer { get; set; }
 
-        public List<string> Hours { get; }
+        public List<TimeSpan> Hours { get; }
         public List<string> Minutes { get; }
 
-
-
+        private TimeSpan _startTime;
+        public TimeSpan StartTime
+        {
+            get
+            {
+                return _startTime;
+            }
+            set
+            {
+                _startTime = _startTime.Add(value);
+            }
+        }
+        public TimeSpan EndTime { get; set; }
+        
         public string CustomerFullAddress
 		{
 			get
@@ -50,7 +62,11 @@ namespace ViewModel
 
 		private WorksheetViewModel()
 		{
-			Worksheet = new Worksheet();
+            StartTime = new TimeSpan();
+            EndTime = new TimeSpan();
+           
+
+            Worksheet = new Worksheet();
 
 			List<Fitter> assignedFitters = new List<Fitter>();
 			assignedFitters.Add(new Fitter(new Name("Søren", "Hansen")));
@@ -75,16 +91,10 @@ namespace ViewModel
 			OnPropertyChanged("Materials");
 			OnPropertyChanged("WorkTime");
 
-            List<string> hours = new List<string>();
+            List<TimeSpan> hours = new List<TimeSpan>();
             for(int i=0; i < 24; i++)
             {
-                string hour = "";
-
-                if (i < 10)
-                {
-                    hour = "0";
-                }
-                hours.Add(hour + i);
+                hours.Add(new TimeSpan(i, 0, 0));
             }
 
             List<string> minutes = new List<string>();
