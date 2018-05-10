@@ -14,11 +14,39 @@ namespace ViewModel
 		private static WorksheetViewModel _instance;
 		public Customer Customer { get; set; }
 
-        public List<string> Hours { get; }
-        public List<string> Minutes { get; }
+        public List<TimeSpan> Hours { get; }
+        public List<TimeSpan> Minutes { get; }
 
+        private TimeSpan _startTime;
+        public TimeSpan StartTime
+        {
+            get
+            {
+                return _startTime;
+            }
+            set
+            {
+                int hour = 0;
+                int minute = 0;
 
+                if(value.Hours != 0)
+                {
+                    hour = value.Hours;
+                    minute = _startTime.Minutes;
+                }
+                
+                if(value.Minutes !=0)
+                {
+                    hour = _startTime.Hours;
+                    minute = value.Minutes;
+                }
 
+                _startTime = new TimeSpan(hour, minute, 0);
+                OnPropertyChanged("StartTime");
+            }
+        }
+        public TimeSpan EndTime { get; set; }
+        
         public string CustomerFullAddress
 		{
 			get
@@ -50,7 +78,12 @@ namespace ViewModel
 
 		private WorksheetViewModel()
 		{
-			Worksheet = new Worksheet();
+            
+            _startTime = new TimeSpan(0,0,0);
+            EndTime = new TimeSpan(12,0,0);
+           
+
+            Worksheet = new Worksheet();
 
 			List<Fitter> assignedFitters = new List<Fitter>();
 			assignedFitters.Add(new Fitter(new Name("Søren", "Hansen")));
@@ -75,28 +108,16 @@ namespace ViewModel
 			OnPropertyChanged("Materials");
 			OnPropertyChanged("WorkTime");
 
-            List<string> hours = new List<string>();
+            List<TimeSpan> hours = new List<TimeSpan>();
             for(int i=0; i < 24; i++)
             {
-                string hour = "";
-
-                if (i < 10)
-                {
-                    hour = "0";
-                }
-                hours.Add(hour + i);
+                hours.Add(new TimeSpan(i, 0, 0));
             }
 
-            List<string> minutes = new List<string>();
+            List<TimeSpan> minutes = new List<TimeSpan>();
             for (int i = 0; i < 60; i++)
             {
-                string minute = "";
-
-                if (i < 10)
-                {
-                    minute = "0";
-                }
-                minutes.Add(minute + i);
+                minutes.Add(new TimeSpan(0, i, 0));
             }
 
             Hours = hours;
