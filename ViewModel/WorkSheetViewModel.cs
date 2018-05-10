@@ -15,7 +15,7 @@ namespace ViewModel
 		public Customer Customer { get; set; }
 
         public List<TimeSpan> Hours { get; }
-        public List<string> Minutes { get; }
+        public List<TimeSpan> Minutes { get; }
 
         private TimeSpan _startTime;
         public TimeSpan StartTime
@@ -26,7 +26,23 @@ namespace ViewModel
             }
             set
             {
-                _startTime = _startTime.Add(value);
+                int hour = 0;
+                int minute = 0;
+
+                if(value.Hours != 0)
+                {
+                    hour = value.Hours;
+                    minute = _startTime.Minutes;
+                }
+                
+                if(value.Minutes !=0)
+                {
+                    hour = _startTime.Hours;
+                    minute = value.Minutes;
+                }
+
+                _startTime = new TimeSpan(hour, minute, 0);
+                OnPropertyChanged("StartTime");
             }
         }
         public TimeSpan EndTime { get; set; }
@@ -62,8 +78,9 @@ namespace ViewModel
 
 		private WorksheetViewModel()
 		{
-            StartTime = new TimeSpan();
-            EndTime = new TimeSpan();
+            
+            _startTime = new TimeSpan(0,0,0);
+            EndTime = new TimeSpan(12,0,0);
            
 
             Worksheet = new Worksheet();
@@ -97,16 +114,10 @@ namespace ViewModel
                 hours.Add(new TimeSpan(i, 0, 0));
             }
 
-            List<string> minutes = new List<string>();
+            List<TimeSpan> minutes = new List<TimeSpan>();
             for (int i = 0; i < 60; i++)
             {
-                string minute = "";
-
-                if (i < 10)
-                {
-                    minute = "0";
-                }
-                minutes.Add(minute + i);
+                minutes.Add(new TimeSpan(0, i, 0));
             }
 
             Hours = hours;
