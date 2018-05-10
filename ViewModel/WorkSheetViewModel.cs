@@ -14,7 +14,12 @@ namespace ViewModel
 		private static WorksheetViewModel _instance;
 		public Customer Customer { get; set; }
 
-		public string CustomerFullAddress
+        public List<string> Hours { get; }
+        public List<string> Minutes { get; }
+
+
+
+        public string CustomerFullAddress
 		{
 			get
 			{
@@ -69,9 +74,40 @@ namespace ViewModel
 			OnPropertyChanged("AssignedFitters");
 			OnPropertyChanged("Materials");
 			OnPropertyChanged("WorkTime");
-		}
 
-		public void CreateWorksheet()
+            List<string> hours = new List<string>();
+            for(int i=0; i < 24; i++)
+            {
+                string hour = "";
+
+                if (i < 10)
+                {
+                    hour = "0";
+                }
+                hours.Add(hour + i);
+            }
+
+            List<string> minutes = new List<string>();
+            for (int i = 0; i < 60; i++)
+            {
+                string minute = "";
+
+                if (i < 10)
+                {
+                    minute = "0";
+                }
+                minutes.Add(minute + i);
+            }
+
+            Hours = hours;
+            Minutes = minutes;
+
+            OnPropertyChanged("Hours");
+            OnPropertyChanged("Minutes");
+
+        }
+
+        public void CreateWorksheet()
 		{
 			//TODO: Save worksheet in database
 		}
