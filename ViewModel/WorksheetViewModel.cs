@@ -45,7 +45,35 @@ namespace ViewModel
                 OnPropertyChanged("StartTime");
             }
         }
-        public TimeSpan EndTime { get; set; }
+
+		private TimeSpan _endTime;
+		public TimeSpan EndTime
+		{
+			get
+			{
+				return _endTime;
+			}
+			set
+			{
+				int hour = 0;
+				int minute = 0;
+
+				if(value.Hours != 0)
+				{
+					hour = value.Hours;
+					minute = _endTime.Minutes;
+				}
+
+				if(value.Minutes != 0)
+				{
+					hour = _endTime.Hours;
+					minute = value.Minutes;
+				}
+
+				_endTime = new TimeSpan(hour, minute, 0);
+				OnPropertyChanged("EndTime");
+			}
+		}
         
         public string CustomerFullAddress
 		{
@@ -80,7 +108,7 @@ namespace ViewModel
 		{
             
             _startTime = new TimeSpan(0,0,0);
-            EndTime = new TimeSpan(12,0,0);
+            _endTime = new TimeSpan(0,0,0);
            
 
             Worksheet = new Worksheet();
@@ -115,7 +143,7 @@ namespace ViewModel
             }
 
             List<TimeSpan> minutes = new List<TimeSpan>();
-            for (int i = 0; i < 60; i++)
+            for (int i = 0; i < 60; i += 15)
             {
                 minutes.Add(new TimeSpan(0, i, 0));
             }
