@@ -21,7 +21,7 @@
             <Label Content="Arbejdsbeskrivelse og øvrig info" HorizontalAlignment="Left" Margin="10,197,0,0" VerticalAlignment="Top" Width="200"/>
             <DatePicker x:Name="StartDateDatePicker" HorizontalAlignment="Left" Margin="242,33,0,0" VerticalAlignment="Top" Width="120"/>
             <Label Content="Projektnummer" HorizontalAlignment="Left" Margin="502,5,0,0" VerticalAlignment="Top" Width="200"/>
-            <TextBox x:Name="WorksheetIDtextBox" HorizontalAlignment="Left" Height="30" Margin="502,31,0,0" TextWrapping="Wrap" Text="{Binding Worksheet.ID , Mode=OneWay}" VerticalAlignment="Top" Width="260" IsEnabled="False"/>
+            <TextBox x:Name="WorksheetIDtextBox" Text="{Binding Worksheet.ID , Mode=OneWay}" HorizontalAlignment="Left" Height="30" Margin="502,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260" IsEnabled="False"/>
 
             <ListBox x:Name="FitterListBox" ItemsSource="{Binding Worksheet.AssignedFitters}" SelectedItem="{Binding SelectedFitter}" HorizontalAlignment="Left" Height="76" Margin="502,121,0,0" VerticalAlignment="Top" Width="260" SelectionChanged="FitterListBox_SelectionChanged">
                 <ListBox.ItemTemplate>
@@ -70,28 +70,28 @@
             <ComboBox ItemsSource="{Binding Hours, Mode=OneWay}" SelectedItem="{Binding StartTime}" HorizontalAlignment="Left" Height="21" Margin="242,91,0,0" VerticalAlignment="Top" Width="58">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Hours, Mode=OneWay}"/>
+                        <TextBlock Text="{Binding Hours, Mode=OneWay, StringFormat={}{0:D2}}"/>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
             <ComboBox ItemsSource="{Binding Minutes, Mode=OneWay}" SelectedItem="{Binding StartTime}" HorizontalAlignment="Left" Height="21" Margin="304,91,0,0" VerticalAlignment="Top" Width="58" >
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Minutes, Mode=OneWay}"/>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Minutes, Mode=OneWay, StringFormat={}{0:D2}}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
             </ComboBox>
             <ComboBox ItemsSource="{Binding Hours, Mode=OneWay}" SelectedItem="{Binding EndTime}" HorizontalAlignment="Left" Height="21" Margin="372,91,0,0" VerticalAlignment="Top" Width="58">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Hours, Mode=OneWay}"/>
+                        <TextBlock Text="{Binding Hours, Mode=OneWay, StringFormat={}{0:D2}}"/>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
             <ComboBox ItemsSource="{Binding Minutes, Mode=OneWay}" SelectedItem="{Binding EndTime}" HorizontalAlignment="Left" Height="21" Margin="436,91,0,0" VerticalAlignment="Top" Width="58">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Minutes, Mode=OneWay}"/>
+                        <TextBlock Text="{Binding Minutes, Mode=OneWay, StringFormat={}{0:D2}}"/>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
