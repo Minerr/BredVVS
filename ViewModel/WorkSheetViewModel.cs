@@ -18,6 +18,7 @@ namespace ViewModel
         public List<TimeSpan> Minutes { get; }
 
         private TimeSpan _startTime;
+        private TimeSpan _endTime;
         public TimeSpan StartTime
         {
             get
@@ -45,8 +46,34 @@ namespace ViewModel
                 OnPropertyChanged("StartTime");
             }
         }
-        public TimeSpan EndTime { get; set; }
-        
+        public TimeSpan EndTime
+        {
+            get
+            {
+                return _endTime;
+            }
+            set
+            {
+                int hour = 0;
+                int minute = 0;
+
+                if (value.Hours != 0)
+                {
+                    hour = value.Hours;
+                    minute = _endTime.Minutes;
+                }
+
+                if (value.Minutes != 0)
+                {
+                    hour = _endTime.Hours;
+                    minute = value.Minutes;
+                }
+
+                _endTime = new TimeSpan(hour, minute, 0);
+                OnPropertyChanged("EndTime");
+            }
+        }
+
         public string CustomerFullAddress
 		{
 			get
@@ -80,7 +107,7 @@ namespace ViewModel
 		{
             
             _startTime = new TimeSpan(0,0,0);
-            EndTime = new TimeSpan(12,0,0);
+            EndTime = new TimeSpan(0,0,0);
            
 
             Worksheet = new Worksheet();
