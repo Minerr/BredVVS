@@ -143,25 +143,60 @@ namespace ViewModel
 			}
 		}
 
-		//public Status SelectedStatus { get; set; }
-
-		public List<Status> Statuses
+		public bool IsWaitingChecked
 		{
 			get
 			{
-				return new List<Status>() { Status.Waiting, Status.Ongoing, Status.Done };
+				return (Worksheet.Status == Status.Waiting);
+			}
+			set
+			{
+				if(value)
+				{
+					Worksheet.Status = Status.Waiting;
+				}
+			}
+		}
+
+		public bool IsOngoingChecked
+		{
+			get
+			{
+				return (Worksheet.Status == Status.Ongoing);
+			}
+			set
+			{
+				if(value)
+				{
+					Worksheet.Status = Status.Ongoing;
+				}
+			}
+		}
+
+		public bool IsDoneChecked
+		{
+			get
+			{
+				return (Worksheet.Status == Status.Done);
+			}
+			set
+			{
+				if(value)
+				{
+					Worksheet.Status = Status.Done;
+				}
 			}
 		}
 
 		private WorksheetViewModel()
 		{
 			// Init start values
+			Worksheet = new Worksheet();
+
 			_isServiceVehicleChecked = false;
 			_isAuxiliaryMaterialsChecked = false;
 			_startTime = new TimeSpan(0,0,0);
             _endTime = new TimeSpan(0,0,0);
-			 Worksheet = new Worksheet();
-
 
 			Hours = new List<TimeSpan>();
             for(int i=0; i < 24; i++)

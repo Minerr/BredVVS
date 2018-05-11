@@ -6,34 +6,6 @@
         xmlns:local="clr-namespace:View"
         mc:Ignorable="d"
         Title="Worksheet" Height="600" Width="800">
-    <Window.Resources>
-        <!--https://stackoverflow.com/questions/28571283/radiobuttons-with-behavior-bind-to-single-property/28571411#28571411-->
-        <Style x:Key="RadioButtonListBoxStyle" TargetType="{x:Type ListBox}">
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="KeyboardNavigation.DirectionalNavigation" Value="Cycle" />
-            <Setter Property="ItemContainerStyle">
-                <Setter.Value>
-                    <Style TargetType="{x:Type ListBoxItem}" >
-                        <Setter Property="Margin" Value="0, 0, 0, 0" />
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate>
-                                    <Border Background="Transparent">
-                                        <RadioButton
-                                    Content="{TemplateBinding ContentPresenter.Content}" VerticalAlignment="Center"
-                                    IsChecked="{Binding Path=IsSelected,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}"/>
-
-                                    </Border>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
-
-
     <Grid>
         <Grid HorizontalAlignment="Left" Height="504" Margin="11,7,0,0" VerticalAlignment="Top" Width="772" RenderTransformOrigin="0.476,0.514">
             <Label Content="Navn:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,33,0,0" Width="40" RenderTransformOrigin="0.861,0.469"/>
@@ -71,11 +43,11 @@
             <CheckBox x:Name="AdditionalMaterialsCheckBox" IsChecked="{Binding IsAuxiliaryMaterialsChecked}" Content="Hjælpematerialer" HorizontalAlignment="Left" Margin="10,388,0,0" VerticalAlignment="Top" Height="20"/>
             <CheckBox x:Name="GuaranteeCheckBox" IsChecked="{Binding Worksheet.IsGuarantee}" Content="Garanti" HorizontalAlignment="Left" Margin="10,408,0,0" VerticalAlignment="Top" Height="20" Width="60" />
 
-            <Label Content="Status:" HorizontalAlignment="Left" Margin="6,428,0,0" VerticalAlignment="Top" Width="200"/>
-            <ListBox x:Name="StatusListBox" ItemsSource="{Binding Statuses}" SelectedItem="{Binding Worksheet.Status}" Style="{StaticResource RadioButtonListBoxStyle}" HorizontalAlignment="Left" Height="51" Margin="10,453,0,0" VerticalAlignment="Top" Width="222" />
-            <!--<RadioButton x:Name="GuaranteeCheckBox" GroupName="Status" Content="Garanti" HorizontalAlignment="Left" Margin="10,428,0,0" VerticalAlignment="Top" Height="20" Width="60"/>
-            <RadioButton x:Name="OngoingCheckBox"  GroupName="Status" Content="Igangværende" HorizontalAlignment="Left" Margin="10,448,0,0" VerticalAlignment="Top" Height="20"/>
-            <RadioButton x:Name="DoneCheckbox"  GroupName="Status" Content="Færdig" HorizontalAlignment="Left" Margin="10,468,0,0" VerticalAlignment="Top" Height="20"/>-->
+            <Label Content="Status:" HorizontalAlignment="Left" Margin="4,423,0,0" VerticalAlignment="Top" Width="200"/>
+            <RadioButton x:Name="WaitingRadioBox" IsChecked="{Binding IsWaitingChecked}" GroupName="Status" Content="Venter på montør" HorizontalAlignment="Left" Margin="10,448,0,0" VerticalAlignment="Top" Height="20"/>
+            <RadioButton x:Name="OngoingRadioBox" IsChecked="{Binding IsOngoingChecked}" GroupName="Status" Content="Igangværende" HorizontalAlignment="Left" Margin="10,468,0,0" VerticalAlignment="Top" Height="20"/>
+            <RadioButton x:Name="DoneRadioBox" IsChecked="{Binding IsDoneChecked}" GroupName="Status" Content="Færdig" HorizontalAlignment="Left" Margin="10,488,0,-4" VerticalAlignment="Top" Height="20"/>
+
             <Button x:Name="AddFitterButton" Content="Tilføj Montør" HorizontalAlignment="Left" Margin="502,67,0,0" VerticalAlignment="Top" Height="24" Width="260" Click="AddFitterButton_Click"/>
             <Button x:Name="RemoveFitterButton" Content="Fjern Montør" HorizontalAlignment="Left" Margin="502,94,0,0" VerticalAlignment="Top" Height="24" Width="260" IsEnabled="False" Click="RemoveFitterButton_Click"/>
             <Button x:Name="RemoveSelectedHourButton" Content="Fjern time" HorizontalAlignment="Left" Margin="502,250,0,0" VerticalAlignment="Top" Width="260" Height="24" IsEnabled="False" Click="RemoveSelectedHourButton_Click"/>
