@@ -13,9 +13,9 @@ namespace Model
 		public List<Image> ImageDocumentation { get; set; }
 		public List<Fitter> AssignedFitters { get; set; }
 		public string WorkDescription { get; set; }
-		public string WorkPlace { get; set; }
-		public DateTime EndDateTime { get; set; }
+		public string Workplace { get; set; }
 		public DateTime StartDateTime { get; set; }
+		public DateTime EndDateTime { get; set; }
 		public List<Material> Materials { get; set; }
 		public List<WorkHours> WorkHours { get; set; }
 		public bool IsGuarantee { get; set; }
@@ -24,9 +24,22 @@ namespace Model
 
 		public Worksheet()
         {
-			//TODO: Give worksheet an unique ID
+			// Init properties
 			ID = Guid.NewGuid().ToString();
-        }
+
+			Customer = new Customer();
+			ImageDocumentation = new List<Image>();
+			AssignedFitters = new List<Fitter>();
+			WorkDescription = "";
+			Workplace = "";
+			StartDateTime = new DateTime();
+			EndDateTime = new DateTime();
+			Materials = new List<Material>();
+			WorkHours = new List<WorkHours>();
+			IsGuarantee = false;
+			Status = Status.Waiting;
+			AdditionalMaterials = new List<AdditionalMaterials>();
+		}
 
         public void AddImage(Image image)
         {
@@ -50,7 +63,18 @@ namespace Model
 
 		public void AddAdditonalMaterial(AdditionalMaterials additionalMaterial)
 		{
+			if(!AdditionalMaterials.Contains(additionalMaterial))
+			{
+				AdditionalMaterials.Add(additionalMaterial);
+			}
+		}
 
+		public void RemoveAdditonalMaterial(AdditionalMaterials additionalMaterial)
+		{
+			if(AdditionalMaterials.Contains(additionalMaterial))
+			{
+				AdditionalMaterials.Remove(additionalMaterial);
+			}
 		}
 	}
 }

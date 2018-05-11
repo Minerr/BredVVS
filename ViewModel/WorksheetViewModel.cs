@@ -12,6 +12,18 @@ namespace ViewModel
 	public class WorksheetViewModel : INotifyPropertyChanged
 	{
 		private static WorksheetViewModel _instance;
+		public static WorksheetViewModel Instance
+		{
+			get
+			{
+				if(_instance == null)
+				{
+					_instance = new WorksheetViewModel();
+				}
+				return _instance;
+			}
+		}
+
 		public Customer Customer { get; set; }
 
         public List<TimeSpan> Hours { get; }
@@ -92,68 +104,76 @@ namespace ViewModel
 
 		public Worksheet Worksheet { get; set; }
 
-		public static WorksheetViewModel Instance
+		public WorkHours SelectedWorkHours { get; set; }
+
+		private bool _isServiceVehicleChecked;
+		public bool IsServiceVehicleChecked
+		{
+			get { return _isServiceVehicleChecked; }
+			set
+			{
+				if(value == true)
+				{
+					Worksheet.AddAdditonalMaterial(AdditionalMaterials.ServiceVehicle);
+				}
+				else
+				{
+					Worksheet.RemoveAdditonalMaterial(AdditionalMaterials.ServiceVehicle);
+				}
+				_isServiceVehicleChecked = value;
+			}
+		}
+
+		private bool _isAuxiliaryMaterialsChecked;
+		public bool IsAuxiliaryMaterialsChecked
+		{
+			get { return _isServiceVehicleChecked; }
+			set
+			{
+				if(value == true)
+				{
+					Worksheet.AddAdditonalMaterial(AdditionalMaterials.AuxiliaryMaterials);
+				}
+				else
+				{
+					Worksheet.RemoveAdditonalMaterial(AdditionalMaterials.AuxiliaryMaterials);
+				}
+
+				_isAuxiliaryMaterialsChecked = value;
+			}
+		}
+
+		//public Status SelectedStatus { get; set; }
+
+		public List<Status> Statuses
 		{
 			get
 			{
-				if(_instance == null)
-				{
-					_instance = new WorksheetViewModel();
-				}
-				return _instance;
+				return new List<Status>() { Status.Waiting, Status.Ongoing, Status.Done };
 			}
 		}
 
 		private WorksheetViewModel()
 		{
-            
-            _startTime = new TimeSpan(0,0,0);
+			// Init start values
+			_isServiceVehicleChecked = false;
+			_isAuxiliaryMaterialsChecked = false;
+			_startTime = new TimeSpan(0,0,0);
             _endTime = new TimeSpan(0,0,0);
-           
+			 Worksheet = new Worksheet();
 
-            Worksheet = new Worksheet();
 
-			List<Fitter> assignedFitters = new List<Fitter>();
-			assignedFitters.Add(new Fitter(new Name("Søren", "Hansen")));
-			assignedFitters.Add(new Fitter(new Name("Tim", "Timsen")));
-
-			List<Material> materials = new List<Material>();
-			materials.Add(new Material("Panometric Tube", "11.5mm Ø, 10500mm L, Plastic."));
-			materials.Add(new Material("Enhanced Flail Socket", "35.2mm Ø, 30mm L, Plastic"));
-			materials.Add(new Material("Hydrocoptic Ringdisc", "20mm Ø, Rubber"));
-
-			List<WorkHours> workHours = new List<WorkHours>();
-			workHours.Add(new WorkHours(assignedFitters[0], 2.5, "Normal time", new DateTime(2018, 04, 23)));
-			workHours.Add(new WorkHours(assignedFitters[0], 1.0, "Normal time", new DateTime(2018, 04, 24)));
-			workHours.Add(new WorkHours(assignedFitters[1], 3.0, "Normal time", new DateTime(2018, 04, 28)));
-
-			Worksheet.AssignedFitters = assignedFitters;
-			Worksheet.Materials = materials;
-			Worksheet.WorkHours = workHours;
-
-			//TODO: move OnPropertyChanged into Model layer
-			OnPropertyChanged("AssignedFitters");
-			OnPropertyChanged("Materials");
-			OnPropertyChanged("WorkTime");
-
-            List<TimeSpan> hours = new List<TimeSpan>();
+			Hours = new List<TimeSpan>();
             for(int i=0; i < 24; i++)
             {
-                hours.Add(new TimeSpan(i, 0, 0));
+				Hours.Add(new TimeSpan(i, 0, 0));
             }
 
-            List<TimeSpan> minutes = new List<TimeSpan>();
+			Minutes = new List<TimeSpan>();
             for (int i = 0; i < 60; i += 15)
             {
-                minutes.Add(new TimeSpan(0, i, 0));
+				Minutes.Add(new TimeSpan(0, i, 0));
             }
-
-            Hours = hours;
-            Minutes = minutes;
-
-            OnPropertyChanged("Hours");
-            OnPropertyChanged("Minutes");
-
         }
 
         public void CreateWorksheet()
