@@ -14,11 +14,67 @@ namespace ViewModel
 		private static WorksheetViewModel _instance;
 		public Customer Customer { get; set; }
 
-        public List<string> Hours { get; }
-        public List<string> Minutes { get; }
+        public List<TimeSpan> Hours { get; }
+        public List<TimeSpan> Minutes { get; }
 
+        private TimeSpan _startTime;
+        public TimeSpan StartTime
+        {
+            get
+            {
+                return _startTime;
+            }
+            set
+            {
+                int hour = 0;
+                int minute = 0;
 
+                if(value.Hours != 0)
+                {
+                    hour = value.Hours;
+                    minute = _startTime.Minutes;
+                }
+                
+                if(value.Minutes !=0)
+                {
+                    hour = _startTime.Hours;
+                    minute = value.Minutes;
+                }
 
+                _startTime = new TimeSpan(hour, minute, 0);
+                OnPropertyChanged("StartTime");
+            }
+        }
+
+		private TimeSpan _endTime;
+		public TimeSpan EndTime
+		{
+			get
+			{
+				return _endTime;
+			}
+			set
+			{
+				int hour = 0;
+				int minute = 0;
+
+				if(value.Hours != 0)
+				{
+					hour = value.Hours;
+					minute = _endTime.Minutes;
+				}
+
+				if(value.Minutes != 0)
+				{
+					hour = _endTime.Hours;
+					minute = value.Minutes;
+				}
+
+				_endTime = new TimeSpan(hour, minute, 0);
+				OnPropertyChanged("EndTime");
+			}
+		}
+        
         public string CustomerFullAddress
 		{
 			get
@@ -50,7 +106,12 @@ namespace ViewModel
 
 		private WorksheetViewModel()
 		{
-			Worksheet = new Worksheet();
+            
+            _startTime = new TimeSpan(0,0,0);
+            _endTime = new TimeSpan(0,0,0);
+           
+
+            Worksheet = new Worksheet();
 
 			List<Fitter> assignedFitters = new List<Fitter>();
 			assignedFitters.Add(new Fitter(new Name("Søren", "Hansen")));
@@ -75,28 +136,16 @@ namespace ViewModel
 			OnPropertyChanged("Materials");
 			OnPropertyChanged("WorkTime");
 
-            List<string> hours = new List<string>();
+            List<TimeSpan> hours = new List<TimeSpan>();
             for(int i=0; i < 24; i++)
             {
-                string hour = "";
-
-                if (i < 10)
-                {
-                    hour = "0";
-                }
-                hours.Add(hour + i);
+                hours.Add(new TimeSpan(i, 0, 0));
             }
 
-            List<string> minutes = new List<string>();
-            for (int i = 0; i < 60; i++)
+            List<TimeSpan> minutes = new List<TimeSpan>();
+            for (int i = 0; i < 60; i += 15)
             {
-                string minute = "";
-
-                if (i < 10)
-                {
-                    minute = "0";
-                }
-                minutes.Add(minute + i);
+                minutes.Add(new TimeSpan(0, i, 0));
             }
 
             Hours = hours;
