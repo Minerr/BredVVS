@@ -25,7 +25,6 @@
         <TextBox HorizontalAlignment="Left" Height="23" Margin="520,75,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <Label Content="CVR" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="510,98,0,0"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="520,119,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.142,-1.043"/>
-        <Button Content="Vælg Firma" HorizontalAlignment="Left" VerticalAlignment="Top" Width="85" Margin="678,172,0,0"/>
 
         <Label Content="Referencenummer" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="640,49,0,0" Width="142"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="653,75,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
