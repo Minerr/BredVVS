@@ -10,22 +10,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ViewModel;
 
-namespace View
+namespace View.UserControls
 {
-	/// <summary>
-	/// Interaction logic for WorksheetView.xaml
-	/// </summary>
-	public partial class WorksheetView : Window
-	{
-		public WorksheetView()
+    /// <summary>
+    /// Interaction logic for WorksheetUC.xaml
+    /// </summary>
+    public partial class WorksheetUC : UserControl
+    {
+		private WorksheetVM _worksheetVM;
+		public WorksheetUC()
 		{
-			WorksheetViewModel worksheetViewModel = WorksheetViewModel.Instance;
+			_worksheetVM = new WorksheetVM();
 			InitializeComponent();
-
-			DataContext = worksheetViewModel;
+			DataContext = _worksheetVM;
 		}
 
 		private void AddHoursButton_Click(object sender, RoutedEventArgs e)
@@ -40,7 +41,7 @@ namespace View
 
 		private void SaveWorksheetButton_Click(object sender, RoutedEventArgs e)
 		{
-			WorksheetViewModel.Instance.CreateWorksheet();
+			_worksheetVM.CreateWorksheet();
 		}
 
 		private void AddFitterButton_Click(object sender, RoutedEventArgs e)
@@ -60,10 +61,7 @@ namespace View
 
 		private void CancelButton_Click(object sender, RoutedEventArgs e)
 		{
-			OfficeWorkerMenuView officeWorkerMenuView = new OfficeWorkerMenuView();
-			officeWorkerMenuView.Show();
-
-			this.Close();
+			PageControlCommands.GoTo(this, new OfficeWorkerMenuUC());
 		}
 
 		private void RemoveFitterButton_Click(object sender, RoutedEventArgs e)
@@ -96,15 +94,5 @@ namespace View
 		{
 
 		}
-
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void ListBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-    }
+	}
 }

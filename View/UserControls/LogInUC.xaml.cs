@@ -10,26 +10,29 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ViewModel;
 
-namespace View
+namespace View.UserControls
 {
     /// <summary>
-    /// Interaction logic for OfficeWorkerMenuView.xaml
+    /// Interaction logic for LogInVM.xaml
     /// </summary>
-    public partial class OfficeWorkerMenuView : Window
+    public partial class LogInUC : UserControl
     {
-        public OfficeWorkerMenuView()
+		private LogInVM _logInVM;
+
+        public LogInUC()
         {
+			_logInVM = new LogInVM();
             InitializeComponent();
+			DataContext = _logInVM;
         }
 
-        private void CreateWorksheetButton_Click(object sender, RoutedEventArgs e)
-        {
-            SearchForCustomerView searchForCustomerView = new SearchForCustomerView();
-            searchForCustomerView.Show();
-
-            this.Close();
-        }
-    }
+		private void LoginButton_Click(object sender, RoutedEventArgs e)
+		{
+			PageControlCommands.GoTo(this, new OfficeWorkerMenuUC());
+		}
+	}
 }

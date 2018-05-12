@@ -42,11 +42,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CreateNewCustomerViewModel.cs" />
+    <Compile Include="CreateNewCustomerVM.cs" />
+    <Compile Include="LogInVM.cs" />
+    <Compile Include="OfficeWorkerMenuVM.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SearchForCustomerViewModel.cs" />
-    <Compile Include="WorksheetViewModel.cs" />
+    <Compile Include="SearchForCustomerVM.cs" />
+    <Compile Include="TermsheetVM.cs" />
+    <Compile Include="ViewModelBase.cs" />
+    <Compile Include="WorksheetVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
