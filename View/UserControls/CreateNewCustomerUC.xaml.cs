@@ -26,6 +26,17 @@ namespace View.UserControls
 		public CreateNewCustomerUC()
 		{
 			_createNewCustomerVM = new CreateNewCustomerVM();
+			Init();
+		}
+
+		public CreateNewCustomerUC(CreateNewCustomerVM viewModel)
+		{
+			_createNewCustomerVM = viewModel;
+			Init();
+		}
+
+		private void Init()
+		{
 			InitializeComponent();
 			DataContext = _createNewCustomerVM;
 		}
@@ -39,7 +50,7 @@ namespace View.UserControls
 		{
 			WorksheetVM worksheetVM = new WorksheetVM();
 			_createNewCustomerVM.CreateNewCustomer(worksheetVM);
-			PageControlCommands.GoTo(this, new WorksheetUC(), worksheetVM);
+			PageControlCommands.GoTo(this, new WorksheetUC(worksheetVM));
 		}
 
 		private void TextBoxChanged(object sender, RoutedEventArgs e)

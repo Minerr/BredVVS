@@ -25,6 +25,17 @@ namespace View.UserControls
 		public SearchForCustomerUC()
 		{
 			_searchForCustomerVM = new SearchForCustomerVM();
+			Init();
+		}
+
+		public SearchForCustomerUC(SearchForCustomerVM viewModel)
+		{
+			_searchForCustomerVM = viewModel;
+			Init();
+		}
+
+		private void Init()
+		{
 			InitializeComponent();
 			DataContext = _searchForCustomerVM;
 		}
@@ -50,7 +61,7 @@ namespace View.UserControls
 
 		private void SelectCustomerButton_Click(object sender, RoutedEventArgs e)
 		{
-			PageControlCommands.GoTo(this, new WorksheetUC());
+			PageControlCommands.GoTo(this, new WorksheetUC(_searchForCustomerVM.RetrieveWorksheetWithSelectedCustomer()));
 		}
 
 		private void CreateNewCustomerButton_Click(object sender, RoutedEventArgs e)

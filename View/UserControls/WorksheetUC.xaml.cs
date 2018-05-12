@@ -25,6 +25,17 @@ namespace View.UserControls
 		public WorksheetUC()
 		{
 			_worksheetVM = new WorksheetVM();
+			Init();
+		}
+
+		public WorksheetUC(WorksheetVM viewModel)
+		{
+			_worksheetVM = viewModel;
+			Init();
+		}
+
+		private void Init()
+		{
 			InitializeComponent();
 			DataContext = _worksheetVM;
 		}

@@ -21,16 +21,6 @@ namespace View
 			mainGrid.Children.Add(newPage);
 		}
 
-		public static void GoTo(UserControl currentPage, UserControl newPage, ViewModelBase viewModel)
-		{
-			_pageHistory.Push(currentPage);
-			Grid mainGrid = currentPage.FindName("MainGrid") as Grid;
-			newPage.DataContext = viewModel;
-
-			mainGrid.Children.Clear();
-			mainGrid.Children.Add(newPage);
-		}
-
 		public static void GoBack(UserControl currentPage)
 		{
 			Grid mainGrid = currentPage.FindName("MainGrid") as Grid;

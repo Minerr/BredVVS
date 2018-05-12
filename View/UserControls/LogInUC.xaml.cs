@@ -26,9 +26,20 @@ namespace View.UserControls
         public LogInUC()
         {
 			_logInVM = new LogInVM();
-            InitializeComponent();
+			Init();
+		}
+
+		public LogInUC(LogInVM viewModel)
+		{
+			_logInVM = viewModel;
+			Init();
+		}
+
+		private void Init()
+		{
+			InitializeComponent();
 			DataContext = _logInVM;
-        }
+		}
 
 		private void LoginButton_Click(object sender, RoutedEventArgs e)
 		{

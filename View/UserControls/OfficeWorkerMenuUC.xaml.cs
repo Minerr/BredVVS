@@ -25,6 +25,17 @@ namespace View.UserControls
 		public OfficeWorkerMenuUC()
 		{
 			_officeWorkerMenuVM = new OfficeWorkerMenuVM();
+			Init();
+		}
+
+		public OfficeWorkerMenuUC(OfficeWorkerMenuVM viewModel)
+		{
+			_officeWorkerMenuVM = viewModel;
+			Init();
+		}
+
+		private void Init()
+		{
 			InitializeComponent();
 			DataContext = _officeWorkerMenuVM;
 		}

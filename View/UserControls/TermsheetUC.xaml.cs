@@ -25,8 +25,19 @@ namespace View.UserControls
         public TermsheetUC()
         {
 			_termsheetVM = new TermsheetVM();
-            InitializeComponent();
+			Init();
+		}
+
+		public TermsheetUC(TermsheetVM viewModel)
+		{
+			_termsheetVM = viewModel;
+			Init();
+		}
+
+		private void Init()
+		{
+			InitializeComponent();
 			DataContext = _termsheetVM;
-        }
-    }
+		}
+	}
 }

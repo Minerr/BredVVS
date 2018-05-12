@@ -32,5 +32,12 @@ namespace ViewModel
 
 			CustomerList = customers;
 		}
+
+		public WorksheetVM RetrieveWorksheetWithSelectedCustomer()
+		{
+			WorksheetVM worksheetVM = new WorksheetVM();
+			worksheetVM.Customer = SelectedCustomer;
+			return worksheetVM;
+		}
 	}
 }
