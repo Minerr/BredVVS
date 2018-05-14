@@ -20,7 +20,7 @@ namespace View
 	/// </summary>
 	public partial class TermsheetView : Window
 	{
-		public TermsheetView()
+		public TermsheetView(WorksheetViewModel customerInfo)
 		{
 
 			InitializeComponent();
@@ -40,7 +40,6 @@ namespace View
 			FirmCVRTextBox.Text = "34 22 35 72";
 			CurrentDatePicker.Text = currentDate.ToString();
 		}
-
 
 
 		private void AddTaskButton_Click(object sender, RoutedEventArgs e)

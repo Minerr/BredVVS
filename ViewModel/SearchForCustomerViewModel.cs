@@ -59,6 +59,7 @@ namespace ViewModel
 		public void SelectCustomer()
 		{
 			WorksheetViewModel.Instance.Customer = SelectedCustomer;
+			TermsheetViewModel.Instance.Customer = SelectedCustomer;
 		}
 
 

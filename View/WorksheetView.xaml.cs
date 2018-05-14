@@ -35,7 +35,7 @@ namespace View
 
 		private void CreateTermsheetButton_Click(object sender, RoutedEventArgs e)
 		{
-			TermsheetView termsheetView = new TermsheetView();
+			TermsheetView termsheetView = new TermsheetView(WorksheetViewModel.Instance);
 			termsheetView.Show();
 
 			this.Close();
