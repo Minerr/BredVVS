@@ -8,6 +8,7 @@ namespace Model
 {
 	public enum Status
 	{
+		Waiting,
 		Ongoing,
 		Done
 	}
