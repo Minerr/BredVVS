@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ViewModel;
 
 namespace View
 {
@@ -21,7 +22,40 @@ namespace View
 	{
 		public TermsheetView()
 		{
+
 			InitializeComponent();
+			DataContext = TermsheetViewModel.Instance;
+
+			GetFirmInfo();
+
+		}
+
+		private void GetFirmInfo()
+		{
+			DateTime currentDate = DateTime.Today;
+
+			FirmNameTextBox.Text = "Bred Vvs";
+			FirmAddressTextBox.Text = "Nørrevej 45 C" + "\n" + "6340 Kruså";
+			FirmPhonenumberTextBox.Text = "74 67 15 12";
+			FirmCVRTextBox.Text = "34 22 35 72";
+			CurrentDatePicker.Text = currentDate.ToString();
+		}
+
+
+
+		private void AddTaskButton_Click(object sender, RoutedEventArgs e)
+		{
+			throw new NotImplementedException();
+		}
+
+		private void RemoveTaskButton_Click(object sender, RoutedEventArgs e)
+		{
+			throw new NotImplementedException();
+		}
+
+		private void AddSignature_Click(object sender, RoutedEventArgs e)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }
