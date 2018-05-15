@@ -10,26 +10,25 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ViewModel;
 
-namespace View
+namespace View.UserControls
 {
 	/// <summary>
-	/// Interaction logic for AddTaskView.xaml
+	/// Interaction logic for LoginUC.xaml
 	/// </summary>
-	public partial class AddTaskView : Window
+	public partial class LoginView : Window
 	{
-		public AddTaskView()
+		public LoginView()
 		{
 			InitializeComponent();
-			DataContext = AddTaskViewModel.Instance;
 		}
 
-		private void AddTaskButton_Click(object sender, RoutedEventArgs e)
+		private void LoginButton_Click(object sender, RoutedEventArgs e)
 		{
-			AddTaskViewModel.Instance.SelectTask();
-			this.Close();
+
 		}
 	}
 }

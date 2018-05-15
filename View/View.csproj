@@ -54,8 +54,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddTaskView.xaml.cs">
-      <DependentUpon>AddTaskView.xaml</DependentUpon>
+    <Compile Include="Windows\AddTaskWindow.xaml.cs">
+      <DependentUpon>AddTaskWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="CreateNewCustomerView.xaml.cs">
       <DependentUpon>CreateNewCustomerView.xaml</DependentUpon>
@@ -73,8 +73,17 @@
     <Compile Include="TermsheetView.xaml.cs">
       <DependentUpon>TermsheetView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\CrreateNewCustomerUC.xaml.cs">
-      <DependentUpon>CrreateNewCustomerUC.xaml</DependentUpon>
+    <Compile Include="UserControls\CreateNewCustomerUC.xaml.cs">
+      <DependentUpon>CreateNewCustomerUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\FitterMenuUC.xaml.cs">
+      <DependentUpon>FitterMenuUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\LoginUC.xaml.cs">
+      <DependentUpon>LoginUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\OfficeWorkerMenuUC.xaml.cs">
+      <DependentUpon>OfficeWorkerMenuUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SearchForCustomerUC.xaml.cs">
       <DependentUpon>SearchForCustomerUC.xaml</DependentUpon>
@@ -91,7 +100,7 @@
     <Compile Include="WorksheetView.xaml.cs">
       <DependentUpon>WorksheetView.xaml</DependentUpon>
     </Compile>
-    <Page Include="AddTaskView.xaml">
+    <Page Include="Windows\AddTaskWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -126,7 +135,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\CrreateNewCustomerUC.xaml">
+    <Page Include="UserControls\CreateNewCustomerUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\OfficeWorkerMenuUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\LoginUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\FitterMenuUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

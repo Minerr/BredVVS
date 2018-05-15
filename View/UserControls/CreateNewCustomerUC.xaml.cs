@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace View.UserControls
 {
 	/// <summary>
-	/// Interaction logic for CrreateNewCustomerUC.xaml
+	/// Interaction logic for CreateNewCustomerUC.xaml
 	/// </summary>
-	public partial class CrreateNewCustomerUC : UserControl
+	public partial class CreateNewCustomerUC : UserControl
 	{
-		public CrreateNewCustomerUC()
+		public CreateNewCustomerUC()
 		{
 			InitializeComponent();
 		}
