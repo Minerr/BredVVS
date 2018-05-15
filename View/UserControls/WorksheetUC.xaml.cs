@@ -47,7 +47,7 @@ namespace View.UserControls
 
 		private void CreateTermsheetButton_Click(object sender, RoutedEventArgs e)
 		{
-			TermsheetView termsheetView = new TermsheetView(WorksheetViewModel.Instance);
+			TermsheetUC termsheetView = new TermsheetUC(WorksheetViewModel.Instance);
 			termsheetView.Show();
 
 			this.Close();
@@ -76,7 +76,7 @@ namespace View.UserControls
 
 		private void CancelButton_Click(object sender, RoutedEventArgs e)
 		{
-			OfficeWorkerMenuView officeWorkerMenuView = new OfficeWorkerMenuView();
+			OfficeWorkerMenuUC officeWorkerMenuView = new OfficeWorkerMenuUC();
 			officeWorkerMenuView.Show();
 
 			this.Close();

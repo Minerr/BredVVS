@@ -24,7 +24,7 @@ namespace View.UserControls
 		private OfficeWorkerMenuViewModel _officeWorkerMenuVM;
 		public OfficeWorkerMenuUC()
 		{
-			_officeWorkerMenuVM = new WorksheetViewModel();
+			_officeWorkerMenuVM = new OfficeWorkerMenuViewModel();
 			Init();
 		}
 
@@ -42,7 +42,7 @@ namespace View.UserControls
 
 		private void CreateWorksheetButton_Click(object sender, RoutedEventArgs e)
 		{
-			SearchForCustomerView searchForCustomerView = new SearchForCustomerView();
+			SearchForCustomerUC searchForCustomerView = new SearchForCustomerUC();
 			searchForCustomerView.Show();
 
 			this.Close();
