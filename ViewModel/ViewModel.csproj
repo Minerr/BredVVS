@@ -49,6 +49,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchForCustomerViewModel.cs" />
     <Compile Include="TermsheetViewModel.cs" />
+    <Compile Include="ViewModelBase.cs" />
     <Compile Include="WorksheetViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

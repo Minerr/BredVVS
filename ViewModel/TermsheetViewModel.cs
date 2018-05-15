@@ -10,9 +10,8 @@ using Model;
 
 namespace ViewModel
 {
-	public class TermsheetViewModel : INotifyPropertyChanged
+	public class TermsheetViewModel : ViewModelBase
 	{
-		private static TermsheetViewModel _instance;
 		public Customer Customer { get; set; }
 
 		private ObservableCollection<string> _tasks;
@@ -44,32 +43,9 @@ namespace ViewModel
 			}
 		}
 
-		private TermsheetViewModel()
+		public TermsheetViewModel()
 		{
 			SelectedTasksList = new ObservableCollection<string>();
-		}
-
-		public static TermsheetViewModel Instance
-		{
-				get
-				{
-					if (_instance == null)
-					{
-						_instance = new TermsheetViewModel();
-					}
-
-					return _instance;
-				}
-		}
-
-		public event PropertyChangedEventHandler PropertyChanged;
-		private void OnPropertyChanged(string propertyName)
-		{
-			PropertyChangedEventHandler handler = PropertyChanged;
-			if (handler != null)
-			{
-				handler(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 
 		public void AddTask(string selectedTask)
