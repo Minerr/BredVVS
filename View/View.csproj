@@ -54,8 +54,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddTaskView.xaml.cs">
-      <DependentUpon>AddTaskView.xaml</DependentUpon>
+    <Compile Include="Windows\AddTaskWindow.xaml.cs">
+      <DependentUpon>AddTaskWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="CreateNewCustomerView.xaml.cs">
       <DependentUpon>CreateNewCustomerView.xaml</DependentUpon>
@@ -85,7 +85,7 @@
     <Compile Include="WorksheetView.xaml.cs">
       <DependentUpon>WorksheetView.xaml</DependentUpon>
     </Compile>
-    <Page Include="AddTaskView.xaml">
+    <Page Include="Windows\AddTaskWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -45,7 +45,7 @@ namespace View
 
 		private void AddTaskButton_Click(object sender, RoutedEventArgs e)
 		{
-			AddTaskView addTaskView = new AddTaskView();
+			AddTaskWindow addTaskView = new AddTaskWindow();
 			addTaskView.Show();
 		}
 

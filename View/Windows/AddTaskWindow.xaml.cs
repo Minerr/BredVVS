@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ViewModel;
 
-namespace View
+namespace View.Windows
 {
 	/// <summary>
 	/// Interaction logic for AddTaskView.xaml
 	/// </summary>
-	public partial class AddTaskView : Window
+	public partial class AddTaskWindow : Window
 	{
-		public AddTaskView()
+		public AddTaskWindow()
 		{
 			InitializeComponent();
 			DataContext = AddTaskViewModel.Instance;
