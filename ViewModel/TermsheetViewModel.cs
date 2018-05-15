@@ -12,18 +12,18 @@ namespace ViewModel
 		private static TermsheetViewModel _instance;
 		public Customer Customer { get; set; }
 
-		public string CustomerFullAddress
+		public string CustomerInfo
 		{
 			get
 			{
-				string fullAddress = "";
+				string customerInfo = "";
 
 				if (Customer != null)
 				{
-					fullAddress = Customer.Address + "\n" + Customer.ZIPcode + " " + Customer.City;
+					customerInfo = Customer.Name.FullName + "\n" + Customer.Address + "\n" + Customer.ZIPcode + " " + Customer.City + "\n" + Customer.PhoneNumber;
 				}
 
-				return fullAddress;
+				return customerInfo;
 			}
 		}
 
