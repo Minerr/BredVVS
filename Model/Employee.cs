@@ -16,5 +16,28 @@ namespace Model
 			ID = Guid.NewGuid().ToString();
 			Name = name;
 		}
-    }
+
+		public Employee(string ID, Name name)
+		{
+			this.ID = ID;
+			Name = name;
+		}
+
+		public override bool Equals(object other)
+		{
+			bool result = false;
+
+			if(other is Employee)
+			{
+				result = (other as Employee).ID == ID;
+			}
+
+			return result;
+		}
+
+		public override int GetHashCode()
+		{
+			return ID.GetHashCode() ^ Name.GetHashCode();
+		}
+	}
 }

@@ -26,7 +26,10 @@
             <ListBox x:Name="FitterListBox" ItemsSource="{Binding Worksheet.AssignedFitters}" SelectedItem="{Binding SelectedFitter}" HorizontalAlignment="Left" Height="76" Margin="502,121,0,0" VerticalAlignment="Top" Width="260" SelectionChanged="FitterListBox_SelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Name.FullName, Mode=OneWay}"/>
+                        <WrapPanel>
+                            <TextBlock Text="{Binding ID, Mode=OneWay}"/>
+                            <TextBlock Text="{Binding Name.FullName, Mode=OneWay}"/>
+                        </WrapPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
@@ -101,13 +104,19 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <ListBox Name="AddFitterListBox" ItemsSource="{Binding FitterList}" SelectedItem="{Binding SelectedFitterToAdd}" HorizontalAlignment="Left" Height="127" Margin="502,91,0,0" VerticalAlignment="Top" Width="260" Visibility="Collapsed">
+            
+            <!--Hidden AddFitterListBox-->
+            <ListBox Name="AddFitterListBox" ItemsSource="{Binding FitterList}" SelectedItem="{Binding SelectedFitterToAdd}" HorizontalAlignment="Left" Height="127" Margin="502,91,0,0" VerticalAlignment="Top" Width="260" Visibility="Collapsed" SelectionChanged="AddFitterListBox_SelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Name.FullName}"/>
+                        <WrapPanel>
+                            <TextBlock Text="{Binding ID}"/>
+                            <TextBlock Text="{Binding Name.FullName}"/>
+                        </WrapPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+            
         </Grid>
         <Button x:Name="SaveWorksheetButton" Content="Gem" HorizontalAlignment="Right" Margin="0,531,135,0" VerticalAlignment="Top" Width="107" Height="24" Click="SaveWorksheetButton_Click"/>
         <Button x:Name="CancelButton" Content="Annuller" HorizontalAlignment="Right" Margin="0,531,23,0" VerticalAlignment="Top" Width="107" Height="24" Click="CancelButton_Click"/>

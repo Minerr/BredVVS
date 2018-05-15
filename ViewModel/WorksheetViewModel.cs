@@ -11,6 +11,7 @@ namespace ViewModel
 {
 	public class WorksheetViewModel : INotifyPropertyChanged
 	{
+		#region Singleton...
 		private static WorksheetViewModel _instance;
 		public static WorksheetViewModel Instance
 		{
@@ -23,6 +24,7 @@ namespace ViewModel
 				return _instance;
 			}
 		}
+		#endregion
 
 		public Customer Customer { get; set; }
 
@@ -188,6 +190,35 @@ namespace ViewModel
 			}
 		}
 
+		private List<Fitter> _fitterList;
+		public List<Fitter> FitterList
+		{
+			get
+			{
+				return _fitterList;
+			}
+			private set
+			{
+				_fitterList = value;
+				OnPropertyChanged("FitterList");
+			}
+		}
+
+		private Fitter _selectedFitter;
+		public Fitter SelectedFitterToAdd
+		{
+			get
+			{
+				return _selectedFitter;
+			}
+			set
+			{
+				_selectedFitter = value;
+				FitterList.Remove(_selectedFitter);
+				OnPropertyChanged("FitterList");
+			}
+		}
+
 		private WorksheetViewModel()
 		{
 			// Init start values
@@ -209,14 +240,44 @@ namespace ViewModel
             {
 				Minutes.Add(new TimeSpan(0, i, 0));
             }
-        }
+
+
+			// Temp data
+			List<Fitter> assignedFitters = new List<Fitter>();
+			assignedFitters.Add(new Fitter("10001", new Name("Klaus", "Sørensen")));
+			assignedFitters.Add(new Fitter("10002", new Name("Jesper", "Nielsen")));
+			Worksheet.AssignedFitters = assignedFitters;
+
+			FitterList = RetrieveInactiveFitters();
+		}
 
         public void CreateWorksheet()
 		{
 			//TODO: Save worksheet in database
 		}
 
+		private List<Fitter> RetrieveInactiveFitters()
+		{
+			List<Fitter> allFitters = new List<Fitter>();
 
+			// Temp data
+			allFitters.Add(new Fitter("10001", new Name("Klaus", "Sørensen")));
+			allFitters.Add(new Fitter("10002", new Name("Jesper", "Nielsen")));
+			allFitters.Add(new Fitter("10003", new Name("Simon", "Hansen")));
+			allFitters.Add(new Fitter("10004", new Name("Bo", "Rasmussen")));
+			//end Temp data
+			
+			List<Fitter> inactiveFitters = new List<Fitter>();
+			foreach(Fitter fitter in allFitters)
+			{
+				if(!Worksheet.AssignedFitters.Contains(fitter))
+				{
+					inactiveFitters.Add(fitter);
+				}
+			}
+
+			return inactiveFitters;
+		}
 
 		public event PropertyChangedEventHandler PropertyChanged;
 		private void OnPropertyChanged(string propertyName)
