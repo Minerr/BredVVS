@@ -50,7 +50,7 @@ namespace View
 
 		private void RemoveTaskButton_Click(object sender, RoutedEventArgs e)
 		{
-			throw new NotImplementedException();
+			
 		}
 
 		private void AddSignature_Click(object sender, RoutedEventArgs e)

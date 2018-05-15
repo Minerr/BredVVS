@@ -32,7 +32,7 @@
         <DatePicker x:Name="CurrentDatePicker" HorizontalAlignment="Left" Margin="652,119,0,0" VerticalAlignment="Top" IsEnabled="False"/>
 
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="229" Margin="10,208,0,0" VerticalAlignment="Top" Width="772">
-            <ListBox x:Name="TaskListBox" HorizontalAlignment="Left" Height="136" VerticalAlignment="Top" Width="752" Margin="9,82,0,0"/>
+            <ListView x:Name="TaskListBox" ItemsSource="{Binding SelectedTasksList}" SelectedItem="{Binding SelectedTask}" HorizontalAlignment="Left" Height="136" VerticalAlignment="Top" Width="752" Margin="9,82,0,0"/>
         </Border>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Det bekræftes herved, at der er indgået følgende aftale mellem:" VerticalAlignment="Top" Margin="20,208,0,0" Height="19" Width="353"/>
         <Label Content="Kunde/Bygherre:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,223,0,0" Width="98"/>
@@ -73,6 +73,13 @@
         <CheckBox Content="Standard forbehold (Vedlægges)" HorizontalAlignment="Left" Margin="20,556,0,0" VerticalAlignment="Top"/>
         <CheckBox Content="AP 92P" HorizontalAlignment="Left" Margin="20,576,0,0" VerticalAlignment="Top"/>
         <CheckBox Content="Eventuelt andet skriftligt grundlag" HorizontalAlignment="Left" Margin="20,596,0,0" VerticalAlignment="Top"/>
+        <ListView HorizontalAlignment="Left" Height="100" Margin="-94,692,0,-73" VerticalAlignment="Top" Width="100">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
 
 
