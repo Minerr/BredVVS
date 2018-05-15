@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using View.UserControls;
 
 namespace View.Windows
 {
@@ -22,6 +23,7 @@ namespace View.Windows
 		public MainWindow()
 		{
 			InitializeComponent();
+			MainGrid.Children.Add(new LoginUC());
 		}
 	}
 }
