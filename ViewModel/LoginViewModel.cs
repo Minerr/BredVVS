@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace ViewModel
 {
-	public class LoginViewModel
+	public class LoginViewModel : ViewModelBase
 	{
 
 		public LoginViewModel()

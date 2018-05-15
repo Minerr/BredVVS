@@ -45,6 +45,7 @@
     <Compile Include="AddTaskViewModel.cs" />
     <Compile Include="CreateNewCustomerViewModel.cs" />
     <Compile Include="FitterMenuViewModel.cs" />
+    <Compile Include="LoginViewModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchForCustomerViewModel.cs" />
