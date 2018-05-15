@@ -44,6 +44,8 @@ namespace ViewModel
 			}
 		}
 
+		public string SelectedTask { get; set; }
+
 		private TermsheetViewModel()
 		{
 			SelectedTasksList = new ObservableCollection<string>();
@@ -78,9 +80,9 @@ namespace ViewModel
 			OnPropertyChanged("SelectedTasksList");
 		}
 
-		public void RemoveTask()
+		public void RemoveTask(object selectedTask)
 		{
-			SelectedTasksList.Remove(string selectedTask);
+			SelectedTasksList.Remove(SelectedTask);
 
 		}
 	}
