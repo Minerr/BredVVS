@@ -57,6 +57,9 @@
     <Compile Include="CreateNewCustomerView.xaml.cs">
       <DependentUpon>CreateNewCustomerView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FitterMenuView.xaml.cs">
+      <DependentUpon>FitterMenuView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="OfficeWorkerMenuView.xaml.cs">
       <DependentUpon>OfficeWorkerMenuView.xaml</DependentUpon>
     </Compile>
@@ -70,6 +73,10 @@
       <DependentUpon>WorksheetView.xaml</DependentUpon>
     </Compile>
     <Page Include="CreateNewCustomerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FitterMenuView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
