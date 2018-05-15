@@ -76,6 +76,12 @@
     <Compile Include="UserControls\CrreateNewCustomerUC.xaml.cs">
       <DependentUpon>CrreateNewCustomerUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\SearchForCustomerUC.xaml.cs">
+      <DependentUpon>SearchForCustomerUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TermsheetUC.xaml.cs">
+      <DependentUpon>TermsheetUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\WorksheetUC.xaml.cs">
       <DependentUpon>WorksheetUC.xaml</DependentUpon>
     </Compile>
@@ -121,6 +127,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\CrreateNewCustomerUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SearchForCustomerUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\TermsheetUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
