@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:View.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+             d:DesignHeight="600" d:DesignWidth="800">
+    <Grid Name="MainGrid">
         <Grid>
             <Grid HorizontalAlignment="Left" Height="504" Margin="11,7,0,0" VerticalAlignment="Top" Width="772" RenderTransformOrigin="0.476,0.514">
                 <Label Content="Navn:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,33,0,0" Width="40" RenderTransformOrigin="0.861,0.469"/>
@@ -123,5 +123,6 @@
             <Button x:Name="CancelButton" Content="Annuller" HorizontalAlignment="Right" Margin="0,531,23,0" VerticalAlignment="Top" Width="107" Height="24" Click="CancelButton_Click"/>
             <Button x:Name="CreateTermsheetButton" Content="Opret aftaleseddel" HorizontalAlignment="Left" Margin="57,531,0,0" VerticalAlignment="Top" Width="142" Height="24" Click="CreateTermsheetButton_Click"/>
         </Grid>
+
     </Grid>
 </UserControl>
