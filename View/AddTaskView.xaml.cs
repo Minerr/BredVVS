@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ViewModel;
 
 namespace View
 {
@@ -22,6 +23,13 @@ namespace View
 		public AddTaskView()
 		{
 			InitializeComponent();
+			DataContext = AddTaskViewModel.Instance;
+		}
+
+		private void AddTaskButton_Click(object sender, RoutedEventArgs e)
+		{
+			AddTaskViewModel.Instance.SelectTask();
+			this.Close();
 		}
 	}
 }
