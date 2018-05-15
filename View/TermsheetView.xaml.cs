@@ -44,7 +44,8 @@ namespace View
 
 		private void AddTaskButton_Click(object sender, RoutedEventArgs e)
 		{
-			throw new NotImplementedException();
+			AddTaskView addTaskView = new AddTaskView();
+			addTaskView.Show();
 		}
 
 		private void RemoveTaskButton_Click(object sender, RoutedEventArgs e)
