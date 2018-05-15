@@ -9,11 +9,10 @@ using System.Threading.Tasks;
 namespace ViewModel
 {
 
-	// https://stackoverflow.com/a/36151255 <- Explains the ViewModelBase
 	public abstract class ViewModelBase : INotifyPropertyChanged
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
-		protected virtual void OnPropertyChanged(string propertyName)
+		protected void OnPropertyChanged(string propertyName)
 		{
 			PropertyChangedEventHandler handler = PropertyChanged;
 			if(handler != null)

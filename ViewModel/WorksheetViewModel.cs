@@ -6,6 +6,7 @@ using System.Runtime.Remoting;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace ViewModel
 {
@@ -224,32 +225,14 @@ namespace ViewModel
 			}
 		}
 
-		private List<Fitter> _fitterList;
-		public List<Fitter> FitterList
+		private ObservableCollection<Fitter> _assignedFitters;
+		public ObservableCollection<Fitter> AssignedFitters
 		{
-			get
-			{
-				return _fitterList;
-			}
-			private set
-			{
-				_fitterList = value;
-				OnPropertyChanged("FitterList");
-			}
-		}
-
-		private Fitter _selectedFitter;
-		public Fitter SelectedFitterToAdd
-		{
-			get
-			{
-				return _selectedFitter;
-			}
+			get { return _assignedFitters; }
 			set
 			{
-				_selectedFitter = value;
-				FitterList.Remove(_selectedFitter);
-				OnPropertyChanged("FitterList");
+				_assignedFitters = value;
+				OnPropertyChanged("AssignedFitters");
 			}
 		}
 
@@ -260,11 +243,13 @@ namespace ViewModel
 
             _isServiceVehicleChecked = false;
             _isAuxiliaryMaterialsChecked = false;
-            _startTime = new TimeSpan(0, 0, 0);
-            _endTime = new TimeSpan(0, 0, 0);
+            StartTime = new TimeSpan(0, 0, 0);
+            EndTime = new TimeSpan(0, 0, 0);
+			StartDate = DateTime.Today;
+			EndDate = DateTime.Today;
 
 
-            Hours = new List<TimeSpan>();
+			Hours = new List<TimeSpan>();
             for (int i = 0; i < 24; i++)
             {
                 Hours.Add(new TimeSpan(i, 0, 0));
@@ -278,12 +263,9 @@ namespace ViewModel
 
 
 			// Temp data
-			List<Fitter> assignedFitters = new List<Fitter>();
-			assignedFitters.Add(new Fitter("10001", new Name("Klaus", "Sørensen")));
-			assignedFitters.Add(new Fitter("10002", new Name("Jesper", "Nielsen")));
-			Worksheet.AssignedFitters = assignedFitters;
-
-			FitterList = RetrieveInactiveFitters();
+			AssignedFitters = new ObservableCollection<Fitter>();
+			AssignedFitters.Add(new Fitter("10001", new Name("Klaus", "Sørensen")));
+			AssignedFitters.Add(new Fitter("10002", new Name("Jesper", "Nielsen")));
 		}
 
         public void CreateWorksheet()
@@ -291,7 +273,7 @@ namespace ViewModel
             //TODO: Save worksheet in database
         }
 
-		private List<Fitter> RetrieveInactiveFitters()
+		private ObservableCollection<Fitter> RetrieveInactiveFitters()
 		{
 			List<Fitter> allFitters = new List<Fitter>();
 
@@ -301,11 +283,11 @@ namespace ViewModel
 			allFitters.Add(new Fitter("10003", new Name("Simon", "Hansen")));
 			allFitters.Add(new Fitter("10004", new Name("Bo", "Rasmussen")));
 			//end Temp data
-			
-			List<Fitter> inactiveFitters = new List<Fitter>();
+
+			ObservableCollection<Fitter> inactiveFitters = new ObservableCollection<Fitter>();
 			foreach(Fitter fitter in allFitters)
 			{
-				if(!Worksheet.AssignedFitters.Contains(fitter))
+				if(!AssignedFitters.Contains(fitter))
 				{
 					inactiveFitters.Add(fitter);
 				}

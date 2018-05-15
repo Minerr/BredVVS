@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ViewModel;
+using View.Windows;
 
 namespace View.UserControls
 {
@@ -53,11 +54,6 @@ namespace View.UserControls
 		private void SaveWorksheetButton_Click(object sender, RoutedEventArgs e)
 		{
 			_worksheetVM.CreateWorksheet();
-		}
-
-		private void AddFitterButton_Click(object sender, RoutedEventArgs e)
-		{
-			AddFitterListBox.Visibility = Visibility.Visible;
 		}
 
 		private void TakePictureButton_Click(object sender, RoutedEventArgs e)
@@ -106,15 +102,10 @@ namespace View.UserControls
 
 		}
 
-		private void AddFitterListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		private void AddRemoveFitterButton_Click(object sender, RoutedEventArgs e)
 		{
-			//_worksheetViewModel.AssignFitter(Fitter)
-			AddFitterListBox.Visibility = Visibility.Collapsed;
-		}
-
-		private void AddFitterListBox_LostFocus(object sender, RoutedEventArgs e)
-		{
-			AddFitterListBox.Visibility = Visibility.Collapsed;
+			AddFittersWindow addFittersWindow = new AddFittersWindow(_worksheetVM);
+			addFittersWindow.Show();
 		}
 	}
 }

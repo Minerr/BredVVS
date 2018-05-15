@@ -1,0 +1,77 @@
+﻿<Window x:Class="View.Windows.AddFittersWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:View.Windows"
+        mc:Ignorable="d"
+        Title="AddFitterWindow" Height="400" Width="600">
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10,0">
+                <Grid Width="230">
+                    <StackPanel>
+                        <Label Content="Tilgængelige montører"/>
+                        <ListBox Name="AllFittersListBox" Height="280" ItemsSource="{Binding AvailableFitters}" SelectedItem="{Binding SelectedAvailableFitter}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <WrapPanel>
+                                        <TextBlock Text="{Binding ID}"/>
+                                        <TextBlock Text="   "/>
+                                        <TextBlock Text="{Binding Name.FullName}"/>
+                                    </WrapPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                </Grid>
+
+                <Grid Width="70" Height="300" VerticalAlignment="Bottom">
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                        <StackPanel.Resources>
+                            <Style TargetType="Button">
+                                <Setter Property="Height" Value="20"/>
+                                <Setter Property="Width" Value="30"/>
+                                <Setter Property="Margin" Value="0,10,0,10"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        
+                        <Button x:Name="SelectFitterButton" Content="-&gt;" IsEnabled="{Binding CanSelectFitter}" Click="SelectFitterButton_Click"/>
+                        <Button x:Name="RemoveFitterButton" Content="&lt;-" IsEnabled="{Binding CanRemoveFitter}" Click="RemoveFitterButton_Click"/>
+                    </StackPanel>
+                </Grid>
+
+                <Grid  Width="230">
+                    <StackPanel>
+                        <Label Content="Valgte montører"/>
+                        <ListBox x:Name="FittersToAddListBox" Height="280" ItemsSource="{Binding AssignedFitters}" SelectedItem="{Binding SelectedAssignedFitter}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <WrapPanel>
+                                        <TextBlock Text="{Binding ID}"/>
+                                        <TextBlock Text="   "/>
+                                        <TextBlock Text="{Binding Name.FullName}"/>
+                                    </WrapPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="30,10">
+                <StackPanel.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Margin" Value="5,0,0,0"/>
+                        <Setter Property="Height" Value="25"/>
+                        <Setter Property="Width" Value="100"/>
+                    </Style>
+                </StackPanel.Resources>
+                
+                <Button Name="SaveAssignedFittersButton" Content="Gem" Click="SaveAssignedFittersButton_Click"/>
+                <Button Name="CancelButton" Content="Anullér" Click="CancelButton_Click"/>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>

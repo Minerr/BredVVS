@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,40 +8,20 @@ using Model;
 
 namespace ViewModel
 {
-	public class AddTaskViewModel
+	public class AddTaskViewModel : ViewModelBase
 	{
-		public List<string> TasksList
-		{
-			get
-			{
-				return RetrieveTasks();
-			}
-		}
+		public ObservableCollection<string> TasksList { get; set; }
 
 		public string SelectedTask { get; set; }
 
-		private static AddTaskViewModel _instance;
-
 		public AddTaskViewModel()
 		{
+			TasksList = RetrieveTasks();
 		}
 
-		public static AddTaskViewModel Instance
+		public ObservableCollection<string> RetrieveTasks()
 		{
-			get
-			{
-				if (_instance == null)
-				{
-					_instance = new AddTaskViewModel();
-				}
-
-				return _instance;
-			}
-		}
-
-		public List<string> RetrieveTasks()
-		{
-			List<string> tasks = new List<string>();
+			ObservableCollection<string> tasks = new ObservableCollection<string>();
 
 			tasks.Add("Installer håndvask");
 			tasks.Add("Installer toilet");

@@ -47,8 +47,7 @@ namespace View.UserControls
 
 		private void SaveCustomerButton_Click(object sender, RoutedEventArgs e)
 		{
-			_createNewCustomerVM.CreateNewCustomer();
-			PageCommands.GoTo(this, new WorksheetUC());
+			PageCommands.GoTo(this, new WorksheetUC(_createNewCustomerVM.CreateNewCustomer()));
 		}
 
 		private void TextBoxChanged(object sender, RoutedEventArgs e)
