@@ -19,14 +19,25 @@ namespace View.UserControls
 	/// <summary>
 	/// Interaction logic for FitterMenuUC.xaml
 	/// </summary>
-	public partial class FitterMenuView : Window
+	public partial class FitterMenuUC : UserControl
 	{
-		private FitterMenuViewModel _fitterMenuViewModel;
-		public FitterMenuView()
+		private FitterMenuViewModel _fitterMenuVM;
+		public FitterMenuUC()
 		{
-			_fitterMenuViewModel = new FitterMenuViewModel();
+			_fitterMenuVM = new FitterMenuViewModel();
+			Init();
+		}
+
+		public FitterMenuUC(FitterMenuViewModel viewModel)
+		{
+			_fitterMenuVM = viewModel;
+			Init();
+		}
+
+		private void Init()
+		{
 			InitializeComponent();
-			DataContext = _fitterMenuViewModel;
+			DataContext = _fitterMenuVM;
 		}
 
 		private void Selector_OnSelectionChanged(object sender, RoutedEventArgs e)
