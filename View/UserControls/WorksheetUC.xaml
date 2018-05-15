@@ -24,24 +24,21 @@
                 <Label Content="Projektnummer" HorizontalAlignment="Left" Margin="502,5,0,0" VerticalAlignment="Top" Width="200"/>
                 <TextBox x:Name="WorksheetIDtextBox" Text="{Binding EndDateTime , Mode=OneWay}" HorizontalAlignment="Left" Height="30" Margin="502,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260" IsEnabled="False"/>
 
-                <ListBox x:Name="FitterListBox" ItemsSource="{Binding AssignedFitters}" SelectedItem="{Binding SelectedFitter}" HorizontalAlignment="Left" Height="101" Margin="502,96,0,0" VerticalAlignment="Top" Width="260" SelectionChanged="FitterListBox_SelectionChanged">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <WrapPanel>
-                                <TextBlock Text="{Binding ID, Mode=OneWay}"/>
-                                <TextBlock Text="   "/>
-                                <TextBlock Text="{Binding Name.FullName, Mode=OneWay}"/>
-                            </WrapPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+                <ListView x:Name="FitterListView" ItemsSource="{Binding AssignedFitters}" SelectedItem="{Binding SelectedFitter}" HorizontalAlignment="Left" Height="101" Margin="502,96,0,0" VerticalAlignment="Top" Width="260">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="70"/>
+                            <GridViewColumn Header="Navn" DisplayMemberBinding="{Binding Name.FullName}" Width="150"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
 
                 <Label Content="Startdato" HorizontalAlignment="Left" Margin="242,10,0,0" VerticalAlignment="Top" Width="117" Height="24"/>
                 <DatePicker x:Name="EndDateDatePicker" SelectedDate="{Binding EndDate}" HorizontalAlignment="Left" Margin="372,33,0,0" VerticalAlignment="Top" Width="120"/>
                 <Label Content="Starttid" HorizontalAlignment="Left" Margin="242,66,0,0" VerticalAlignment="Top" Width="120" Height="24"/>
                 <Label Content="Slutdato" HorizontalAlignment="Right" Margin="0,10,280,0" VerticalAlignment="Top" Width="120" Height="24"/>
                 <Label Content="Sluttid" HorizontalAlignment="Right" Margin="0,66,280,0" VerticalAlignment="Top" Width="120" Height="24"/>
-                <Button x:Name="TakePictureButton" Content="Tag billede" HorizontalAlignment="Left" Margin="237,121,0,0" VerticalAlignment="Top" Width="260" Height="76" Click="TakePictureButton_Click"/>
+                <Button x:Name="AddPictureButton" Content="Tilføj billede" HorizontalAlignment="Left" Margin="237,121,0,0" VerticalAlignment="Top" Width="260" Height="76" Click="AddPictureButton_Click"/>
                 <Button x:Name="AddMaterialsButton" Content="Tilføj materialer" HorizontalAlignment="Left" Margin="237,223,0,0" VerticalAlignment="Top" Width="260" Height="24" Click="AddMaterialsButton_Click" RenderTransformOrigin="0.5,0.5"/>
                 <Button x:Name="AddHoursButton" Content="Tilføj timer" HorizontalAlignment="Left" Margin="502,223,0,0" VerticalAlignment="Top" Width="260" Height="24" Click="AddHoursButton_Click"/>
                 <CheckBox x:Name="ServiceVehicleCheckBox" IsChecked="{Binding IsServiceVehicleChecked}" Content="Servicevogn" HorizontalAlignment="Left" Margin="10,368,0,0" VerticalAlignment="Top" Height="20" Width="130"/>

@@ -12,17 +12,14 @@
                 <Grid Width="230">
                     <StackPanel>
                         <Label Content="Tilgængelige montører"/>
-                        <ListBox Name="AllFittersListBox" Height="280" ItemsSource="{Binding AvailableFitters}" SelectedItem="{Binding SelectedAvailableFitter}">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <WrapPanel>
-                                        <TextBlock Text="{Binding ID}"/>
-                                        <TextBlock Text="   "/>
-                                        <TextBlock Text="{Binding Name.FullName}"/>
-                                    </WrapPanel>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
+                        <ListView Name="AllFittersListBox" Height="280" ItemsSource="{Binding AvailableFitters}" SelectedItem="{Binding SelectedAvailableFitter}">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="70"/>
+                                    <GridViewColumn Header="Navn" DisplayMemberBinding="{Binding Name.FullName}" Width="130"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
                     </StackPanel>
                 </Grid>
 
@@ -35,7 +32,7 @@
                                 <Setter Property="Margin" Value="0,10,0,10"/>
                             </Style>
                         </StackPanel.Resources>
-                        
+
                         <Button x:Name="SelectFitterButton" Content="-&gt;" IsEnabled="{Binding CanSelectFitter}" Click="SelectFitterButton_Click"/>
                         <Button x:Name="RemoveFitterButton" Content="&lt;-" IsEnabled="{Binding CanRemoveFitter}" Click="RemoveFitterButton_Click"/>
                     </StackPanel>
@@ -44,17 +41,14 @@
                 <Grid  Width="230">
                     <StackPanel>
                         <Label Content="Valgte montører"/>
-                        <ListBox x:Name="FittersToAddListBox" Height="280" ItemsSource="{Binding AssignedFitters}" SelectedItem="{Binding SelectedAssignedFitter}">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <WrapPanel>
-                                        <TextBlock Text="{Binding ID}"/>
-                                        <TextBlock Text="   "/>
-                                        <TextBlock Text="{Binding Name.FullName}"/>
-                                    </WrapPanel>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
+                        <ListView x:Name="FittersToAddListBox" Height="280" ItemsSource="{Binding AssignedFitters}" SelectedItem="{Binding SelectedAssignedFitter}">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="70"/>
+                                    <GridViewColumn Header="Navn" DisplayMemberBinding="{Binding Name.FullName}" Width="130"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
                     </StackPanel>
                 </Grid>
             </StackPanel>
@@ -67,7 +61,7 @@
                         <Setter Property="Width" Value="100"/>
                     </Style>
                 </StackPanel.Resources>
-                
+
                 <Button Name="SaveAssignedFittersButton" Content="Gem" Click="SaveAssignedFittersButton_Click"/>
                 <Button Name="CancelButton" Content="Anullér" Click="CancelButton_Click"/>
             </StackPanel>

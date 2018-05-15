@@ -56,11 +56,6 @@ namespace View.UserControls
 			_worksheetVM.CreateWorksheet();
 		}
 
-		private void TakePictureButton_Click(object sender, RoutedEventArgs e)
-		{
-
-		}
-
 		private void AddMaterialsButton_Click(object sender, RoutedEventArgs e)
 		{
 
@@ -69,17 +64,6 @@ namespace View.UserControls
 		private void CancelButton_Click(object sender, RoutedEventArgs e)
 		{
 			PageCommands.GoTo(this, new OfficeWorkerMenuUC()); // TODO: Create categorized GoBack method
-		}
-
-		private void RemoveFitterButton_Click(object sender, RoutedEventArgs e)
-		{
-			// Remove fitter from AssignedFitters.
-		}
-
-		private void FitterListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-		{
-			// if selected fitter != null
-			// Set RemoveFitterButton.IsEnabled = true;
 		}
 
 		private void RemoveSelectedHourButton_Click(object sender, RoutedEventArgs e)
@@ -106,6 +90,11 @@ namespace View.UserControls
 		{
 			AddFittersWindow addFittersWindow = new AddFittersWindow(_worksheetVM);
 			addFittersWindow.Show();
+		}
+
+		private void AddPictureButton_Click(object sender, RoutedEventArgs e)
+		{
+
 		}
 	}
 }
