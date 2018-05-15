@@ -53,7 +53,7 @@
                 <RadioButton x:Name="OngoingRadioBox" IsChecked="{Binding IsOngoingChecked}" GroupName="Status" Content="Igangværende" HorizontalAlignment="Left" Margin="10,468,0,0" VerticalAlignment="Top" Height="20"/>
                 <RadioButton x:Name="DoneRadioBox" IsChecked="{Binding IsDoneChecked}" GroupName="Status" Content="Færdig" HorizontalAlignment="Left" Margin="10,488,0,-4" VerticalAlignment="Top" Height="20"/>
 
-                <Button x:Name="AddRemoveFitterButton" Content="Tilføj/Fjern Montør" HorizontalAlignment="Left" Margin="502,67,0,0" VerticalAlignment="Top" Height="24" Width="260" Click="AddRemoveFitterButton_Click"/>
+                <Button x:Name="AddRemoveFitterButton" Content="Tilføj/Fjern Montører" HorizontalAlignment="Left" Margin="502,67,0,0" VerticalAlignment="Top" Height="24" Width="260" Click="AddRemoveFitterButton_Click"/>
 
 
                 <Button x:Name="RemoveSelectedHourButton" Content="Fjern time" HorizontalAlignment="Left" Margin="502,250,0,0" VerticalAlignment="Top" Width="260" Height="24" IsEnabled="False" Click="RemoveSelectedHourButton_Click"/>
