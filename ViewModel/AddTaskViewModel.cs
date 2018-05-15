@@ -49,9 +49,9 @@ namespace ViewModel
 			return tasks;
 		}
 
-		public void SelectTask()
+		public void SelectTask(TermsheetViewModel termsheetViewModel)
 		{
-			TermsheetViewModel.Instance.AddTask(SelectedTask);
+			termsheetViewModel.SelectedTasksList.Add(SelectedTask);
 		}
 
 	}

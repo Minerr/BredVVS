@@ -46,7 +46,7 @@ namespace ViewModel
             }
         }
 
-        private TimeSpan _endTime;
+		private TimeSpan _endTime;
         public TimeSpan EndTime
         {
             get
@@ -313,5 +313,12 @@ namespace ViewModel
 
 			return inactiveFitters;
 		}
-    }
+		public TermsheetViewModel CreateNewTermsheet()
+		{
+			TermsheetViewModel termsheetVM = new TermsheetViewModel();
+			termsheetVM.Customer = Customer;
+
+			return termsheetVM;
+		}
+	}
 }

@@ -37,7 +37,7 @@ namespace View.UserControls
 		private void Init()
 		{
 			InitializeComponent();
-			DataContext = _termsheetVM;
+			DataContext = _createNewCustomerVM;
 		}
 
 		private void SearchForCustomerButton_Click(object sender, RoutedEventArgs e)
@@ -47,23 +47,18 @@ namespace View.UserControls
 
 		private void SaveCustomerButton_Click(object sender, RoutedEventArgs e)
 		{
-			createNewCustomerViewModel.CreateNewCustomer();
-
-			WorksheetView worksheet = new WorksheetView();
-			worksheet.Show();
-			this.Close();
+			_createNewCustomerVM.CreateNewCustomer();
+			PageCommands.GoTo(this, new WorksheetUC());
 		}
 
 		private void TextBoxChanged(object sender, RoutedEventArgs e)
 		{
-			SaveCustomerButton.IsEnabled = createNewCustomerViewModel.IsCustomerDataNotNull();
+			SaveCustomerButton.IsEnabled = _createNewCustomerVM.IsCustomerDataNotNull();
 		}
 
 		private void CancelButton_Click(object sender, RoutedEventArgs e)
 		{
-			SearchForCustomerView searchForCustomer = new SearchForCustomerView();
-			searchForCustomer.Show();
-			this.Close();
+			PageCommands.GoBack(this);
 		}
 	}
 }

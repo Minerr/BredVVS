@@ -7,6 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800">
     <Grid x:Name="MainGrid">
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="170" Margin="240,215,0,0" VerticalAlignment="Top" Width="320"/>
+
         <Grid HorizontalAlignment="Left" Height="102" Margin="300,263,0,0" VerticalAlignment="Top" Width="206">
             <Label Content="Brugernavn:" HorizontalAlignment="Left" Margin="0,1,0,0" VerticalAlignment="Top" Height="24"/>
             <Label Content="Password:" HorizontalAlignment="Left" Margin="0,30,0,0" VerticalAlignment="Top" Height="24"/>
@@ -14,7 +16,6 @@
             <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Left" Padding="3" Margin="78,30,0,0" VerticalAlignment="Top" Width="120" Height="24"/>
             <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Left" Margin="123,63,0,0" VerticalAlignment="Top"  Height="24" Width="75" Click="LoginButton_Click" />
         </Grid>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="170" Margin="240,215,0,0" VerticalAlignment="Top" Width="320"/>
 
     </Grid>
 </UserControl>

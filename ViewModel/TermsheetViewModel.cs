@@ -51,16 +51,10 @@ namespace ViewModel
 			SelectedTasksList = new ObservableCollection<string>();
 		}
 
-		public void AddTask(string selectedTask)
-		{
-			SelectedTasksList.Add(selectedTask);
-			OnPropertyChanged("SelectedTasksList");
-		}
-
-		public void RemoveTask(object selectedTask)
+		public void RemoveTask()
 		{
 			SelectedTasksList.Remove(SelectedTask);
-
+			SelectedTask = null;
 		}
 	}
 }

@@ -20,15 +20,21 @@ namespace View.Windows
 	/// </summary>
 	public partial class AddTaskWindow : Window
 	{
-		public AddTaskWindow()
+		private AddTaskViewModel _addTaskViewModel;
+		private TermsheetViewModel _termsheetVM;
+
+		public AddTaskWindow(TermsheetViewModel termsheetVM)
 		{
+			_addTaskViewModel = new AddTaskViewModel();
+			_termsheetVM = termsheetVM;
+
 			InitializeComponent();
-			DataContext = AddTaskViewModel.Instance;
+			DataContext = _addTaskViewModel;
 		}
 
 		private void AddTaskButton_Click(object sender, RoutedEventArgs e)
 		{
-			AddTaskViewModel.Instance.SelectTask();
+			_addTaskViewModel.SelectTask(_termsheetVM);
 			this.Close();
 		}
 	}

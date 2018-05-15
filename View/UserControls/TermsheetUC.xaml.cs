@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ViewModel;
+using View.Windows;
 
 namespace View.UserControls
 {
@@ -54,14 +55,13 @@ namespace View.UserControls
 
         private void AddTaskButton_Click(object sender, RoutedEventArgs e)
         {
-            AddTaskWindow addTaskView = new AddTaskWindow();
+            AddTaskWindow addTaskView = new AddTaskWindow(_termsheetVM);
             addTaskView.Show();
         }
 
         private void RemoveTaskButton_Click(object sender, RoutedEventArgs e)
         {
-            var selectedTask = TaskListBox.SelectedItem;
-            TermsheetViewModel.Instance.RemoveTask(selectedTask);
+            _termsheetVM.RemoveTask();
         }
 
         private void AddSignature_Click(object sender, RoutedEventArgs e)

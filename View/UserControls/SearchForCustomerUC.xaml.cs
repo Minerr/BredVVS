@@ -39,10 +39,11 @@ namespace View.UserControls
             InitializeComponent();
             DataContext = _searchForCustomerVM;
         }
+
         private void SearchForCustomerButton_Click(object sender, RoutedEventArgs e)
         {
 
-            SearchForCustomerViewModel.Instance.RetrieveCustomers(SearchForCustomerBar.Text);
+			_searchForCustomerVM.RetrieveCustomers(SearchForCustomerBar.Text);
 
         }
 
@@ -62,28 +63,17 @@ namespace View.UserControls
 
         private void SelectCustomerButton_Click(object sender, RoutedEventArgs e)
         {
-            SearchForCustomerViewModel.Instance.SelectCustomer();
-            WorksheetView worksheetView = new WorksheetView();
-            worksheetView.Show();
-
-            this.Close();
+			PageCommands.GoTo(this, new WorksheetUC(_searchForCustomerVM.SelectCustomer()));
         }
 
         private void CreateNewCustomerButton_Click(object sender, RoutedEventArgs e)
         {
-            CreateNewCustomerViewModel createNewCustomerViewModel = CreateNewCustomerViewModel.Instance;
-            CreateNewCustomerView createNewCustomerView = new CreateNewCustomerView();
-
-            createNewCustomerView.Show();
-            this.Close();
-
+			PageCommands.GoTo(this, new CreateNewCustomerUC());
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            OfficeWorkerMenuView officeWorkerMenuView = new OfficeWorkerMenuView();
-            officeWorkerMenuView.Show();
-            this.Close();
+			PageCommands.GoBack(this);
         }
     }
 }

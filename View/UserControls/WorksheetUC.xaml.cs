@@ -47,16 +47,12 @@ namespace View.UserControls
 
 		private void CreateTermsheetButton_Click(object sender, RoutedEventArgs e)
 		{
-			TermsheetView termsheetView = new TermsheetView(WorksheetViewModel.Instance);
-			termsheetView.Show();
-
-			this.Close();
-
+			PageCommands.GoTo(this, new TermsheetUC(_worksheetVM.CreateNewTermsheet()));
 		}
 
 		private void SaveWorksheetButton_Click(object sender, RoutedEventArgs e)
 		{
-			WorksheetViewModel.Instance.CreateWorksheet();
+			_worksheetVM.CreateWorksheet();
 		}
 
 		private void AddFitterButton_Click(object sender, RoutedEventArgs e)
@@ -76,10 +72,7 @@ namespace View.UserControls
 
 		private void CancelButton_Click(object sender, RoutedEventArgs e)
 		{
-			OfficeWorkerMenuView officeWorkerMenuView = new OfficeWorkerMenuView();
-			officeWorkerMenuView.Show();
-
-			this.Close();
+			PageCommands.GoTo(this, new OfficeWorkerMenuUC()); // TODO: Create categorized GoBack method
 		}
 
 		private void RemoveFitterButton_Click(object sender, RoutedEventArgs e)
