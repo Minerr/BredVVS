@@ -20,12 +20,13 @@ namespace View
 	/// </summary>
 	public partial class WorksheetView : Window
 	{
+		WorksheetViewModel _worksheetViewModel;
+
 		public WorksheetView()
 		{
-			WorksheetViewModel worksheetViewModel = WorksheetViewModel.Instance;
+			_worksheetViewModel = WorksheetViewModel.Instance;
 			InitializeComponent();
-
-			DataContext = worksheetViewModel;
+			DataContext = _worksheetViewModel;
 		}
 
 		private void AddHoursButton_Click(object sender, RoutedEventArgs e)
@@ -49,7 +50,7 @@ namespace View
 
 		private void AddFitterButton_Click(object sender, RoutedEventArgs e)
 		{
-
+			AddFitterListBox.Visibility = Visibility.Visible;
 		}
 
 		private void TakePictureButton_Click(object sender, RoutedEventArgs e)
@@ -99,16 +100,17 @@ namespace View
 		private void MaterialsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 
+        }
+
+		private void AddFitterListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			//_worksheetViewModel.AssignFitter(Fitter)
+			AddFitterListBox.Visibility = Visibility.Collapsed;
 		}
 
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void ListBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-    }
+		private void AddFitterListBox_LostFocus(object sender, RoutedEventArgs e)
+		{
+			AddFitterListBox.Visibility = Visibility.Collapsed;
+		}
+	}
 }

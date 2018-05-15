@@ -13,5 +13,9 @@ namespace Model
 		public Fitter(Name name) : base(name)
 		{
 		}
-    }
+
+		public Fitter(string ID, Name name) : base(ID, name)
+		{
+		}
+	}
 }

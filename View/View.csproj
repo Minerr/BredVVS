@@ -66,11 +66,15 @@
     <Compile Include="OfficeWorkerMenuView.xaml.cs">
       <DependentUpon>OfficeWorkerMenuView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PageCommands.cs" />
     <Compile Include="SearchForCustomerView.xaml.cs">
       <DependentUpon>SearchForCustomerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="TermsheetView.xaml.cs">
       <DependentUpon>TermsheetView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="WorksheetView.xaml.cs">
       <DependentUpon>WorksheetView.xaml</DependentUpon>
@@ -110,6 +114,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WorksheetView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -146,6 +154,9 @@
       <Project>{6cacdd53-8a5c-4351-b75f-098512298832}</Project>
       <Name>ViewModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UserControls\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
