@@ -7,34 +7,24 @@ using Model;
 
 namespace ViewModel
 {
-	public class CreateNewCustomerViewModel
+	public class CreateNewCustomerViewModel : ViewModelBase
 	{
-		#region Singleton code here
-		private static CreateNewCustomerViewModel _instance;
-		public static CreateNewCustomerViewModel Instance
-		{
-			get
-			{
-				if(_instance == null)
-				{
-					_instance = new CreateNewCustomerViewModel();
-				}
-				return _instance;
-			}
-		}
-		#endregion
-
 		public Customer Customer { get; set; }
 
 
-		private CreateNewCustomerViewModel()
+		public CreateNewCustomerViewModel()
 		{
 			Customer = new Customer();
 		}
 
-		public void CreateNewCustomer()
+		public WorksheetViewModel CreateNewCustomer()
 		{
-			WorksheetViewModel.Instance.Customer = Customer;
+			WorksheetViewModel worksheetVM = new WorksheetViewModel();
+			worksheetVM.Customer = Customer;
+
+			//TODO: Store customer in Database
+
+			return worksheetVM;
 		}
 
 		public bool IsCustomerDataNotNull()

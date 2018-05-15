@@ -8,24 +8,8 @@ using System.ComponentModel;
 
 namespace ViewModel
 {
-	public class SearchForCustomerViewModel : INotifyPropertyChanged
+	public class SearchForCustomerViewModel : ViewModelBase
 	{
-
-		#region Singleton code here
-		private static SearchForCustomerViewModel _instance;
-		public static SearchForCustomerViewModel Instance
-		{
-			get
-			{
-				if(_instance == null)
-				{
-					_instance = new SearchForCustomerViewModel();
-				}
-				return _instance;
-			}
-		}
-		#endregion
-
 		private List<Customer> _customers;
 		public List<Customer> CustomerList
 		{
@@ -42,7 +26,7 @@ namespace ViewModel
 
 		public Customer SelectedCustomer { get; set; }
 
-		private SearchForCustomerViewModel()
+		public SearchForCustomerViewModel()
 		{
 			CustomerList = new List<Customer>();
 		}
@@ -56,26 +40,11 @@ namespace ViewModel
 			CustomerList = customers;
 		}
 
-		public void SelectCustomer()
+		public WorksheetViewModel SelectCustomer()
 		{
-			WorksheetViewModel.Instance.Customer = SelectedCustomer;
-			TermsheetViewModel.Instance.Customer = SelectedCustomer;
-		}
-
-
-
-
-
-
-
-		public event PropertyChangedEventHandler PropertyChanged;
-		private void OnPropertyChanged(string propertyName)
-		{
-			PropertyChangedEventHandler handler = PropertyChanged;
-			if (handler != null)
-			{
-				handler(this, new PropertyChangedEventArgs(propertyName));
-			}
+			WorksheetViewModel worksheetVM = new WorksheetViewModel();
+			worksheetVM.Customer = SelectedCustomer;
+			return worksheetVM;
 		}
 	}
 }

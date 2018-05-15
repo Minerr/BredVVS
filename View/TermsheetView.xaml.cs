@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,7 +51,8 @@ namespace View
 
 		private void RemoveTaskButton_Click(object sender, RoutedEventArgs e)
 		{
-			
+			var selectedTask = TaskListBox.SelectedItem;
+			TermsheetViewModel.Instance.RemoveTask(selectedTask);
 		}
 
 		private void AddSignature_Click(object sender, RoutedEventArgs e)

@@ -9,23 +9,8 @@ using System.ComponentModel;
 
 namespace ViewModel
 {
-	public class WorksheetViewModel : INotifyPropertyChanged
+	public class WorksheetViewModel : ViewModelBase
 	{
-		#region Singleton...
-		private static WorksheetViewModel _instance;
-		public static WorksheetViewModel Instance
-		{
-			get
-			{
-				if(_instance == null)
-				{
-					_instance = new WorksheetViewModel();
-				}
-				return _instance;
-			}
-		}
-		#endregion
-
         public Customer Customer { get; set; }
 
         public List<TimeSpan> Hours { get; }
@@ -268,7 +253,7 @@ namespace ViewModel
 			}
 		}
 
-        private WorksheetViewModel()
+        public WorksheetViewModel()
         {
             // Init start values
             Worksheet = new Worksheet();
@@ -328,15 +313,5 @@ namespace ViewModel
 
 			return inactiveFitters;
 		}
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged(string propertyName)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
     }
 }

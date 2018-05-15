@@ -7,7 +7,7 @@ using Model;
 
 namespace ViewModel
 {
-	public class FitterMenuViewModel
+	public class FitterMenuViewModel : ViewModelBase
 	{
 
 	}
