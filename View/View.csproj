@@ -73,8 +73,8 @@
     <Compile Include="TermsheetView.xaml.cs">
       <DependentUpon>TermsheetView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\CrreateNewCustomerUC.xaml.cs">
-      <DependentUpon>CrreateNewCustomerUC.xaml</DependentUpon>
+    <Compile Include="UserControls\CreateNewCustomerUC.xaml.cs">
+      <DependentUpon>CreateNewCustomerUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\FitterMenuUC.xaml.cs">
       <DependentUpon>FitterMenuUC.xaml</DependentUpon>
@@ -126,6 +126,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TermsheetView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\CreateNewCustomerUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\OfficeWorkerMenuUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\LoginUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\FitterMenuUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
