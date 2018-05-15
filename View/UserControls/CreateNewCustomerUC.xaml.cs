@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ViewModel;
 
 namespace View.UserControls
 {
@@ -20,9 +21,23 @@ namespace View.UserControls
 	/// </summary>
 	public partial class CreateNewCustomerUC : UserControl
 	{
+		private CreateNewCustomerViewModel _createNewCustomerVM;
 		public CreateNewCustomerUC()
 		{
+			_createNewCustomerVM = new CreateNewCustomerViewModel();
+			Init();
+		}
+
+		public CreateNewCustomerUC(CreateNewCustomerViewModel viewModel)
+		{
+			_createNewCustomerVM = viewModel;
+			Init();
+		}
+
+		private void Init()
+		{
 			InitializeComponent();
+			DataContext = _termsheetVM;
 		}
 
 		private void SearchForCustomerButton_Click(object sender, RoutedEventArgs e)
