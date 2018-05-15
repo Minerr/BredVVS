@@ -39,5 +39,51 @@ namespace View.UserControls
             InitializeComponent();
             DataContext = _searchForCustomerVM;
         }
+        private void SearchForCustomerButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            SearchForCustomerViewModel.Instance.RetrieveCustomers(SearchForCustomerBar.Text);
+
+        }
+
+        private void Selector_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (CustomerListView.SelectedItem != null)
+            {
+                SelectCustomerButton.IsEnabled = true;
+                EditCustomerButton.IsEnabled = true;
+            }
+            else
+            {
+                SelectCustomerButton.IsEnabled = false;
+                EditCustomerButton.IsEnabled = false;
+            }
+        }
+
+        private void SelectCustomerButton_Click(object sender, RoutedEventArgs e)
+        {
+            SearchForCustomerViewModel.Instance.SelectCustomer();
+            WorksheetView worksheetView = new WorksheetView();
+            worksheetView.Show();
+
+            this.Close();
+        }
+
+        private void CreateNewCustomerButton_Click(object sender, RoutedEventArgs e)
+        {
+            CreateNewCustomerViewModel createNewCustomerViewModel = CreateNewCustomerViewModel.Instance;
+            CreateNewCustomerView createNewCustomerView = new CreateNewCustomerView();
+
+            createNewCustomerView.Show();
+            this.Close();
+
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            OfficeWorkerMenuView officeWorkerMenuView = new OfficeWorkerMenuView();
+            officeWorkerMenuView.Show();
+            this.Close();
+        }
     }
 }
