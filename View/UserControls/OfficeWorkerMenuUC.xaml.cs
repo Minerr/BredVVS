@@ -19,11 +19,25 @@ namespace View.UserControls
 	/// <summary>
 	/// Interaction logic for OfficeWorkerMenuUC.xaml
 	/// </summary>
-	public partial class OfficeWorkerMenuView : Window
+	public partial class OfficeWorkerMenuUC : UserControl
 	{
-		public OfficeWorkerMenuView()
+		private OfficeWorkerMenuViewModel _officeWorkerMenuVM;
+		public OfficeWorkerMenuUC()
+		{
+			_officeWorkerMenuVM = new WorksheetViewModel();
+			Init();
+		}
+
+		public OfficeWorkerMenuUC(OfficeWorkerMenuViewModel viewModel)
+		{
+			_officeWorkerMenuVM = viewModel;
+			Init();
+		}
+
+		private void Init()
 		{
 			InitializeComponent();
+			DataContext = _officeWorkerMenuVM;
 		}
 
 		private void CreateWorksheetButton_Click(object sender, RoutedEventArgs e)

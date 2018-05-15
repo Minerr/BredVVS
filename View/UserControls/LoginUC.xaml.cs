@@ -19,11 +19,25 @@ namespace View.UserControls
 	/// <summary>
 	/// Interaction logic for LoginUC.xaml
 	/// </summary>
-	public partial class LoginView : Window
+	public partial class LoginUC : UserControl
 	{
-		public LoginView()
+		private LoginViewModel _loginVM;
+		public LoginUC()
+		{
+			_loginVM = new LoginViewModel();
+			Init();
+		}
+
+		public LoginUC(LoginViewModel viewModel)
+		{
+			_loginVM = viewModel;
+			Init();
+		}
+
+		private void Init()
 		{
 			InitializeComponent();
+			DataContext = _loginVM;
 		}
 
 		private void LoginButton_Click(object sender, RoutedEventArgs e)
