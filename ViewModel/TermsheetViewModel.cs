@@ -43,7 +43,53 @@ namespace ViewModel
 			}
 		}
 
-		
+		public Termsheet Termsheet { get; set; }
+		public bool IsFixedPriceChecked
+		{
+			get
+			{
+				return (Termsheet.Payment == Payment.FixedPrice);
+			}
+			set
+			{
+				if (value)
+				{
+					Termsheet.Payment = Payment.FixedPrice;
+				}
+			}
+		}
+
+		public bool IsBillChecked
+		{
+			get
+			{
+				return (Termsheet.Payment == Payment.Bill);
+			}
+			set
+			{
+				if (value)
+				{
+					Termsheet.Payment = Payment.Bill;
+				}
+			}
+		}
+
+		public bool IsOfferChecked
+		{
+			get
+			{
+				return (Termsheet.Payment == Payment.Offer);
+			}
+			set
+			{
+				if (value)
+				{
+					Termsheet.Payment = Payment.Offer;
+				}
+			}
+		}
+
+
 		public string SelectedTask { get; set; }
 
 		public TermsheetViewModel()

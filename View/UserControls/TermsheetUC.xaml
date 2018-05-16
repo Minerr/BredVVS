@@ -59,9 +59,9 @@
                 <DatePicker HorizontalAlignment="Left" Margin="591,213,0,0" VerticalAlignment="Top"/>
 
                 <Label Content="Betaling:" HorizontalAlignment="Left" Margin="10,442,0,0" VerticalAlignment="Top" Width="70"/>
-                <CheckBox Content="Fast Pris" HorizontalAlignment="Left" Margin="20,468,0,0" VerticalAlignment="Top"/>
-                <CheckBox Content="Regning" HorizontalAlignment="Left" Margin="20,488,0,0" VerticalAlignment="Top"/>
-                <CheckBox Content="Tilbud" HorizontalAlignment="Left" Margin="20,508,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="FixedPriceRadioButton" Content="Fast Pris" IsChecked="{Binding IsFixedPriceChecked}" GroupName="Payment"  HorizontalAlignment="Left" Margin="20,468,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="BillRadioButton" Content="Regning" IsChecked="{Binding IsBillChecked}" GroupName="Payment"  HorizontalAlignment="Left" Margin="20,488,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="OfferRadioButton" Content="Tilbud" IsChecked="{Binding IsOfferChecked}" GroupName="Payment"  HorizontalAlignment="Left" Margin="20,508,0,0" VerticalAlignment="Top"/>
 
                 <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="88" VerticalAlignment="Top" Width="394" Margin="369,442,0,0"/>
                 <Label Content="Betalingsbetingelser:" HorizontalAlignment="Left" Margin="369,442,0,0" VerticalAlignment="Top" Width="121"/>

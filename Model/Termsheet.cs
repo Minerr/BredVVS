@@ -17,6 +17,7 @@ namespace Model
         public string WorkDescription {get; set;}
         public bool IsDraft {get; set;}
         public string PriceType {get; set;}
+		public Payment Payment { get; set; }
 
         public Termsheet(Customer customerInfo, DateTime dateTime, string worksheetID, string builderInfo, string entrepreneur)
         {
