@@ -37,5 +37,11 @@ namespace View.Windows
 			_addTaskViewModel.SelectTask(_termsheetVM);
 			this.Close();
 		}
+
+		private void AddCustomTaskButton_Click(object sender, RoutedEventArgs e)
+		{
+			_addTaskViewModel.SelectCustomTask(_termsheetVM);
+			this.Close();
+		}
 	}
 }
