@@ -19,24 +19,18 @@ namespace Model
 
 		public Customer()
 		{
-			ID = GenerateID();
 			Name = new Name();
 		}
 
-		public Customer(Name name, string address, string ZIPcode, string city, string phoneNumer, string email)
+		public Customer(string ID, Name name, string address, string ZIPcode, string city, string phoneNumer, string email)
 		{
-			ID = GenerateID();
+			this.ID = ID;
 			Name = name;
 			Address = address;
 			this.ZIPcode = ZIPcode;
 			City = city;
 			PhoneNumber = phoneNumer;
 			Email = email;
-		}
-
-		private string GenerateID()
-		{
-			return Guid.NewGuid().ToString();
 		}
 	}
 }
