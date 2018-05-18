@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomerRepository.cs" />
+    <Compile Include="DatabaseController.cs" />
     <Compile Include="EmployeeRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Program.cs" />

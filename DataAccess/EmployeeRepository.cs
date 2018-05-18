@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace DataAccess
 {
@@ -11,7 +13,23 @@ namespace DataAccess
     {
         public void Create(Employee type)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(connectionString)) 
+            {
+                try
+                {
+                    con.Open();
+
+                    SqlCommand cmd1 = new SqlCommand("InsertEmployee", con);
+                    cmd1.CommandType = CommandType.StoredProcedure;
+
+                    cmd1.Parameters.Add(new SqlParameter("@FirstName", type.Name.FirstName));
+                    cmd1.Parameters.Add(new SqlParameter("@LastName", type.Name.LastName));
+                }
+                catch (SqlException e)
+                {
+                    Console.WriteLine("" + e.Message);
+                }
+            }
         }
 
         public void Delete(Employee type)
