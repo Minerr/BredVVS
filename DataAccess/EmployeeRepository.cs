@@ -28,11 +28,11 @@ namespace DataAccess
 	        DatabaseController.ExecuteNonQuerySP(command);
 		}
 
-        public void Delete(Employee type)
+        public void Delete(Employee employee)
         {
 	        SqlCommand command = new SqlCommand("spDeleteEmployee");
 
-	        command.Parameters.Add(new SqlParameter("@ID", type.ID));
+	        command.Parameters.Add(new SqlParameter("@ID", employee.ID));
 	        DatabaseController.ExecuteNonQuerySP(command);
 		}
 
@@ -70,13 +70,13 @@ namespace DataAccess
 	        return employee;
 		}
 
-        public void Update(Employee type)
+        public void Update(Employee employee)
         {
 	        SqlCommand command = new SqlCommand("spUpdateEmployee");
 
-	        command.Parameters.Add(new SqlParameter("@ID", type.ID));
-	        command.Parameters.Add(new SqlParameter("@FirstName", type.Name.FirstName));
-	        command.Parameters.Add(new SqlParameter("@LastName", type.Name.LastName));
+	        command.Parameters.Add(new SqlParameter("@ID", employee.ID));
+	        command.Parameters.Add(new SqlParameter("@FirstName", employee.Name.FirstName));
+	        command.Parameters.Add(new SqlParameter("@LastName", employee.Name.LastName));
 
 	        DatabaseController.ExecuteNonQuerySP(command);
 		}
