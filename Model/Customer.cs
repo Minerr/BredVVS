@@ -21,6 +21,15 @@ namespace Model
 		{
 			Name = new Name();
 		}
+		public Customer(Name name, string address, string ZIPcode, string city, string phoneNumer, string email)
+		{
+			Name = name;
+			Address = address;
+			this.ZIPcode = ZIPcode;
+			City = city;
+			PhoneNumber = phoneNumer;
+			Email = email;
+		}
 
 		public Customer(string ID, Name name, string address, string ZIPcode, string city, string phoneNumer, string email)
 		{

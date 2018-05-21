@@ -42,7 +42,7 @@ namespace DataAccess
 	        string error = "";
 	        Customer customer = null;
 
-			SqlCommand command = new SqlCommand("DeleteCustomer");			
+			SqlCommand command = new SqlCommand("RetrieveCustomerByID");			
 	        command.Parameters.Add(new SqlParameter("@ID", ID));
 	        SqlDataReader reader = DatabaseController.ExecuteReader(command);
 

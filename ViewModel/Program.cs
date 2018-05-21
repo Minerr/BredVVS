@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataAccess;
+using Model;
 
 namespace ViewModel
 {
@@ -10,6 +12,11 @@ namespace ViewModel
 	{
 		static void Main(string[] args)
 		{
+
+			CustomerRepository repos = new CustomerRepository();
+			repos.Create(new Customer(new Name("Karl", "Johansen"), "Ryttergade 17", "5000", "Odense C", "27272727", "KJohansen@mail.dk"));
+
+			//repos.Retrieve(10000);
 		}
 	}
 }

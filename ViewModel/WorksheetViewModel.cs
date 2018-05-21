@@ -264,8 +264,8 @@ namespace ViewModel
 
 			// Temp data
 			AssignedFitters = new ObservableCollection<Fitter>();
-			AssignedFitters.Add(new Fitter("10001", new Name("Klaus", "Sørensen")));
-			AssignedFitters.Add(new Fitter("10002", new Name("Jesper", "Nielsen")));
+			//AssignedFitters.Add(new Fitter("10001", new Name("Klaus", "Sørensen")));
+			//AssignedFitters.Add(new Fitter("10002", new Name("Jesper", "Nielsen")));
 		}
 
         public void CreateWorksheet()
@@ -278,10 +278,10 @@ namespace ViewModel
 			List<Fitter> allFitters = new List<Fitter>();
 
 			// Temp data
-			allFitters.Add(new Fitter("10001", new Name("Klaus", "Sørensen")));
-			allFitters.Add(new Fitter("10002", new Name("Jesper", "Nielsen")));
-			allFitters.Add(new Fitter("10003", new Name("Simon", "Hansen")));
-			allFitters.Add(new Fitter("10004", new Name("Bo", "Rasmussen")));
+			//allFitters.Add(new Fitter("10001", new Name("Klaus", "Sørensen")));
+			//allFitters.Add(new Fitter("10002", new Name("Jesper", "Nielsen")));
+			//allFitters.Add(new Fitter("10003", new Name("Simon", "Hansen")));
+			//allFitters.Add(new Fitter("10004", new Name("Bo", "Rasmussen")));
 			//end Temp data
 
 			ObservableCollection<Fitter> inactiveFitters = new ObservableCollection<Fitter>();
