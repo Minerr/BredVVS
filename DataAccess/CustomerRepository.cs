@@ -42,7 +42,7 @@ namespace DataAccess
 	        string error = "";
 	        Customer customer = null;
 
-			SqlCommand command = new SqlCommand("RetrieveCustomerByID");			
+			SqlCommand command = new SqlCommand("GetCustomerByID");			
 	        command.Parameters.Add(new SqlParameter("@ID", ID));
 	        SqlDataReader reader = DatabaseController.ExecuteReader(command);
 
