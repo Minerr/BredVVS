@@ -29,15 +29,6 @@ namespace DataAccess
 	        DatabaseController.ExecuteNonQuerySP(command);
 		}
 
-        public void Delete(Employee employee)
-        {
-	        SqlCommand command = new SqlCommand("spDeleteEmployee");
-			command.CommandType = CommandType.StoredProcedure;
-
-	        command.Parameters.Add(new SqlParameter("@ID", employee.ID));
-	        DatabaseController.ExecuteNonQuerySP(command);
-		}
-
         public Employee Retrieve(int ID)
         {
 	        string error = "";
@@ -86,7 +77,16 @@ namespace DataAccess
 	        DatabaseController.ExecuteNonQuerySP(command);
 		}
 
-        public Employee GetEmployeeByCredentials(int ID, string pass)
+		public void Delete(Employee employee)
+		{
+			SqlCommand command = new SqlCommand("spDeleteEmployee");
+			command.CommandType = CommandType.StoredProcedure;
+
+			command.Parameters.Add(new SqlParameter("@ID", employee.ID));
+			DatabaseController.ExecuteNonQuerySP(command);
+		}
+
+		public Employee GetEmployeeByCredentials(int ID, string pass)
         {
             return null;
         }

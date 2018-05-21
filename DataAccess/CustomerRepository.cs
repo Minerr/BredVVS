@@ -29,16 +29,6 @@ namespace DataAccess
             DatabaseController.ExecuteNonQuerySP(command);
         }
 
-        public void Delete(Customer customer)
-        {
-            SqlCommand command = new SqlCommand("spDeleteCustomer");
-			command.CommandType = CommandType.StoredProcedure;
-
-            command.Parameters.Add(new SqlParameter("@ID", customer.ID));
-            DatabaseController.ExecuteNonQuerySP(command);
-
-        }
-
         public Customer Retrieve(int ID)
         {
 	        string error = "";
@@ -87,5 +77,15 @@ namespace DataAccess
 
 	        DatabaseController.ExecuteNonQuerySP(command);
 		}
-    }
+
+		public void Delete(Customer customer)
+		{
+			SqlCommand command = new SqlCommand("spDeleteCustomer");
+			command.CommandType = CommandType.StoredProcedure;
+
+			command.Parameters.Add(new SqlParameter("@ID", customer.ID));
+			DatabaseController.ExecuteNonQuerySP(command);
+
+		}
+	}
 }
