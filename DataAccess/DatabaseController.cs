@@ -26,7 +26,7 @@ namespace DataAccess
 					{
 						con.Open();
 						command.Connection = con;
-						command.ExecuteNonQuery();
+						command.ExecuteNonQuery(); 
 					}
 					catch (SqlException e)
 					{
