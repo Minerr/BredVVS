@@ -15,7 +15,7 @@ namespace DataAccess
 
         public void Create(Customer employee)
         {
-            SqlCommand command = new SqlCommand("InsertCustomer");
+            SqlCommand command = new SqlCommand("spInsertCustomer");
 
             command.Parameters.Add(new SqlParameter("@FirstName", employee.Name.FirstName));
             command.Parameters.Add(new SqlParameter("@LastName", employee.Name.LastName));
@@ -30,7 +30,7 @@ namespace DataAccess
 
         public void Delete(Customer type)
         {
-            SqlCommand command = new SqlCommand("DeleteCustomer");
+            SqlCommand command = new SqlCommand("spDeleteCustomer");
 
             command.Parameters.Add(new SqlParameter("@ID", type.ID));
             DatabaseController.ExecuteNonQuerySP(command);
@@ -42,7 +42,7 @@ namespace DataAccess
 	        string error = "";
 	        Customer customer = null;
 
-			SqlCommand command = new SqlCommand("GetCustomerByID");			
+			SqlCommand command = new SqlCommand("spGetCustomerByID");			
 	        command.Parameters.Add(new SqlParameter("@ID", ID));
 	        SqlDataReader reader = DatabaseController.ExecuteReader(command);
 
@@ -69,7 +69,7 @@ namespace DataAccess
 
         public void Update(Customer type)
         {
-	        SqlCommand command = new SqlCommand("UpdateCustomer");
+	        SqlCommand command = new SqlCommand("spUpdateCustomer");
 
 	        command.Parameters.Add(new SqlParameter("@ID", type.ID));
 	        command.Parameters.Add(new SqlParameter("@FirstName", type.Name.FirstName));

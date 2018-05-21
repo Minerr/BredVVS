@@ -13,7 +13,7 @@ namespace DataAccess
     {
         public void Create(Employee employee)
         {
-	        SqlCommand command = new SqlCommand("InsertEmployee");
+	        SqlCommand command = new SqlCommand("spInsertEmployee");
 
 	        command.Parameters.Add(new SqlParameter("@FirstName", employee.Name.FirstName));
 	        command.Parameters.Add(new SqlParameter("@LastName", employee.Name.LastName));
@@ -30,7 +30,7 @@ namespace DataAccess
 
         public void Delete(Employee type)
         {
-	        SqlCommand command = new SqlCommand("DeleteEmployee");
+	        SqlCommand command = new SqlCommand("spDeleteEmployee");
 
 	        command.Parameters.Add(new SqlParameter("@ID", type.ID));
 	        DatabaseController.ExecuteNonQuerySP(command);
@@ -41,7 +41,7 @@ namespace DataAccess
 	        string error = "";
 	        Employee employee = null;
 
-	        SqlCommand command = new SqlCommand("DeleteEmployee");
+	        SqlCommand command = new SqlCommand("spGetEmployeeByID");
 	        command.Parameters.Add(new SqlParameter("@ID", ID));
 	        SqlDataReader reader = DatabaseController.ExecuteReader(command);
 
@@ -72,7 +72,7 @@ namespace DataAccess
 
         public void Update(Employee type)
         {
-	        SqlCommand command = new SqlCommand("UpdateEmployee");
+	        SqlCommand command = new SqlCommand("spUpdateEmployee");
 
 	        command.Parameters.Add(new SqlParameter("@ID", type.ID));
 	        command.Parameters.Add(new SqlParameter("@FirstName", type.Name.FirstName));
