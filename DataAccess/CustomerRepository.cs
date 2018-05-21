@@ -13,28 +13,28 @@ namespace DataAccess
     public class CustomerRepository : IRepository<Customer>
     {
 
-        public void Create(Customer employee)
+        public void Create(Customer customer)
         {
             SqlCommand command = new SqlCommand("spInsertCustomer");
 			command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.Add(new SqlParameter("@FirstName", employee.Name.FirstName));
-            command.Parameters.Add(new SqlParameter("@LastName", employee.Name.LastName));
-            command.Parameters.Add(new SqlParameter("@Address", employee.Address));
-            command.Parameters.Add(new SqlParameter("@City", employee.City));
-            command.Parameters.Add(new SqlParameter("@ZIPcode", employee.ZIPcode));
-            command.Parameters.Add(new SqlParameter("@PhoneNumber", employee.PhoneNumber));
-            command.Parameters.Add(new SqlParameter("@Email", employee.Email));
+            command.Parameters.Add(new SqlParameter("@FirstName", customer.Name.FirstName));
+            command.Parameters.Add(new SqlParameter("@LastName", customer.Name.LastName));
+            command.Parameters.Add(new SqlParameter("@Address", customer.Address));
+            command.Parameters.Add(new SqlParameter("@City", customer.City));
+            command.Parameters.Add(new SqlParameter("@ZIPcode", customer.ZIPcode));
+            command.Parameters.Add(new SqlParameter("@PhoneNumber", customer.PhoneNumber));
+            command.Parameters.Add(new SqlParameter("@Email", customer.Email));
 
             DatabaseController.ExecuteNonQuerySP(command);
         }
 
-        public void Delete(Customer type)
+        public void Delete(Customer customer)
         {
             SqlCommand command = new SqlCommand("spDeleteCustomer");
 			command.CommandType = CommandType.StoredProcedure;
 
-			command.Parameters.Add(new SqlParameter("@ID", type.ID));
+            command.Parameters.Add(new SqlParameter("@ID", customer.ID));
             DatabaseController.ExecuteNonQuerySP(command);
 
         }
@@ -71,19 +71,19 @@ namespace DataAccess
 	        return customer;
 		}
 
-        public void Update(Customer type)
+        public void Update(Customer customer)
         {
 	        SqlCommand command = new SqlCommand("spUpdateCustomer");
 			command.CommandType = CommandType.StoredProcedure;
 
-			command.Parameters.Add(new SqlParameter("@ID", type.ID));
-	        command.Parameters.Add(new SqlParameter("@FirstName", type.Name.FirstName));
-	        command.Parameters.Add(new SqlParameter("@LastName", type.Name.LastName));
-	        command.Parameters.Add(new SqlParameter("@Address", type.Address));
-	        command.Parameters.Add(new SqlParameter("@City", type.City));
-	        command.Parameters.Add(new SqlParameter("@ZIPcode", type.ZIPcode));
-	        command.Parameters.Add(new SqlParameter("@PhoneNumber", type.PhoneNumber));
-	        command.Parameters.Add(new SqlParameter("@Email", type.Email));
+	        command.Parameters.Add(new SqlParameter("@ID", customer.ID));
+	        command.Parameters.Add(new SqlParameter("@FirstName", customer.Name.FirstName));
+	        command.Parameters.Add(new SqlParameter("@LastName", customer.Name.LastName));
+	        command.Parameters.Add(new SqlParameter("@Address", customer.Address));
+	        command.Parameters.Add(new SqlParameter("@City", customer.City));
+	        command.Parameters.Add(new SqlParameter("@ZIPcode", customer.ZIPcode));
+	        command.Parameters.Add(new SqlParameter("@PhoneNumber", customer.PhoneNumber));
+	        command.Parameters.Add(new SqlParameter("@Email", customer.Email));
 
 	        DatabaseController.ExecuteNonQuerySP(command);
 		}
