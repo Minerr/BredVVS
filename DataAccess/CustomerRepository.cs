@@ -16,6 +16,7 @@ namespace DataAccess
         public void Create(Customer employee)
         {
             SqlCommand command = new SqlCommand("spInsertCustomer");
+			command.CommandType = CommandType.StoredProcedure;
 
             command.Parameters.Add(new SqlParameter("@FirstName", employee.Name.FirstName));
             command.Parameters.Add(new SqlParameter("@LastName", employee.Name.LastName));
@@ -31,8 +32,9 @@ namespace DataAccess
         public void Delete(Customer type)
         {
             SqlCommand command = new SqlCommand("spDeleteCustomer");
+			command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.Add(new SqlParameter("@ID", type.ID));
+			command.Parameters.Add(new SqlParameter("@ID", type.ID));
             DatabaseController.ExecuteNonQuerySP(command);
 
         }
@@ -42,8 +44,10 @@ namespace DataAccess
 	        string error = "";
 	        Customer customer = null;
 
-			SqlCommand command = new SqlCommand("spGetCustomerByID");			
-	        command.Parameters.Add(new SqlParameter("@ID", ID));
+			SqlCommand command = new SqlCommand("spGetCustomerByID");
+			command.CommandType = CommandType.StoredProcedure;
+
+			command.Parameters.Add(new SqlParameter("@ID", ID));
 	        SqlDataReader reader = DatabaseController.ExecuteReader(command);
 
 	        try
@@ -70,8 +74,9 @@ namespace DataAccess
         public void Update(Customer type)
         {
 	        SqlCommand command = new SqlCommand("spUpdateCustomer");
+			command.CommandType = CommandType.StoredProcedure;
 
-	        command.Parameters.Add(new SqlParameter("@ID", type.ID));
+			command.Parameters.Add(new SqlParameter("@ID", type.ID));
 	        command.Parameters.Add(new SqlParameter("@FirstName", type.Name.FirstName));
 	        command.Parameters.Add(new SqlParameter("@LastName", type.Name.LastName));
 	        command.Parameters.Add(new SqlParameter("@Address", type.Address));
