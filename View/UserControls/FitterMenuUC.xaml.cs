@@ -40,27 +40,13 @@ namespace View.UserControls
 			DataContext = _fitterMenuVM;
 		}
 
-		private void Selector_OnSelectionChanged(object sender, RoutedEventArgs e)
-		{
-
-		}
-
-		private void SearchForWorksheetButton_Click(object sender, RoutedEventArgs e)
-		{
-
-		}
-
-		private void CancelButton_Click(object sender, RoutedEventArgs e)
-		{
-
-		}
 
 		private void SelectWorksheetButton_Click(object sender, RoutedEventArgs e)
 		{
 
 		}
 
-		private void SearchForWorksheetButton_Click_1(object sender, RoutedEventArgs e)
+		private void LogOutButton_Click(object sender, RoutedEventArgs e)
 		{
 
 		}

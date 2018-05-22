@@ -8,11 +8,9 @@
              d:DesignHeight="600" d:DesignWidth="800">
     <Grid x:Name="MainGrid">
         <Grid>
-            <TextBox x:Name="SearchForWorksheetBar"  Text="Søg på arbejdsseddel" HorizontalAlignment="Left" Height="24" Padding="3" Margin="201,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="306"/>
-            <Button x:Name="SearchForWorksheetButton" Content="Søg" HorizontalAlignment="Left" Margin="512,48,0,0" VerticalAlignment="Top" Width="69" Height="24" Click="SearchForWorksheetButton_Click_1"/>
 
-            <Grid Margin="10,77,10,49">
-                <ListView x:Name="WorksheetListView" ItemsSource="{Binding WorksheetList}" SelectedItem="{Binding SelectedWorksheet}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="Selector_OnSelectionChanged">
+            <Grid Margin="89,91,93,216">
+                <ListView x:Name="WorksheetListView" ItemsSource="{Binding WorksheetList}" SelectedItem="{Binding SelectedWorksheet}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Projektnummer" DisplayMemberBinding="{Binding ID}" Width="200"/>
@@ -22,8 +20,9 @@
                     </ListView.View>
                 </ListView>
             </Grid>
-            <Button x:Name="SelectWorksheetButton" Content="Vælg arbejdsseddel" HorizontalAlignment="Left" Margin="512,525,0,0" VerticalAlignment="Top" Height="24" Width="150" IsEnabled="False" Click="SelectWorksheetButton_Click"/>
-            <Button x:Name="CancelButton" Content="Annuller" HorizontalAlignment="Left" Margin="667,525,0,0" VerticalAlignment="Top" Width="93" Height="24" Click="CancelButton_Click"/>
+            <Button x:Name="SelectWorksheetButton" Content="Vælg arbejdsseddel" HorizontalAlignment="Left" Margin="557,389,0,0" VerticalAlignment="Top" Height="24" Width="150" IsEnabled="False" Click="SelectWorksheetButton_Click"/>
+            <Button x:Name="LogOutButton" Content="Log ud" HorizontalAlignment="Left" Margin="667,556,0,0" VerticalAlignment="Top" Width="93" Height="24" Click="LogOutButton_Click"/>
+            <Label Content="Tilknyttede arbejdssedler" HorizontalAlignment="Left" Margin="280,52,0,0" VerticalAlignment="Top" Width="215" FontSize="18"/>
         </Grid>
     </Grid>
 </UserControl>

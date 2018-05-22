@@ -44,17 +44,20 @@ namespace ViewModel
 		}
 
 		public Termsheet Termsheet { get; set; }
+
+		private Payment termsheetPayment;
+
 		public bool IsFixedPriceChecked
 		{
 			get
 			{
-				return (Termsheet.Payment == Payment.FixedPrice);
+				return (termsheetPayment == Payment.FixedPrice);
 			}
 			set
 			{
 				if (value)
 				{
-					Termsheet.Payment = Payment.FixedPrice;
+					termsheetPayment = Payment.FixedPrice;
 				}
 			}
 		}
@@ -63,13 +66,13 @@ namespace ViewModel
 		{
 			get
 			{
-				return (Termsheet.Payment == Payment.Bill);
+				return (termsheetPayment == Payment.Bill);
 			}
 			set
 			{
 				if (value)
 				{
-					Termsheet.Payment = Payment.Bill;
+					termsheetPayment = Payment.Bill;
 				}
 			}
 		}
@@ -78,13 +81,13 @@ namespace ViewModel
 		{
 			get
 			{
-				return (Termsheet.Payment == Payment.Offer);
+				return (termsheetPayment == Payment.Offer);
 			}
 			set
 			{
 				if (value)
 				{
-					Termsheet.Payment = Payment.Offer;
+					termsheetPayment = Payment.Offer;
 				}
 			}
 		}
