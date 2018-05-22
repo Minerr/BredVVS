@@ -24,5 +24,35 @@ namespace View.UserControls
 		{
 			InitializeComponent();
 		}
+
+		private void AddRemoveMaterialsButton_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void AddRemoceWorkHoursButton_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void AddPictureButton_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void CreateTermsheetButton_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void ShowTermsheetsButton_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void GoBackButton_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
 	}
 }
