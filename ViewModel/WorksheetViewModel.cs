@@ -7,13 +7,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
+using DataAccess;
 
 namespace ViewModel
 {
 	public class WorksheetViewModel : ViewModelBase
 	{
-        public Customer Customer { get; set; }
 
+		#region Class variables and propeties...
+		public Customer Customer { get; set; }
         public List<TimeSpan> Hours { get; }
         public List<TimeSpan> Minutes { get; }
 
@@ -108,7 +110,7 @@ namespace ViewModel
             }
         }
 
-        public DateTime StartDateTime
+		public DateTime StartDateTime
         {
             get
             {
@@ -235,13 +237,15 @@ namespace ViewModel
 				OnPropertyChanged("AssignedFitters");
 			}
 		}
+		#endregion
 
-        public WorksheetViewModel()
+		public WorksheetViewModel()
         {
             // Init start values
             Worksheet = new Worksheet();
+			AssignedFitters = new ObservableCollection<Fitter>();
 
-            _isServiceVehicleChecked = false;
+			_isServiceVehicleChecked = false;
             _isAuxiliaryMaterialsChecked = false;
             StartTime = new TimeSpan(0, 0, 0);
             EndTime = new TimeSpan(0, 0, 0);
@@ -262,10 +266,6 @@ namespace ViewModel
             }
 
 
-			// Temp data
-			AssignedFitters = new ObservableCollection<Fitter>();
-			//AssignedFitters.Add(new Fitter("10001", new Name("Klaus", "Sørensen")));
-			//AssignedFitters.Add(new Fitter("10002", new Name("Jesper", "Nielsen")));
 		}
 
         public void CreateWorksheet()
@@ -301,6 +301,11 @@ namespace ViewModel
 			termsheetVM.Customer = Customer;
 
 			return termsheetVM;
+		}
+
+		public void AddImages(string[] fileNames)
+		{
+			//TODO: Add image filepaths to database.
 		}
 	}
 }
