@@ -59,7 +59,8 @@ namespace View.UserControls
 
 		private void AddMaterialsButton_Click(object sender, RoutedEventArgs e)
 		{
-
+			//TODO: Remember to remove this before final release
+			PageCommands.GoTo(this, new FitterWorksheetUC(new FitterWorksheetViewModel(_worksheetVM)));
 		}
 
 		private void CancelButton_Click(object sender, RoutedEventArgs e)

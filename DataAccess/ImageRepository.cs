@@ -9,7 +9,7 @@ using Model;
 
 namespace DataAccess
 {
-	class ImageRepository : IRepository<Image>
+	public class ImageRepository : IRepository<Image>
 	{
 		public void Create(Image image)
 		{

@@ -46,6 +46,7 @@
     <Compile Include="AddTaskViewModel.cs" />
     <Compile Include="CreateNewCustomerViewModel.cs" />
     <Compile Include="FitterMenuViewModel.cs" />
+    <Compile Include="FitterWorksheetViewModel.cs" />
     <Compile Include="LoginViewModel.cs" />
     <Compile Include="OfficeWorkerMenuViewModel.cs" />
     <Compile Include="Program.cs" />
