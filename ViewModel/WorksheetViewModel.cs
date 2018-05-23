@@ -127,8 +127,9 @@ namespace ViewModel
         }
 
 		public string Workplace { get; set; }
+		public string WorkDescription { get; set; }
 
-        public string CustomerFullAddress
+		public string CustomerFullAddress
         {
             get
             {

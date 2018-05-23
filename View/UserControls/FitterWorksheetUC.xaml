@@ -50,7 +50,7 @@
                 <TextBox x:Name="EndDateTimeTextBox" Text="{Binding EndDateTime, Mode=OneWay}" BorderThickness="0"  HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" Width="225" IsEnabled="False" Margin="9,9,0,0"/>
             </Border>
             <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="110" Margin="260,143,0,0" VerticalAlignment="Top" Width="495">
-                <TextBox x:Name="WorkDescriptionTextBox" Text="{Binding Worksheet.WorkDescription, Mode=OneWay}" BorderThickness="0"  HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="90" Width="475" IsEnabled="False" Margin="9,9,0,0"/>
+                <TextBox x:Name="WorkDescriptionTextBox" Text="{Binding WorkDescription, Mode=OneWay}" BorderThickness="0"  HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="90" Width="475" IsEnabled="False" Margin="9,9,0,0"/>
             </Border>
         </Grid>
     </Grid>

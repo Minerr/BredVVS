@@ -14,6 +14,7 @@ namespace ViewModel
 		public ObservableCollection<Material> Materials { get; set; }
 		public string WorksheetID { get; set; }
 		public string Workplace { get; set; }
+		public string WorkDescription { get; set; }
 		public Customer Customer { get; set; }
 		public string StartDateTime { get; set; }
 		public string EndDateTime { get; set; }
@@ -25,6 +26,7 @@ namespace ViewModel
 
 			WorksheetID = worksheetVM.Worksheet.ID;
 			Workplace = worksheetVM.Workplace;
+			WorkDescription = worksheetVM.WorkDescription;
 
 			Customer = worksheetVM.Customer;
 
