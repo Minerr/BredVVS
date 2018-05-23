@@ -63,17 +63,18 @@ namespace View.UserControls
 
         private void SelectCustomerButton_Click(object sender, RoutedEventArgs e)
         {
-			PageCommands.GoTo(this, new WorksheetUC(_searchForCustomerVM.SelectCustomer()));
+			PageCommands.Instance.GoTo(new WorksheetUC(_searchForCustomerVM.SelectCustomer()));
         }
 
         private void CreateNewCustomerButton_Click(object sender, RoutedEventArgs e)
         {
-			PageCommands.GoTo(this, new CreateNewCustomerUC());
+			PageCommands.Instance.GoTo(new CreateNewCustomerUC());
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-			PageCommands.GoBack(this);
-        }
+			PageCommands.Instance.GoTo(new OfficeWorkerMenuUC());
+
+		}
     }
 }

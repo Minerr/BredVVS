@@ -11,11 +11,12 @@
             <Label Content="Arbejdsseddel nr.: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="236,10,0,0" Width="182" FontSize="22"/>
             <Label Name="WorksheetIDLabel" Content="{Binding Worksheet.ID, Mode=OneWay}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="418,10,0,0" Width="193" FontSize="22" Height="39"/>
 
-            <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="194" Margin="10,59,0,0" VerticalAlignment="Top" Width="245"/>
+            <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="194" Margin="10,59,0,0" VerticalAlignment="Top" Width="245">
+                <Label Name="CustomerInfoLabel" Content="{Binding CustomerInfo}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="225" Margin="9,23,0,0" Height="78"/>
+            </Border>
             <Label Content="Arbejdssted" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="13,159,0,0" Width="133"/>
-            <TextBox x:Name="WorkplaceTextBox" Text="{Binding Worksheet.Workplace, Mode=OneWay}" HorizontalAlignment="Left" Height="57" TextWrapping="Wrap"  VerticalAlignment="Top" Width="221" Margin="23,186,0,0" IsEnabled="False"/>
+            <Label x:Name="WorkplaceLabel" Content="{Binding Worksheet.Workplace}" HorizontalAlignment="Left" Height="57" VerticalAlignment="Top" Width="221" Margin="23,186,0,0"/>
             <Label Content="Kundeinformation" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,60,0,0" Width="134"/>
-            <TextBox x:Name="CustomerInfoTextBox" Text="{Binding CustomerInfo, Mode=OneWay}" HorizontalAlignment="Left" Margin="22,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="69" Width="222" IsEnabled="False"/>
 
             <Button x:Name="AddRemoveMaterialsButton" Content="Tilføj/Fjern materialer" HorizontalAlignment="Left" Margin="10,268,0,0" VerticalAlignment="Top" Width="245" Height="35" Click="AddRemoveMaterialsButton_Click" />
             <Button x:Name="AddRemoceWorkHoursButton" Content="Tilføj/Fjern timer" HorizontalAlignment="Left" Margin="260,268,0,0" VerticalAlignment="Top" Width="245" Height="35" Click="AddRemoveWorkHoursButton_Click"/>

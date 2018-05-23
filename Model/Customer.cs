@@ -41,5 +41,10 @@ namespace Model
 			PhoneNumber = phoneNumer;
 			Email = email;
 		}
+
+		public override string ToString()
+		{
+			return Name.FullName + "\n" + Address + "\n" + ZIPcode + " " + City + "\n" + PhoneNumber;
+		}
 	}
 }

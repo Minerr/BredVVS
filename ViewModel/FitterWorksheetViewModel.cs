@@ -15,17 +15,14 @@ namespace ViewModel
 		public string StartDateTime { get; set; }
 		public string EndDateTime { get; set; }
 		
-		public FitterWorksheetViewModel(WorksheetViewModel worksheetVM)
+		public FitterWorksheetViewModel(ref WorksheetViewModel worksheetVM)
 		{
 			Worksheet = worksheetVM.Worksheet;
 
 			StartDateTime = Worksheet.StartDateTime.ToString();
 			EndDateTime = Worksheet.EndDateTime.ToString();
 
-			CustomerInfo =	Worksheet.Customer.Name.FullName + "\n" +
-							Worksheet.Customer.Address + "\n" +
-							Worksheet.Customer.ZIPcode + " " + Worksheet.Customer.City + "\n" +
-							Worksheet.Customer.PhoneNumber;
+			CustomerInfo = Worksheet.Customer.ToString();
 		}
 
 		public TermsheetViewModel CreateNewTermsheet()

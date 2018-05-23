@@ -42,7 +42,7 @@ namespace View.UserControls
 
 		private void LoginButton_Click(object sender, RoutedEventArgs e)
 		{
-			PageCommands.GoTo(this, new OfficeWorkerMenuUC());
+			PageCommands.Instance.GoTo(new OfficeWorkerMenuUC());
 		}
 	}
 }

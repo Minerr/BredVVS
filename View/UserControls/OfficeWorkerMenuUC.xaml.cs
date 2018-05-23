@@ -42,7 +42,7 @@ namespace View.UserControls
 
 		private void CreateWorksheetButton_Click(object sender, RoutedEventArgs e)
 		{
-			PageCommands.GoTo(this, new SearchForCustomerUC());
+			PageCommands.Instance.GoTo(new SearchForCustomerUC());
 		}
 	}
 }

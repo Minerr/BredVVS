@@ -25,7 +25,7 @@ namespace View.UserControls
 
 		public FitterWorksheetUC()
 		{
-			_fitterWorksheetVM = new FitterWorksheetViewModel(new WorksheetViewModel());
+			_fitterWorksheetVM = null;
 			Init();
 		}
 
@@ -58,7 +58,7 @@ namespace View.UserControls
 
 		private void CreateTermsheetButton_Click(object sender, RoutedEventArgs e)
 		{
-			PageCommands.GoTo(this, new TermsheetUC(_fitterWorksheetVM.CreateNewTermsheet()));
+			PageCommands.Instance.GoTo(new TermsheetUC(_fitterWorksheetVM.CreateNewTermsheet()));
 		}
 
 		private void ShowTermsheetsButton_Click(object sender, RoutedEventArgs e)
@@ -68,7 +68,7 @@ namespace View.UserControls
 
 		private void GoBackButton_Click(object sender, RoutedEventArgs e)
 		{
-			PageCommands.GoTo(this, new FitterMenuUC());
+			PageCommands.Instance.GoTo(new FitterMenuUC());
 		}
 	}
 }
