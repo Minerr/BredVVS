@@ -66,7 +66,7 @@ namespace DataAccess
 	        SqlCommand command = new SqlCommand("spUpdateCustomer");
 			command.CommandType = CommandType.StoredProcedure;
 
-	        command.Parameters.Add(new SqlParameter("@ID", customer.ID));
+	        command.Parameters.Add(new SqlParameter("@ID", customer.CustomerID));
 	        command.Parameters.Add(new SqlParameter("@FirstName", customer.Name.FirstName));
 	        command.Parameters.Add(new SqlParameter("@LastName", customer.Name.LastName));
 	        command.Parameters.Add(new SqlParameter("@Address", customer.Address));
@@ -83,7 +83,7 @@ namespace DataAccess
 			SqlCommand command = new SqlCommand("spDeleteCustomer");
 			command.CommandType = CommandType.StoredProcedure;
 
-			command.Parameters.Add(new SqlParameter("@ID", customer.ID));
+			command.Parameters.Add(new SqlParameter("@ID", customer.CustomerID));
 			DatabaseController.ExecuteNonQuerySP(command);
 
 		}
@@ -101,7 +101,7 @@ namespace DataAccess
 
 		    try
 		    {
-			    string ID = reader["ID"].ToString();
+			    string ID = reader["CustomerID"].ToString();
 			    string firstName = reader["FirstName"].ToString();
 			    string lastName = reader["LastName"].ToString();
 			    string address = reader["Address"].ToString();

@@ -9,7 +9,7 @@ namespace Model
 {
 	 public class Customer
 	{
-		public string ID { get; private set; }
+		public string CustomerID { get; private set; }
 		public Name Name { get; set; }
 		public string Address { get; set; }
 		public string ZIPcode { get; set; }
@@ -33,7 +33,7 @@ namespace Model
 
 		public Customer(string ID, Name name, string address, string ZIPcode, string city, string phoneNumer, string email)
 		{
-			this.ID = ID;
+			this.CustomerID = ID;
 			Name = name;
 			Address = address;
 			this.ZIPcode = ZIPcode;
