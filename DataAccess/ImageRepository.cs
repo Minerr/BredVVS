@@ -23,7 +23,7 @@ namespace DataAccess
 
 		public Image Retrieve(int ID)
 		{
-			string error = "";
+			string error == "";
 			Image image = null;
 
 			SqlCommand command = new SqlCommand("spGetImageByID");
@@ -42,7 +42,7 @@ namespace DataAccess
 
 				image = new Image(DateTime, GPSLocation, Description, employeeID, type);
 			}
-			catch(Exception e)
+			catch (Exception e)
 			{
 				error = "ERROR! " + e.Message;
 			}
