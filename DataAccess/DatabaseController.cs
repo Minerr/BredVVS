@@ -64,7 +64,7 @@ namespace DataAccess
 		{
 			List<object[]> table = null;
 
-			if (reader.HasRows)
+			while (reader.HasRows)
 			{
 				table = new List<object[]>();
 
@@ -85,6 +85,8 @@ namespace DataAccess
 					reader.GetValues(row);
 					table.Add(row);
 				}
+
+				reader.NextResult();
 			}
 			return table;
 		}
