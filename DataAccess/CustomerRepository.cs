@@ -87,5 +87,38 @@ namespace DataAccess
 			DatabaseController.ExecuteNonQuerySP(command);
 
 		}
+
+	    public Customer RetrieveCustomerByKeyword(string keyword)
+	    {
+		    string error = "";
+		    Customer customer = null;
+
+		    SqlCommand command = new SqlCommand("spGetCustomerByKeyword");
+		    command.CommandType = CommandType.StoredProcedure;
+
+		    command.Parameters.Add(new SqlParameter("@Keyword", keyword));
+		    SqlDataReader reader = DatabaseController.ExecuteReader(command);
+
+		    try
+		    {
+			    string ID = reader["ID"].ToString();
+			    string firstName = reader["FirstName"].ToString();
+			    string lastName = reader["LastName"].ToString();
+			    string address = reader["Address"].ToString();
+			    string city = reader["City"].ToString();
+			    string ZIPcode = reader["ZIPcode"].ToString();
+			    string phoneNumber = reader["Phonenumber"].ToString();
+			    string email = reader["Email"].ToString();
+
+			    Name name = new Name(firstName, lastName);
+			    customer = new Customer(ID, name, address, city, ZIPcode, phoneNumber, email);
+		    }
+		    catch (Exception e)
+		    {
+			    error = "ERROR! " + e.Message;
+		    }
+
+		    return customer;
+		}
 	}
 }

@@ -43,7 +43,7 @@ namespace View.UserControls
         private void SearchForCustomerButton_Click(object sender, RoutedEventArgs e)
         {
 
-			_searchForCustomerVM.RetrieveCustomers(SearchForCustomerBar.Text);
+			_searchForCustomerVM.RetrieveCustomers(SearchForCustomerTextBox.Text);
 
         }
 
