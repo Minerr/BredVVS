@@ -101,17 +101,20 @@ namespace DataAccess
 
 		    try
 		    {
-			    string ID = reader["CustomerID"].ToString();
-			    string firstName = reader["FirstName"].ToString();
-			    string lastName = reader["LastName"].ToString();
-			    string address = reader["Address"].ToString();
-			    string city = reader["City"].ToString();
-			    string ZIPcode = reader["ZIPcode"].ToString();
-			    string phoneNumber = reader["Phonenumber"].ToString();
-			    string email = reader["Email"].ToString();
+			    while (reader.Read())
+			    {
+				    string ID = reader["CustomerID"].ToString();
+				    string firstName = reader["FirstName"].ToString();
+				    string lastName = reader["LastName"].ToString();
+				    string address = reader["Address"].ToString();
+				    string city = reader["City"].ToString();
+				    string ZIPcode = reader["ZIPcode"].ToString();
+				    string phoneNumber = reader["Phonenumber"].ToString();
+				    string email = reader["Email"].ToString();
 
-			    Name name = new Name(firstName, lastName);
-			    customer = new Customer(ID, name, address, city, ZIPcode, phoneNumber, email);
+				    Name name = new Name(firstName, lastName);
+				    customer = new Customer(ID, name, address, city, ZIPcode, phoneNumber, email);
+				}
 		    }
 		    catch (Exception e)
 		    {
