@@ -36,9 +36,10 @@ namespace DataAccess
 			}
 		}
 
-		public static SqlDataReader ExecuteReader(SqlCommand command)
+		public static List<object[]> ExecuteReader(SqlCommand command)
 		{
-			SqlDataReader table = null;
+			SqlDataReader reader = null;
+			List<object[]> table = null;
 			if (command.CommandType == CommandType.StoredProcedure)
 			{
 				using (SqlConnection con = new SqlConnection(_connectionString))
@@ -47,12 +48,42 @@ namespace DataAccess
 					{
 						con.Open();
 						command.Connection = con;
-						table = command.ExecuteReader();						
+						reader = command.ExecuteReader();
+						table = ConvertSqlDataToList(reader);
 					}
 					catch (SqlException e)
 					{
 						Console.WriteLine("" + e.Message);
 					}
+				}
+			}
+			return table;
+		}
+
+		private static List<object[]> ConvertSqlDataToList(SqlDataReader reader)
+		{
+			List<object[]> table = null;
+
+			if (reader.HasRows)
+			{
+				table = new List<object[]>();
+
+				int numberOfColumns = reader.FieldCount;
+
+				// Insert column names into the table.
+				object[] columnNames = new object[numberOfColumns];
+				for (int i = 0; i < numberOfColumns; i++)
+				{
+					columnNames[i] = reader.GetName(i);
+				}
+				table.Add(columnNames);
+
+				// Insert all rows into table.
+				while (reader.Read())
+				{
+					object[] row = new object[numberOfColumns];
+					reader.GetValues(row);
+					table.Add(row);
 				}
 			}
 			return table;

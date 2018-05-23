@@ -38,30 +38,36 @@ namespace DataAccess
 			command.CommandType = CommandType.StoredProcedure;
 
 			command.Parameters.Add(new SqlParameter("@ID", ID));
-	        SqlDataReader reader = DatabaseController.ExecuteReader(command);
+	        List<object[]> table = DatabaseController.ExecuteReader(command);
 
-	        try
+	        if (table != null)
 	        {
-		        string firstName = reader["FirstName"].ToString();
-		        string lastName = reader["LastName"].ToString();
-		        string address = reader["Address"].ToString();
-		        string city = reader["City"].ToString();
-		        string ZIPcode = reader["ZIPcode"].ToString();
-		        string phoneNumber = reader["Phonenumber"].ToString();
-		        string email = reader["Email"].ToString();
+		        foreach (object[] row in table)
+		        {
+					string firstName = row[1].ToString();
+					string lastName = row[2].ToString();
+					string address = row[3].ToString();
+			        string ZIPcode = row[4].ToString();
+					string city = row[5].ToString();
+					string phoneNumber = row[6].ToString();
+					string email = row[7].ToString();
 
-		        Name name = new Name(firstName, lastName);
-		        customer = new Customer(ID.ToString(), name, address, city, ZIPcode, phoneNumber, email);
-	        }
-	        catch (Exception e)
-	        {
-		        error = "ERROR! " + e.Message;
-	        }
-
+			        Name name = new Name(firstName, lastName);
+			        customer = new Customer(ID.ToString(), name, address, ZIPcode, city, phoneNumber, email);
+				}
+			}
 	        return customer;
 		}
 
-        public void Update(Customer customer)
+	    //string firstName = table["FirstName"].ToString();
+	    //string lastName = table["LastName"].ToString();
+	    //string address = table["Address"].ToString();
+	    //string city = table["City"].ToString();
+	    //string ZIPcode = table["ZIPcode"].ToString();
+	    //string phoneNumber = table["Phonenumber"].ToString();
+	    //string email = table["Email"].ToString();
+
+		public void Update(Customer customer)
         {
 	        SqlCommand command = new SqlCommand("spUpdateCustomer");
 			command.CommandType = CommandType.StoredProcedure;
@@ -97,35 +103,27 @@ namespace DataAccess
 		    command.CommandType = CommandType.StoredProcedure;
 
 		    command.Parameters.Add(new SqlParameter("@Keyword", keyword));
-		    SqlDataReader reader = DatabaseController.ExecuteReader(command);
+		    List<object[]> table = DatabaseController.ExecuteReader(command);
 
-		    try
+		    if (table != null)
 		    {
-			    if (reader.HasRows)
+			    foreach (object[] row in table)
 			    {
+				    string ID = row[0].ToString();
+				    string firstName = row[1].ToString();
+				    string lastName = row[2].ToString();
+				    string address = row[3].ToString();
+				    string ZIPcode = row[4].ToString();
+				    string city = row[5].ToString();
+				    string phoneNumber = row[6].ToString();
+				    string email = row[7].ToString();
 
-				    while (reader.Read())
-				    {
-					    string ID = reader["CustomerID"].ToString();
-					    string firstName = reader["FirstName"].ToString();
-					    string lastName = reader["LastName"].ToString();
-					    string address = reader["Address"].ToString();
-					    string ZIPcode = reader["ZIPcode"].ToString();
-						string city = reader["City"].ToString();
-					    string phoneNumber = reader["Phonenumber"].ToString();
-					    string email = reader["Email"].ToString();
-
-					    Name name = new Name(firstName, lastName);
-					    customer = new Customer(ID, name, address, ZIPcode, city, phoneNumber, email);
-				    }
+				    Name name = new Name(firstName, lastName);
+				    customer = new Customer(ID, name, address, ZIPcode, city, phoneNumber, email);
 			    }
 		    }
-		    catch (Exception e)
-		    {
-			    error = "ERROR! " + e.Message;
-		    }
 
-		    return customer;
+			return customer;
 		}
 	}
 }
