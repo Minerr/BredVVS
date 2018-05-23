@@ -31,7 +31,6 @@ namespace DataAccess
 
         public Customer Retrieve(int ID)
         {
-	        string error = "";
 	        Customer customer = null;
 
 			SqlCommand command = new SqlCommand("spGetCustomerByID");
@@ -58,14 +57,6 @@ namespace DataAccess
 			}
 	        return customer;
 		}
-
-	    //string firstName = table["FirstName"].ToString();
-	    //string lastName = table["LastName"].ToString();
-	    //string address = table["Address"].ToString();
-	    //string city = table["City"].ToString();
-	    //string ZIPcode = table["ZIPcode"].ToString();
-	    //string phoneNumber = table["Phonenumber"].ToString();
-	    //string email = table["Email"].ToString();
 
 		public void Update(Customer customer)
         {
@@ -96,7 +87,7 @@ namespace DataAccess
 
 	    public Customer RetrieveCustomerByKeyword(string keyword)
 	    {
-		    string error = "";
+		    //string error = "";
 		    Customer customer = null;
 
 		    SqlCommand command = new SqlCommand("spGetCustomerByKeyword");

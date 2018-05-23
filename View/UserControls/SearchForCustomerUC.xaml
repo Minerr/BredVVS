@@ -16,7 +16,7 @@
                 <ListView x:Name="CustomerListView" ItemsSource="{Binding CustomerList}" SelectedItem="{Binding SelectedCustomer}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="Selector_OnSelectionChanged">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Kundenummer" DisplayMemberBinding="{Binding ID}" Width="100"/>
+                            <GridViewColumn Header="Kundenummer" DisplayMemberBinding="{Binding CustomerID}" Width="100"/>
                             <GridViewColumn Header="Fornavn" DisplayMemberBinding="{Binding Name.FirstName}" Width="75"/>
                             <GridViewColumn Header="Efternavn" DisplayMemberBinding="{Binding Name.LastName}" Width="100"/>
                             <GridViewColumn Header="Adresse" DisplayMemberBinding="{Binding Address}" Width="200"/>
