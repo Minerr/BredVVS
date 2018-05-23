@@ -113,7 +113,6 @@ namespace DataAccess
 				    customer = new Customer(ID, name, address, ZIPcode, city, phoneNumber, email);
 			    }
 		    }
-
 			return customer;
 		}
 	}
