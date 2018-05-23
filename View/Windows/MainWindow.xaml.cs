@@ -24,7 +24,7 @@ namespace View.Windows
 		{
 			InitializeComponent();
 			PageCommands.Instance.MainWindow = this;
-			PageCommands.Instance.GoTo(new LoginUC());
+			PageCommands.Instance.GoTo(new LogInUC());
 		}
 	}
 }

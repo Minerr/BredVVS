@@ -70,8 +70,8 @@
     <Compile Include="UserControls\FitterMenuUC.xaml.cs">
       <DependentUpon>FitterMenuUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\LoginUC.xaml.cs">
-      <DependentUpon>LoginUC.xaml</DependentUpon>
+    <Compile Include="UserControls\LogInUC.xaml.cs">
+      <DependentUpon>LogInUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\OfficeWorkerMenuUC.xaml.cs">
       <DependentUpon>OfficeWorkerMenuUC.xaml</DependentUpon>
@@ -112,7 +112,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\LoginUC.xaml">
+    <Page Include="UserControls\LogInUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

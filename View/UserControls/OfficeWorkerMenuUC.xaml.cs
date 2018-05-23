@@ -47,7 +47,7 @@ namespace View.UserControls
 
 		private void LogOutButton_Click(object sender, RoutedEventArgs e)
 		{
-			PageCommands.Instance.GoTo(new LoginUC());
+			PageCommands.Instance.GoTo(new LogInUC());
 		}
 	}
 }

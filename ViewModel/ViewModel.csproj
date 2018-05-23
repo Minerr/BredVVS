@@ -47,7 +47,7 @@
     <Compile Include="CreateNewCustomerViewModel.cs" />
     <Compile Include="FitterMenuViewModel.cs" />
     <Compile Include="FitterWorksheetViewModel.cs" />
-    <Compile Include="LoginViewModel.cs" />
+    <Compile Include="LogInViewModel.cs" />
     <Compile Include="OfficeWorkerMenuViewModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
