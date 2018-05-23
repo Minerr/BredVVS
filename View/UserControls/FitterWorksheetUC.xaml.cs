@@ -29,9 +29,9 @@ namespace View.UserControls
 			Init();
 		}
 
-		public FitterWorksheetUC(FitterWorksheetViewModel viewModel)
+		public FitterWorksheetUC(WorksheetViewModel viewModel)
 		{
-			_fitterWorksheetVM = viewModel;
+			_fitterWorksheetVM = new FitterWorksheetViewModel(viewModel);
 			Init();
 		}
 

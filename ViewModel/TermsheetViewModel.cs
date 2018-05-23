@@ -28,20 +28,7 @@ namespace ViewModel
 			}
 		}
 
-		public string CustomerInfo
-		{
-			get
-			{
-				string customerInfo = "";
-
-				if (Customer != null)
-				{
-					customerInfo = Customer.Name.FullName + "\n" + Customer.Address + "\n" + Customer.ZIPcode + " " + Customer.City + "\n" + Customer.PhoneNumber;
-				}
-
-				return customerInfo;
-			}
-		}
+		public string Workplace { get; set; }
 
 		public Termsheet Termsheet { get; set; }
 

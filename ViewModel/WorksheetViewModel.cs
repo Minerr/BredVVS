@@ -126,6 +126,8 @@ namespace ViewModel
             }
         }
 
+		public string Workplace { get; set; }
+
         public string CustomerFullAddress
         {
             get

@@ -13,9 +13,9 @@
 
                 <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="154" Margin="10,49,0,0" VerticalAlignment="Top" Width="336"/>
                 <Label Content="Arbejdssted" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,49,0,0" Width="133"/>
-                <TextBox x:Name="WorkplaceTextBox"  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="253" Margin="20,75,0,0"/>
+                <TextBox x:Name="WorkplaceTextBox"  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding Workplace}" VerticalAlignment="Top" Width="253" Margin="20,75,0,0"/>
                 <Label Content="Kunde" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,98,0,0" Width="133"/>
-                <TextBox x:Name="CustomerInfoTextBox" HorizontalAlignment="Left" Margin="20,123,0,0" TextWrapping="Wrap" Text="{Binding CustomerInfo, Mode=OneWay}" VerticalAlignment="Top" Height="69" Width="253" IsEnabled="False"/>
+                <TextBox x:Name="CustomerInfoTextBox" HorizontalAlignment="Left" Margin="20,123,0,0" TextWrapping="Wrap" Text="{Binding Customer, Mode=OneWay}" VerticalAlignment="Top" Height="69" Width="253" IsEnabled="False"/>
 
                 <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="154" Margin="351,49,0,0" VerticalAlignment="Top" Width="412"/>
                 <Label Content="Virksomhed" HorizontalAlignment="Left" Margin="360,49,0,0" VerticalAlignment="Top" Width="119"/>

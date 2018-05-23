@@ -9,18 +9,18 @@
     <Grid Name="MainGrid">
         <Grid Margin="0">
             <Label Content="Arbejdsseddel nr.: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="236,10,0,0" Width="182" FontSize="22"/>
-            <Label Name="WorksheetIDLabel" Content="{Binding Worksheet.ID, Mode=OneWay}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="418,10,0,0" Width="193" FontSize="22" Height="39"/>
+            <Label Name="WorksheetIDLabel" Content="{Binding WorksheetID, Mode=OneWay}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="418,10,0,0" Width="193" FontSize="22" Height="39"/>
 
             <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="194" Margin="10,59,0,0" VerticalAlignment="Top" Width="245">
-                <Label Name="CustomerInfoLabel" Content="{Binding CustomerInfo}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="225" Margin="9,23,0,0" Height="78"/>
+                <TextBox Name="CustomerInfoTextBox" Text="{Binding Customer, Mode=OneWay}" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="225" Margin="9,23,0,0" Height="78" TextWrapping="Wrap" IsEnabled="False"/>
             </Border>
             <Label Content="Arbejdssted" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="13,159,0,0" Width="133"/>
-            <Label x:Name="WorkplaceLabel" Content="{Binding Worksheet.Workplace}" HorizontalAlignment="Left" Height="57" VerticalAlignment="Top" Width="221" Margin="23,186,0,0"/>
+            <TextBox x:Name="WorkplaceTextBox" Text="{Binding Workplace}" BorderThickness="0"  HorizontalAlignment="Left" Height="57" VerticalAlignment="Top" Width="221" Margin="23,186,0,0" TextWrapping="Wrap" IsEnabled="False"/>
             <Label Content="Kundeinformation" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,60,0,0" Width="134"/>
 
             <Button x:Name="AddRemoveMaterialsButton" Content="Tilføj/Fjern materialer" HorizontalAlignment="Left" Margin="10,268,0,0" VerticalAlignment="Top" Width="245" Height="35" Click="AddRemoveMaterialsButton_Click" />
             <Button x:Name="AddRemoceWorkHoursButton" Content="Tilføj/Fjern timer" HorizontalAlignment="Left" Margin="260,268,0,0" VerticalAlignment="Top" Width="245" Height="35" Click="AddRemoveWorkHoursButton_Click"/>
-            <ListView x:Name="WorkTimeListBox" ItemsSource="{Binding Worksheet.WorkHours}" HorizontalAlignment="Left" Height="243" Margin="260,308,0,0" VerticalAlignment="Top" Width="245" >
+            <ListView x:Name="WorkTimeListBox" ItemsSource="{Binding WorkHours}" HorizontalAlignment="Left" Height="243" Margin="260,308,0,0" VerticalAlignment="Top" Width="245" >
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Navn" DisplayMemberBinding="{Binding Employee.Name.FullName}" Width="80"/>
@@ -30,7 +30,7 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <ListView x:Name="MaterialsListBox" ItemsSource="{Binding Worksheet.Materials}" HorizontalAlignment="Left" Height="243" Margin="10,308,0,0" VerticalAlignment="Top" Width="245">
+            <ListView x:Name="MaterialsListBox" ItemsSource="{Binding Materials}" HorizontalAlignment="Left" Height="243" Margin="10,308,0,0" VerticalAlignment="Top" Width="245">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="50"/>
@@ -44,13 +44,13 @@
             <Button x:Name="ShowTermsheetsButton" Content="Se aftalesedler" HorizontalAlignment="Left" Margin="510,426,0,0" VerticalAlignment="Top" Width="245" Height="35" Click="ShowTermsheetsButton_Click"/>
             <Button x:Name="GoBackButton" Content="Tilbage" HorizontalAlignment="Left" Margin="625,516,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="GoBackButton_Click"/>
             <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="78" Margin="260,60,0,0" VerticalAlignment="Top" Width="245">
-                <TextBox x:Name="StarDateTimeTextBox" Text="{Binding StartDateTime, Mode=OneWay}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" Width="225" IsEnabled="False" Margin="9,9,0,0"/>
+                <TextBox x:Name="StarDateTimeTextBox" Text="{Binding StartDateTime, Mode=OneWay}" BorderThickness="0"  HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" Width="225" IsEnabled="False" Margin="9,9,0,0"/>
             </Border>
             <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="78" Margin="510,60,0,0" VerticalAlignment="Top" Width="245">
-                <TextBox x:Name="EndDateTimeTextBox" Text="{Binding EndDateTime, Mode=OneWay}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" Width="225" IsEnabled="False" Margin="9,9,0,0"/>
+                <TextBox x:Name="EndDateTimeTextBox" Text="{Binding EndDateTime, Mode=OneWay}" BorderThickness="0"  HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" Width="225" IsEnabled="False" Margin="9,9,0,0"/>
             </Border>
             <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="110" Margin="260,143,0,0" VerticalAlignment="Top" Width="495">
-                <TextBox x:Name="WorkDescriptionTextBox" Text="{Binding Worksheet.WorkDescription, Mode=OneWay}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="90" Width="475" IsEnabled="False" Margin="9,9,0,0"/>
+                <TextBox x:Name="WorkDescriptionTextBox" Text="{Binding Worksheet.WorkDescription, Mode=OneWay}" BorderThickness="0"  HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="90" Width="475" IsEnabled="False" Margin="9,9,0,0"/>
             </Border>
         </Grid>
     </Grid>
