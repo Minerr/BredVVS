@@ -30,8 +30,12 @@ namespace ViewModel
 
 			Customer = worksheetVM.Customer;
 
-			StartDateTime = worksheetVM.StartDateTime.ToString();
-			EndDateTime = worksheetVM.EndDateTime.ToString();
+			DateTime startDateTime = worksheetVM.StartDateTime;
+			DateTime endDateTime = worksheetVM.EndDateTime;
+			StartDateTime =	"Startdato: " + startDateTime.Date.ToString("d") + "\n" + 
+							"Starttid: " + startDateTime.ToString("hh:mm");
+			EndDateTime = "Slutdato: " + endDateTime.Date.ToString("d") + "\n" +
+				"Sluttid: " + endDateTime.ToString("hh:mm");
 
 		}
 

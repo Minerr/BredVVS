@@ -28,7 +28,7 @@ namespace ViewModel
             }
             set
             {
-                int hour = 0;
+				int hour = 0;
                 int minute = 0;
 
                 if (value.Hours != 0)
@@ -250,14 +250,9 @@ namespace ViewModel
 
 			_isServiceVehicleChecked = false;
             _isAuxiliaryMaterialsChecked = false;
-            StartTime = new TimeSpan(0, 0, 0);
-            EndTime = new TimeSpan(0, 0, 0);
-			StartDate = DateTime.Today;
-			EndDate = DateTime.Today;
-
 
 			Hours = new List<TimeSpan>();
-            for (int i = 0; i < 24; i++)
+            for (int i = 6; i <= 21; i++)
             {
                 Hours.Add(new TimeSpan(i, 0, 0));
             }
@@ -268,7 +263,11 @@ namespace ViewModel
                 Minutes.Add(new TimeSpan(0, i, 0));
             }
 
+			StartTime = new TimeSpan(6, 0, 0);
+			EndTime = new TimeSpan(6, 0, 0);
 
+			StartDate = DateTime.Today;
+			EndDate = DateTime.Today;
 		}
 
         public void CreateWorksheet()
