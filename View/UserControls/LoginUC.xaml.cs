@@ -42,7 +42,28 @@ namespace View.UserControls
 
 		private void LoginButton_Click(object sender, RoutedEventArgs e)
 		{
-			PageCommands.Instance.GoTo(new OfficeWorkerMenuUC());
+			ViewModelBase viewModel = _loginVM.LogIn();
+
+			if(viewModel != null)
+			{
+				if(viewModel.GetType() == typeof(OfficeWorkerMenuViewModel))
+				{
+					PageCommands.Instance.GoTo(new OfficeWorkerMenuUC());
+				}
+				else if(viewModel.GetType() == typeof(FitterMenuViewModel))
+				{
+					PageCommands.Instance.GoTo(new FitterMenuUC());
+				}
+			}
+			else
+			{
+				ErrorMessageLabel.Visibility = Visibility.Visible;
+			}
+		}
+
+		private void TextBoxes_SelectionChanged(object sender, RoutedEventArgs e)
+		{
+			ErrorMessageLabel.Visibility = Visibility.Hidden;
 		}
 	}
 }

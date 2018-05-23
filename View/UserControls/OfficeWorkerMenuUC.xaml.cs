@@ -44,5 +44,10 @@ namespace View.UserControls
 		{
 			PageCommands.Instance.GoTo(new SearchForCustomerUC());
 		}
+
+		private void LogOutButton_Click(object sender, RoutedEventArgs e)
+		{
+			PageCommands.Instance.GoTo(new LoginUC());
+		}
 	}
 }
