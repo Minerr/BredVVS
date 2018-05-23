@@ -37,7 +37,7 @@ namespace ViewModel
 			CustomerRepository repos = new CustomerRepository();
 			
 			List<Customer> customers = new List<Customer>();
-			customers.Add(repos.RetrieveCustomerByKeyword(keyword));
+			customers.AddRange(repos.RetrieveCustomerByKeyword(keyword));
 			CustomerList = customers;
 
 			//customers.Add(new Customer(new Name("Daniel", "Gierahn"), "Skt. Knudsgade 44", "5000", "Odense", "76543278", "FedtMandSpa@AOL.com"));

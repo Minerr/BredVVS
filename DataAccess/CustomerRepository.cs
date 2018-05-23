@@ -85,15 +85,15 @@ namespace DataAccess
 
 		}
 
-	    public Customer RetrieveCustomerByKeyword(string keyword)
+	    public List<Customer> RetrieveCustomerByKeyword(string keyword)
 	    {
 		    //string error = "";
-		    Customer customer = null;
+			List<Customer> customers = new List<Customer>();
 
 		    SqlCommand command = new SqlCommand("spGetCustomerByKeyword");
 		    command.CommandType = CommandType.StoredProcedure;
 
-		    command.Parameters.Add(new SqlParameter("@Keyword", keyword));
+		    command.Parameters.Add(new SqlParameter("@Keyword", "%" + keyword + "%"));
 		    List<object[]> table = DatabaseController.ExecuteReader(command);
 
 		    if (table != null)
@@ -110,10 +110,10 @@ namespace DataAccess
 				    string email = row[7].ToString();
 
 				    Name name = new Name(firstName, lastName);
-				    customer = new Customer(ID, name, address, ZIPcode, city, phoneNumber, email);
+				    customers.Add(new Customer(ID, name, address, ZIPcode, city, phoneNumber, email));
 			    }
 		    }
-			return customer;
+			return customers;
 		}
 	}
 }

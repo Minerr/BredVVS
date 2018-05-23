@@ -26,7 +26,7 @@ namespace DataAccess
 					{
 						con.Open();
 						command.Connection = con;
-						command.ExecuteNonQuery(); 
+						command.ExecuteNonQuery();
 					}
 					catch (SqlException e)
 					{
@@ -71,12 +71,12 @@ namespace DataAccess
 				int numberOfColumns = reader.FieldCount;
 
 				// Insert column names into the table.
-				object[] columnNames = new object[numberOfColumns];
-				for (int i = 0; i < numberOfColumns; i++)
-				{
-					columnNames[i] = reader.GetName(i);
-				}
-				table.Add(columnNames);
+				//object[] columnNames = new object[numberOfColumns];
+				//for (int i = 0; i < numberOfColumns; i++)
+				//{
+				//	columnNames[i] = reader.GetName(i);
+				//}
+				//table.Add(columnNames);
 
 				// Insert all rows into table.
 				while (reader.Read())
@@ -88,6 +88,7 @@ namespace DataAccess
 
 				reader.NextResult();
 			}
+
 			return table;
 		}
 	}
