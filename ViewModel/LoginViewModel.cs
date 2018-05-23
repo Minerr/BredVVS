@@ -9,13 +9,13 @@ using Model;
 
 namespace ViewModel
 {
-	public class LoginViewModel : ViewModelBase
+	public class LogInViewModel : ViewModelBase
 	{
 		private EmployeeRepository _employeeRepository;
 
 		public string EmployeeID { get; set; }
 
-		public LoginViewModel()
+		public LogInViewModel()
 		{
 			_employeeRepository = new EmployeeRepository();
 
