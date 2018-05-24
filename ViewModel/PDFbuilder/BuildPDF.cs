@@ -53,6 +53,7 @@ namespace ViewModel.PDFbuilder
 		{
 			InsertNewLine(fontSize, PdfTextAlignment.Left, text);
 		}
+
 		public void InsertNewSplitLine(float fontSize, string textLeft, string textRight)
 		{
 			PDFline leftLine = new PDFline(
