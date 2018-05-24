@@ -8,15 +8,17 @@ namespace Model
 {
 	public class Image
     {
+		public int ID { get; set; }
 		public DateTime DateTime { get; set; }
         public string GPSLocation { get; set; }
 		public string Description { get; set; }
-		public string EmployeeID { get; set; }
+		public int EmployeeID { get; set; }
 		public string WorksheetID { get; set; }
 		public string Type { get; set; }
 
-		public Image(DateTime dateTime, string GPSlocation, string description, string employeeID, string type)
+		public Image(int ID, DateTime dateTime, string GPSlocation, string description, int employeeID, string type)
         {
+			this.ID = ID;
 			DateTime = dateTime;
             this.GPSLocation = GPSlocation;
 			Description  = description;
