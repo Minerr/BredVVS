@@ -301,7 +301,9 @@ namespace ViewModel
 			//buildPDF.InsertLine(11, 1.25f, 14f, TextAlignment.Left, "" + WorkDescription);
 
 			//buildPDF.Save("Arbejdsseddel_10000.pdf");
-			//buildPDF.Open();
+
+            WorksheetRepository worksheetRepository = new WorksheetRepository();
+            worksheetRepository.Create(Worksheet);;
 		}
 
 		private ObservableCollection<Fitter> RetrieveInactiveFitters()
