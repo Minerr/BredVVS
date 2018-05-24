@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-	public enum Payment
+	public enum PaymentType
 	{
 		FixedPrice,
 		Bill,

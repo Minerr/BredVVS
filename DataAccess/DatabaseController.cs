@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace DataAccess
 {
-	public static class DatabaseController
+	internal static class DatabaseController
 	{
 		private static string _connectionString =
 			"Server=EALSQL1.eal.local; " +

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:View.UserControls"
              mc:Ignorable="d" d:DesignWidth="800" Height="600">
     <Grid Name="MainGrid">
-        <ScrollViewer>
+        <ScrollViewer Margin="0,0,0,-160">
             <Grid Height="760">
                 <Label Content="Arbejdsseddel" HorizontalAlignment="Left" Margin="369,10,0,0" VerticalAlignment="Top"/>
                 <Image HorizontalAlignment="Left" Height="47" Margin="694,2,0,0" VerticalAlignment="Top" Width="60"/>
@@ -74,6 +74,7 @@
                 <CheckBox Content="Standard forbehold (Vedlægges)" HorizontalAlignment="Left" Margin="20,556,0,0" VerticalAlignment="Top"/>
                 <CheckBox Content="AP 92P" HorizontalAlignment="Left" Margin="20,576,0,0" VerticalAlignment="Top"/>
                 <CheckBox Content="Eventuelt andet skriftligt grundlag" HorizontalAlignment="Left" Margin="20,596,0,0" VerticalAlignment="Top"/>
+                <Button x:Name="SaveTermsheetButton" Content="Gem"  HorizontalAlignment="Left" Margin="660,702,0,0" VerticalAlignment="Top" Width="75" Click="SaveTermsheetButton_Click"/>
             </Grid>
         </ScrollViewer>
     </Grid>
