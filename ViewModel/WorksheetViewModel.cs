@@ -249,6 +249,8 @@ namespace ViewModel
 			// Init start values
 			Worksheet = new Worksheet();
 			AssignedFitters = new ObservableCollection<Fitter>();
+			WorkDescription = "";
+			Workplace = "";
 
 			_isServiceVehicleChecked = false;
 			_isAuxiliaryMaterialsChecked = false;
