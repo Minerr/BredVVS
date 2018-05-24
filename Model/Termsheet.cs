@@ -9,22 +9,20 @@ namespace Model
 	public class Termsheet
     {
         public string ID {get; set;}
-        public Customer CustomerInfo {get; set; }
-		public DateTime TimeAndDate {get; set;}
+        public Customer Customer {get; set; }
+		public DateTime DateTime {get; set;}
         public string WorksheetID {get; set;}
-        public string BuilderInfo {get; set;}
         public string Entrepreneur {get; set;}
         public string WorkDescription {get; set;}
         public bool IsDraft {get; set;}
         public string PriceType {get; set;}
 		public Payment Payment { get; set; }
 
-        public Termsheet(Customer customerInfo, DateTime dateTime, string worksheetID, string builderInfo, string entrepreneur)
+        public Termsheet(Customer customer, DateTime dateTime, string worksheetID, string entrepreneur)
         {
-            CustomerInfo = customerInfo;
-            TimeAndDate = dateTime;
+            Customer = customer;
+            DateTime = dateTime;
             WorksheetID = worksheetID;
-            BuilderInfo = builderInfo;
             Entrepreneur = entrepreneur;
         }
 
