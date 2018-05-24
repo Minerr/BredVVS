@@ -12,7 +12,7 @@ namespace ViewModel
 	{
 		public ObservableCollection<WorkHours> WorkHours { get; set; }
 		public ObservableCollection<Material> Materials { get; set; }
-		public string WorksheetID { get; set; }
+		public int WorksheetID { get; set; }
 		public string Workplace { get; set; }
 		public string WorkDescription { get; set; }
 		public Customer Customer { get; set; }

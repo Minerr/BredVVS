@@ -14,7 +14,7 @@ namespace Model
 		{
 		}
 
-		public Fitter(string ID, Name name, string qualificationType) : base(ID, name)
+		public Fitter(int ID, Name name, string qualificationType) : base(ID, name)
 		{
 			QualificationType = qualificationType;
 		}
