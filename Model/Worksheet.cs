@@ -25,7 +25,7 @@ namespace Model
 		public Worksheet()
         {
 			// Init properties
-			ID = Guid.NewGuid().ToString();
+			ID = "19237";
 
 			Customer = new Customer();
 			ImageDocumentation = new List<Image>();
