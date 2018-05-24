@@ -289,7 +289,7 @@ namespace ViewModel
 			buildPDF.InsertNewSplitLine(14f, "Email: " + Customer.Email, "");
 			buildPDF.InsertNewSplitLine(14f, "Kundenr.: " + Customer.ID, "Arbejdssted: " + Workplace);
 			buildPDF.InsertNewLine(24f, "");
-			buildPDF.InsertNewLine(16f, "Ønsket udført: ");
+			buildPDF.InsertNewLine(16f, "Ønskes udført: ");
 			buildPDF.InsertNewTextBlock(14f, PdfTextAlignment.Left, WorkDescription);
 			buildPDF.InsertNewLine(24f, "");
 			buildPDF.InsertNewLine(16f, "Tilknyttede montører: ");
