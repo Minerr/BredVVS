@@ -88,31 +88,5 @@ namespace DataAccess
 		{
 			return null;
 		}
-
-		public List<Worksheet> RetrieveFitterWorksheetsByCredentials(string fitterID)
-		{
-			List<Worksheet> worksheets = new List<Worksheet>();
-
-			SqlCommand command = new SqlCommand("spGetFitterWorksheetsByCredentials");
-			command.CommandType = CommandType.StoredProcedure;
-
-			command.Parameters.Add(new SqlParameter("@ID", fitterID));
-			List<object[]> table = DatabaseController.ExecuteReader(command);
-
-			if (table != null)
-			{
-				foreach (object[] row in table)
-				{
-					string ID = row[0].ToString();
-					string workplace = row[5].ToString();
-					string firstName = row[6].ToString();
-					string lastName = row[7].ToString();
-
-					Name name = new Name(firstName, lastName);
-					worksheets.Add(new Worksheet(ID, workplace, name));
-				}
-			}
-			return worksheets;
-		}
 	}
 }
