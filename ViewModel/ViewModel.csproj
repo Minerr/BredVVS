@@ -52,12 +52,14 @@
   <ItemGroup>
     <Compile Include="AddFittersViewModel.cs" />
     <Compile Include="AddTaskViewModel.cs" />
-    <Compile Include="BuildPDF.cs" />
+    <Compile Include="PDFbuilder\BuildPDF.cs" />
     <Compile Include="CreateNewCustomerViewModel.cs" />
     <Compile Include="FitterMenuViewModel.cs" />
     <Compile Include="FitterWorksheetViewModel.cs" />
     <Compile Include="LogInViewModel.cs" />
     <Compile Include="OfficeWorkerMenuViewModel.cs" />
+    <Compile Include="PDFbuilder\PDFline.cs" />
+    <Compile Include="PDFbuilder\PDFpage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchForCustomerViewModel.cs" />

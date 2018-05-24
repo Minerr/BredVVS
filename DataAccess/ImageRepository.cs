@@ -23,31 +23,32 @@ namespace DataAccess
 
 		public Image Retrieve(int ID)
 		{
-			string error == "";
-			Image image = null;
+			//string error = "";
+			//Image image = null;
 
-			SqlCommand command = new SqlCommand("spGetImageByID");
-			command.CommandType = CommandType.StoredProcedure;
+			//SqlCommand command = new SqlCommand("spGetImageByID");
+			//command.CommandType = CommandType.StoredProcedure;
 
-			command.Parameters.Add(new SqlParameter("@ID", ID));
-			SqlDataReader reader = DatabaseController.ExecuteReader(command);
+			//command.Parameters.Add(new SqlParameter("@ID", ID));
+			//SqlDataReader reader = DatabaseController.ExecuteReader(command);
 
-			try
-			{
-				DateTime DateTime = Convert.ToDateTime(reader["DateTime"]);
-				string GPSLocation = reader["GPSLocation"].ToString();
-				string Description = reader["Description"].ToString();
-				string employeeID = reader["EmployeeID"].ToString();
-				string type = reader["Type"].ToString();
+			//try
+			//{
+			//	DateTime DateTime = Convert.ToDateTime(reader["DateTime"]);
+			//	string GPSLocation = reader["GPSLocation"].ToString();
+			//	string Description = reader["Description"].ToString();
+			//	string employeeID = reader["EmployeeID"].ToString();
+			//	string type = reader["Type"].ToString();
 
-				image = new Image(DateTime, GPSLocation, Description, employeeID, type);
-			}
-			catch (Exception e)
-			{
-				error = "ERROR! " + e.Message;
-			}
+			//	image = new Image(DateTime, GPSLocation, Description, employeeID, type);
+			//}
+			//catch (Exception e)
+			//{
+			//	error = "ERROR! " + e.Message;
+			//}
 
-			return image;
+			//return image;
+			throw new NotImplementedException();
 		}
 
 		public void Update(Image image)

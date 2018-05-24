@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Collections.ObjectModel;
 using Model;
 using DataAccess;
+using ViewModel.PDFbuilder;
 
 namespace ViewModel
 {
@@ -278,8 +279,26 @@ namespace ViewModel
 			//After saving to the database, create a PDF and return its path to view.
 
 			BuildPDF buildPDF = new BuildPDF();
-			buildPDF.InputText("Hello World!", 20f);
-			buildPDF.InputText("How Are You?", 20f);
+			//buildPDF.InsertLine(0, 1.25f, 24f, TextAlignment.Middle, "Arbejdsseddel nr.: " + Worksheet.ID);
+			//buildPDF.InsertLine(1, 1.25f, 24f, TextAlignment.Middle, "");
+			//buildPDF.InsertLine(2, 1.25f, 18f, TextAlignment.Left, "Kundeinformationer:");
+			//buildPDF.InsertLine(3, 1.25f, 14f, TextAlignment.Left, "" + Customer.Name.FullName);
+			//buildPDF.InsertLine(4, 1.25f, 14f, TextAlignment.Left, "" + Customer.Address);
+			//buildPDF.InsertLine(5, 1.25f, 14f, TextAlignment.Left, "" + Customer.ZIPcode + " " + Customer.City);
+			//buildPDF.InsertLine(6, 1.25f, 14f, TextAlignment.Left, "Tel. nr.: " + Customer.PhoneNumber);
+			//buildPDF.InsertLine(7, 1.25f, 14f, TextAlignment.Left, "Email: " + Customer.Email);
+			//buildPDF.InsertLine(8, 1.25f, 14f, TextAlignment.Left, "Kundenr.: " + Customer.CustomerID);
+			//buildPDF.InsertLine(9, 1.25f, 20f, TextAlignment.Left, "");
+
+			//buildPDF.InsertLine(3, 1.25f, 14f, TextAlignment.Right, "Startdato: " + StartDate.ToShortDateString());
+			//buildPDF.InsertLine(4, 1.25f, 14f, TextAlignment.Right, "Starttid: " + StartTime);
+			//buildPDF.InsertLine(5, 1.25f, 14f, TextAlignment.Right, "Slutdato: " + EndDate.ToShortDateString());
+			//buildPDF.InsertLine(6, 1.25f, 14f, TextAlignment.Right, "Sluttid: " + EndTime);
+
+			//buildPDF.InsertLine(8, 1.25f, 14f, TextAlignment.Right, "Arbejdssted: " + Workplace);
+
+			//buildPDF.InsertLine(10, 1.25f, 18f, TextAlignment.Left, "Ønskes udført:");
+			//buildPDF.InsertLine(11, 1.25f, 14f, TextAlignment.Left, "" + WorkDescription);
 
 			buildPDF.Save("Arbejdsseddel_10000.pdf");
 			buildPDF.Open();

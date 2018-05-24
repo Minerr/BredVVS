@@ -64,19 +64,10 @@ namespace DataAccess
 		{
 			List<object[]> table = null;
 
-			while (reader.HasRows)
+			if (reader.HasRows)
 			{
 				table = new List<object[]>();
-
 				int numberOfColumns = reader.FieldCount;
-
-				// Insert column names into the table.
-				//object[] columnNames = new object[numberOfColumns];
-				//for (int i = 0; i < numberOfColumns; i++)
-				//{
-				//	columnNames[i] = reader.GetName(i);
-				//}
-				//table.Add(columnNames);
 
 				// Insert all rows into table.
 				while (reader.Read())
@@ -85,8 +76,6 @@ namespace DataAccess
 					reader.GetValues(row);
 					table.Add(row);
 				}
-
-				reader.NextResult();
 			}
 
 			return table;
