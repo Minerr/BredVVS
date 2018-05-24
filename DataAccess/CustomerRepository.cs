@@ -37,7 +37,7 @@ namespace DataAccess
 			command.CommandType = CommandType.StoredProcedure;
 
 			command.Parameters.Add(new SqlParameter("@ID", ID));
-	        List<object[]> table = DatabaseController.ExecuteReader(command);
+	        List<object[]> table = DatabaseController.ExecuteReaderSP(command);
 
 	        if (table != null)
 	        {
@@ -94,7 +94,7 @@ namespace DataAccess
 		    command.CommandType = CommandType.StoredProcedure;
 
 		    command.Parameters.Add(new SqlParameter("@Keyword", "%" + keyword + "%"));
-		    List<object[]> table = DatabaseController.ExecuteReader(command);
+		    List<object[]> table = DatabaseController.ExecuteReaderSP(command);
 
 		    if (table != null)
 		    {

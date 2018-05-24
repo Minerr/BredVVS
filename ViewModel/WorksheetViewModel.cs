@@ -300,8 +300,8 @@ namespace ViewModel
 			//buildPDF.InsertLine(10, 1.25f, 18f, TextAlignment.Left, "Ønskes udført:");
 			//buildPDF.InsertLine(11, 1.25f, 14f, TextAlignment.Left, "" + WorkDescription);
 
-			buildPDF.Save("Arbejdsseddel_10000.pdf");
-			buildPDF.Open();
+			//buildPDF.Save("Arbejdsseddel_10000.pdf");
+			//buildPDF.Open();
 		}
 
 		private ObservableCollection<Fitter> RetrieveInactiveFitters()

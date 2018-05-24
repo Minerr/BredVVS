@@ -19,8 +19,9 @@ namespace ViewModel.PDFbuilder
 		public PdfTextAlignment TextAlignment { get; set; }
 		public int LineNumber { get; set; }
 		public float LineHeight { get; set; }
+		public bool IsBold { get; set; }
 
-		public PDFline(int lineNumber, float lineSpacing, float fontSize, Color color, PdfTextAlignment textAlignment, string text)
+		public PDFline(int lineNumber, float lineSpacing, float fontSize, Color color, PdfTextAlignment textAlignment, bool isBold, string text)
 		{
 			LineNumber = lineNumber;
 			LineHeight = lineSpacing * fontSize;
@@ -28,6 +29,7 @@ namespace ViewModel.PDFbuilder
 			Brush = new PdfSolidBrush(color);
 			TextFormat = new PdfStringFormat(textAlignment);
 			TextAlignment = textAlignment;
+			IsBold = isBold;
 			Text = text;
 		}
 
