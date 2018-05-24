@@ -7,12 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
+using DataAccess;
 
 namespace ViewModel
 {
 	public class TermsheetViewModel : ViewModelBase
 	{
+		public DateTime AcceptDate { get; set; }
+		public DateTime StartDate { get; set; }
+		public DateTime EndDate { get; set; }
 		public Customer Customer { get; set; }
+		public int WorksheetID { get; set; }
+		public string Entrepreneur { get; set; }
+
 
 		private ObservableCollection<string> _tasks;
 		public ObservableCollection<string> SelectedTasksList
@@ -30,21 +37,19 @@ namespace ViewModel
 
 		public string Workplace { get; set; }
 
-		public Termsheet Termsheet { get; set; }
-
-		private Payment termsheetPayment;
+		private PaymentType termsheetPayment;
 
 		public bool IsFixedPriceChecked
 		{
 			get
 			{
-				return (termsheetPayment == Payment.FixedPrice);
+				return (termsheetPayment == PaymentType.FixedPrice);
 			}
 			set
 			{
 				if (value)
 				{
-					termsheetPayment = Payment.FixedPrice;
+					termsheetPayment = PaymentType.FixedPrice;
 				}
 			}
 		}
@@ -53,13 +58,13 @@ namespace ViewModel
 		{
 			get
 			{
-				return (termsheetPayment == Payment.Bill);
+				return (termsheetPayment == PaymentType.Bill);
 			}
 			set
 			{
 				if (value)
 				{
-					termsheetPayment = Payment.Bill;
+					termsheetPayment = PaymentType.Bill;
 				}
 			}
 		}
@@ -68,13 +73,13 @@ namespace ViewModel
 		{
 			get
 			{
-				return (termsheetPayment == Payment.Offer);
+				return (termsheetPayment == PaymentType.Offer);
 			}
 			set
 			{
 				if (value)
 				{
-					termsheetPayment = Payment.Offer;
+					termsheetPayment = PaymentType.Offer;
 				}
 			}
 		}
@@ -91,6 +96,18 @@ namespace ViewModel
 		{
 			SelectedTasksList.Remove(SelectedTask);
 			SelectedTask = null;
+		}
+
+		public void SaveTermsheet()
+		{
+			string workDescription = "";
+			foreach (string task in SelectedTasksList)
+			{
+				workDescription = workDescription + task + "\n" ;			
+			}
+			Termsheet termsheet = new Termsheet(Customer, StartDate, EndDate, WorksheetID, Entrepreneur, workDescription, termsheetPayment);
+			TermsheetRepository termsheetRepository = new TermsheetRepository();
+			termsheetRepository.Create(termsheet);
 		}
 	}
 }

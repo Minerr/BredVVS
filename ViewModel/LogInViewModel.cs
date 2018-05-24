@@ -23,6 +23,8 @@ namespace ViewModel
 
 		public ViewModelBase LogIn()
 		{
+			EmployeeID = "10000"; // TODO: remove this before final release.
+
 			ViewModelBase viewModel = null;
 
 			// TODO: uncomment retrieve method call (before final release).

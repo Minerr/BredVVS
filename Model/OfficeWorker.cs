@@ -9,7 +9,7 @@ namespace Model
 {
 	public class OfficeWorker: Employee
     {
-		public OfficeWorker(string ID, Name name) : base(ID, name)
+		public OfficeWorker(int ID, Name name) : base(ID, name)
 		{
 		}
 	}

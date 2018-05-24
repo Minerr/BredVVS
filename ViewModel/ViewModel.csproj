@@ -32,6 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework" />
     <Reference Include="Spire.License, Version=1.3.6.40, Culture=neutral, PublicKeyToken=b1144360237c8b3f, processorArchitecture=MSIL">
       <HintPath>..\packages\FreeSpire.PDF.4.3\lib\net40\Spire.License.dll</HintPath>
     </Reference>
@@ -40,6 +41,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,11 +52,14 @@
   <ItemGroup>
     <Compile Include="AddFittersViewModel.cs" />
     <Compile Include="AddTaskViewModel.cs" />
+    <Compile Include="PDFbuilder\BuildPDF.cs" />
     <Compile Include="CreateNewCustomerViewModel.cs" />
     <Compile Include="FitterMenuViewModel.cs" />
     <Compile Include="FitterWorksheetViewModel.cs" />
     <Compile Include="LogInViewModel.cs" />
     <Compile Include="OfficeWorkerMenuViewModel.cs" />
+    <Compile Include="PDFbuilder\PDFline.cs" />
+    <Compile Include="PDFbuilder\PDFpage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchForCustomerViewModel.cs" />
