@@ -28,33 +28,23 @@ namespace ViewModel
 			}
 		}
 
-		public string CustomerInfo
-		{
-			get
-			{
-				string customerInfo = "";
-
-				if (Customer != null)
-				{
-					customerInfo = Customer.Name.FullName + "\n" + Customer.Address + "\n" + Customer.ZIPcode + " " + Customer.City + "\n" + Customer.PhoneNumber;
-				}
-
-				return customerInfo;
-			}
-		}
+		public string Workplace { get; set; }
 
 		public Termsheet Termsheet { get; set; }
+
+		private PaymentType termsheetPayment;
+
 		public bool IsFixedPriceChecked
 		{
 			get
 			{
-				return (Termsheet.Payment == Payment.FixedPrice);
+				return (termsheetPayment == PaymentType.FixedPrice);
 			}
 			set
 			{
 				if (value)
 				{
-					Termsheet.Payment = Payment.FixedPrice;
+					termsheetPayment = PaymentType.FixedPrice;
 				}
 			}
 		}
@@ -63,13 +53,13 @@ namespace ViewModel
 		{
 			get
 			{
-				return (Termsheet.Payment == Payment.Bill);
+				return (termsheetPayment == PaymentType.Bill);
 			}
 			set
 			{
 				if (value)
 				{
-					Termsheet.Payment = Payment.Bill;
+					termsheetPayment = PaymentType.Bill;
 				}
 			}
 		}
@@ -78,13 +68,13 @@ namespace ViewModel
 		{
 			get
 			{
-				return (Termsheet.Payment == Payment.Offer);
+				return (termsheetPayment == PaymentType.Offer);
 			}
 			set
 			{
 				if (value)
 				{
-					Termsheet.Payment = Payment.Offer;
+					termsheetPayment = PaymentType.Offer;
 				}
 			}
 		}
@@ -101,6 +91,11 @@ namespace ViewModel
 		{
 			SelectedTasksList.Remove(SelectedTask);
 			SelectedTask = null;
+		}
+
+		public void SaveTermsheet()
+		{
+
 		}
 	}
 }

@@ -6,16 +6,16 @@
              xmlns:local="clr-namespace:View.UserControls"
              mc:Ignorable="d" d:DesignWidth="800" Height="600">
     <Grid Name="MainGrid">
-        <ScrollViewer>
+        <ScrollViewer Margin="0,0,0,-160">
             <Grid Height="760">
                 <Label Content="Arbejdsseddel" HorizontalAlignment="Left" Margin="369,10,0,0" VerticalAlignment="Top"/>
                 <Image HorizontalAlignment="Left" Height="47" Margin="694,2,0,0" VerticalAlignment="Top" Width="60"/>
 
                 <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="154" Margin="10,49,0,0" VerticalAlignment="Top" Width="336"/>
                 <Label Content="Arbejdssted" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,49,0,0" Width="133"/>
-                <TextBox x:Name="WorkplaceTextBox"  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="253" Margin="20,75,0,0"/>
+                <TextBox x:Name="WorkplaceTextBox"  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding Workplace}" VerticalAlignment="Top" Width="253" Margin="20,75,0,0"/>
                 <Label Content="Kunde" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,98,0,0" Width="133"/>
-                <TextBox x:Name="CustomerInfoTextBox" HorizontalAlignment="Left" Margin="20,123,0,0" TextWrapping="Wrap" Text="{Binding CustomerInfo, Mode=OneWay}" VerticalAlignment="Top" Height="69" Width="253" IsEnabled="False"/>
+                <TextBox x:Name="CustomerInfoTextBox" HorizontalAlignment="Left" Margin="20,123,0,0" TextWrapping="Wrap" Text="{Binding Customer, Mode=OneWay}" VerticalAlignment="Top" Height="69" Width="253" IsEnabled="False"/>
 
                 <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="154" Margin="351,49,0,0" VerticalAlignment="Top" Width="412"/>
                 <Label Content="Virksomhed" HorizontalAlignment="Left" Margin="360,49,0,0" VerticalAlignment="Top" Width="119"/>
@@ -74,6 +74,7 @@
                 <CheckBox Content="Standard forbehold (Vedlægges)" HorizontalAlignment="Left" Margin="20,556,0,0" VerticalAlignment="Top"/>
                 <CheckBox Content="AP 92P" HorizontalAlignment="Left" Margin="20,576,0,0" VerticalAlignment="Top"/>
                 <CheckBox Content="Eventuelt andet skriftligt grundlag" HorizontalAlignment="Left" Margin="20,596,0,0" VerticalAlignment="Top"/>
+                <Button x:Name="SaveTermsheetButton" Content="Gem"  HorizontalAlignment="Left" Margin="660,702,0,0" VerticalAlignment="Top" Width="75" Click="SaveTermsheetButton_Click"/>
             </Grid>
         </ScrollViewer>
     </Grid>

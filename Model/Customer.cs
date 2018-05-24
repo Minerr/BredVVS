@@ -9,7 +9,7 @@ namespace Model
 {
 	 public class Customer
 	{
-		public string ID { get; private set; }
+		public int ID { get; private set; }
 		public Name Name { get; set; }
 		public string Address { get; set; }
 		public string ZIPcode { get; set; }
@@ -31,7 +31,7 @@ namespace Model
 			Email = email;
 		}
 
-		public Customer(string ID, Name name, string address, string ZIPcode, string city, string phoneNumer, string email)
+		public Customer(int ID, Name name, string address, string ZIPcode, string city, string phoneNumer, string email)
 		{
 			this.ID = ID;
 			Name = name;
@@ -40,6 +40,11 @@ namespace Model
 			City = city;
 			PhoneNumber = phoneNumer;
 			Email = email;
+		}
+
+		public override string ToString()
+		{
+			return Name.FullName + "\n" + Address + "\n" + ZIPcode + " " + City + "\n" + PhoneNumber;
 		}
 	}
 }

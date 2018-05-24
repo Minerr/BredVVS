@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ViewModel
 {
-	public class OfficeWorkerMenuViewModel
+	public class OfficeWorkerMenuViewModel : ViewModelBase
 	{
 		public OfficeWorkerMenuViewModel()
 		{

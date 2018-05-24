@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ViewModel;
 using View.Windows;
+using Microsoft.Win32;
 
 namespace View.UserControls
 {
@@ -48,7 +49,7 @@ namespace View.UserControls
 
 		private void CreateTermsheetButton_Click(object sender, RoutedEventArgs e)
 		{
-			PageCommands.GoTo(this, new TermsheetUC(_worksheetVM.CreateNewTermsheet()));
+			PageCommands.Instance.GoTo(new TermsheetUC(_worksheetVM.CreateNewTermsheet()));
 		}
 
 		private void SaveWorksheetButton_Click(object sender, RoutedEventArgs e)
@@ -63,7 +64,7 @@ namespace View.UserControls
 
 		private void CancelButton_Click(object sender, RoutedEventArgs e)
 		{
-			PageCommands.GoTo(this, new OfficeWorkerMenuUC()); // TODO: Create categorized GoBack method
+			PageCommands.Instance.GoTo(new OfficeWorkerMenuUC()); // TODO: Create categorized GoBack method
 		}
 
 		private void RemoveSelectedHourButton_Click(object sender, RoutedEventArgs e)
@@ -94,7 +95,15 @@ namespace View.UserControls
 
 		private void AddPictureButton_Click(object sender, RoutedEventArgs e)
 		{
+			OpenFileDialog fileDialog = new OpenFileDialog();
+			fileDialog.Filter = "Image Files(*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png | All files (*.*)|*.*";
+			fileDialog.RestoreDirectory = true;
+			fileDialog.Multiselect = true;
 
+			if(fileDialog.ShowDialog() == true)
+			{
+				_worksheetVM.AddImages(fileDialog.FileNames);
+			}
 		}
 	}
 }

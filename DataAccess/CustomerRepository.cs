@@ -31,42 +31,39 @@ namespace DataAccess
 
         public Customer Retrieve(int ID)
         {
-	        string error = "";
 	        Customer customer = null;
 
 			SqlCommand command = new SqlCommand("spGetCustomerByID");
 			command.CommandType = CommandType.StoredProcedure;
 
 			command.Parameters.Add(new SqlParameter("@ID", ID));
-	        SqlDataReader reader = DatabaseController.ExecuteReader(command);
+	        List<object[]> table = DatabaseController.ExecuteReaderSP(command);
 
-	        try
+	        if (table != null)
 	        {
-		        string firstName = reader["FirstName"].ToString();
-		        string lastName = reader["LastName"].ToString();
-		        string address = reader["Address"].ToString();
-		        string city = reader["City"].ToString();
-		        string ZIPcode = reader["ZIPcode"].ToString();
-		        string phoneNumber = reader["Phonenumber"].ToString();
-		        string email = reader["Email"].ToString();
+		        foreach (object[] row in table)
+		        {
+					string firstName = row[1].ToString();
+					string lastName = row[2].ToString();
+					string address = row[3].ToString();
+			        string ZIPcode = row[4].ToString();
+					string city = row[5].ToString();
+					string phoneNumber = row[6].ToString();
+					string email = row[7].ToString();
 
-		        Name name = new Name(firstName, lastName);
-		        customer = new Customer(ID.ToString(), name, address, city, ZIPcode, phoneNumber, email);
-	        }
-	        catch (Exception e)
-	        {
-		        error = "ERROR! " + e.Message;
-	        }
-
+			        Name name = new Name(firstName, lastName);
+			        customer = new Customer(ID.ToString(), name, address, ZIPcode, city, phoneNumber, email);
+				}
+			}
 	        return customer;
 		}
 
-        public void Update(Customer customer)
+		public void Update(Customer customer)
         {
 	        SqlCommand command = new SqlCommand("spUpdateCustomer");
 			command.CommandType = CommandType.StoredProcedure;
 
-	        command.Parameters.Add(new SqlParameter("@ID", customer.ID));
+	        command.Parameters.Add(new SqlParameter("@ID", customer.CustomerID));
 	        command.Parameters.Add(new SqlParameter("@FirstName", customer.Name.FirstName));
 	        command.Parameters.Add(new SqlParameter("@LastName", customer.Name.LastName));
 	        command.Parameters.Add(new SqlParameter("@Address", customer.Address));
@@ -83,9 +80,40 @@ namespace DataAccess
 			SqlCommand command = new SqlCommand("spDeleteCustomer");
 			command.CommandType = CommandType.StoredProcedure;
 
-			command.Parameters.Add(new SqlParameter("@ID", customer.ID));
+			command.Parameters.Add(new SqlParameter("@ID", customer.CustomerID));
 			DatabaseController.ExecuteNonQuerySP(command);
 
+		}
+
+	    public List<Customer> RetrieveCustomerByKeyword(string keyword)
+	    {
+		    //string error = "";
+			List<Customer> customers = new List<Customer>();
+
+		    SqlCommand command = new SqlCommand("spGetCustomerByKeyword");
+		    command.CommandType = CommandType.StoredProcedure;
+
+		    command.Parameters.Add(new SqlParameter("@Keyword", "%" + keyword + "%"));
+		    List<object[]> table = DatabaseController.ExecuteReaderSP(command);
+
+		    if (table != null)
+		    {
+			    foreach (object[] row in table)
+			    {
+				    string ID = row[0].ToString();
+				    string firstName = row[1].ToString();
+				    string lastName = row[2].ToString();
+				    string address = row[3].ToString();
+				    string ZIPcode = row[4].ToString();
+				    string city = row[5].ToString();
+				    string phoneNumber = row[6].ToString();
+				    string email = row[7].ToString();
+
+				    Name name = new Name(firstName, lastName);
+				    customers.Add(new Customer(ID, name, address, ZIPcode, city, phoneNumber, email));
+			    }
+		    }
+			return customers;
 		}
 	}
 }

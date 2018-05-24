@@ -45,10 +45,11 @@
     <Compile Include="CustomerRepository.cs" />
     <Compile Include="DatabaseController.cs" />
     <Compile Include="EmployeeRepository.cs" />
+    <Compile Include="ImageRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WorksheetRepository.cs" />
+    <Compile Include="TermsheetRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

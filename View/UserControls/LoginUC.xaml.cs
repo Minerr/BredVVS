@@ -19,16 +19,16 @@ namespace View.UserControls
 	/// <summary>
 	/// Interaction logic for LoginUC.xaml
 	/// </summary>
-	public partial class LoginUC : UserControl
+	public partial class LogInUC : UserControl
 	{
-		private LoginViewModel _loginVM;
-		public LoginUC()
+		private LogInViewModel _loginVM;
+		public LogInUC()
 		{
-			_loginVM = new LoginViewModel();
+			_loginVM = new LogInViewModel();
 			Init();
 		}
 
-		public LoginUC(LoginViewModel viewModel)
+		public LogInUC(LogInViewModel viewModel)
 		{
 			_loginVM = viewModel;
 			Init();
@@ -40,9 +40,30 @@ namespace View.UserControls
 			DataContext = _loginVM;
 		}
 
-		private void LoginButton_Click(object sender, RoutedEventArgs e)
+		private void LogInButton_Click(object sender, RoutedEventArgs e)
 		{
-			PageCommands.GoTo(this, new OfficeWorkerMenuUC());
+			ViewModelBase viewModel = _loginVM.LogIn();
+
+			if(viewModel != null)
+			{
+				if(viewModel.GetType() == typeof(OfficeWorkerMenuViewModel))
+				{
+					PageCommands.Instance.GoTo(new OfficeWorkerMenuUC());
+				}
+				else if(viewModel.GetType() == typeof(FitterMenuViewModel))
+				{
+					PageCommands.Instance.GoTo(new FitterMenuUC());
+				}
+			}
+			else
+			{
+				ErrorMessageLabel.Visibility = Visibility.Visible;
+			}
+		}
+
+		private void TextBoxes_SelectionChanged(object sender, RoutedEventArgs e)
+		{
+			ErrorMessageLabel.Visibility = Visibility.Hidden;
 		}
 	}
 }

@@ -83,5 +83,10 @@ namespace View.UserControls
 			    RemoveTaskButton.IsEnabled = false;
 		    }
 	    }
+
+		private void SaveTermsheetButton_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
 	}
 }
