@@ -8,7 +8,7 @@ namespace Model
 {
 	public class Worksheet
     {
-        public string ID { get; private set; }
+        public int ID { get; private set; }
         public Customer Customer { get; set; }
 		public List<Image> ImageDocumentation { get; set; }
 		public List<Fitter> AssignedFitters { get; set; }
@@ -25,7 +25,6 @@ namespace Model
 		public Worksheet()
         {
 			// Init properties
-			ID = "19237";
 
 			Customer = new Customer();
 			ImageDocumentation = new List<Image>();

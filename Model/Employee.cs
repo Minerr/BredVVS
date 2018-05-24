@@ -8,16 +8,15 @@ namespace Model
 {
     public abstract class Employee
     {
-        public string ID { get; private set; }
+        public int ID { get; private set; }
         public Name Name { get; set; }
 
 		public Employee(Name name)
 		{
-			ID = Guid.NewGuid().ToString();
 			Name = name;
 		}
 
-		public Employee(string ID, Name name)
+		public Employee(int ID, Name name)
 		{
 			this.ID = ID;
 			Name = name;
