@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
+using DataAccess;
 
 namespace ViewModel
 {
@@ -270,7 +271,8 @@ namespace ViewModel
 
         public void CreateWorksheet()
         {
-            //TODO: Save worksheet in database
+            WorksheetRepository worksheetRepository = new WorksheetRepository();
+            worksheetRepository.Create(Worksheet);
         }
 
 		private ObservableCollection<Fitter> RetrieveInactiveFitters()
