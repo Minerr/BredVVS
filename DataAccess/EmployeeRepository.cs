@@ -64,29 +64,55 @@ namespace DataAccess
 		}
 
 		public void Update(Employee employee)
+		{
+			SqlCommand command = new SqlCommand("spUpdateEmployee");
+			command.CommandType = CommandType.StoredProcedure;
+
+			command.Parameters.Add(new SqlParameter("@ID", employee.ID));
+			command.Parameters.Add(new SqlParameter("@FirstName", employee.Name.FirstName));
+			command.Parameters.Add(new SqlParameter("@LastName", employee.Name.LastName));
+
+			DatabaseController.ExecuteNonQuerySP(command);
+		}
+
+		public void Delete(Employee employee)
+		{
+			SqlCommand command = new SqlCommand("spDeleteEmployee");
+			command.CommandType = CommandType.StoredProcedure;
+
+			command.Parameters.Add(new SqlParameter("@ID", employee.ID));
+			DatabaseController.ExecuteNonQuerySP(command);
+		}
+
+		public Employee GetEmployeeByCredentials(int ID, string pass)
+		{
+			return null;
+		}
+
+		public List<Worksheet> RetrieveFitterWorksheetsByCredentials(string fitterID)
+		{
+			List<Worksheet> worksheets = new List<Worksheet>();
+
+			SqlCommand command = new SqlCommand("spGetFitterWorksheetsByCredentials");
+			command.CommandType = CommandType.StoredProcedure;
+
+			command.Parameters.Add(new SqlParameter("@ID", fitterID));
+			List<object[]> table = DatabaseController.ExecuteReader(command);
+
+			if (table != null)
 			{
-				SqlCommand command = new SqlCommand("spUpdateEmployee");
-				command.CommandType = CommandType.StoredProcedure;
+				foreach (object[] row in table)
+				{
+					string ID = row[0].ToString();
+					string workplace = row[5].ToString();
+					string firstName = row[6].ToString();
+					string lastName = row[7].ToString();
 
-				command.Parameters.Add(new SqlParameter("@ID", employee.ID));
-				command.Parameters.Add(new SqlParameter("@FirstName", employee.Name.FirstName));
-				command.Parameters.Add(new SqlParameter("@LastName", employee.Name.LastName));
-
-				DatabaseController.ExecuteNonQuerySP(command);
+					Name name = new Name(firstName, lastName);
+					worksheets.Add(new Worksheet(ID, workplace, name));
+				}
 			}
-
-			public void Delete(Employee employee)
-			{
-				SqlCommand command = new SqlCommand("spDeleteEmployee");
-				command.CommandType = CommandType.StoredProcedure;
-
-				command.Parameters.Add(new SqlParameter("@ID", employee.ID));
-				DatabaseController.ExecuteNonQuerySP(command);
-			}
-
-			public Employee GetEmployeeByCredentials(int ID, string pass)
-			{
-				return null;
-			}
+			return worksheets;
 		}
 	}
+}

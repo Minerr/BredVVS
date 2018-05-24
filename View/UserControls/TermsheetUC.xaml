@@ -37,9 +37,9 @@
                 </Border>
                 <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Det bekræftes herved, at der er indgået følgende aftale mellem:" VerticalAlignment="Top" Margin="20,208,0,0" Height="19" Width="353"/>
                 <Label Content="Kunde/Bygherre:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,223,0,0" Width="98"/>
-                <TextBox x:Name="CustomerTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="130" Margin="118,227,0,0"/>
+                <TextBox x:Name="CustomerTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding Customer}" VerticalAlignment="Top" Width="130" Margin="118,227,0,0"/>
                 <Label Content="Entreprenør:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,245,0,0"/>
-                <TextBox x:Name="EntrepreneurTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="130" Margin="118,249,0,0"/>
+                <TextBox x:Name="EntrepreneurTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding Entrepreneur}" VerticalAlignment="Top" Width="130" Margin="118,249,0,0"/>
                 <TextBlock HorizontalAlignment="Left" Margin="20,271,0,0" TextWrapping="Wrap" Text="Om udførslen af:" VerticalAlignment="Top"/>
                 <Button x:Name="AddTaskButton" Content="Tilføj Opgave" HorizontalAlignment="Left" Margin="566,267,0,0" VerticalAlignment="Top" Width="86" Click="AddTaskButton_Click"/>
                 <Button x:Name="RemoveTaskButton" Content="Fjern Opgave" HorizontalAlignment="Left" VerticalAlignment="Top" Width="85" Margin="660,267,0,0" Click="RemoveTaskButton_Click" IsEnabled="False"/>
