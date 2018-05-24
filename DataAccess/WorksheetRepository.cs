@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Model;
 using System.Data;
 using System.Data.SqlClient;
+using Model;
 
 namespace DataAccess
 {
@@ -13,7 +13,9 @@ namespace DataAccess
     {
         public void Create(Worksheet worksheet)
         {
-            SqlCommand command = new SqlCommand("spSaveWorksheet");
+            int WorksheetID;
+
+            SqlCommand command = new SqlCommand("spCreateWorksheet");
             command.CommandType = CommandType.StoredProcedure;
 
             command.Parameters.Add(new SqlParameter("@Customer", worksheet.Customer));
@@ -21,7 +23,18 @@ namespace DataAccess
             command.Parameters.Add(new SqlParameter("@EndDateTime", worksheet.EndDateTime));
             command.Parameters.Add(new SqlParameter("@Workplace", worksheet.Workplace));
 
-            DatabaseController.ExecuteNonQuerySP(command);
+            worksheetID = DatabaseController.ExecuteScalarSP(command);
+
+            foreach (Fitter fitter in Worksheet.AssignedFitters)
+            {
+                SqlCommand command2 = new SqlCommand("spAssignedEmployee");
+                command2.CommandType = CommandType.StoredProcedure;
+
+                command2.Parameters.Add(new SqlParameter("@WorkSheetID", Convert.ToInt32(worksheetID)));
+                command2.Parameters.Add(new SqlParameter("@Fitter", fitter.ID));
+
+                DatabaseController.ExecuteNonQuerySP(command2);
+            }
         }
 
         public void Delete(Worksheet type)
