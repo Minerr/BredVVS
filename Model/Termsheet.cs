@@ -10,21 +10,22 @@ namespace Model
     {
         public int ID {get; set;}
         public Customer Customer {get; set; }
-		public DateTime DateTime {get; set;}
+		public DateTime AcceptDate {get; set;}
+		public DateTime StartDate {get; set;}
+		public DateTime EndDate { get; set;}
         public int WorksheetID {get; set;}
         public string Entrepreneur {get; set;}
         public string WorkDescription {get; set;}
-        public bool IsDraft {get; set;}
 		public PaymentType PaymentType { get; set; }
 
-        public Termsheet(Customer customer, DateTime dateTime, int worksheetID, string entrepreneur, string workDescription, bool isDraft, PaymentType paymentType)
+        public Termsheet(Customer customer, DateTime startDate, DateTime endDate, int worksheetID, string entrepreneur, string workDescription, PaymentType paymentType)
         {
             Customer = customer;
-            DateTime = dateTime;
+            StartDate = startDate;
+			EndDate = endDate;
             WorksheetID = worksheetID;
             Entrepreneur = entrepreneur;
 			WorkDescription = workDescription;
-			IsDraft = isDraft;
 			PaymentType = paymentType;
         }
 

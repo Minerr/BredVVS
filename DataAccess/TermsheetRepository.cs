@@ -9,20 +9,19 @@ using System.Data.SqlClient;
 
 namespace DataAccess
 {
-	class TermsheetRepository : IRepository<Termsheet>
+	public class TermsheetRepository : IRepository<Termsheet>
 	{
-		public void Create(Termsheet type)
+		public void Create(Termsheet termsheet)
 		{
 			SqlCommand command = new SqlCommand("spInsertTermsheet");
 			command.CommandType = CommandType.StoredProcedure;
 
-			command.Parameters.Add(new SqlParameter("@FirstName", termsheet.Name.FirstName));
-			command.Parameters.Add(new SqlParameter("@LastName", termsheet.Name.LastName));
-			command.Parameters.Add(new SqlParameter("@Address", termsheet.Address));
-			command.Parameters.Add(new SqlParameter("@City", termsheet.City));
-			command.Parameters.Add(new SqlParameter("@ZIPcode", termsheet.ZIPcode));
-			command.Parameters.Add(new SqlParameter("@PhoneNumber", termsheet.PhoneNumber));
-			command.Parameters.Add(new SqlParameter("@Email", termsheet.Email));
+			command.Parameters.Add(new SqlParameter("@WorksheetID", termsheet.WorksheetID));
+			command.Parameters.Add(new SqlParameter("@DateTime", termsheet.DateTime));
+			command.Parameters.Add(new SqlParameter("@Entrepreneur", termsheet.Entrepreneur));
+			command.Parameters.Add(new SqlParameter("@WorkDescription", termsheet.WorkDescription));
+			command.Parameters.Add(new SqlParameter("@IsDraft", termsheet.IsDraft));
+			command.Parameters.Add(new SqlParameter("@PaymentType", termsheet.PaymentType));
 
 			DatabaseController.ExecuteNonQuerySP(command);
 		}
