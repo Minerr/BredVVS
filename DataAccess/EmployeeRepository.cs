@@ -52,11 +52,11 @@ namespace DataAccess
 					Name name = new Name(firstName, lastName);
 					if (employeeType == "Fitter")
 					{
-						employee = new Fitter(ID.ToString(), name, qualificationType);
+						employee = new Fitter(ID, name, qualificationType);
 					}
 					else if (employeeType == "OfficeWorker")
 					{
-						employee = new OfficeWorker(ID.ToString(), name);
+						employee = new OfficeWorker(ID, name);
 					}
 				}
 			}

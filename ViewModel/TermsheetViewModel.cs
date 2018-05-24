@@ -7,12 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
+using DataAccess;
 
 namespace ViewModel
 {
 	public class TermsheetViewModel : ViewModelBase
 	{
+		public DateTime AcceptDate { get; set; }
+		public DateTime StartDate { get; set; }
+		public DateTime EndDate { get; set; }
 		public Customer Customer { get; set; }
+		public int WorksheetID { get; set; }
+		public string Entrepreneur { get; set; }
+
 
 		private ObservableCollection<string> _tasks;
 		public ObservableCollection<string> SelectedTasksList
@@ -29,8 +36,6 @@ namespace ViewModel
 		}
 
 		public string Workplace { get; set; }
-
-		public Termsheet Termsheet { get; set; }
 
 		private PaymentType termsheetPayment;
 
@@ -95,7 +100,14 @@ namespace ViewModel
 
 		public void SaveTermsheet()
 		{
-
+			string workDescription = "";
+			foreach (string task in SelectedTasksList)
+			{
+				workDescription = workDescription + task + "\n" ;			
+			}
+			Termsheet termsheet = new Termsheet(Customer, StartDate, EndDate, WorksheetID, Entrepreneur, workDescription, termsheetPayment);
+			TermsheetRepository termsheetRepository = new TermsheetRepository();
+			termsheetRepository.Create(termsheet);
 		}
 	}
 }
