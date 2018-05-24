@@ -8,13 +8,37 @@ using System.Data.SqlClient;
 
 namespace DataAccess
 {
-	public static class DatabaseController
+	internal static class DatabaseController
 	{
 		private static string _connectionString =
 			"Server=EALSQL1.eal.local; " +
 			"Database=DB2017_B05; " +
 			"User Id=USER_B05; " +
 			"Password=SesamLukOp_05;";
+
+		public static object ExecuteScalarSP(SqlCommand command)
+		{
+			object result = null;
+
+			if(command.CommandType == CommandType.StoredProcedure)
+			{
+				using(SqlConnection con = new SqlConnection(_connectionString))
+				{
+					try
+					{
+						con.Open();
+						command.Connection = con;
+						result = command.ExecuteScalar();
+					}
+					catch(SqlException e)
+					{
+						Console.WriteLine("" + e.Message);
+					}
+				}
+			}
+
+			return result;
+		}
 
 		public static void ExecuteNonQuerySP(SqlCommand command)
 		{
@@ -36,7 +60,7 @@ namespace DataAccess
 			}
 		}
 
-		public static List<object[]> ExecuteReader(SqlCommand command)
+		public static List<object[]> ExecuteReaderSP(SqlCommand command)
 		{
 			SqlDataReader reader = null;
 			List<object[]> table = null;

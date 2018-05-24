@@ -78,7 +78,6 @@ namespace ViewModel.PDFbuilder
 
 		public void Save(string path)
 		{
-
 			//float pageMaxHeight = _currentPage.Canvas.ClientSize.Height;
 			//float pageMaxWidth = _currentPage.Canvas.ClientSize.Width;
 
