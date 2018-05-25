@@ -73,7 +73,7 @@ namespace ViewModel.PDFbuilder
 		public void InsertNewLine(float fontSize, TextAlignment textAlignment, string text)
 		{
 			//TODO: check for bold text
-			_document.AddLine(new PDFline(_elementCounter, fontSize, LINE_SPACING, Color.Black, textAlignment, false, text));
+			_document.AddLine(new PDFline(_elementCounter, fontSize, LINE_SPACING, Color.Black, ConvertTextAlignment(textAlignment), false, text));
 			_elementCounter++;
 		}
 
