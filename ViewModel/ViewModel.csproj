@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="AddFittersViewModel.cs" />
     <Compile Include="AddTaskViewModel.cs" />
+    <Compile Include="ClientInfo.cs" />
     <Compile Include="PDFbuilder\BuildPDF.cs" />
     <Compile Include="CreateNewCustomerViewModel.cs" />
     <Compile Include="FitterMenuViewModel.cs" />

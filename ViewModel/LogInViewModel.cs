@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 using DataAccess;
 using Model;
@@ -32,15 +33,16 @@ namespace ViewModel
 		public LogInViewModel()
 		{
 			_employeeRepository = new EmployeeRepository();
-			//EmployeeID = "10000"; // TODO: remove this before final release.
+			EmployeeID = "10000"; // TODO: remove this before final release.
 		}
 
 		public ViewModelBase LogIn()
 		{
 			ViewModelBase viewModel = null;
 			int employeeID = Convert.ToInt32(EmployeeID);
-			// TODO: uncomment retrieve method call (before final release).
+
 			Employee employee = _employeeRepository.Retrieve(employeeID);
+			ClientInfo.Instance.Employee = employee;
 
 			if(employee != null)
 			{

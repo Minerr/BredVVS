@@ -52,7 +52,7 @@ namespace View.UserControls
 				}
 				else if(viewModel.GetType() == typeof(FitterMenuViewModel))
 				{
-					PageCommands.Instance.GoTo(new FitterMenuUC());
+					PageCommands.Instance.GoTo(new FitterMenuUC((FitterMenuViewModel)viewModel));
 				}
 			}
 			else

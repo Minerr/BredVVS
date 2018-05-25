@@ -22,6 +22,7 @@ namespace View.UserControls
 	public partial class FitterMenuUC : UserControl
 	{
 		private FitterMenuViewModel _fitterMenuVM;
+
 		public FitterMenuUC()
 		{
 			_fitterMenuVM = new FitterMenuViewModel();
@@ -39,7 +40,7 @@ namespace View.UserControls
 			InitializeComponent();
 			DataContext = _fitterMenuVM;
 
-			_fitterMenuVM.RetrieveAllEmployeeWorksheets("10200");
+			_fitterMenuVM.RetrieveAllEmployeeWorksheets();
 		}
 
 

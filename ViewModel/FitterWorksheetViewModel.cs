@@ -36,7 +36,6 @@ namespace ViewModel
 							"Starttid: " + startDateTime.ToString("hh:mm");
 			EndDateTime = "Slutdato: " + endDateTime.Date.ToString("d") + "\n" +
 				"Sluttid: " + endDateTime.ToString("hh:mm");
-
 		}
 
 		public TermsheetViewModel CreateNewTermsheet()
@@ -46,6 +45,13 @@ namespace ViewModel
 			termsheetVM.Workplace = Workplace;
 
 			return termsheetVM;
+		}
+
+		public FitterMenuViewModel GetFitterViewModel()
+		{
+			FitterMenuViewModel fitterMenuViewModel = new FitterMenuViewModel();
+
+			return fitterMenuViewModel;
 		}
 	}
 }

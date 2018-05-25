@@ -52,7 +52,7 @@ namespace DataAccess
             throw new NotImplementedException();
         }
 
-	    public List<Worksheet> RetrieveEmployeeWorksheetsByCredentials(string employeeID)
+	    public List<Worksheet> RetrieveEmployeeWorksheetsByCredentials(int employeeID)
 	    {
 		    List<Worksheet> worksheets = new List<Worksheet>();
 

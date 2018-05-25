@@ -17,12 +17,12 @@ namespace ViewModel
 
 		}
 
-		public void RetrieveAllEmployeeWorksheets(string employeeID)
+		public void RetrieveAllEmployeeWorksheets()
 		{
 			WorksheetRepository repos = new WorksheetRepository();
 			List<Worksheet> worksheets = new List<Worksheet>();
 
-			worksheets.AddRange(repos.RetrieveEmployeeWorksheetsByCredentials(employeeID));
+			worksheets.AddRange(repos.RetrieveEmployeeWorksheetsByCredentials(ClientInfo.Instance.Employee.ID));
 			WorksheetList = worksheets;
 		}
 	}
