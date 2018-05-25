@@ -248,6 +248,8 @@ namespace ViewModel
 			// Init start values
 			Worksheet = new Worksheet();
 			AssignedFitters = new ObservableCollection<Fitter>();
+			WorkDescription = "";
+			Workplace = "";
 
 			_isServiceVehicleChecked = false;
 			_isAuxiliaryMaterialsChecked = false;
@@ -277,55 +279,41 @@ namespace ViewModel
 			//That code goes here
 
 			//After saving to the database, create a PDF and return its path to view.
-
 			BuildPDF buildPDF = new BuildPDF();
-			//buildPDF.InsertLine(0, 1.25f, 24f, TextAlignment.Middle, "Arbejdsseddel nr.: " + Worksheet.ID);
-			//buildPDF.InsertLine(1, 1.25f, 24f, TextAlignment.Middle, "");
-			//buildPDF.InsertLine(2, 1.25f, 18f, TextAlignment.Left, "Kundeinformationer:");
-			//buildPDF.InsertLine(3, 1.25f, 14f, TextAlignment.Left, "" + Customer.Name.FullName);
-			//buildPDF.InsertLine(4, 1.25f, 14f, TextAlignment.Left, "" + Customer.Address);
-			//buildPDF.InsertLine(5, 1.25f, 14f, TextAlignment.Left, "" + Customer.ZIPcode + " " + Customer.City);
-			//buildPDF.InsertLine(6, 1.25f, 14f, TextAlignment.Left, "Tel. nr.: " + Customer.PhoneNumber);
-			//buildPDF.InsertLine(7, 1.25f, 14f, TextAlignment.Left, "Email: " + Customer.Email);
-			//buildPDF.InsertLine(8, 1.25f, 14f, TextAlignment.Left, "Kundenr.: " + Customer.CustomerID);
-			//buildPDF.InsertLine(9, 1.25f, 20f, TextAlignment.Left, "");
-
-			//buildPDF.InsertLine(3, 1.25f, 14f, TextAlignment.Right, "Startdato: " + StartDate.ToShortDateString());
-			//buildPDF.InsertLine(4, 1.25f, 14f, TextAlignment.Right, "Starttid: " + StartTime);
-			//buildPDF.InsertLine(5, 1.25f, 14f, TextAlignment.Right, "Slutdato: " + EndDate.ToShortDateString());
-			//buildPDF.InsertLine(6, 1.25f, 14f, TextAlignment.Right, "Sluttid: " + EndTime);
-
-			//buildPDF.InsertLine(8, 1.25f, 14f, TextAlignment.Right, "Arbejdssted: " + Workplace);
-
-			//buildPDF.InsertLine(10, 1.25f, 18f, TextAlignment.Left, "Ønskes udført:");
-			//buildPDF.InsertLine(11, 1.25f, 14f, TextAlignment.Left, "" + WorkDescription);
-
-			//buildPDF.Save("Arbejdsseddel_10000.pdf");
-			//buildPDF.Open();
+			buildPDF.InsertNewLine(24f, BuildPDF.TextAlignment.Center, "Arbejdsseddel nr.: " + Worksheet.ID);
+			buildPDF.InsertNewLine(16f, "  ");
+			buildPDF.InsertNewLine(16f, "Kundeinformationer: ");
+			buildPDF.InsertNewSplitLine(14f, Customer.Name.FullName, "Startdato: " + StartDate.ToShortDateString());
+			buildPDF.InsertNewSplitLine(14f, Customer.Address, "Starttid: " + StartTime);
+			buildPDF.InsertNewSplitLine(14f, Customer.ZIPcode + " " + Customer.City, "Slutdato: " + EndDate.ToShortDateString());
+			buildPDF.InsertNewSplitLine(14f, "Tel. nr.: " + Customer.PhoneNumber, "Sluttid: " + EndTime);
+			buildPDF.InsertNewSplitLine(14f, "Email: " + Customer.Email, "");
+			buildPDF.InsertNewSplitLine(14f, "Kundenr.: " + Customer.ID, "Arbejdssted: " + Workplace);
+			buildPDF.InsertNewLine(24f, "");
+			buildPDF.InsertNewLine(16f, "Ønskes udført: ");
+			buildPDF.InsertNewTextBlock(14f, BuildPDF.TextAlignment.Left, WorkDescription);
+			buildPDF.InsertNewLine(24f, "");
+			buildPDF.InsertNewLine(16f, "Tilknyttede montører: ");
+			buildPDF.InsertNewTable(14f, 2, 
+					new List<string> {"MedarbejderID", "Navn", "Kvalifikation"}, 
+					AssignedFitters.AsEnumerable()
+				);
+			buildPDF.InsertNewLine(24f, "");
+			buildPDF.InsertNewLine(16f, "Udførte arbejdstimer: ");
+			buildPDF.InsertNewTable(14f, 2,
+					 new List<string> { "MedarbejderID", "Navn", "Antal timer", "Type", "Dato" },
+					 Worksheet.WorkHours
+				 );
+			buildPDF.InsertNewLine(24f, "");
+			buildPDF.InsertNewLine(16f, "Brugte materialer: ");
+			buildPDF.InsertNewTable(14f, 2,
+					 new List<string> { "Varenummer", "Type", "Beskrivelse" },
+					 Worksheet.Materials
+				 );
+			buildPDF.Save("Arbejdsseddel_" + Worksheet.ID + ".pdf");
+			buildPDF.Open();
 		}
 
-		private ObservableCollection<Fitter> RetrieveInactiveFitters()
-		{
-			List<Fitter> allFitters = new List<Fitter>();
-
-			// Temp data
-			//allFitters.Add(new Fitter("10001", new Name("Klaus", "Sørensen")));
-			//allFitters.Add(new Fitter("10002", new Name("Jesper", "Nielsen")));
-			//allFitters.Add(new Fitter("10003", new Name("Simon", "Hansen")));
-			//allFitters.Add(new Fitter("10004", new Name("Bo", "Rasmussen")));
-			//end Temp data
-
-			ObservableCollection<Fitter> inactiveFitters = new ObservableCollection<Fitter>();
-			foreach(Fitter fitter in allFitters)
-			{
-				if(!AssignedFitters.Contains(fitter))
-				{
-					inactiveFitters.Add(fitter);
-				}
-			}
-
-			return inactiveFitters;
-		}
 		public TermsheetViewModel CreateNewTermsheet()
 		{
 			TermsheetViewModel termsheetVM = new TermsheetViewModel();

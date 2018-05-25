@@ -18,5 +18,12 @@ namespace Model
 		{
 			QualificationType = qualificationType;
 		}
+
+		public override string ToString()
+		{
+			return ID + ";" +
+				Name.FullName + ";" +
+				QualificationType;
+		}
 	}
 }

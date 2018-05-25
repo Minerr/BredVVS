@@ -52,7 +52,7 @@ namespace DataAccess
 					string email = row[7].ToString();
 
 			        Name name = new Name(firstName, lastName);
-			        customer = new Customer(ID.ToString(), name, address, ZIPcode, city, phoneNumber, email);
+			        customer = new Customer(ID, name, address, ZIPcode, city, phoneNumber, email);
 				}
 			}
 	        return customer;
@@ -80,7 +80,7 @@ namespace DataAccess
 			SqlCommand command = new SqlCommand("spDeleteCustomer");
 			command.CommandType = CommandType.StoredProcedure;
 
-			command.Parameters.Add(new SqlParameter("@ID", customer.CustomerID));
+			command.Parameters.Add(new SqlParameter("@ID", customer.ID));
 			DatabaseController.ExecuteNonQuerySP(command);
 
 		}
@@ -100,7 +100,7 @@ namespace DataAccess
 		    {
 			    foreach (object[] row in table)
 			    {
-				    string ID = row[0].ToString();
+				    int ID = Convert.ToInt32(row[0]);
 				    string firstName = row[1].ToString();
 				    string lastName = row[2].ToString();
 				    string address = row[3].ToString();

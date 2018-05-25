@@ -52,11 +52,11 @@ namespace DataAccess
 					Name name = new Name(firstName, lastName);
 					if (employeeType == "Fitter")
 					{
-						employee = new Fitter(ID.ToString(), name, qualificationType);
+						employee = new Fitter(ID, name, qualificationType);
 					}
 					else if (employeeType == "OfficeWorker")
 					{
-						employee = new OfficeWorker(ID.ToString(), name);
+						employee = new OfficeWorker(ID, name);
 					}
 				}
 			}
@@ -64,29 +64,29 @@ namespace DataAccess
 		}
 
 		public void Update(Employee employee)
-			{
-				SqlCommand command = new SqlCommand("spUpdateEmployee");
-				command.CommandType = CommandType.StoredProcedure;
+		{
+			SqlCommand command = new SqlCommand("spUpdateEmployee");
+			command.CommandType = CommandType.StoredProcedure;
 
-				command.Parameters.Add(new SqlParameter("@ID", employee.ID));
-				command.Parameters.Add(new SqlParameter("@FirstName", employee.Name.FirstName));
-				command.Parameters.Add(new SqlParameter("@LastName", employee.Name.LastName));
+			command.Parameters.Add(new SqlParameter("@ID", employee.ID));
+			command.Parameters.Add(new SqlParameter("@FirstName", employee.Name.FirstName));
+			command.Parameters.Add(new SqlParameter("@LastName", employee.Name.LastName));
 
-				DatabaseController.ExecuteNonQuerySP(command);
-			}
+			DatabaseController.ExecuteNonQuerySP(command);
+		}
 
-			public void Delete(Employee employee)
-			{
-				SqlCommand command = new SqlCommand("spDeleteEmployee");
-				command.CommandType = CommandType.StoredProcedure;
+		public void Delete(Employee employee)
+		{
+			SqlCommand command = new SqlCommand("spDeleteEmployee");
+			command.CommandType = CommandType.StoredProcedure;
 
-				command.Parameters.Add(new SqlParameter("@ID", employee.ID));
-				DatabaseController.ExecuteNonQuerySP(command);
-			}
+			command.Parameters.Add(new SqlParameter("@ID", employee.ID));
+			DatabaseController.ExecuteNonQuerySP(command);
+		}
 
-			public Employee GetEmployeeByCredentials(int ID, string pass)
-			{
-				return null;
-			}
+		public Employee GetEmployeeByCredentials(int ID, string pass)
+		{
+			return null;
 		}
 	}
+}

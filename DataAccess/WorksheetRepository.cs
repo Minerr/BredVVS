@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Model;
 using System.Data;
 using System.Data.SqlClient;
+using Model;
 
 namespace DataAccess
 {
@@ -13,16 +13,29 @@ namespace DataAccess
     {
         public void Create(Worksheet worksheet)
         {
-            SqlCommand command = new SqlCommand("spSaveWorksheet");
-            command.CommandType = CommandType.StoredProcedure;
+            int worksheetID;
 
-            command.Parameters.Add(new SqlParameter("@Customer", worksheet.Customer));
-            command.Parameters.Add(new SqlParameter("@StartDateTime", worksheet.StartDateTime));
-            command.Parameters.Add(new SqlParameter("@EndDateTime", worksheet.EndDateTime));
-            command.Parameters.Add(new SqlParameter("@Workplace", worksheet.Workplace));
+			SqlCommand command = new SqlCommand("spCreateWorksheet");
+			command.CommandType = CommandType.StoredProcedure;
 
-            DatabaseController.ExecuteNonQuerySP(command);
-        }
+			command.Parameters.Add(new SqlParameter("@Customer", worksheet.Customer));
+			command.Parameters.Add(new SqlParameter("@StartDateTime", worksheet.StartDateTime));
+			command.Parameters.Add(new SqlParameter("@EndDateTime", worksheet.EndDateTime));
+			command.Parameters.Add(new SqlParameter("@Workplace", worksheet.Workplace));
+
+            worksheetID = Convert.ToInt32((DatabaseController.ExecuteScalarSP(command)));
+
+            foreach (Fitter fitter in worksheet.AssignedFitters)
+            {
+                SqlCommand command2 = new SqlCommand("spInsertAssignedEmployee");
+                command2.CommandType = CommandType.StoredProcedure;
+
+                command2.Parameters.Add(new SqlParameter("@WorkSheetID", worksheetID));
+                command2.Parameters.Add(new SqlParameter("@Fitter", fitter.ID));
+
+				DatabaseController.ExecuteNonQuerySP(command2);
+			}
+		}
 
         public void Delete(Worksheet type)
         {
@@ -38,5 +51,31 @@ namespace DataAccess
         {
             throw new NotImplementedException();
         }
-    }
+
+	    public List<Worksheet> RetrieveEmployeeWorksheetsByCredentials(string employeeID)
+	    {
+		    List<Worksheet> worksheets = new List<Worksheet>();
+
+		    SqlCommand command = new SqlCommand("spGetFitterWorksheetsByCredentials");
+		    command.CommandType = CommandType.StoredProcedure;
+
+		    command.Parameters.Add(new SqlParameter("@EmployeeID", employeeID));
+		    List<object[]> table = DatabaseController.ExecuteReaderSP(command);
+
+		    if (table != null)
+		    {
+			    foreach (object[] row in table)
+			    {
+				    string ID = row[0].ToString();
+				    string workplace = row[1].ToString();
+				    string firstName = row[2].ToString();
+				    string lastName = row[3].ToString();
+
+				    Name name = new Name(firstName, lastName);
+				    worksheets.Add(new Worksheet(int.Parse(ID), workplace, name));
+			    }
+		    }
+		    return worksheets;
+	    }
+	}
 }

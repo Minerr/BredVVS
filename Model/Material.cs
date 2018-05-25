@@ -18,5 +18,11 @@ namespace Model
             Type = type;
             Description = description;
         }
-    }
+
+		public override string ToString()
+		{
+			return ID + ";" + Type + ";" + Description;
+		}
+
+	}
 }
