@@ -9,7 +9,6 @@ using System.Collections.ObjectModel;
 using Model;
 using DataAccess;
 using ViewModel.PDFbuilder;
-using Spire.Pdf.Graphics;
 
 namespace ViewModel
 {
@@ -281,7 +280,7 @@ namespace ViewModel
 
 			//After saving to the database, create a PDF and return its path to view.
 			BuildPDF buildPDF = new BuildPDF();
-			buildPDF.InsertNewLine(24f, PdfTextAlignment.Center, "Arbejdsseddel nr.: " + Worksheet.ID);
+			buildPDF.InsertNewLine(24f, BuildPDF.TextAlignment.Center, "Arbejdsseddel nr.: " + Worksheet.ID);
 			buildPDF.InsertNewLine(16f, "  ");
 			buildPDF.InsertNewLine(16f, "Kundeinformationer: ");
 			buildPDF.InsertNewSplitLine(14f, Customer.Name.FullName, "Startdato: " + StartDate.ToShortDateString());
@@ -292,7 +291,7 @@ namespace ViewModel
 			buildPDF.InsertNewSplitLine(14f, "Kundenr.: " + Customer.ID, "Arbejdssted: " + Workplace);
 			buildPDF.InsertNewLine(24f, "");
 			buildPDF.InsertNewLine(16f, "Ønskes udført: ");
-			buildPDF.InsertNewTextBlock(14f, PdfTextAlignment.Left, WorkDescription);
+			buildPDF.InsertNewTextBlock(14f, BuildPDF.TextAlignment.Left, WorkDescription);
 			buildPDF.InsertNewLine(24f, "");
 			buildPDF.InsertNewLine(16f, "Tilknyttede montører: ");
 			buildPDF.InsertNewTable(14f, 2, 
