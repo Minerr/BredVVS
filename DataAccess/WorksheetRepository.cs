@@ -13,7 +13,7 @@ namespace DataAccess
     {
         public void Create(Worksheet worksheet)
         {
-			int WorksheetID;
+            int worksheetID;
 
 			SqlCommand command = new SqlCommand("spCreateWorksheet");
 			command.CommandType = CommandType.StoredProcedure;
@@ -23,12 +23,12 @@ namespace DataAccess
 			command.Parameters.Add(new SqlParameter("@EndDateTime", worksheet.EndDateTime));
 			command.Parameters.Add(new SqlParameter("@Workplace", worksheet.Workplace));
 
-			worksheetID = DatabaseController.ExecuteScalarSP(command);
+            worksheetID = Convert.ToInt32(DatabaseController.ExecuteScalarSP(command));
 
-			foreach (Fitter fitter in Worksheet.AssignedFitters)
-			{
-				SqlCommand command2 = new SqlCommand("spAssignedEmployee");
-				command2.CommandType = CommandType.StoredProcedure;
+            foreach (Fitter fitter in worksheet.AssignedFitters)
+            {
+                SqlCommand command2 = new SqlCommand("spAssignedEmployee");
+                command2.CommandType = CommandType.StoredProcedure;
 
 				command2.Parameters.Add(new SqlParameter("@WorkSheetID", Convert.ToInt32(worksheetID)));
 				command2.Parameters.Add(new SqlParameter("@Fitter", fitter.ID));

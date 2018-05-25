@@ -58,8 +58,11 @@
     <Compile Include="FitterWorksheetViewModel.cs" />
     <Compile Include="LogInViewModel.cs" />
     <Compile Include="OfficeWorkerMenuViewModel.cs" />
+    <Compile Include="PDFbuilder\PDFelement.cs" />
     <Compile Include="PDFbuilder\PDFline.cs" />
-    <Compile Include="PDFbuilder\PDFpage.cs" />
+    <Compile Include="PDFbuilder\PDFdocument.cs" />
+    <Compile Include="PDFbuilder\PDFsplitLine.cs" />
+    <Compile Include="PDFbuilder\PDFtable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchForCustomerViewModel.cs" />
