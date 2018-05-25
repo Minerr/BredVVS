@@ -38,9 +38,9 @@ namespace ViewModel
 			
 			List<Customer> customers = new List<Customer>();
 			//TODO: Remove fake data before final release
-			customers.Add(new Customer(new Name("Tim", "Timsen"), "Skt. Knudsgade 111", "5000", "Odense", "12345654", "Timmy@gmail.com"));
+			//customers.Add(new Customer(new Name("Tim", "Timsen"), "Skt. Knudsgade 111", "5000", "Odense", "12345654", "Timmy@gmail.com"));
 
-			//customers.AddRange(repos.RetrieveCustomerByKeyword(keyword));
+			customers.AddRange(repos.RetrieveCustomerByKeyword(keyword));
 			CustomerList = customers;
 
 

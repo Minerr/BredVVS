@@ -15,7 +15,7 @@
                         <GridView>
                             <GridViewColumn Header="Projektnummer" DisplayMemberBinding="{Binding ID}" Width="200"/>
                             <GridViewColumn Header="Arbejdssted" DisplayMemberBinding="{Binding Workplace}" Width="200"/>
-                            <GridViewColumn Header="Kundenavn" DisplayMemberBinding="{Binding Name.FullName, Mode=OneWay}" Width="200"/>
+                            <GridViewColumn Header="Kundenavn" DisplayMemberBinding="{Binding Customer.Name.FullName, Mode=OneWay}" Width="200"/>
                         </GridView>
                     </ListView.View>
                 </ListView>

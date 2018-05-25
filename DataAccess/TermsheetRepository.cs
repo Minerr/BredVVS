@@ -17,7 +17,9 @@ namespace DataAccess
 			command.CommandType = CommandType.StoredProcedure;
 
 			command.Parameters.Add(new SqlParameter("@WorksheetID", termsheet.WorksheetID));
-			//command.Parameters.Add(new SqlParameter("@DateTime", termsheet.DateTime));
+			command.Parameters.Add(new SqlParameter("@AcceptDate", termsheet.AcceptDate));
+			command.Parameters.Add(new SqlParameter("@StartDate", termsheet.StartDate));
+			command.Parameters.Add(new SqlParameter("@EndDate", termsheet.EndDate));
 			command.Parameters.Add(new SqlParameter("@Entrepreneur", termsheet.Entrepreneur));
 			command.Parameters.Add(new SqlParameter("@WorkDescription", termsheet.WorkDescription));
 			command.Parameters.Add(new SqlParameter("@PaymentType", termsheet.PaymentType));
