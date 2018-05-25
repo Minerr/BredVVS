@@ -18,12 +18,10 @@ namespace ViewModel
 
 			EmployeeRepository repo = new EmployeeRepository();
 
+			//OfficeWorker officeWorker = new OfficeWorker(new Name("Hanne", "Johansen"));
+			//repo.Create(officeWorker);
 
-			OfficeWorker officeWorker = new OfficeWorker(new Name("Hanne", "Johansen"));
-			repo.Create(officeWorker);
-
-
-			Employee employee = repo.Retrieve(10600);
+			Employee employee = repo.Retrieve(11000);
 			Console.WriteLine(employee);
 
 
