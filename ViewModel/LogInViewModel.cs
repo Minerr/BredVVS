@@ -35,7 +35,7 @@ namespace ViewModel
 			ViewModelBase viewModel = null;
 
 			// TODO: uncomment retrieve method call (before final release).
-			Employee employee = null; // = _employeeRepository.Retrieve(Convert.ToInt32(EmployeeID));
+			Employee employee = _employeeRepository.Retrieve(Convert.ToInt32(EmployeeID));
 
 			if(employee != null)
 			{
