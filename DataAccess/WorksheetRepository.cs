@@ -71,8 +71,8 @@ namespace DataAccess
 				    string firstName = row[2].ToString();
 				    string lastName = row[3].ToString();
 
-				    Name name = new Name(firstName, lastName);
-				    worksheets.Add(new Worksheet(int.Parse(ID), workplace, name));
+					Name name = new Name(firstName, lastName);
+					worksheets.Add(new Worksheet(int.Parse(ID), workplace, name));
 			    }
 		    }
 		    return worksheets;

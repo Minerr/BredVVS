@@ -55,8 +55,8 @@
                 <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="88" VerticalAlignment="Top" Width="354" Margin="10,442,0,0"/>
                 <Label Content="Periode:" HorizontalAlignment="Left" Margin="406,211,0,0" VerticalAlignment="Top" Height="28" Width="53"/>
                 <DatePicker SelectedDate="{Binding StartDate}" HorizontalAlignment="Left" Margin="459,213,0,0" VerticalAlignment="Top"/>
-                <Label Content="til" HorizontalAlignment="Left" Margin="566,213,0,0" VerticalAlignment="Top"/>
-                <DatePicker SelectedDate="{Binding EndDate}" HorizontalAlignment="Left" Margin="591,213,0,0" VerticalAlignment="Top"/>
+                <Label Content="til" HorizontalAlignment="Left" Margin="589,213,0,0" VerticalAlignment="Top"/>
+                <DatePicker SelectedDate="{Binding EndDate}" HorizontalAlignment="Left" Margin="622,213,0,0" VerticalAlignment="Top"/>
 
                 <Label Content="Betaling:" HorizontalAlignment="Left" Margin="10,442,0,0" VerticalAlignment="Top" Width="70"/>
                 <RadioButton x:Name="FixedPriceRadioButton" Content="Fast Pris" IsChecked="{Binding IsFixedPriceChecked}" GroupName="Payment"  HorizontalAlignment="Left" Margin="20,468,0,0" VerticalAlignment="Top"/>
