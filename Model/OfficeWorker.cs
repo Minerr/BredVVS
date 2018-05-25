@@ -9,6 +9,10 @@ namespace Model
 {
 	public class OfficeWorker: Employee
     {
+		public OfficeWorker(Name name) : base(name)
+		{
+		}
+
 		public OfficeWorker(int ID, Name name) : base(ID, name)
 		{
 		}

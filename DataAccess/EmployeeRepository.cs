@@ -49,11 +49,13 @@ namespace DataAccess
 			{
 				foreach(object[] row in table)
 				{
-					string firstName = row[1].ToString();
-					string lastName = row[2].ToString();
-					string employeeType = row[3].ToString();
+					string employeeType = row[1].ToString();
+					string firstName = row[2].ToString();
+					string lastName = row[3].ToString();
+					string qualificationType = row[4].ToString();
 
 					Name name = new Name(firstName, lastName);
+
 					if(employeeType == "Fitter")
 					{
 						string qualificationType = row[4].ToString();
@@ -65,6 +67,7 @@ namespace DataAccess
 					}
 				}
 			}
+
 			return employee;
 		}
 
