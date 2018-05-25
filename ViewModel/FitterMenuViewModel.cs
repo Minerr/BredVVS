@@ -12,10 +12,10 @@ namespace ViewModel
 	{
 		public List<Worksheet> WorksheetList { get; set; }
 
-		//public FitterWorksheetViewModel()
-		//{
+		public FitterMenuViewModel()
+		{
 
-		//}
+		}
 
 		public void RetrieveAllEmployeeWorksheets(string employeeID)
 		{
