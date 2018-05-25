@@ -8,7 +8,7 @@ namespace Model
 {
 	public class Worksheet
     {
-        public string ID { get; private set; }
+        public int ID { get; private set; }
         public Customer Customer { get; set; }
 		public List<Image> ImageDocumentation { get; set; }
 		public List<Fitter> AssignedFitters { get; set; }
@@ -25,7 +25,6 @@ namespace Model
 		public Worksheet()
         {
 			// Init properties
-			ID = Guid.NewGuid().ToString();
 
 			Customer = new Customer();
 			ImageDocumentation = new List<Image>();
@@ -40,6 +39,14 @@ namespace Model
 			Status = Status.Waiting;
 			AdditionalMaterials = new List<AdditionalMaterials>();
 		}
+
+	    public Worksheet(int ID, string workplace, Name name)
+	    {
+			Customer = new Customer();
+		    this.ID = ID;
+		    Workplace = workplace;
+		    Customer.Name = name;
+	    }
 
         public void AddImage(Image image)
         {

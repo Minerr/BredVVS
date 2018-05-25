@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
+using DataAccess;
 
 namespace ViewModel
 {
@@ -22,7 +23,8 @@ namespace ViewModel
 			WorksheetViewModel worksheetVM = new WorksheetViewModel();
 			worksheetVM.Customer = Customer;
 
-			//TODO: Store customer in Database
+            CustomerRepository customerRepository = new CustomerRepository();
+            customerRepository.Create(Customer);
 
 			return worksheetVM;
 		}

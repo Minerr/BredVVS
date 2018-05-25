@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
 
-namespace ViewModel
+namespace Model
 {
-	public class LoginViewModel : ViewModelBase
+	public enum PaymentType
 	{
+		FixedPrice,
+		Bill,
+		Offer
 
-		public LoginViewModel()
-		{
-			
-		}
 	}
 }

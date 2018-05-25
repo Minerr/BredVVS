@@ -9,7 +9,7 @@ namespace Model
 {
 	 public class Customer
 	{
-		public string ID { get; private set; }
+		public int ID { get; private set; }
 		public Name Name { get; set; }
 		public string Address { get; set; }
 		public string ZIPcode { get; set; }
@@ -19,13 +19,21 @@ namespace Model
 
 		public Customer()
 		{
-			ID = GenerateID();
 			Name = new Name();
 		}
-
-		public Customer(Name name, string address, string ZIPcode, string city, string phoneNumer, string email)
+		public Customer(Name name, string address, string ZIPcode, string city, string phoneNumber, string email)
 		{
-			ID = GenerateID();
+			Name = name;
+			Address = address;
+			this.ZIPcode = ZIPcode;
+			City = city;
+			PhoneNumber = phoneNumber;
+			Email = email;
+		}
+
+		public Customer(int ID, Name name, string address, string ZIPcode, string city, string phoneNumer, string email)
+		{
+			this.ID = ID;
 			Name = name;
 			Address = address;
 			this.ZIPcode = ZIPcode;
@@ -34,9 +42,9 @@ namespace Model
 			Email = email;
 		}
 
-		private string GenerateID()
+		public override string ToString()
 		{
-			return Guid.NewGuid().ToString();
+			return Name.FullName + "\n" + Address + "\n" + ZIPcode + " " + City + "\n" + PhoneNumber;
 		}
 	}
 }

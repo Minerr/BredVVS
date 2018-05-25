@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B0172C07-51B6-42F2-AF2F-E4C689E75C32}</ProjectGuid>
+    <ProjectGuid>{D7842426-FAA6-40DF-9F29-4E22E49928DF}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Model</RootNamespace>
-    <AssemblyName>Model</AssemblyName>
+    <RootNamespace>DataAccess</RootNamespace>
+    <AssemblyName>DataAccess</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,24 +42,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdditionalMaterials.cs" />
-    <Compile Include="Customer.cs" />
-    <Compile Include="Employee.cs" />
-    <Compile Include="Fitter.cs" />
-    <Compile Include="Image.cs" />
-    <Compile Include="Material.cs" />
-    <Compile Include="Name.cs" />
-    <Compile Include="OfficeWorker.cs" />
-    <Compile Include="Payment.cs" />
+    <Compile Include="CustomerRepository.cs" />
+    <Compile Include="DatabaseController.cs" />
+    <Compile Include="EmployeeRepository.cs" />
+    <Compile Include="ImageRepository.cs" />
+    <Compile Include="IRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Status.cs" />
-    <Compile Include="Termsheet.cs" />
-    <Compile Include="Worksheet.cs" />
-    <Compile Include="WorkHours.cs" />
+    <Compile Include="TermsheetRepository.cs" />
+    <Compile Include="WorksheetRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{b0172c07-51b6-42f2-af2f-e4c689e75c32}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

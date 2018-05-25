@@ -38,31 +38,19 @@ namespace View.UserControls
 		{
 			InitializeComponent();
 			DataContext = _fitterMenuVM;
+
+			_fitterMenuVM.RetrieveAllEmployeeWorksheets("10001");
 		}
 
-		private void Selector_OnSelectionChanged(object sender, RoutedEventArgs e)
-		{
-
-		}
-
-		private void SearchForWorksheetButton_Click(object sender, RoutedEventArgs e)
-		{
-
-		}
-
-		private void CancelButton_Click(object sender, RoutedEventArgs e)
-		{
-
-		}
 
 		private void SelectWorksheetButton_Click(object sender, RoutedEventArgs e)
 		{
 
 		}
 
-		private void SearchForWorksheetButton_Click_1(object sender, RoutedEventArgs e)
+		private void LogOutButton_Click(object sender, RoutedEventArgs e)
 		{
-
+			PageCommands.Instance.GoTo(new LogInUC());
 		}
 	}
 }

@@ -1,5 +1,4 @@
-﻿using Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting;
@@ -7,208 +6,216 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
+using Model;
+using DataAccess;
+using ViewModel.PDFbuilder;
+using Spire.Pdf.Graphics;
 
 namespace ViewModel
 {
 	public class WorksheetViewModel : ViewModelBase
 	{
-        public Customer Customer { get; set; }
 
-        public List<TimeSpan> Hours { get; }
-        public List<TimeSpan> Minutes { get; }
+		#region Class variables and propeties...
+		public Customer Customer { get; set; }
+		public List<TimeSpan> Hours { get; }
+		public List<TimeSpan> Minutes { get; }
 
-        private TimeSpan _startTime;
-        public TimeSpan StartTime
-        {
-            get
-            {
-                return _startTime;
-            }
-            set
-            {
-                int hour = 0;
-                int minute = 0;
+		private TimeSpan _startTime;
+		public TimeSpan StartTime
+		{
+			get
+			{
+				return _startTime;
+			}
+			set
+			{
+				int hour = 0;
+				int minute = 0;
 
-                if (value.Hours != 0)
-                {
-                    hour = value.Hours;
-                    minute = _startTime.Minutes;
-                }
+				if(value.Hours != 0)
+				{
+					hour = value.Hours;
+					minute = _startTime.Minutes;
+				}
 
-                if (value.Minutes != 0)
-                {
-                    hour = _startTime.Hours;
-                    minute = value.Minutes;
-                }
+				if(value.Minutes != 0)
+				{
+					hour = _startTime.Hours;
+					minute = value.Minutes;
+				}
 
-                _startTime = new TimeSpan(hour, minute, 0);
-                OnPropertyChanged("StartTime");
-                OnPropertyChanged("StartDateTime");
-            }
-        }
+				_startTime = new TimeSpan(hour, minute, 0);
+				OnPropertyChanged("StartTime");
+				OnPropertyChanged("StartDateTime");
+			}
+		}
 
 		private TimeSpan _endTime;
-        public TimeSpan EndTime
-        {
-            get
-            {
-                return _endTime;
-            }
-            set
-            {
-                int hour = 0;
-                int minute = 0;
+		public TimeSpan EndTime
+		{
+			get
+			{
+				return _endTime;
+			}
+			set
+			{
+				int hour = 0;
+				int minute = 0;
 
-                if (value.Hours != 0)
-                {
-                    hour = value.Hours;
-                    minute = _endTime.Minutes;
-                }
+				if(value.Hours != 0)
+				{
+					hour = value.Hours;
+					minute = _endTime.Minutes;
+				}
 
-                if (value.Minutes != 0)
-                {
-                    hour = _endTime.Hours;
-                    minute = value.Minutes;
-                }
+				if(value.Minutes != 0)
+				{
+					hour = _endTime.Hours;
+					minute = value.Minutes;
+				}
 
-                _endTime = new TimeSpan(hour, minute, 0);
-                OnPropertyChanged("EndTime");
-                OnPropertyChanged("EndDateTime");
+				_endTime = new TimeSpan(hour, minute, 0);
+				OnPropertyChanged("EndTime");
+				OnPropertyChanged("EndDateTime");
 
-            }
-        }
+			}
+		}
 
-        private DateTime _startDate;
-        private DateTime _endDate;
-        public DateTime StartDate
-        {
-            get
-            {
-                return _startDate;
-            }
-            set
-            {
-                _startDate = value;
-                OnPropertyChanged("StartDate");
-                OnPropertyChanged("StartDateTime");
-            }
-        }
+		private DateTime _startDate;
+		private DateTime _endDate;
+		public DateTime StartDate
+		{
+			get
+			{
+				return _startDate;
+			}
+			set
+			{
+				_startDate = value;
+				OnPropertyChanged("StartDate");
+				OnPropertyChanged("StartDateTime");
+			}
+		}
 
-        public DateTime EndDate
-        {
-            get
-            {
-                return _endDate;
-            }
-            set
-            {
-                _endDate = value;
-                OnPropertyChanged("EndDate");
-                OnPropertyChanged("EndDateTime");
-            }
-        }
+		public DateTime EndDate
+		{
+			get
+			{
+				return _endDate;
+			}
+			set
+			{
+				_endDate = value;
+				OnPropertyChanged("EndDate");
+				OnPropertyChanged("EndDateTime");
+			}
+		}
 
-        public DateTime StartDateTime
-        {
-            get
-            {
-                return _startDate + _startTime;
-            }
-        }
+		public DateTime StartDateTime
+		{
+			get
+			{
+				return _startDate + _startTime;
+			}
+		}
 
-        public DateTime EndDateTime
-        {
-            get
-            {
-                return _endDate + _endTime;
-            }
-        }
+		public DateTime EndDateTime
+		{
+			get
+			{
+				return _endDate + _endTime;
+			}
+		}
 
-        public string CustomerFullAddress
-        {
-            get
-            {
-                string fullAddress = "";
+		public string Workplace { get; set; }
+		public string WorkDescription { get; set; }
 
-                if (Customer != null)
-                {
-                    fullAddress = Customer.Address + "\n" + Customer.ZIPcode + " " + Customer.City;
-                }
+		public string CustomerFullAddress
+		{
+			get
+			{
+				string fullAddress = "";
 
-                return fullAddress;
-            }
-        }
+				if(Customer != null)
+				{
+					fullAddress = Customer.Address + "\n" + Customer.ZIPcode + " " + Customer.City;
+				}
 
-        public Worksheet Worksheet { get; set; }
+				return fullAddress;
+			}
+		}
 
-        public WorkHours SelectedWorkHours { get; set; }
+		public Worksheet Worksheet { get; set; }
 
-        private bool _isServiceVehicleChecked;
-        public bool IsServiceVehicleChecked
-        {
-            get { return _isServiceVehicleChecked; }
-            set
-            {
-                if (value == true)
-                {
-                    Worksheet.AddAdditonalMaterial(AdditionalMaterials.ServiceVehicle);
-                }
-                else
-                {
-                    Worksheet.RemoveAdditonalMaterial(AdditionalMaterials.ServiceVehicle);
-                }
-                _isServiceVehicleChecked = value;
-            }
-        }
+		public WorkHours SelectedWorkHours { get; set; }
 
-        private bool _isAuxiliaryMaterialsChecked;
-        public bool IsAuxiliaryMaterialsChecked
-        {
-            get { return _isServiceVehicleChecked; }
-            set
-            {
-                if (value == true)
-                {
-                    Worksheet.AddAdditonalMaterial(AdditionalMaterials.AuxiliaryMaterials);
-                }
-                else
-                {
-                    Worksheet.RemoveAdditonalMaterial(AdditionalMaterials.AuxiliaryMaterials);
-                }
+		private bool _isServiceVehicleChecked;
+		public bool IsServiceVehicleChecked
+		{
+			get { return _isServiceVehicleChecked; }
+			set
+			{
+				if(value == true)
+				{
+					Worksheet.AddAdditonalMaterial(AdditionalMaterials.ServiceVehicle);
+				}
+				else
+				{
+					Worksheet.RemoveAdditonalMaterial(AdditionalMaterials.ServiceVehicle);
+				}
+				_isServiceVehicleChecked = value;
+			}
+		}
 
-                _isAuxiliaryMaterialsChecked = value;
-            }
-        }
+		private bool _isAuxiliaryMaterialsChecked;
+		public bool IsAuxiliaryMaterialsChecked
+		{
+			get { return _isServiceVehicleChecked; }
+			set
+			{
+				if(value == true)
+				{
+					Worksheet.AddAdditonalMaterial(AdditionalMaterials.AuxiliaryMaterials);
+				}
+				else
+				{
+					Worksheet.RemoveAdditonalMaterial(AdditionalMaterials.AuxiliaryMaterials);
+				}
 
-        public bool IsWaitingChecked
-        {
-            get
-            {
-                return (Worksheet.Status == Status.Waiting);
-            }
-            set
-            {
-                if (value)
-                {
-                    Worksheet.Status = Status.Waiting;
-                }
-            }
-        }
+				_isAuxiliaryMaterialsChecked = value;
+			}
+		}
 
-        public bool IsOngoingChecked
-        {
-            get
-            {
-                return (Worksheet.Status == Status.Ongoing);
-            }
-            set
-            {
-                if (value)
-                {
-                    Worksheet.Status = Status.Ongoing;
-                }
-            }
-        }
+		public bool IsWaitingChecked
+		{
+			get
+			{
+				return (Worksheet.Status == Status.Waiting);
+			}
+			set
+			{
+				if(value)
+				{
+					Worksheet.Status = Status.Waiting;
+				}
+			}
+		}
+
+		public bool IsOngoingChecked
+		{
+			get
+			{
+				return (Worksheet.Status == Status.Ongoing);
+			}
+			set
+			{
+				if(value)
+				{
+					Worksheet.Status = Status.Ongoing;
+				}
+			}
+		}
 
 		public bool IsDoneChecked
 		{
@@ -235,72 +242,90 @@ namespace ViewModel
 				OnPropertyChanged("AssignedFitters");
 			}
 		}
+		#endregion
 
-        public WorksheetViewModel()
-        {
-            // Init start values
-            Worksheet = new Worksheet();
+		public WorksheetViewModel()
+		{
+			// Init start values
+			Worksheet = new Worksheet();
+			AssignedFitters = new ObservableCollection<Fitter>();
+			WorkDescription = "";
+			Workplace = "";
 
-            _isServiceVehicleChecked = false;
-            _isAuxiliaryMaterialsChecked = false;
-            StartTime = new TimeSpan(0, 0, 0);
-            EndTime = new TimeSpan(0, 0, 0);
-			StartDate = DateTime.Today;
-			EndDate = DateTime.Today;
-
+			_isServiceVehicleChecked = false;
+			_isAuxiliaryMaterialsChecked = false;
 
 			Hours = new List<TimeSpan>();
-            for (int i = 0; i < 24; i++)
-            {
-                Hours.Add(new TimeSpan(i, 0, 0));
-            }
-
-            Minutes = new List<TimeSpan>();
-            for (int i = 0; i < 60; i += 15)
-            {
-                Minutes.Add(new TimeSpan(0, i, 0));
-            }
-
-
-			// Temp data
-			AssignedFitters = new ObservableCollection<Fitter>();
-			AssignedFitters.Add(new Fitter("10001", new Name("Klaus", "Sørensen")));
-			AssignedFitters.Add(new Fitter("10002", new Name("Jesper", "Nielsen")));
-		}
-
-        public void CreateWorksheet()
-        {
-            //TODO: Save worksheet in database
-        }
-
-		private ObservableCollection<Fitter> RetrieveInactiveFitters()
-		{
-			List<Fitter> allFitters = new List<Fitter>();
-
-			// Temp data
-			allFitters.Add(new Fitter("10001", new Name("Klaus", "Sørensen")));
-			allFitters.Add(new Fitter("10002", new Name("Jesper", "Nielsen")));
-			allFitters.Add(new Fitter("10003", new Name("Simon", "Hansen")));
-			allFitters.Add(new Fitter("10004", new Name("Bo", "Rasmussen")));
-			//end Temp data
-
-			ObservableCollection<Fitter> inactiveFitters = new ObservableCollection<Fitter>();
-			foreach(Fitter fitter in allFitters)
+			for(int i = 6; i <= 21; i++)
 			{
-				if(!AssignedFitters.Contains(fitter))
-				{
-					inactiveFitters.Add(fitter);
-				}
+				Hours.Add(new TimeSpan(i, 0, 0));
 			}
 
-			return inactiveFitters;
+			Minutes = new List<TimeSpan>();
+			for(int i = 0; i < 60; i += 15)
+			{
+				Minutes.Add(new TimeSpan(0, i, 0));
+			}
+
+			StartTime = new TimeSpan(6, 0, 0);
+			EndTime = new TimeSpan(6, 0, 0);
+
+			StartDate = DateTime.Today;
+			EndDate = DateTime.Today;
 		}
+
+		public void CreateWorksheet()
+		{
+			//TODO: Save worksheet in database
+			//That code goes here
+
+			//After saving to the database, create a PDF and return its path to view.
+			BuildPDF buildPDF = new BuildPDF();
+			buildPDF.InsertNewLine(24f, PdfTextAlignment.Center, "Arbejdsseddel nr.: " + Worksheet.ID);
+			buildPDF.InsertNewLine(16f, "  ");
+			buildPDF.InsertNewLine(16f, "Kundeinformationer: ");
+			buildPDF.InsertNewSplitLine(14f, Customer.Name.FullName, "Startdato: " + StartDate.ToShortDateString());
+			buildPDF.InsertNewSplitLine(14f, Customer.Address, "Starttid: " + StartTime);
+			buildPDF.InsertNewSplitLine(14f, Customer.ZIPcode + " " + Customer.City, "Slutdato: " + EndDate.ToShortDateString());
+			buildPDF.InsertNewSplitLine(14f, "Tel. nr.: " + Customer.PhoneNumber, "Sluttid: " + EndTime);
+			buildPDF.InsertNewSplitLine(14f, "Email: " + Customer.Email, "");
+			buildPDF.InsertNewSplitLine(14f, "Kundenr.: " + Customer.ID, "Arbejdssted: " + Workplace);
+			buildPDF.InsertNewLine(24f, "");
+			buildPDF.InsertNewLine(16f, "Ønskes udført: ");
+			buildPDF.InsertNewTextBlock(14f, PdfTextAlignment.Left, WorkDescription);
+			buildPDF.InsertNewLine(24f, "");
+			buildPDF.InsertNewLine(16f, "Tilknyttede montører: ");
+			buildPDF.InsertNewTable(14f, 2, 
+					new List<string> {"MedarbejderID", "Navn", "Kvalifikation"}, 
+					AssignedFitters.AsEnumerable()
+				);
+			buildPDF.InsertNewLine(24f, "");
+			buildPDF.InsertNewLine(16f, "Udførte arbejdstimer: ");
+			buildPDF.InsertNewTable(14f, 2,
+					 new List<string> { "MedarbejderID", "Navn", "Antal timer", "Type", "Dato" },
+					 Worksheet.WorkHours
+				 );
+			buildPDF.InsertNewLine(24f, "");
+			buildPDF.InsertNewLine(16f, "Brugte materialer: ");
+			buildPDF.InsertNewTable(14f, 2,
+					 new List<string> { "Varenummer", "Type", "Beskrivelse" },
+					 Worksheet.Materials
+				 );
+			buildPDF.Save("Arbejdsseddel_" + Worksheet.ID + ".pdf");
+			buildPDF.Open();
+		}
+
 		public TermsheetViewModel CreateNewTermsheet()
 		{
 			TermsheetViewModel termsheetVM = new TermsheetViewModel();
 			termsheetVM.Customer = Customer;
 
 			return termsheetVM;
+		}
+
+		public void AddImages(string[] fileNames)
+		{
+			//TODO: Add image filepaths to database.
 		}
 	}
 }

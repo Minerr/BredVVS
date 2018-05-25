@@ -16,9 +16,9 @@
                 <Label Content="Telefon:"  HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top" Width="50"/>
                 <TextBox x:Name="CustomerPhoneTextBox" Text="{Binding Customer.PhoneNumber}" HorizontalAlignment="Left" Height="24" Margin="65,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" IsEnabled="False"/>
                 <Label Content="Arbejdssted:" HorizontalAlignment="Left" Margin="10,136,0,0" VerticalAlignment="Top" Width="92" RenderTransformOrigin="0.533,0.385"/>
-                <TextBox x:Name="WorkplaceTextBox" Text="{Binding Workseet.Workplace, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="35" Margin="10,162,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
-                <Label Content="Kundeinformation" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="130"/>
-                <TextBox x:Name="DescriptionTextBox" Text="{Binding Worksheet.WorkDescription}" HorizontalAlignment="Left" Height="130" Margin="10,223,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+                <TextBox x:Name="WorkplaceTextBox" Text="{Binding Workplace, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="35" Margin="10,162,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+                <Label Content="Kundeinformation" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="130" />
+                <TextBox x:Name="DescriptionTextBox" Text="{Binding WorkDescription}" HorizontalAlignment="Left" Height="130" Margin="10,223,0,0" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" VerticalAlignment="Top" Width="222"/>
                 <Label Content="Arbejdsbeskrivelse og øvrig info:" HorizontalAlignment="Left" Margin="10,197,0,0" VerticalAlignment="Top" Width="200"/>
                 <DatePicker x:Name="StartDateDatePicker" SelectedDate="{Binding StartDate}" HorizontalAlignment="Left" Margin="242,33,0,0" VerticalAlignment="Top" Width="120"/>
                 <Label Content="Projektnummer" HorizontalAlignment="Left" Margin="502,5,0,0" VerticalAlignment="Top" Width="200"/>
@@ -39,8 +39,8 @@
                 <Label Content="Slutdato" HorizontalAlignment="Right" Margin="0,10,280,0" VerticalAlignment="Top" Width="120" Height="24"/>
                 <Label Content="Sluttid" HorizontalAlignment="Right" Margin="0,66,280,0" VerticalAlignment="Top" Width="120" Height="24"/>
                 <Button x:Name="AddPictureButton" Content="Tilføj billede" HorizontalAlignment="Left" Margin="237,121,0,0" VerticalAlignment="Top" Width="260" Height="76" Click="AddPictureButton_Click"/>
-                <Button x:Name="AddMaterialsButton" Content="Tilføj materialer" HorizontalAlignment="Left" Margin="237,223,0,0" VerticalAlignment="Top" Width="260" Height="24" Click="AddMaterialsButton_Click" RenderTransformOrigin="0.5,0.5"/>
-                <Button x:Name="AddHoursButton" Content="Tilføj timer" HorizontalAlignment="Left" Margin="502,223,0,0" VerticalAlignment="Top" Width="260" Height="24" Click="AddHoursButton_Click"/>
+                <Button x:Name="AddMaterialsButton" Content="Tilføj/Fjern materialer" HorizontalAlignment="Left" Margin="237,223,0,0" VerticalAlignment="Top" Width="260" Height="24" Click="AddMaterialsButton_Click" RenderTransformOrigin="0.5,0.5"/>
+                <Button x:Name="AddHoursButton" Content="Tilføj/Fjern timer" HorizontalAlignment="Left" Margin="502,223,0,0" VerticalAlignment="Top" Width="260" Height="24" Click="AddHoursButton_Click"/>
                 <CheckBox x:Name="ServiceVehicleCheckBox" IsChecked="{Binding IsServiceVehicleChecked}" Content="Servicevogn" HorizontalAlignment="Left" Margin="10,368,0,0" VerticalAlignment="Top" Height="20" Width="130"/>
                 <CheckBox x:Name="AdditionalMaterialsCheckBox" IsChecked="{Binding IsAuxiliaryMaterialsChecked}" Content="Hjælpematerialer" HorizontalAlignment="Left" Margin="10,388,0,0" VerticalAlignment="Top" Height="20"/>
                 <CheckBox x:Name="GuaranteeCheckBox" IsChecked="{Binding Worksheet.IsGuarantee}" Content="Garanti" HorizontalAlignment="Left" Margin="10,408,0,0" VerticalAlignment="Top" Height="20" Width="60" />
@@ -51,11 +51,7 @@
                 <RadioButton x:Name="DoneRadioBox" IsChecked="{Binding IsDoneChecked}" GroupName="Status" Content="Færdig" HorizontalAlignment="Left" Margin="10,488,0,-4" VerticalAlignment="Top" Height="20"/>
 
                 <Button x:Name="AddRemoveFitterButton" Content="Tilføj/Fjern Montører" HorizontalAlignment="Left" Margin="502,67,0,0" VerticalAlignment="Top" Height="24" Width="260" Click="AddRemoveFitterButton_Click"/>
-
-
-                <Button x:Name="RemoveSelectedHourButton" Content="Fjern time" HorizontalAlignment="Left" Margin="502,250,0,0" VerticalAlignment="Top" Width="260" Height="24" IsEnabled="False" Click="RemoveSelectedHourButton_Click"/>
-                <Button x:Name="RemoveSelectedMaterialButton" Content="Fjern materiale" HorizontalAlignment="Left" Margin="237,250,0,0" VerticalAlignment="Top" Width="260" Height="24" IsEnabled="False" Click="RemoveSelectedMaterialButton_Click"/>
-                <ListView x:Name="WorkTimeListBox" ItemsSource="{Binding Worksheet.WorkHours}" SelectedItem="{Binding SelectedWorkHours}" HorizontalAlignment="Left" Height="215" Margin="502,279,0,0" VerticalAlignment="Top" Width="260" SelectionChanged="WorkTimeListBox_SelectionChanged">
+                <ListView x:Name="WorkTimeListBox" ItemsSource="{Binding Worksheet.WorkHours}" SelectedItem="{Binding SelectedWorkHours}" HorizontalAlignment="Left" Height="242" Margin="502,252,0,0" VerticalAlignment="Top" Width="260" SelectionChanged="WorkTimeListBox_SelectionChanged">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Navn" DisplayMemberBinding="{Binding Employee.Name.FullName}" Width="80"/>
@@ -65,7 +61,7 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <ListView x:Name="MaterialsListBox" ItemsSource="{Binding Worksheet.Materials}" SelectedItem="{Binding SelectedMaterial}" HorizontalAlignment="Left" Height="215" Margin="237,279,0,0" VerticalAlignment="Top" Width="260" SelectionChanged="MaterialsListBox_SelectionChanged">
+                <ListView x:Name="MaterialsListBox" ItemsSource="{Binding Worksheet.Materials}" SelectedItem="{Binding SelectedMaterial}" HorizontalAlignment="Left" Height="242" Margin="237,252,0,0" VerticalAlignment="Top" Width="260" SelectionChanged="MaterialsListBox_SelectionChanged">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="50"/>
@@ -74,28 +70,28 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <ComboBox ItemsSource="{Binding Hours, Mode=OneWay}" SelectedItem="{Binding StartTime}" HorizontalAlignment="Left" Height="21" Margin="242,91,0,0" VerticalAlignment="Top" Width="58">
+                <ComboBox ItemsSource="{Binding Hours, Mode=OneWay}" SelectedItem="{Binding StartTime}" SelectedIndex="0" HorizontalAlignment="Left" Height="21" Margin="242,91,0,0" VerticalAlignment="Top" Width="58">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Hours, Mode=OneWay, StringFormat={}{0:D2}}"/>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
-                <ComboBox ItemsSource="{Binding Minutes, Mode=OneWay}" SelectedItem="{Binding StartTime}" HorizontalAlignment="Left" Height="21" Margin="304,91,0,0" VerticalAlignment="Top" Width="58" >
+                <ComboBox ItemsSource="{Binding Minutes, Mode=OneWay}" SelectedItem="{Binding StartTime}" SelectedIndex="0" HorizontalAlignment="Left" Height="21" Margin="304,91,0,0" VerticalAlignment="Top" Width="58" >
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Minutes, Mode=OneWay, StringFormat={}{0:D2}}"/>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
-                <ComboBox ItemsSource="{Binding Hours, Mode=OneWay}" SelectedItem="{Binding EndTime}" HorizontalAlignment="Left" Height="21" Margin="372,91,0,0" VerticalAlignment="Top" Width="58">
+                <ComboBox ItemsSource="{Binding Hours, Mode=OneWay}" SelectedItem="{Binding EndTime}" SelectedIndex="0" HorizontalAlignment="Left" Height="21" Margin="372,91,0,0" VerticalAlignment="Top" Width="58">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Hours, Mode=OneWay, StringFormat={}{0:D2}}"/>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
-                <ComboBox ItemsSource="{Binding Minutes, Mode=OneWay}" SelectedItem="{Binding EndTime}" HorizontalAlignment="Left" Height="21" Margin="436,91,0,0" VerticalAlignment="Top" Width="58">
+                <ComboBox ItemsSource="{Binding Minutes, Mode=OneWay}" SelectedItem="{Binding EndTime}" SelectedIndex="0" HorizontalAlignment="Left" Height="21" Margin="436,91,0,0" VerticalAlignment="Top" Width="58">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Minutes, Mode=OneWay, StringFormat={}{0:D2}}"/>

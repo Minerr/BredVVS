@@ -14,8 +14,16 @@ namespace Model
 		{
 		}
 
-		public Fitter(string ID, Name name) : base(ID, name)
+		public Fitter(int ID, Name name, string qualificationType) : base(ID, name)
 		{
+			QualificationType = qualificationType;
+		}
+
+		public override string ToString()
+		{
+			return ID + ";" +
+				Name.FullName + ";" +
+				QualificationType;
 		}
 	}
 }

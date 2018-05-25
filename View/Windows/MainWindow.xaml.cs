@@ -23,7 +23,8 @@ namespace View.Windows
 		public MainWindow()
 		{
 			InitializeComponent();
-			MainGrid.Children.Add(new LoginUC());
+			PageCommands.Instance.MainWindow = this;
+			PageCommands.Instance.GoTo(new LogInUC());
 		}
 	}
 }

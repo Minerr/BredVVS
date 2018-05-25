@@ -27,6 +27,7 @@ namespace View.UserControls
 		{
             _termsheetVM = new TermsheetViewModel();
 			Init();
+
 		}
 
 		public TermsheetUC(TermsheetViewModel viewModel)
@@ -39,6 +40,8 @@ namespace View.UserControls
 		{
 			InitializeComponent();
 			DataContext = _termsheetVM;
+
+			GetFirmInfo();
 		}
 
         private void GetFirmInfo()
@@ -68,5 +71,22 @@ namespace View.UserControls
         {
             throw new NotImplementedException();
         }
-    }
+
+	    private void Selector_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+	    {
+		    if (TaskListBox.SelectedItem != null)
+		    {
+			    RemoveTaskButton.IsEnabled = true;
+		    }
+		    else
+		    {
+			    RemoveTaskButton.IsEnabled = false;
+		    }
+	    }
+
+		private void SaveTermsheetButton_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+	}
 }

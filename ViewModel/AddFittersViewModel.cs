@@ -69,10 +69,10 @@ namespace ViewModel
 			List<Fitter> allFitters = new List<Fitter>();
 
 			// Temp data
-			allFitters.Add(new Fitter("10001", new Name("Klaus", "Sørensen")));
-			allFitters.Add(new Fitter("10002", new Name("Jesper", "Nielsen")));
-			allFitters.Add(new Fitter("10003", new Name("Simon", "Hansen")));
-			allFitters.Add(new Fitter("10004", new Name("Bo", "Rasmussen")));
+			allFitters.Add(new Fitter(10001, new Name("Klaus", "Sørensen"), "Lærling"));
+			allFitters.Add(new Fitter(10002, new Name("Jesper", "Nielsen"), "Montør"));
+			allFitters.Add(new Fitter(10003, new Name("Simon", "Hansen"), " "));
+			allFitters.Add(new Fitter(10004, new Name("Bo", "Rasmussen"), " "));
 			//end Temp data
 
 			foreach(Fitter fitter in allFitters)

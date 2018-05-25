@@ -13,6 +13,7 @@ namespace ViewModel
 		public ObservableCollection<string> TasksList { get; set; }
 
 		public string SelectedTask { get; set; }
+		public string SelectedCustomTask { get; set; }
 
 		public AddTaskViewModel()
 		{
@@ -33,6 +34,11 @@ namespace ViewModel
 		public void SelectTask(TermsheetViewModel termsheetViewModel)
 		{
 			termsheetViewModel.SelectedTasksList.Add(SelectedTask);
+		}
+
+		public void SelectCustomTask(TermsheetViewModel termsheetViewModel)
+		{
+			termsheetViewModel.SelectedTasksList.Add(SelectedCustomTask);
 		}
 
 	}

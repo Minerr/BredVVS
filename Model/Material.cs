@@ -8,15 +8,21 @@ namespace Model
 {
 	public class Material
     {
-        public string ID { get; private set; }
+        public int ID { get; private set; }
 	    public string Type { get; set; }
 	    public string Description { get; set; }
 
-        public Material(string type, string description)
+        public Material(int ID, string type, string description)
         {
-			ID = Guid.NewGuid().ToString();
+			this.ID = ID;
             Type = type;
             Description = description;
         }
-    }
+
+		public override string ToString()
+		{
+			return ID + ";" + Type + ";" + Description;
+		}
+
+	}
 }

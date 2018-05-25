@@ -13,7 +13,7 @@
         <Label Content="Opgave" HorizontalAlignment="Left" Margin="38,92,0,0" VerticalAlignment="Top"/>
 
         <Label Content="Andet" HorizontalAlignment="Left" Margin="38,126,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="95,129,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="148"/>
-        <Button Content="Tilføj" HorizontalAlignment="Left" Margin="248,129,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="95,129,0,0" TextWrapping="Wrap" Text="{Binding SelectedCustomTask}" VerticalAlignment="Top" Width="148"/>
+        <Button Content="Tilføj" HorizontalAlignment="Left" Margin="248,129,0,0" VerticalAlignment="Top" Width="75" Click="AddCustomTaskButton_Click"/>
     </Grid>
 </Window>
