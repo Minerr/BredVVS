@@ -23,15 +23,15 @@ namespace DataAccess
 			command.Parameters.Add(new SqlParameter("@EndDateTime", worksheet.EndDateTime));
 			command.Parameters.Add(new SqlParameter("@Workplace", worksheet.Workplace));
 
-            worksheetID = Convert.ToInt32(DatabaseController.ExecuteScalarSP(command));
+            worksheetID = Convert.ToInt32((DatabaseController.ExecuteScalarSP(command)));
 
             foreach (Fitter fitter in worksheet.AssignedFitters)
             {
-                SqlCommand command2 = new SqlCommand("spAssignedEmployee");
+                SqlCommand command2 = new SqlCommand("spInsertAssignedEmployee");
                 command2.CommandType = CommandType.StoredProcedure;
 
-				command2.Parameters.Add(new SqlParameter("@WorkSheetID", Convert.ToInt32(worksheetID)));
-				command2.Parameters.Add(new SqlParameter("@Fitter", fitter.ID));
+                command2.Parameters.Add(new SqlParameter("@WorkSheetID", worksheetID));
+                command2.Parameters.Add(new SqlParameter("@Fitter", fitter.ID));
 
 				DatabaseController.ExecuteNonQuerySP(command2);
 			}

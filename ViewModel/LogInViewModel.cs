@@ -13,18 +13,25 @@ namespace ViewModel
 	{
 		private EmployeeRepository _employeeRepository;
 
-		public string EmployeeID { get; set; }
+		private string _employeeID;
+		public string EmployeeID
+		{
+			get { return _employeeID; }
+			set
+			{
+				_employeeID = value;
+				OnPropertyChanged("EmployeeID");
+			}
+		}
 
 		public LogInViewModel()
 		{
 			_employeeRepository = new EmployeeRepository();
-
+			EmployeeID = "10000"; // TODO: remove this before final release.
 		}
 
 		public ViewModelBase LogIn()
 		{
-			EmployeeID = "10000"; // TODO: remove this before final release.
-
 			ViewModelBase viewModel = null;
 
 			// TODO: uncomment retrieve method call (before final release).
