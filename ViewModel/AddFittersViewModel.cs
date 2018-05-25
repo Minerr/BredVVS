@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataAccess;
 using Model;
 
 namespace ViewModel
@@ -67,13 +68,9 @@ namespace ViewModel
 		{
 			ObservableCollection<Fitter> availableFitters = new ObservableCollection<Fitter>();
 			List<Fitter> allFitters = new List<Fitter>();
+			EmployeeRepository repos = new EmployeeRepository();
 
-			// Temp data
-			allFitters.Add(new Fitter(10001, new Name("Klaus", "Sørensen"), "Lærling"));
-			allFitters.Add(new Fitter(10002, new Name("Jesper", "Nielsen"), "Montør"));
-			allFitters.Add(new Fitter(10003, new Name("Simon", "Hansen"), " "));
-			allFitters.Add(new Fitter(10004, new Name("Bo", "Rasmussen"), " "));
-			//end Temp data
+			allFitters.AddRange(repos.GetAllFitters());
 
 			foreach(Fitter fitter in allFitters)
 			{

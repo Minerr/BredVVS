@@ -34,8 +34,7 @@ namespace ViewModel
 
 		public void RetrieveCustomers(string keyword)
 		{
-			CustomerRepository repos = new CustomerRepository();
-			
+			CustomerRepository repos = new CustomerRepository();			
 			List<Customer> customers = new List<Customer>();
 			customers.AddRange(repos.RetrieveCustomerByKeyword(keyword));
 			CustomerList = customers;
