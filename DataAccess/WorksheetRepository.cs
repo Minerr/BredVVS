@@ -13,13 +13,13 @@ namespace DataAccess
     {
         public Worksheet Create(Worksheet worksheet)
         {
-			SqlCommand command = new SqlCommand("spCreateWorksheet");
+			SqlCommand command = new SqlCommand("spInsertWorksheet");
 			command.CommandType = CommandType.StoredProcedure;
 
-			command.Parameters.Add(new SqlParameter("@Customer", worksheet.Customer));
+			command.Parameters.Add(new SqlParameter("@CustomerID", worksheet.Customer.ID));
+			command.Parameters.Add(new SqlParameter("@Workplace", worksheet.Workplace));
 			command.Parameters.Add(new SqlParameter("@StartDateTime", worksheet.StartDateTime));
 			command.Parameters.Add(new SqlParameter("@EndDateTime", worksheet.EndDateTime));
-			command.Parameters.Add(new SqlParameter("@Workplace", worksheet.Workplace));
 
 			int worksheetID = Convert.ToInt32((DatabaseController.ExecuteScalarSP(command)));
 
@@ -28,7 +28,7 @@ namespace DataAccess
                 SqlCommand command2 = new SqlCommand("spInsertAssignedEmployee");
                 command2.CommandType = CommandType.StoredProcedure;
 
-                command2.Parameters.Add(new SqlParameter("@WorkSheetID", worksheetID));
+                command2.Parameters.Add(new SqlParameter("@WorksheetID", worksheetID));
                 command2.Parameters.Add(new SqlParameter("@Fitter", fitter.ID));
 
 				DatabaseController.ExecuteNonQuerySP(command2);

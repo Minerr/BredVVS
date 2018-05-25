@@ -20,13 +20,10 @@ namespace ViewModel
 
 		public WorksheetViewModel CreateNewCustomer()
 		{
-			WorksheetViewModel worksheetVM = new WorksheetViewModel();
-			worksheetVM.Customer = Customer;
-
             CustomerRepository customerRepository = new CustomerRepository();
-            customerRepository.Create(Customer);
+			Customer = customerRepository.Create(Customer);
 
-			return worksheetVM;
+			return new WorksheetViewModel(Customer);
 		}
 
 		public bool IsCustomerDataNotNull()

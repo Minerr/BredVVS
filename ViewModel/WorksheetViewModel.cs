@@ -192,7 +192,17 @@ namespace ViewModel
 				}
 			}
 		}
-		public ObservableCollection<Fitter> AssignedFitters { get; set; }
+		private ObservableCollection<Fitter> _assignedFitters;
+		public ObservableCollection<Fitter> AssignedFitters
+		{
+			get { return _assignedFitters; }
+			set
+			{
+				_assignedFitters = value;
+				OnPropertyChanged("AssignedFitters");
+			}
+		}
+
 		public ObservableCollection<Image> Images { get; set; }
 		public ObservableCollection<Material> Materials { get; set; }
 		public ObservableCollection<WorkHours> WorkHours { get; set; }
@@ -202,12 +212,16 @@ namespace ViewModel
 		public bool IsAuxiliaryMaterialsChecked { get; set; }
 		#endregion
 
-		public WorksheetViewModel()
+		public WorksheetViewModel(Customer customer)
 		{
 			// Init start values
+			Customer = customer;
 			AssignedFitters = new ObservableCollection<Fitter>();
+			Images = new ObservableCollection<Image>();
+			Materials = new ObservableCollection<Material>();
+			WorkHours = new ObservableCollection<WorkHours>();
 			WorkDescription = "";
-			Workplace = "";
+			Workplace = customer.Address + ", " + customer.ZIPcode + " " + customer.City;
 			_status = Status.Waiting;
 
 			IsServiceVehicleChecked = false;
@@ -245,10 +259,19 @@ namespace ViewModel
 			}
 
 			return new Worksheet(
-				Customer, new List<Image>(Images), new List<Fitter>(AssignedFitters),
-				WorkDescription, Workplace, StartDateTime, EndDateTime,
-				new List<Material>(Materials), new List<WorkHours>(WorkHours),
-				IsGuarentee, _status, additionalMaterials );
+					Customer, 
+					new List<Image>(Images), 
+					new List<Fitter>(AssignedFitters),
+					WorkDescription, 
+					Workplace, 
+					StartDateTime, 
+					EndDateTime,
+					new List<Material>(Materials), 
+					new List<WorkHours>(WorkHours),
+					IsGuarentee, 
+					_status, 
+					additionalMaterials
+				);
 		}
 
 		public void SaveWorksheet()

@@ -61,7 +61,6 @@ namespace DataAccess
 
 					if(employeeType == "Fitter")
 					{
-						string qualificationType = row[4].ToString();
 						employee = new Fitter(ID, name, qualificationType);
 					}
 					else if(employeeType == "OfficeWorker")

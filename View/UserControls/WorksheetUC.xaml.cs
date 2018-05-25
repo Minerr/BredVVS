@@ -24,11 +24,6 @@ namespace View.UserControls
 	public partial class WorksheetUC : UserControl
 	{
 		private WorksheetViewModel _worksheetVM;
-		public WorksheetUC()
-		{
-			_worksheetVM = new WorksheetViewModel();
-			Init();
-		}
 
 		public WorksheetUC(WorksheetViewModel viewModel)
 		{
