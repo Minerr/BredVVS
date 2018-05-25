@@ -47,14 +47,9 @@ namespace View.UserControls
 
 		}
 
-		private void CreateTermsheetButton_Click(object sender, RoutedEventArgs e)
-		{
-			PageCommands.Instance.GoTo(new TermsheetUC(_worksheetVM.CreateNewTermsheet()));
-		}
-
 		private void SaveWorksheetButton_Click(object sender, RoutedEventArgs e)
 		{
-			_worksheetVM.CreateWorksheet();
+			_worksheetVM.SaveWorksheet();
 		}
 
 		private void AddMaterialsButton_Click(object sender, RoutedEventArgs e)
@@ -64,7 +59,7 @@ namespace View.UserControls
 
 		private void CancelButton_Click(object sender, RoutedEventArgs e)
 		{
-			PageCommands.Instance.GoTo(new OfficeWorkerMenuUC()); // TODO: Create categorized GoBack method
+			PageCommands.Instance.GoTo(new OfficeWorkerMenuUC());
 		}
 
 		private void RemoveSelectedHourButton_Click(object sender, RoutedEventArgs e)

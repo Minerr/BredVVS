@@ -17,17 +17,20 @@ namespace Model
         public string Entrepreneur {get; set;}
         public string WorkDescription {get; set;}
 		public PaymentType PaymentType { get; set; }
+		public bool IsDraft { get; set; }
 
-        public Termsheet(Customer customer, DateTime startDate, DateTime endDate, int worksheetID, string entrepreneur, string workDescription, PaymentType paymentType)
+		public Termsheet(Customer customer, DateTime acceptDate, DateTime startDate, DateTime endDate, int worksheetID, string entrepreneur, string workDescription, PaymentType paymentType, bool isDraft)
         {
             Customer = customer;
-            StartDate = startDate;
+			AcceptDate = acceptDate;
+			StartDate = startDate;
 			EndDate = endDate;
             WorksheetID = worksheetID;
             Entrepreneur = entrepreneur;
 			WorkDescription = workDescription;
 			PaymentType = paymentType;
-        }
+			IsDraft = isDraft;
+		}
 
 
     }

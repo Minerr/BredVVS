@@ -16,6 +16,17 @@ namespace ViewModel
 	{
 
 		#region Class variables and propeties...
+		private int _worksheetID;
+		public int WorksheetID
+		{
+			get { return _worksheetID; }
+			set
+			{
+				_worksheetID = value;
+				OnPropertyChanged("WorksheetID");
+			}
+		}
+
 		public Customer Customer { get; set; }
 		public List<TimeSpan> Hours { get; }
 		public List<TimeSpan> Minutes { get; }
@@ -145,114 +156,62 @@ namespace ViewModel
 			}
 		}
 
-		public Worksheet Worksheet { get; set; }
-
-		public WorkHours SelectedWorkHours { get; set; }
-
-		private bool _isServiceVehicleChecked;
-		public bool IsServiceVehicleChecked
-		{
-			get { return _isServiceVehicleChecked; }
-			set
-			{
-				if(value == true)
-				{
-					Worksheet.AddAdditonalMaterial(AdditionalMaterials.ServiceVehicle);
-				}
-				else
-				{
-					Worksheet.RemoveAdditonalMaterial(AdditionalMaterials.ServiceVehicle);
-				}
-				_isServiceVehicleChecked = value;
-			}
-		}
-
-		private bool _isAuxiliaryMaterialsChecked;
-		public bool IsAuxiliaryMaterialsChecked
-		{
-			get { return _isServiceVehicleChecked; }
-			set
-			{
-				if(value == true)
-				{
-					Worksheet.AddAdditonalMaterial(AdditionalMaterials.AuxiliaryMaterials);
-				}
-				else
-				{
-					Worksheet.RemoveAdditonalMaterial(AdditionalMaterials.AuxiliaryMaterials);
-				}
-
-				_isAuxiliaryMaterialsChecked = value;
-			}
-		}
-
+		private Status _status;
 		public bool IsWaitingChecked
 		{
-			get
-			{
-				return (Worksheet.Status == Status.Waiting);
-			}
+			get { return (_status == Status.Waiting); }
 			set
 			{
 				if(value)
 				{
-					Worksheet.Status = Status.Waiting;
+					_status = Status.Waiting;
 				}
 			}
 		}
 
 		public bool IsOngoingChecked
 		{
-			get
-			{
-				return (Worksheet.Status == Status.Ongoing);
-			}
+			get { return (_status == Status.Ongoing); }
 			set
 			{
 				if(value)
 				{
-					Worksheet.Status = Status.Ongoing;
+					_status = Status.Ongoing;
 				}
 			}
 		}
 
 		public bool IsDoneChecked
 		{
-			get
-			{
-				return (Worksheet.Status == Status.Done);
-			}
+			get { return (_status == Status.Done); }
 			set
 			{
 				if(value)
 				{
-					Worksheet.Status = Status.Done;
+					_status = Status.Done;
 				}
 			}
 		}
+		public ObservableCollection<Fitter> AssignedFitters { get; set; }
+		public ObservableCollection<Image> Images { get; set; }
+		public ObservableCollection<Material> Materials { get; set; }
+		public ObservableCollection<WorkHours> WorkHours { get; set; }
 
-		private ObservableCollection<Fitter> _assignedFitters;
-		public ObservableCollection<Fitter> AssignedFitters
-		{
-			get { return _assignedFitters; }
-			set
-			{
-				_assignedFitters = value;
-				OnPropertyChanged("AssignedFitters");
-			}
-		}
+		public bool IsGuarentee { get; set; }
+		public bool IsServiceVehicleChecked { get; set; }
+		public bool IsAuxiliaryMaterialsChecked { get; set; }
 		#endregion
 
 		public WorksheetViewModel()
 		{
 			// Init start values
-			Worksheet = new Worksheet();
 			AssignedFitters = new ObservableCollection<Fitter>();
 			WorkDescription = "";
 			Workplace = "";
+			_status = Status.Waiting;
 
-			_isServiceVehicleChecked = false;
-			_isAuxiliaryMaterialsChecked = false;
+			IsServiceVehicleChecked = false;
+			IsAuxiliaryMaterialsChecked = false;
 
 			Hours = new List<TimeSpan>();
 			for(int i = 6; i <= 21; i++)
@@ -273,14 +232,37 @@ namespace ViewModel
 			EndDate = DateTime.Today;
 		}
 
-		public void CreateWorksheet()
+		private Worksheet GetWorksheet()
 		{
-			//TODO: Save worksheet in database
-			//That code goes here
+			List<AdditionalMaterials> additionalMaterials = new List<AdditionalMaterials>();
+			if(IsAuxiliaryMaterialsChecked)
+			{
+				additionalMaterials.Add(AdditionalMaterials.AuxiliaryMaterials);
+			}
+			if(IsServiceVehicleChecked)
+			{
+				additionalMaterials.Add(AdditionalMaterials.ServiceVehicle);
+			}
+
+			return new Worksheet(
+				Customer, new List<Image>(Images), new List<Fitter>(AssignedFitters),
+				WorkDescription, Workplace, StartDateTime, EndDateTime,
+				new List<Material>(Materials), new List<WorkHours>(WorkHours),
+				IsGuarentee, _status, additionalMaterials );
+		}
+
+		public void SaveWorksheet()
+		{
+			// Save worksheet in Database
+			WorksheetRepository worksheetRepository = new WorksheetRepository();
+
+			Worksheet worksheet = GetWorksheet();
+			worksheet = worksheetRepository.Create(worksheet);
+			WorksheetID = worksheet.ID;
 
 			//After saving to the database, create a PDF and return its path to view.
 			BuildPDF buildPDF = new BuildPDF();
-			buildPDF.InsertNewLine(24f, BuildPDF.TextAlignment.Center, "Arbejdsseddel nr.: " + Worksheet.ID);
+			buildPDF.InsertNewLine(24f, BuildPDF.TextAlignment.Center, "Arbejdsseddel nr.: " + WorksheetID);
 			buildPDF.InsertNewLine(16f, "  ");
 			buildPDF.InsertNewLine(16f, "Kundeinformationer: ");
 			buildPDF.InsertNewSplitLine(14f, Customer.Name.FullName, "Startdato: " + StartDate.ToShortDateString());
@@ -294,37 +276,35 @@ namespace ViewModel
 			buildPDF.InsertNewTextBlock(14f, BuildPDF.TextAlignment.Left, WorkDescription);
 			buildPDF.InsertNewLine(24f, "");
 			buildPDF.InsertNewLine(16f, "Tilknyttede montører: ");
-			buildPDF.InsertNewTable(14f, 2, 
-					new List<string> {"MedarbejderID", "Navn", "Kvalifikation"}, 
+			buildPDF.InsertNewTable(14f, 2,
+					new List<string> { "MedarbejderID", "Navn", "Kvalifikation" },
 					AssignedFitters.AsEnumerable()
 				);
 			buildPDF.InsertNewLine(24f, "");
 			buildPDF.InsertNewLine(16f, "Udførte arbejdstimer: ");
 			buildPDF.InsertNewTable(14f, 2,
 					 new List<string> { "MedarbejderID", "Navn", "Antal timer", "Type", "Dato" },
-					 Worksheet.WorkHours
+					 WorkHours.AsEnumerable()
 				 );
 			buildPDF.InsertNewLine(24f, "");
 			buildPDF.InsertNewLine(16f, "Brugte materialer: ");
 			buildPDF.InsertNewTable(14f, 2,
 					 new List<string> { "Varenummer", "Type", "Beskrivelse" },
-					 Worksheet.Materials
+					 Materials.AsEnumerable()
 				 );
-			buildPDF.Save("Arbejdsseddel_" + Worksheet.ID + ".pdf");
+			buildPDF.Save("Arbejdsseddel_" + WorksheetID + ".pdf");
 			buildPDF.Open();
 		}
 
 		public TermsheetViewModel CreateNewTermsheet()
 		{
-			TermsheetViewModel termsheetVM = new TermsheetViewModel();
-			termsheetVM.Customer = Customer;
-
+			TermsheetViewModel termsheetVM = new TermsheetViewModel(GetWorksheet());
 			return termsheetVM;
 		}
 
 		public void AddImages(string[] fileNames)
 		{
-			//TODO: Add image filepaths to database.
+			//TODO: Add image to database.
 		}
 	}
 }

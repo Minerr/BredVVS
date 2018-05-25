@@ -8,7 +8,7 @@ namespace Model
 {
 	public class Worksheet
     {
-        public int ID { get; private set; }
+        public int ID { get; set; }
         public Customer Customer { get; set; }
 		public List<Image> ImageDocumentation { get; set; }
 		public List<Fitter> AssignedFitters { get; set; }
@@ -22,22 +22,24 @@ namespace Model
 		public Status Status { get; set; }
 		public List<AdditionalMaterials> AdditionalMaterials { get; set; }
 
-		public Worksheet()
+		public Worksheet(Customer customer, List<Image> images, List<Fitter> assignedFitters, 
+			string workDescription, string workplace, DateTime startDateTime, DateTime endDateTime, 
+			List<Material> materials, List<WorkHours> workHours, bool isGuarentee, Status status, 
+			List<AdditionalMaterials> additionalMaterials )
         {
 			// Init properties
-
-			Customer = new Customer();
-			ImageDocumentation = new List<Image>();
-			AssignedFitters = new List<Fitter>();
-			WorkDescription = "";
-			Workplace = "";
-			StartDateTime = new DateTime();
-			EndDateTime = new DateTime();
-			Materials = new List<Material>();
-			WorkHours = new List<WorkHours>();
-			IsGuarantee = false;
-			Status = Status.Waiting;
-			AdditionalMaterials = new List<AdditionalMaterials>();
+			Customer = customer;
+			ImageDocumentation = images;
+			AssignedFitters = assignedFitters;
+			WorkDescription = workDescription;
+			Workplace = workplace;
+			StartDateTime = startDateTime;
+			EndDateTime = endDateTime;
+			Materials = materials;
+			WorkHours = workHours;
+			IsGuarantee = isGuarentee;
+			Status = status;
+			AdditionalMaterials = additionalMaterials;
 		}
 
 	    public Worksheet(int ID, string workplace, Name name)
@@ -50,22 +52,22 @@ namespace Model
 
         public void AddImage(Image image)
         {
-
+			ImageDocumentation.Add(image);
         }
 
         public void AddFitter(Fitter fitter)
         {
-
+			AssignedFitters.Add(fitter);
         }
 
         public void AddMaterial(Material material)
         {
-			
+			Materials.Add(material);
         }
 
         public void AddWorkHours(WorkHours workHours)
         {
-
+			WorkHours.Add(workHours);
         }
 
 		public void AddAdditonalMaterial(AdditionalMaterials additionalMaterial)

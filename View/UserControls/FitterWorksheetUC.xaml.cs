@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using View.Windows;
 using ViewModel;
 
 namespace View.UserControls
@@ -23,15 +24,9 @@ namespace View.UserControls
 	{
 		private FitterWorksheetViewModel _fitterWorksheetVM;
 
-		public FitterWorksheetUC()
+		public FitterWorksheetUC(FitterWorksheetViewModel viewModel)
 		{
-			_fitterWorksheetVM = null;
-			Init();
-		}
-
-		public FitterWorksheetUC(WorksheetViewModel viewModel)
-		{
-			_fitterWorksheetVM = new FitterWorksheetViewModel(viewModel);
+			_fitterWorksheetVM = viewModel;
 			Init();
 		}
 
@@ -58,7 +53,7 @@ namespace View.UserControls
 
 		private void CreateTermsheetButton_Click(object sender, RoutedEventArgs e)
 		{
-			PageCommands.Instance.GoTo(new TermsheetUC(_fitterWorksheetVM.CreateNewTermsheet()));
+			PageCommands.Instance.GoTo( new TermsheetUC(_fitterWorksheetVM.CreateNewTermsheet()) );
 		}
 
 		private void ShowTermsheetsButton_Click(object sender, RoutedEventArgs e)

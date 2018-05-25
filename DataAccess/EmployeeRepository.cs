@@ -11,7 +11,7 @@ namespace DataAccess
 {
 	public class EmployeeRepository : IRepository<Employee>
 	{
-		public void Create(Employee employee)
+		public Employee Create(Employee employee)
 		{
 			SqlCommand command = new SqlCommand();
 			command.CommandType = CommandType.StoredProcedure;
@@ -31,7 +31,10 @@ namespace DataAccess
 				command.Parameters.Add(new SqlParameter("@EmployeeType", "OfficeWorker"));
 			}
 
-			DatabaseController.ExecuteNonQuerySP(command);
+			int employeeID = Convert.ToInt32(DatabaseController.ExecuteScalarSP(command));
+			employee.ID = employeeID;
+
+			return employee;
 		}
 
 		public Employee Retrieve(int ID)

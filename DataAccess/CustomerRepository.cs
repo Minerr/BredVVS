@@ -13,7 +13,7 @@ namespace DataAccess
     public class CustomerRepository : IRepository<Customer>
     {
 
-        public void Create(Customer customer)
+        public Customer Create(Customer customer)
         {
             SqlCommand command = new SqlCommand("spInsertCustomer");
 			command.CommandType = CommandType.StoredProcedure;
@@ -26,8 +26,11 @@ namespace DataAccess
             command.Parameters.Add(new SqlParameter("@PhoneNumber", customer.PhoneNumber));
             command.Parameters.Add(new SqlParameter("@Email", customer.Email));
 
-            DatabaseController.ExecuteNonQuerySP(command);
-        }
+			int ecustomerID = Convert.ToInt32(DatabaseController.ExecuteScalarSP(command));
+			customer.ID = ecustomerID;
+
+			return customer;
+		}
 
         public Customer Retrieve(int ID)
         {

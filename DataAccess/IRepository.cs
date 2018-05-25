@@ -8,7 +8,7 @@ namespace DataAccess
 {
     public interface IRepository<T> 
     {
-        void Create(T type);
+        T Create(T type);
 
         T Retrieve(int ID);
 

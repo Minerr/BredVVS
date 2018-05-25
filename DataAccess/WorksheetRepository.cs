@@ -11,10 +11,8 @@ namespace DataAccess
 {
     public class WorksheetRepository : IRepository<Worksheet>
     {
-        public void Create(Worksheet worksheet)
+        public Worksheet Create(Worksheet worksheet)
         {
-            int worksheetID;
-
 			SqlCommand command = new SqlCommand("spCreateWorksheet");
 			command.CommandType = CommandType.StoredProcedure;
 
@@ -23,7 +21,7 @@ namespace DataAccess
 			command.Parameters.Add(new SqlParameter("@EndDateTime", worksheet.EndDateTime));
 			command.Parameters.Add(new SqlParameter("@Workplace", worksheet.Workplace));
 
-            worksheetID = Convert.ToInt32((DatabaseController.ExecuteScalarSP(command)));
+			int worksheetID = Convert.ToInt32((DatabaseController.ExecuteScalarSP(command)));
 
             foreach (Fitter fitter in worksheet.AssignedFitters)
             {
@@ -35,6 +33,10 @@ namespace DataAccess
 
 				DatabaseController.ExecuteNonQuerySP(command2);
 			}
+
+			worksheet.ID = worksheetID;
+
+			return worksheet;
 		}
 
         public void Delete(Worksheet type)

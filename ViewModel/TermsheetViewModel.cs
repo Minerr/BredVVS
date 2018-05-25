@@ -13,13 +13,43 @@ namespace ViewModel
 {
 	public class TermsheetViewModel : ViewModelBase
 	{
-		public DateTime AcceptDate { get; set; }
-		public DateTime StartDate { get; set; }
-		public DateTime EndDate { get; set; }
+		private DateTime _acceptDate;
+		public DateTime AcceptDate
+		{
+			get { return _acceptDate; }
+			set
+			{
+				_acceptDate = value;
+				OnPropertyChanged("AcceptDate");
+			}
+		}
+
+		private DateTime _startDate;
+		public DateTime StartDate
+		{
+			get { return _startDate; }
+			set
+			{
+				_startDate = value;
+				OnPropertyChanged("StartDate");
+			}
+		}
+
+		private DateTime _endDate;
+		public DateTime EndDate
+		{
+			get { return _endDate; }
+			set
+			{
+				_endDate = value;
+				OnPropertyChanged("EndDate");
+			}
+		}
 		public Customer Customer { get; set; }
 		public int WorksheetID { get; set; }
 		public string Entrepreneur { get; set; }
 
+		public string Signature { get; set; }
 
 		private ObservableCollection<string> _tasks;
 		public ObservableCollection<string> SelectedTasksList
@@ -37,20 +67,24 @@ namespace ViewModel
 
 		public string Workplace { get; set; }
 
-		private PaymentType termsheetPayment;
+		private PaymentType _termsheetPayment;
 
 		public bool IsFixedPriceChecked
 		{
 			get
 			{
-				return (termsheetPayment == PaymentType.FixedPrice);
+				return (_termsheetPayment == PaymentType.FixedPrice);
 			}
 			set
 			{
 				if (value)
 				{
-					termsheetPayment = PaymentType.FixedPrice;
+					_termsheetPayment = PaymentType.FixedPrice;
 				}
+
+				OnPropertyChanged("IsFixedPriceChecked");
+				OnPropertyChanged("IsBillChecked");
+				OnPropertyChanged("IsOfferChecked");
 			}
 		}
 
@@ -58,14 +92,18 @@ namespace ViewModel
 		{
 			get
 			{
-				return (termsheetPayment == PaymentType.Bill);
+				return (_termsheetPayment == PaymentType.Bill);
 			}
 			set
 			{
 				if (value)
 				{
-					termsheetPayment = PaymentType.Bill;
+					_termsheetPayment = PaymentType.Bill;
 				}
+
+				OnPropertyChanged("IsFixedPriceChecked");
+				OnPropertyChanged("IsBillChecked");
+				OnPropertyChanged("IsOfferChecked");
 			}
 		}
 
@@ -73,23 +111,39 @@ namespace ViewModel
 		{
 			get
 			{
-				return (termsheetPayment == PaymentType.Offer);
+				return (_termsheetPayment == PaymentType.Offer);
 			}
 			set
 			{
 				if (value)
 				{
-					termsheetPayment = PaymentType.Offer;
+					_termsheetPayment = PaymentType.Offer;
 				}
+
+				OnPropertyChanged("IsFixedPriceChecked");
+				OnPropertyChanged("IsBillChecked");
+				OnPropertyChanged("IsOfferChecked");
 			}
 		}
 
 
 		public string SelectedTask { get; set; }
 
-		public TermsheetViewModel()
+		private Worksheet _worksheet;
+
+		public TermsheetViewModel(Worksheet worksheet)
 		{
+			_worksheet = worksheet;
+
 			SelectedTasksList = new ObservableCollection<string>();
+			_termsheetPayment = PaymentType.FixedPrice;
+			Entrepreneur = "";
+			AcceptDate = DateTime.Now;
+			StartDate = DateTime.Now;
+			EndDate = DateTime.Now;
+			WorksheetID = worksheet.ID;
+			Customer = worksheet.Customer;
+			Workplace = worksheet.Workplace;
 		}
 
 		public void RemoveTask()
@@ -100,14 +154,23 @@ namespace ViewModel
 
 		public void SaveTermsheet()
 		{
+			bool isDraft = string.IsNullOrEmpty(Signature); // If the termsheet is not signed, then the termsheet is a draft.
+
 			string workDescription = "";
 			foreach (string task in SelectedTasksList)
 			{
 				workDescription = workDescription + task + "\n" ;			
 			}
-			Termsheet termsheet = new Termsheet(Customer, StartDate, EndDate, WorksheetID, Entrepreneur, workDescription, termsheetPayment);
+			Termsheet termsheet = new Termsheet(Customer, AcceptDate, StartDate, EndDate, 
+				WorksheetID, Entrepreneur, workDescription, _termsheetPayment, isDraft);
+
 			TermsheetRepository termsheetRepository = new TermsheetRepository();
-			termsheetRepository.Create(termsheet);
+			termsheet = termsheetRepository.Create(termsheet);
+		}
+
+		public FitterWorksheetViewModel GoBack()
+		{
+			return new FitterWorksheetViewModel(_worksheet);
 		}
 	}
 }

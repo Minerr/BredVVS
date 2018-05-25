@@ -11,7 +11,7 @@ namespace DataAccess
 {
 	public class TermsheetRepository : IRepository<Termsheet>
 	{
-		public void Create(Termsheet termsheet)
+		public Termsheet Create(Termsheet termsheet)
 		{
 			SqlCommand command = new SqlCommand("spInsertTermsheet");
 			command.CommandType = CommandType.StoredProcedure;
@@ -23,8 +23,12 @@ namespace DataAccess
 			command.Parameters.Add(new SqlParameter("@Entrepreneur", termsheet.Entrepreneur));
 			command.Parameters.Add(new SqlParameter("@WorkDescription", termsheet.WorkDescription));
 			command.Parameters.Add(new SqlParameter("@PaymentType", termsheet.PaymentType));
+			command.Parameters.Add(new SqlParameter("@IsDraft", termsheet.IsDraft));
 
-			DatabaseController.ExecuteNonQuerySP(command);
+			int termsheetID = Convert.ToInt32(DatabaseController.ExecuteScalarSP(command));
+			termsheet.ID = termsheetID;
+
+			return termsheet;
 		}
 
 		public void Delete(Termsheet type)

@@ -12,20 +12,6 @@ namespace ViewModel
 	{
 		static void Main(string[] args)
 		{
-			//Fitter fitter = new Fitter(new Name("Tim", "Timsen"), " ");
-			//EmployeeRepository repo = new EmployeeRepository();
-			//repo.Create(fitter);
-
-			EmployeeRepository repo = new EmployeeRepository();
-
-			//OfficeWorker officeWorker = new OfficeWorker(new Name("Hanne", "Johansen"));
-			//repo.Create(officeWorker);
-
-			Employee employee = repo.Retrieve(11000);
-			Console.WriteLine(employee);
-
-
-			Console.ReadKey();
 		}
 	}
 }

@@ -8,7 +8,7 @@ namespace Model
 {
     public abstract class Employee
     {
-        public int ID { get; private set; }
+        public int ID { get; set; }
         public Name Name { get; set; }
 
 		public Employee(Name name)

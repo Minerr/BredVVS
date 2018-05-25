@@ -74,7 +74,8 @@
                 <CheckBox Content="Standard forbehold (Vedlægges)" HorizontalAlignment="Left" Margin="20,556,0,0" VerticalAlignment="Top"/>
                 <CheckBox Content="AP 92P" HorizontalAlignment="Left" Margin="20,576,0,0" VerticalAlignment="Top"/>
                 <CheckBox Content="Eventuelt andet skriftligt grundlag" HorizontalAlignment="Left" Margin="20,596,0,0" VerticalAlignment="Top"/>
-                <Button x:Name="SaveTermsheetButton" Content="Gem"  HorizontalAlignment="Left" Margin="660,653,0,0" VerticalAlignment="Top" Width="75" Click="SaveTermsheetButton_Click"/>
+                <Button x:Name="SaveTermsheetButton" Content="Gem"  HorizontalAlignment="Left" Margin="600,653,0,0" VerticalAlignment="Top" Width="75" Click="SaveTermsheetButton_Click"/>
+                <Button x:Name="CancelButton" Content="Annuller"  HorizontalAlignment="Left" Margin="680,653,0,0" VerticalAlignment="Top" Width="75" Click="CancelButton_Click"/>
             </Grid>
         </ScrollViewer>
     </Grid>

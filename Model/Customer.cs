@@ -9,7 +9,7 @@ namespace Model
 {
 	 public class Customer
 	{
-		public int ID { get; private set; }
+		public int ID { get; set; }
 		public Name Name { get; set; }
 		public string Address { get; set; }
 		public string ZIPcode { get; set; }

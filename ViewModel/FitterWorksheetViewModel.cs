@@ -18,20 +18,24 @@ namespace ViewModel
 		public Customer Customer { get; set; }
 		public string StartDateTime { get; set; }
 		public string EndDateTime { get; set; }
-		
-		public FitterWorksheetViewModel(WorksheetViewModel worksheetVM)
+
+		private Worksheet _worksheet;
+
+		public FitterWorksheetViewModel(Worksheet worksheet)
 		{
+			_worksheet = worksheet;
+
 			WorkHours = null;
 			Materials = null;
 
-			WorksheetID = worksheetVM.Worksheet.ID;
-			Workplace = worksheetVM.Workplace;
-			WorkDescription = worksheetVM.WorkDescription;
+			WorksheetID = worksheet.ID;
+			Workplace = worksheet.Workplace;
+			WorkDescription = worksheet.WorkDescription;
 
-			Customer = worksheetVM.Customer;
+			Customer = worksheet.Customer;
 
-			DateTime startDateTime = worksheetVM.StartDateTime;
-			DateTime endDateTime = worksheetVM.EndDateTime;
+			DateTime startDateTime = worksheet.StartDateTime;
+			DateTime endDateTime = worksheet.EndDateTime;
 			StartDateTime =	"Startdato: " + startDateTime.Date.ToString("d") + "\n" + 
 							"Starttid: " + startDateTime.ToString("hh:mm");
 			EndDateTime = "Slutdato: " + endDateTime.Date.ToString("d") + "\n" +
@@ -40,18 +44,8 @@ namespace ViewModel
 
 		public TermsheetViewModel CreateNewTermsheet()
 		{
-			TermsheetViewModel termsheetVM = new TermsheetViewModel();
-			termsheetVM.Customer = Customer;
-			termsheetVM.Workplace = Workplace;
-
+			TermsheetViewModel termsheetVM = new TermsheetViewModel(_worksheet);
 			return termsheetVM;
-		}
-
-		public FitterMenuViewModel GetFitterViewModel()
-		{
-			FitterMenuViewModel fitterMenuViewModel = new FitterMenuViewModel();
-
-			return fitterMenuViewModel;
 		}
 	}
 }

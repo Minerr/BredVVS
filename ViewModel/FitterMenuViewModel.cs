@@ -12,6 +12,8 @@ namespace ViewModel
 	{
 		public List<Worksheet> WorksheetList { get; set; }
 
+		public Worksheet SelectedWorksheet { get; set; }
+
 		public FitterMenuViewModel()
 		{
 
@@ -24,6 +26,16 @@ namespace ViewModel
 
 			worksheets.AddRange(repos.RetrieveEmployeeWorksheetsByCredentials(ClientInfo.Instance.Employee.ID));
 			WorksheetList = worksheets;
+		}
+
+		public FitterWorksheetViewModel SelectWorksheet()
+		{
+			return new FitterWorksheetViewModel(SelectedWorksheet);
+		}
+
+		public bool IsWorksheetSelected()
+		{
+			return (SelectedWorksheet != null);
 		}
 	}
 }
