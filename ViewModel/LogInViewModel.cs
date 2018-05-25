@@ -24,18 +24,23 @@ namespace ViewModel
 			}
 		}
 
+		public string ErrorMessage
+		{
+			get { return "Fejl! Kunne ikke finde ID: " + EmployeeID; }
+		}
+
 		public LogInViewModel()
 		{
 			_employeeRepository = new EmployeeRepository();
-			EmployeeID = "10000"; // TODO: remove this before final release.
+			//EmployeeID = "10000"; // TODO: remove this before final release.
 		}
 
 		public ViewModelBase LogIn()
 		{
 			ViewModelBase viewModel = null;
-
+			int employeeID = Convert.ToInt32(EmployeeID);
 			// TODO: uncomment retrieve method call (before final release).
-			Employee employee = _employeeRepository.Retrieve(Convert.ToInt32(EmployeeID));
+			Employee employee = _employeeRepository.Retrieve(employeeID);
 
 			if(employee != null)
 			{
