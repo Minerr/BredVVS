@@ -14,6 +14,14 @@ namespace ViewModel.PDFbuilder
 {
 	public class BuildPDF
 	{
+		public enum TextAlignment
+		{
+			Left,
+			Center,
+			Right
+		}
+
+
 		private const float LINE_SPACING = 1.25f;
 
 		private float _pageMaxHeight;
@@ -42,7 +50,27 @@ namespace ViewModel.PDFbuilder
 			_document = new PDFdocument();
 		}
 
-		public void InsertNewLine(float fontSize, PdfTextAlignment textAlignment, string text)
+		private PdfTextAlignment ConvertTextAlignment(TextAlignment textAlignment)
+		{
+			PdfTextAlignment result;
+
+			switch(textAlignment)
+			{
+				case TextAlignment.Center:
+					result = PdfTextAlignment.Center;
+					break;
+				case TextAlignment.Right:
+					result = PdfTextAlignment.Right;
+					break;
+				default:
+					result = PdfTextAlignment.Left;
+					break;
+			}
+
+			return result;
+		}
+
+		public void InsertNewLine(float fontSize, TextAlignment textAlignment, string text)
 		{
 			//TODO: check for bold text
 			_document.AddLine(new PDFline(_elementCounter, fontSize, LINE_SPACING, Color.Black, textAlignment, false, text));
@@ -51,7 +79,7 @@ namespace ViewModel.PDFbuilder
 
 		public void InsertNewLine(float fontSize, string text)
 		{
-			InsertNewLine(fontSize, PdfTextAlignment.Left, text);
+			InsertNewLine(fontSize, TextAlignment.Left, text);
 		}
 
 		public void InsertNewSplitLine(float fontSize, string textLeft, string textRight)
@@ -66,7 +94,7 @@ namespace ViewModel.PDFbuilder
 			_elementCounter++;
 		}
 
-		public void InsertNewTextBlock(float fontSize, PdfTextAlignment textAlignment, string text)
+		public void InsertNewTextBlock(float fontSize, TextAlignment textAlignment, string text)
 		{
 			//Split at newline
 			string[] lines = text.Split(
