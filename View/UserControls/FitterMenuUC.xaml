@@ -22,8 +22,8 @@
                     </ListView.View>
                 </ListView>
             </Grid>
-            <Button x:Name="SelectWorksheetButton" Content="Vælg arbejdsseddel" HorizontalAlignment="Left" Margin="512,525,0,0" VerticalAlignment="Top" Height="24" Width="150" IsEnabled="False" Click="SelectWorksheetButton_Click"/>
-            <Button x:Name="CancelButton" Content="Annuller" HorizontalAlignment="Left" Margin="667,525,0,0" VerticalAlignment="Top" Width="93" Height="24" Click="CancelButton_Click"/>
+            <Button x:Name="SelectWorksheetButton" Content="Vælg arbejdsseddel" HorizontalAlignment="Left" Margin="512,556,0,0" VerticalAlignment="Top" Height="24" Width="150" IsEnabled="False" Click="SelectWorksheetButton_Click"/>
+            <Button x:Name="CancelButton" Content="Annuller" HorizontalAlignment="Left" Margin="667,556,0,0" VerticalAlignment="Top" Width="93" Height="24" Click="CancelButton_Click"/>
         </Grid>
     </Grid>
 </UserControl>
