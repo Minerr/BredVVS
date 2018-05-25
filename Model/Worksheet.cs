@@ -40,6 +40,14 @@ namespace Model
 			AdditionalMaterials = new List<AdditionalMaterials>();
 		}
 
+	    public Worksheet(int ID, string workplace, Name name)
+	    {
+			Customer = new Customer();
+		    this.ID = ID;
+		    Workplace = workplace;
+		    Customer.Name = name;
+	    }
+
         public void AddImage(Image image)
         {
 
