@@ -50,14 +50,14 @@ namespace View.UserControls
 			PageCommands.Instance.GoTo(new WorksheetUC(_createNewCustomerVM.CreateNewCustomer()));
 		}
 
-		private void TextBoxChanged(object sender, RoutedEventArgs e)
-		{
-			SaveCustomerButton.IsEnabled = _createNewCustomerVM.IsCustomerDataNotNull();
-		}
-
 		private void CancelButton_Click(object sender, RoutedEventArgs e)
 		{
 			PageCommands.Instance.GoTo(new SearchForCustomerUC());
+		}
+
+		private void TextBoxChanged(object sender, TextChangedEventArgs e)
+		{
+			SaveCustomerButton.IsEnabled = _createNewCustomerVM.IsCustomerDataNotNull();
 		}
 	}
 }
