@@ -12,7 +12,9 @@ namespace ViewModel
 	{
 		static void Main(string[] args)
 		{
-
+			Fitter fitter = new Fitter(new Name("Tim", "Timsen"), " ");
+			EmployeeRepository repo = new EmployeeRepository();
+			repo.Create(fitter);
 		}
 	}
 }

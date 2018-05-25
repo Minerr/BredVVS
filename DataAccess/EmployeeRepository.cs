@@ -13,19 +13,24 @@ namespace DataAccess
 	{
 		public void Create(Employee employee)
 		{
-			SqlCommand command = new SqlCommand("spInsertEmployee");
+			SqlCommand command = new SqlCommand();
 			command.CommandType = CommandType.StoredProcedure;
 
 			command.Parameters.Add(new SqlParameter("@FirstName", employee.Name.FirstName));
 			command.Parameters.Add(new SqlParameter("@LastName", employee.Name.LastName));
-			command.Parameters.Add(new SqlParameter("@EmployeeType", employee.GetType().ToString()));
 
-			if (employee.GetType() == typeof(Fitter))
+			if(employee.GetType() == typeof(Fitter))
 			{
-				command.Parameters.Add(new SqlParameter("@QualificationType", ((Fitter)employee).QualificationType));
-
-				// TODO: Refactor qualificationtype
+				command.CommandText = "spInsertFitter";
+				command.Parameters.Add(new SqlParameter("@EmployeeType", "Fitter"));
+				command.Parameters.Add(new SqlParameter("@QualificationType", ((Fitter) employee).QualificationType));
 			}
+			else if(employee.GetType() == typeof(OfficeWorker))
+			{
+				command.CommandText = "spInsertOfficeWorker";
+				command.Parameters.Add(new SqlParameter("@EmployeeType", "OfficeWorker"));
+			}
+
 			DatabaseController.ExecuteNonQuerySP(command);
 		}
 
@@ -40,9 +45,9 @@ namespace DataAccess
 			command.Parameters.Add(new SqlParameter("@ID", ID));
 			List<object[]> table = DatabaseController.ExecuteReaderSP(command);
 
-			if (table != null)
+			if(table != null)
 			{
-				foreach (object[] row in table)
+				foreach(object[] row in table)
 				{
 					string firstName = row[1].ToString();
 					string lastName = row[2].ToString();
@@ -50,11 +55,11 @@ namespace DataAccess
 					string qualificationType = row[4].ToString();
 
 					Name name = new Name(firstName, lastName);
-					if (employeeType == "Fitter")
+					if(employeeType == "Fitter")
 					{
 						employee = new Fitter(ID, name, qualificationType);
 					}
-					else if (employeeType == "OfficeWorker")
+					else if(employeeType == "OfficeWorker")
 					{
 						employee = new OfficeWorker(ID, name);
 					}

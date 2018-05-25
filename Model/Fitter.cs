@@ -10,8 +10,9 @@ namespace Model
     {
 		public string QualificationType { get; set; }
 
-		public Fitter(Name name) : base(name)
+		public Fitter(Name name, string qualificationType) : base(name)
 		{
+			QualificationType = qualificationType;
 		}
 
 		public Fitter(int ID, Name name, string qualificationType) : base(ID, name)
