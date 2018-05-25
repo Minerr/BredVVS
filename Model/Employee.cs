@@ -11,6 +11,11 @@ namespace Model
         public int ID { get; private set; }
         public Name Name { get; set; }
 
+	    public Employee()
+	    {
+		    
+	    }
+
 		public Employee(Name name)
 		{
 			Name = name;

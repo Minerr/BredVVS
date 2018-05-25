@@ -52,11 +52,11 @@ namespace DataAccess
 					string firstName = row[1].ToString();
 					string lastName = row[2].ToString();
 					string employeeType = row[3].ToString();
-					string qualificationType = row[4].ToString();
 
 					Name name = new Name(firstName, lastName);
 					if(employeeType == "Fitter")
 					{
+						string qualificationType = row[4].ToString();
 						employee = new Fitter(ID, name, qualificationType);
 					}
 					else if(employeeType == "OfficeWorker")
@@ -92,6 +92,32 @@ namespace DataAccess
 		public Employee GetEmployeeByCredentials(int ID, string pass)
 		{
 			return null;
+		}
+
+		public List<Fitter> GetAllFitters()
+		{
+			List<Fitter> fitters = new List<Fitter>();
+
+			SqlCommand command = new SqlCommand("spGetAllFitters");
+			command.CommandType = CommandType.StoredProcedure;
+
+			List<object[]> table = DatabaseController.ExecuteReaderSP(command);
+
+			if (table != null)
+			{
+				foreach (object[] row in table)
+				{
+					int ID = Convert.ToInt32(row[0]);
+					string firstName = row[1].ToString();
+					string lastName = row[2].ToString();
+					string employeeType = row[3].ToString();
+
+
+					Name name = new Name(firstName, lastName);
+					fitters.Add(new Fitter(ID, name, employeeType));
+				}
+			}
+			return fitters;
 		}
 	}
 }

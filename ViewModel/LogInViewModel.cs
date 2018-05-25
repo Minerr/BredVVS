@@ -33,7 +33,7 @@ namespace ViewModel
 		public LogInViewModel()
 		{
 			_employeeRepository = new EmployeeRepository();
-			EmployeeID = "10000"; // TODO: remove this before final release.
+			/*EmployeeID = "10000";*/ // TODO: remove this before final release.
 		}
 
 		public ViewModelBase LogIn()
