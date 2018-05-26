@@ -44,7 +44,8 @@ namespace View.UserControls
 
 		private void SaveWorksheetButton_Click(object sender, RoutedEventArgs e)
 		{
-			_worksheetVM.SaveWorksheet();
+			string filePath = _worksheetVM.SaveWorksheet();
+			System.Diagnostics.Process.Start(filePath);
 		}
 
 		private void AddMaterialsButton_Click(object sender, RoutedEventArgs e)

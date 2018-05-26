@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Model;
 
 namespace DataAccess
 {
-    public interface IRepository<T> 
+    public interface IRepository<T> where T : RepositoryElement
     {
         T Create(T type);
 

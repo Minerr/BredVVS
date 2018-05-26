@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-	public class Worksheet
-    {
+	public class Worksheet : RepositoryElement
+	{
         public int ID { get; set; }
         public Customer Customer { get; set; }
 		public List<Image> ImageDocumentation { get; set; }

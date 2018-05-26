@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-	 public class Customer
+	 public class Customer : RepositoryElement
 	{
 		public int ID { get; set; }
 		public Name Name { get; set; }

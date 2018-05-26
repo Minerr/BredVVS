@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-	public class Termsheet
-    {
+	public class Termsheet : RepositoryElement
+	{
         public int ID {get; set;}
         public Customer Customer {get; set; }
 		public DateTime AcceptDate {get; set;}

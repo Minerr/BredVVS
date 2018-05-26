@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-	public class Image
-    {
+	public class Image : RepositoryElement
+	{
 		public int ID { get; set; }
 		public DateTime DateTime { get; set; }
         public string GPSLocation { get; set; }

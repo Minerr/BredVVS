@@ -26,8 +26,8 @@ namespace DataAccess
             command.Parameters.Add(new SqlParameter("@PhoneNumber", customer.PhoneNumber));
             command.Parameters.Add(new SqlParameter("@Email", customer.Email));
 
-			int ecustomerID = Convert.ToInt32(DatabaseController.ExecuteScalarSP(command));
-			customer.ID = ecustomerID;
+			int customerID = Convert.ToInt32(DatabaseController.ExecuteScalarSP(command));
+			customer.ID = customerID;
 
 			return customer;
 		}

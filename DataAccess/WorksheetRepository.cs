@@ -29,7 +29,7 @@ namespace DataAccess
                 command2.CommandType = CommandType.StoredProcedure;
 
                 command2.Parameters.Add(new SqlParameter("@WorksheetID", worksheetID));
-                command2.Parameters.Add(new SqlParameter("@Fitter", fitter.ID));
+                command2.Parameters.Add(new SqlParameter("@EmployeeID", fitter.ID));
 
 				DatabaseController.ExecuteNonQuerySP(command2);
 			}

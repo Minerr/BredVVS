@@ -27,7 +27,33 @@ namespace ViewModel
 			}
 		}
 
-		public Customer Customer { get; set; }
+		private Customer _customer;
+		public Customer Customer
+		{
+			get { return _customer; }
+			set
+			{
+				_customer = value;
+				OnPropertyChanged("Customer");
+				OnPropertyChanged("CustomerFullAddress");
+			}
+		}
+
+		public string CustomerFullAddress
+		{
+			get
+			{
+				string fullAddress = "";
+
+				if(Customer != null)
+				{
+					fullAddress = Customer.Address + "\n" + Customer.ZIPcode + " " + Customer.City;
+				}
+
+				return fullAddress;
+			}
+		}
+
 		public List<TimeSpan> Hours { get; }
 		public List<TimeSpan> Minutes { get; }
 
@@ -141,20 +167,6 @@ namespace ViewModel
 		public string Workplace { get; set; }
 		public string WorkDescription { get; set; }
 
-		public string CustomerFullAddress
-		{
-			get
-			{
-				string fullAddress = "";
-
-				if(Customer != null)
-				{
-					fullAddress = Customer.Address + "\n" + Customer.ZIPcode + " " + Customer.City;
-				}
-
-				return fullAddress;
-			}
-		}
 
 		private Status _status;
 		public bool IsWaitingChecked
@@ -274,13 +286,12 @@ namespace ViewModel
 				);
 		}
 
-		public void SaveWorksheet()
+		public string SaveWorksheet()
 		{
 			// Save worksheet in Database
 			WorksheetRepository worksheetRepository = new WorksheetRepository();
 
-			Worksheet worksheet = GetWorksheet();
-			worksheet = worksheetRepository.Create(worksheet);
+			Worksheet worksheet = worksheetRepository.Create( GetWorksheet() );
 			WorksheetID = worksheet.ID;
 
 			//After saving to the database, create a PDF and return its path to view.
@@ -315,8 +326,8 @@ namespace ViewModel
 					 new List<string> { "Varenummer", "Type", "Beskrivelse" },
 					 Materials.AsEnumerable()
 				 );
-			buildPDF.Save("Arbejdsseddel_" + WorksheetID + ".pdf");
-			buildPDF.Open();
+
+			return buildPDF.Save("Arbejdsseddel_" + WorksheetID + ".pdf");
 		}
 
 		public TermsheetViewModel CreateNewTermsheet()
