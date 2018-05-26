@@ -46,11 +46,11 @@ namespace ViewModel
 
 			if(employee != null)
 			{
-				if(employee.GetType() == typeof(OfficeWorker))
+				if(employee.Type == EmployeeType.OfficeWorker)
 				{
 					viewModel = new OfficeWorkerMenuViewModel();
 				}
-				else if(employee.GetType() == typeof(Fitter))
+				else if(employee.Type == EmployeeType.Fitter)
 				{
 					viewModel = new FitterMenuViewModel();
 				}

@@ -6,29 +6,24 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public abstract class Employee : RepositoryElement
+    public class Employee : RepositoryElement
     {
         public Name Name { get; set; }
         public EmployeeType Type { get; set; }
 		public List<QualificationType> Qualifications { get; }
 
-		public Employee(Name name, EmployeeType employeeType) : base()
+		public Employee(Name name, EmployeeType employeeType, List<QualificationType> qualifications) : base()
 		{
 			Name = name;
 			Type = employeeType;
-			Qualifications = new List<QualificationType>();
+			Qualifications = qualifications ?? new List<QualificationType>();
 		}
 
-		public Employee(int ID, Name name, EmployeeType type) : base(ID)
+		public Employee(int ID, Name name, EmployeeType type, List<QualificationType> qualifications) : base(ID)
 		{
 			Name = name;
 			Type = type;
-			Qualifications = new List<QualificationType>();
-		}
-
-		public void AddQualificationType(QualificationType qualificationType)
-		{
-			Qualifications.Add(qualificationType);
+			Qualifications = qualifications ?? new List<QualificationType>();
 		}
 
 		public override bool Equals(object other)

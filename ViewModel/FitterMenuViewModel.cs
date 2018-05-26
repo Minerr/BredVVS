@@ -16,16 +16,10 @@ namespace ViewModel
 
 		public FitterMenuViewModel()
 		{
-
-		}
-
-		public void RetrieveAllEmployeeWorksheets()
-		{
 			WorksheetRepository repos = new WorksheetRepository();
 			List<Worksheet> worksheets = new List<Worksheet>();
 
-			worksheets.AddRange(repos.RetrieveAssignedWorksheetsByEmployeeID(ClientInfo.Instance.Employee.ID));
-			WorksheetList = worksheets;
+			WorksheetList = repos.RetrieveAssignedWorksheetsByEmployeeID(ClientInfo.Instance.Employee.ID);
 		}
 
 		public FitterWorksheetViewModel SelectWorksheet()

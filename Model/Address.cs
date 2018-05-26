@@ -18,5 +18,10 @@ namespace Model
 			this.ZIPcode = ZIPcode;
 			City = city;
 		}
+
+		public override string ToString()
+		{
+			return Street + ", " + ZIPcode + " " + City;
+		}
 	}
 }

@@ -9,6 +9,6 @@ namespace DataAccess
 {
 	public interface IEmployeeRepository : IRepository<Employee>
 	{
-		List<Fitter> GetEmployeesByType();
+		List<Employee> RetrieveAllEmployeesByType(EmployeeType employeeType);
 	}
 }

@@ -18,13 +18,13 @@ namespace View.Windows
 	/// <summary>
 	/// Interaction logic for AddFitterWindow.xaml
 	/// </summary>
-	public partial class AddFittersWindow : Window
+	public partial class AssignEmployeesWindow : Window
 	{
-		private AddFittersViewModel _addFittersVM;
+		private AssignEmployeesViewModel _addFittersVM;
 
-		public AddFittersWindow(WorksheetViewModel worksheetVM)
+		public AssignEmployeesWindow(AssignEmployeesViewModel viewModel)
 		{
-			_addFittersVM = new AddFittersViewModel(worksheetVM);
+			_addFittersVM = viewModel;
 
 			InitializeComponent();
 			DataContext = _addFittersVM;
@@ -32,17 +32,17 @@ namespace View.Windows
 
 		private void SelectFitterButton_Click(object sender, RoutedEventArgs e)
 		{
-			_addFittersVM.AddSelectedFitter();
+			_addFittersVM.AddSelectedEmployee();
 		}
 
 		private void RemoveFitterButton_Click(object sender, RoutedEventArgs e)
 		{
-			_addFittersVM.RemoveSelectedFitter();
+			_addFittersVM.RemoveSelectedEmployee();
 		}
 
 		private void SaveAssignedFittersButton_Click(object sender, RoutedEventArgs e)
 		{
-			_addFittersVM.SaveAssignedFitters();
+			_addFittersVM.SaveAssignedEmployees();
 			this.Close();
 		}
 

@@ -13,33 +13,46 @@ namespace DataAccess
 	{
 		public Employee Create(Employee employee)
 		{
-			SqlCommand command = new SqlCommand();
+			SqlCommand command = new SqlCommand("spInsertEmployee");
 			command.CommandType = CommandType.StoredProcedure;
 
 			command.Parameters.Add(new SqlParameter("@FirstName", employee.Name.FirstName));
 			command.Parameters.Add(new SqlParameter("@LastName", employee.Name.LastName));
-
-			if(employee.GetType() == typeof(Fitter))
-			{
-				command.CommandText = "spInsertFitter";
-				command.Parameters.Add(new SqlParameter("@EmployeeType", "Fitter"));
-				command.Parameters.Add(new SqlParameter("@QualificationType", ((Fitter) employee).QualificationType));
-			}
-			else if(employee.GetType() == typeof(OfficeWorker))
-			{
-				command.CommandText = "spInsertOfficeWorker";
-				command.Parameters.Add(new SqlParameter("@EmployeeType", "OfficeWorker"));
-			}
+			command.Parameters.Add(new SqlParameter("@EmployeeType", employee.Type.ToString()));
 
 			int employeeID = Convert.ToInt32(DatabaseController.ExecuteScalarSP(command));
 			employee.ID = employeeID;
 
+			UpdateQualificationsForEmployee(employee);
+
 			return employee;
+		}
+
+		private void UpdateQualificationsForEmployee(Employee employee)
+		{
+			SqlCommand command = new SqlCommand("spDeleteAllEmployeeQualificationsByID");
+			command.CommandType = CommandType.StoredProcedure;
+
+			command.Parameters.Add(new SqlParameter("@EmployeeID", employee.ID));
+			DatabaseController.ExecuteNonQuerySP(command);
+
+			foreach(QualificationType qualificationType in employee.Qualifications)
+			{
+				CreateEmployeeQualification(employee.ID, qualificationType);
+			}
+		}
+
+		private void CreateEmployeeQualification(int employeeID, QualificationType qualificationType)
+		{
+			SqlCommand command = new SqlCommand("spInsertEmployeeQualification");
+			command.CommandType = CommandType.StoredProcedure;
+			command.Parameters.Add(new SqlParameter("@EmployeeID", employeeID));
+			command.Parameters.Add(new SqlParameter("@QualificationType", qualificationType.ToString()));
+			DatabaseController.ExecuteNonQuerySP(command);
 		}
 
 		public Employee Retrieve(int ID)
 		{
-			//string error = "";
 			Employee employee = null;
 
 			SqlCommand command = new SqlCommand("spGetEmployeeByID");
@@ -48,26 +61,18 @@ namespace DataAccess
 			command.Parameters.Add(new SqlParameter("@ID", ID));
 			List<object[]> table = DatabaseController.ExecuteReaderSP(command);
 
-			if(table != null)
+			if(table?.Count > 0) // If the list is not null or empty
 			{
-				foreach(object[] row in table)
-				{
-					string employeeType = row[1].ToString();
-					string firstName = row[2].ToString();
-					string lastName = row[3].ToString();
-					string qualificationType = row[4].ToString();
+				object[] row = table[0];
+				EmployeeType employeeType;
 
-					Name name = new Name(firstName, lastName);
+				Enum.TryParse(row[1].ToString(), out employeeType);
+				string firstName = row[2].ToString();
+				string lastName = row[3].ToString();
 
-					if(employeeType == "Fitter")
-					{
-						employee = new Fitter(ID, name, qualificationType);
-					}
-					else if(employeeType == "OfficeWorker")
-					{
-						employee = new OfficeWorker(ID, name);
-					}
-				}
+				List<QualificationType> qualifications = RetrieveEmployeeQualificationsByID(ID);
+				Name name = new Name(firstName, lastName);
+				employee = new Employee(ID, name, employeeType, qualifications);
 			}
 
 			return employee;
@@ -82,6 +87,8 @@ namespace DataAccess
 			command.Parameters.Add(new SqlParameter("@FirstName", employee.Name.FirstName));
 			command.Parameters.Add(new SqlParameter("@LastName", employee.Name.LastName));
 
+			UpdateQualificationsForEmployee(employee);
+
 			DatabaseController.ExecuteNonQuerySP(command);
 		}
 
@@ -94,30 +101,57 @@ namespace DataAccess
 			DatabaseController.ExecuteNonQuerySP(command);
 		}
 
-		public List<Fitter> GetEmployeesByType()
+		private List<QualificationType> RetrieveEmployeeQualificationsByID(int ID)
 		{
-			List<Fitter> fitters = new List<Fitter>();
+			List<QualificationType> qualifications = new List<QualificationType>();
 
-			SqlCommand command = new SqlCommand("spGetAllFitters");
+			SqlCommand command = new SqlCommand("spGetEmployeeQualificationsByID");
 			command.CommandType = CommandType.StoredProcedure;
+
+			command.Parameters.Add(new SqlParameter("@ID", ID));
+			List<object[]> table = DatabaseController.ExecuteReaderSP(command);
+
+			if(table?.Count > 0) // If the list is not null or empty
+			{
+				foreach(object[] row in table)
+				{
+					QualificationType qualificationType;
+
+					Enum.TryParse(row[1].ToString(), out qualificationType);
+					qualifications.Add(qualificationType);
+				}
+			}
+
+			return qualifications;
+		}
+
+		public List<Employee> RetrieveAllEmployeesByType(EmployeeType employeeType)
+		{
+			List<Employee> employees = new List<Employee>();
+
+			SqlCommand command = new SqlCommand("spGetAllEmployeesByType");
+			command.CommandType = CommandType.StoredProcedure;
+			command.Parameters.Add(new SqlParameter("@EmployeeType", employeeType.ToString()));
 
 			List<object[]> table = DatabaseController.ExecuteReaderSP(command);
 
-			if(table != null)
+			if(table?.Count > 0) // If the list is not null or empty
 			{
 				foreach(object[] row in table)
 				{
 					int ID = Convert.ToInt32(row[0]);
 					string firstName = row[1].ToString();
 					string lastName = row[2].ToString();
-					string employeeType = row[3].ToString();
-
 
 					Name name = new Name(firstName, lastName);
-					fitters.Add(new Fitter(ID, name, employeeType));
+
+					List<QualificationType> qualifications = RetrieveEmployeeQualificationsByID(ID);
+					Employee employee = new Employee(ID, name, employeeType, qualifications);
+
+					employees.Add(employee);
 				}
 			}
-			return fitters;
+			return employees;
 		}
 	}
 }

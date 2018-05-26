@@ -39,8 +39,6 @@ namespace View.UserControls
 		{
 			InitializeComponent();
 			DataContext = _fitterMenuVM;
-
-			_fitterMenuVM.RetrieveAllEmployeeWorksheets();
 		}
 
 

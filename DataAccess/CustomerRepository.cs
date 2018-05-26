@@ -20,11 +20,11 @@ namespace DataAccess
 
             command.Parameters.Add(new SqlParameter("@FirstName", customer.Name.FirstName));
             command.Parameters.Add(new SqlParameter("@LastName", customer.Name.LastName));
-            command.Parameters.Add(new SqlParameter("@Address", customer.Address));
-            command.Parameters.Add(new SqlParameter("@City", customer.City));
-            command.Parameters.Add(new SqlParameter("@ZIPcode", customer.ZIPcode));
+            command.Parameters.Add(new SqlParameter("@Address", customer.Address.Street));
+            command.Parameters.Add(new SqlParameter("@ZIPcode", customer.Address.ZIPcode));
+            command.Parameters.Add(new SqlParameter("@City", customer.Address.City));
             command.Parameters.Add(new SqlParameter("@PhoneNumber", customer.PhoneNumber));
-            command.Parameters.Add(new SqlParameter("@Email", customer.Email));
+			command.Parameters.Add(new SqlParameter("@Email", customer.Email));
 
 			int customerID = Convert.ToInt32(DatabaseController.ExecuteScalarSP(command));
 			customer.ID = customerID;
@@ -48,14 +48,15 @@ namespace DataAccess
 		        {
 					string firstName = row[1].ToString();
 					string lastName = row[2].ToString();
-					string address = row[3].ToString();
+					string street = row[3].ToString();
 			        string ZIPcode = row[4].ToString();
 					string city = row[5].ToString();
 					string phoneNumber = row[6].ToString();
 					string email = row[7].ToString();
 
+					Address address = new Address(street, ZIPcode, city);
 			        Name name = new Name(firstName, lastName);
-			        customer = new Customer(ID, name, address, ZIPcode, city, phoneNumber, email);
+			        customer = new Customer(ID, name, address, phoneNumber, email);
 				}
 			}
 	        return customer;
@@ -69,9 +70,9 @@ namespace DataAccess
 	        command.Parameters.Add(new SqlParameter("@ID", customer.ID));
 	        command.Parameters.Add(new SqlParameter("@FirstName", customer.Name.FirstName));
 	        command.Parameters.Add(new SqlParameter("@LastName", customer.Name.LastName));
-	        command.Parameters.Add(new SqlParameter("@Address", customer.Address));
-	        command.Parameters.Add(new SqlParameter("@City", customer.City));
-	        command.Parameters.Add(new SqlParameter("@ZIPcode", customer.ZIPcode));
+	        command.Parameters.Add(new SqlParameter("@Address", customer.Address.Street));
+	        command.Parameters.Add(new SqlParameter("@City", customer.Address.City));
+	        command.Parameters.Add(new SqlParameter("@ZIPcode", customer.Address.ZIPcode));
 	        command.Parameters.Add(new SqlParameter("@PhoneNumber", customer.PhoneNumber));
 	        command.Parameters.Add(new SqlParameter("@Email", customer.Email));
 
@@ -85,7 +86,6 @@ namespace DataAccess
 
 			command.Parameters.Add(new SqlParameter("@ID", customer.ID));
 			DatabaseController.ExecuteNonQuerySP(command);
-
 		}
 
 	    public List<Customer> RetrieveCustomerByKeyword(string keyword)
@@ -106,14 +106,15 @@ namespace DataAccess
 				    int ID = Convert.ToInt32(row[0]);
 				    string firstName = row[1].ToString();
 				    string lastName = row[2].ToString();
-				    string address = row[3].ToString();
+				    string street = row[3].ToString();
 				    string ZIPcode = row[4].ToString();
 				    string city = row[5].ToString();
 				    string phoneNumber = row[6].ToString();
 				    string email = row[7].ToString();
 
+					Address address = new Address(street, ZIPcode, city);
 				    Name name = new Name(firstName, lastName);
-				    customers.Add(new Customer(ID, name, address, ZIPcode, city, phoneNumber, email));
+					customers.Add(new Customer(ID, name, address, phoneNumber, email));
 			    }
 		    }
 			return customers;

@@ -10,16 +10,26 @@ namespace ViewModel
 {
 	public class FitterWorksheetViewModel : ViewModelBase
 	{
+		private Customer _customer;
+		private Worksheet _worksheet;
+
 		public ObservableCollection<WorkHours> WorkHours { get; set; }
 		public ObservableCollection<Material> Materials { get; set; }
 		public int WorksheetID { get; set; }
 		public string Workplace { get; set; }
 		public string WorkDescription { get; set; }
-		public Customer Customer { get; set; }
+		public string CustomerInfo
+		{
+			get
+			{
+				return _customer.Name.FullName + "\n" +
+					_customer.Address + "\n" +
+					"Tlf. nr.: " + _customer.PhoneNumber + "\n" +
+					"Email: " + _customer.Email;
+			}
+		}
 		public string StartDateTime { get; set; }
 		public string EndDateTime { get; set; }
-
-		private Worksheet _worksheet;
 
 		public FitterWorksheetViewModel(Worksheet worksheet)
 		{
@@ -32,7 +42,7 @@ namespace ViewModel
 			Workplace = worksheet.Workplace;
 			WorkDescription = worksheet.WorkDescription;
 
-			Customer = worksheet.Customer;
+			_customer = worksheet.Customer;
 
 			DateTime startDateTime = worksheet.StartDateTime;
 			DateTime endDateTime = worksheet.EndDateTime;

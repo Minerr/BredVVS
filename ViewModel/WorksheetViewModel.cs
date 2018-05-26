@@ -16,6 +16,7 @@ namespace ViewModel
 	{
 
 		#region Class variables and propeties...
+
 		private int _worksheetID;
 		public int WorksheetID
 		{
@@ -35,22 +36,6 @@ namespace ViewModel
 			{
 				_customer = value;
 				OnPropertyChanged("Customer");
-				OnPropertyChanged("CustomerFullAddress");
-			}
-		}
-
-		public string CustomerFullAddress
-		{
-			get
-			{
-				string fullAddress = "";
-
-				if(Customer != null)
-				{
-					fullAddress = Customer.Address + "\n" + Customer.ZIPcode + " " + Customer.City;
-				}
-
-				return fullAddress;
 			}
 		}
 
@@ -204,14 +189,15 @@ namespace ViewModel
 				}
 			}
 		}
-		private ObservableCollection<Fitter> _assignedFitters;
-		public ObservableCollection<Fitter> AssignedFitters
+
+		private ObservableCollection<Employee> _assignedEmployees;
+		public ObservableCollection<Employee> AssignedEmployees
 		{
-			get { return _assignedFitters; }
+			get { return _assignedEmployees; }
 			set
 			{
-				_assignedFitters = value;
-				OnPropertyChanged("AssignedFitters");
+				_assignedEmployees = value;
+				OnPropertyChanged("AssignedEmployees");
 			}
 		}
 
@@ -222,18 +208,21 @@ namespace ViewModel
 		public bool IsGuarentee { get; set; }
 		public bool IsServiceVehicleChecked { get; set; }
 		public bool IsAuxiliaryMaterialsChecked { get; set; }
+
+		private WorksheetRepository worksheetRepository;
 		#endregion
 
 		public WorksheetViewModel(Customer customer)
 		{
+
 			// Init start values
 			Customer = customer;
-			AssignedFitters = new ObservableCollection<Fitter>();
+			AssignedEmployees = new ObservableCollection<Employee>();
 			Images = new ObservableCollection<Image>();
 			Materials = new ObservableCollection<Material>();
 			WorkHours = new ObservableCollection<WorkHours>();
 			WorkDescription = "";
-			Workplace = customer.Address + ", " + customer.ZIPcode + " " + customer.City;
+			Workplace = customer.Address.ToString();
 			_status = Status.Waiting;
 
 			IsServiceVehicleChecked = false;
@@ -256,43 +245,48 @@ namespace ViewModel
 
 			StartDate = DateTime.Today;
 			EndDate = DateTime.Today;
+
+			//Save temp in Database to get ID
+			worksheetRepository = new WorksheetRepository();
+			Worksheet worksheet = worksheetRepository.Create(GetWorksheet());
+			WorksheetID = worksheet.ID;
 		}
 
 		private Worksheet GetWorksheet()
 		{
-			List<AdditionalMaterials> additionalMaterials = new List<AdditionalMaterials>();
+			Worksheet worksheet = null;
+			if(WorksheetID != 0)
+			{
+				worksheet = new Worksheet(WorksheetID, Customer, WorkDescription, Workplace, 
+					StartDateTime, EndDateTime, IsGuarentee, _status);
+			}
+			else
+			{
+				worksheet = new Worksheet(Customer, WorkDescription, Workplace,
+					StartDateTime, EndDateTime, IsGuarentee, _status);
+			}
+
 			if(IsAuxiliaryMaterialsChecked)
 			{
-				additionalMaterials.Add(AdditionalMaterials.AuxiliaryMaterials);
+				worksheet.AddAdditonalMaterial(AdditionalMaterials.AuxiliaryMaterials);
 			}
 			if(IsServiceVehicleChecked)
 			{
-				additionalMaterials.Add(AdditionalMaterials.ServiceVehicle);
+				worksheet.AddAdditonalMaterial(AdditionalMaterials.ServiceVehicle);
 			}
 
-			return new Worksheet(
-					Customer, 
-					new List<Image>(Images), 
-					new List<Fitter>(AssignedFitters),
-					WorkDescription, 
-					Workplace, 
-					StartDateTime, 
-					EndDateTime,
-					new List<Material>(Materials), 
-					new List<WorkHours>(WorkHours),
-					IsGuarentee, 
-					_status, 
-					additionalMaterials
-				);
+			return worksheet;
+		}
+
+		public void CancelWorksheet()
+		{
+			worksheetRepository.Delete(GetWorksheet());
 		}
 
 		public string SaveWorksheet()
 		{
 			// Save worksheet in Database
-			WorksheetRepository worksheetRepository = new WorksheetRepository();
-
-			Worksheet worksheet = worksheetRepository.Create( GetWorksheet() );
-			WorksheetID = worksheet.ID;
+			worksheetRepository.Update( GetWorksheet() );
 
 			//After saving to the database, create a PDF and return its path to view.
 			BuildPDF buildPDF = new BuildPDF();
@@ -300,8 +294,8 @@ namespace ViewModel
 			buildPDF.InsertNewLine(16f, "  ");
 			buildPDF.InsertNewLine(16f, "Kundeinformationer: ");
 			buildPDF.InsertNewSplitLine(14f, Customer.Name.FullName, "Startdato: " + StartDate.ToShortDateString());
-			buildPDF.InsertNewSplitLine(14f, Customer.Address, "Starttid: " + StartTime);
-			buildPDF.InsertNewSplitLine(14f, Customer.ZIPcode + " " + Customer.City, "Slutdato: " + EndDate.ToShortDateString());
+			buildPDF.InsertNewSplitLine(14f, Customer.Address.Street, "Starttid: " + StartTime);
+			buildPDF.InsertNewSplitLine(14f, Customer.Address.ZIPcode + " " + Customer.Address.City, "Slutdato: " + EndDate.ToShortDateString());
 			buildPDF.InsertNewSplitLine(14f, "Tel. nr.: " + Customer.PhoneNumber, "Sluttid: " + EndTime);
 			buildPDF.InsertNewSplitLine(14f, "Email: " + Customer.Email, "");
 			buildPDF.InsertNewSplitLine(14f, "Kundenr.: " + Customer.ID, "Arbejdssted: " + Workplace);
@@ -312,7 +306,7 @@ namespace ViewModel
 			buildPDF.InsertNewLine(16f, "Tilknyttede montører: ");
 			buildPDF.InsertNewTable(14f, 2,
 					new List<string> { "MedarbejderID", "Navn", "Kvalifikation" },
-					AssignedFitters.AsEnumerable()
+					AssignedEmployees.AsEnumerable()
 				);
 			buildPDF.InsertNewLine(24f, "");
 			buildPDF.InsertNewLine(16f, "Udførte arbejdstimer: ");
@@ -339,6 +333,11 @@ namespace ViewModel
 		public void AddImages(string[] fileNames)
 		{
 			//TODO: Add image to database.
+		}
+
+		public AssignEmployeesViewModel AssignEmployees()
+		{
+			return new AssignEmployeesViewModel(this);
 		}
 	}
 }

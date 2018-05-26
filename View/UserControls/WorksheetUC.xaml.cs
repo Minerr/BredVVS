@@ -46,6 +46,7 @@ namespace View.UserControls
 		{
 			string filePath = _worksheetVM.SaveWorksheet();
 			System.Diagnostics.Process.Start(filePath);
+			PageCommands.Instance.GoTo(new OfficeWorkerMenuUC());
 		}
 
 		private void AddMaterialsButton_Click(object sender, RoutedEventArgs e)
@@ -55,6 +56,7 @@ namespace View.UserControls
 
 		private void CancelButton_Click(object sender, RoutedEventArgs e)
 		{
+			_worksheetVM.CancelWorksheet();
 			PageCommands.Instance.GoTo(new OfficeWorkerMenuUC());
 		}
 
@@ -80,7 +82,7 @@ namespace View.UserControls
 
 		private void AddRemoveFitterButton_Click(object sender, RoutedEventArgs e)
 		{
-			AddFittersWindow addFittersWindow = new AddFittersWindow(_worksheetVM);
+			AssignEmployeesWindow addFittersWindow = new AssignEmployeesWindow(_worksheetVM.AssignEmployees());
 			addFittersWindow.Show();
 		}
 

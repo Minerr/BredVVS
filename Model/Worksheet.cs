@@ -10,7 +10,7 @@ namespace Model
 	{
 		public Customer Customer { get; set; }
 		public List<Image> ImageDocumentation { get; }
-		public List<Employee> AssignedFitters { get; }
+		public List<Employee> AssignedEmployees { get; }
 		public string WorkDescription { get; set; }
 		public string Workplace { get; set; }
 		public DateTime StartDateTime { get; set; }
@@ -27,7 +27,7 @@ namespace Model
 			// Init properties
 			Customer = customer;
 			ImageDocumentation = new List<Image>();
-			AssignedFitters = new List<Employee>();
+			AssignedEmployees = new List<Employee>();
 			WorkDescription = workDescription;
 			Workplace = workplace;
 			StartDateTime = startDateTime;
@@ -39,11 +39,30 @@ namespace Model
 			AdditionalMaterials = new List<AdditionalMaterials>();
 		}
 
-		public Worksheet(int ID, string workplace, Name name) : base(ID)
+		public Worksheet(
+				int ID,
+				Customer customer,
+				string workDescription,
+				string workplace,
+				DateTime startDateTime,
+				DateTime endDateTime,
+				bool isGuarantee,
+				Status status
+			) : base(ID)
 		{
-			Customer = new Customer();
+			// Init properties
+			Customer = customer;
+			ImageDocumentation = new List<Image>();
+			AssignedEmployees = new List<Employee>();
+			WorkDescription = workDescription;
 			Workplace = workplace;
-			Customer.Name = name;
+			StartDateTime = startDateTime;
+			EndDateTime = endDateTime;
+			Materials = new List<Material>();
+			WorkHours = new List<WorkHours>();
+			IsGuarantee = isGuarantee;
+			Status = status;
+			AdditionalMaterials = new List<AdditionalMaterials>();
 		}
 
 		public void AddImage(Image image)
@@ -51,12 +70,9 @@ namespace Model
 			ImageDocumentation.Add(image);
 		}
 
-		public void AddFitter(Employee employee)
+		public void AddEmployee(Employee employee)
 		{
-			if(employee.Type == EmployeeType.Fitter)
-			{
-				AssignedFitters.Add(employee);
-			}
+			AssignedEmployees.Add(employee);
 		}
 
 		public void AddMaterial(Material material)
