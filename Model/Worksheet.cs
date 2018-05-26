@@ -21,22 +21,34 @@ namespace Model
 		public Status Status { get; set; }
 		public List<AdditionalMaterials> AdditionalMaterials { get; }
 
-		public Worksheet(Customer customer,
-			string workDescription, string workplace, DateTime startDateTime, DateTime endDateTime, bool isGuarantee, Status status) : base()
+		public Worksheet(
+				Customer customer,
+				string workDescription,
+				string workplace,
+				DateTime startDateTime,
+				DateTime endDateTime,
+				bool isGuarantee,
+				Status status,
+				List<Image> images,
+				List<Employee> assignedEmployees,
+				List<Material> materials,
+				List<WorkHours> workHours,
+				List<AdditionalMaterials> additionalMaterials
+			) : base()
 		{
 			// Init properties
 			Customer = customer;
-			ImageDocumentation = new List<Image>();
-			AssignedEmployees = new List<Employee>();
+			ImageDocumentation = images;
+			AssignedEmployees = assignedEmployees;
 			WorkDescription = workDescription;
 			Workplace = workplace;
 			StartDateTime = startDateTime;
 			EndDateTime = endDateTime;
-			Materials = new List<Material>();
-			WorkHours = new List<WorkHours>();
+			Materials = materials;
+			WorkHours = workHours;
 			IsGuarantee = isGuarantee;
 			Status = status;
-			AdditionalMaterials = new List<AdditionalMaterials>();
+			AdditionalMaterials = additionalMaterials;
 		}
 
 		public Worksheet(
@@ -47,58 +59,27 @@ namespace Model
 				DateTime startDateTime,
 				DateTime endDateTime,
 				bool isGuarantee,
-				Status status
+				Status status,
+				List<Image> images,
+				List<Employee> assignedEmployees,
+				List<Material> materials,
+				List<WorkHours> workHours,
+				List<AdditionalMaterials> additionalMaterials
 			) : base(ID)
 		{
 			// Init properties
 			Customer = customer;
-			ImageDocumentation = new List<Image>();
-			AssignedEmployees = new List<Employee>();
+			ImageDocumentation = images;
+			AssignedEmployees = assignedEmployees;
 			WorkDescription = workDescription;
 			Workplace = workplace;
 			StartDateTime = startDateTime;
 			EndDateTime = endDateTime;
-			Materials = new List<Material>();
-			WorkHours = new List<WorkHours>();
+			Materials = materials;
+			WorkHours = workHours;
 			IsGuarantee = isGuarantee;
 			Status = status;
-			AdditionalMaterials = new List<AdditionalMaterials>();
-		}
-
-		public void AddImage(Image image)
-		{
-			ImageDocumentation.Add(image);
-		}
-
-		public void AddEmployee(Employee employee)
-		{
-			AssignedEmployees.Add(employee);
-		}
-
-		public void AddMaterial(Material material)
-		{
-			Materials.Add(material);
-		}
-
-		public void AddWorkHours(WorkHours workHours)
-		{
-			WorkHours.Add(workHours);
-		}
-
-		public void AddAdditonalMaterial(AdditionalMaterials additionalMaterial)
-		{
-			if(!AdditionalMaterials.Contains(additionalMaterial))
-			{
-				AdditionalMaterials.Add(additionalMaterial);
-			}
-		}
-
-		public void RemoveAdditonalMaterial(AdditionalMaterials additionalMaterial)
-		{
-			if(AdditionalMaterials.Contains(additionalMaterial))
-			{
-				AdditionalMaterials.Remove(additionalMaterial);
-			}
+			AdditionalMaterials = additionalMaterials;
 		}
 	}
 }

@@ -255,24 +255,61 @@ namespace ViewModel
 		private Worksheet GetWorksheet()
 		{
 			Worksheet worksheet = null;
-			if(WorksheetID != 0)
+
+			List<Image> images = new List<Image>();
+			List<Employee> assignedEmployees = new List<Employee>();
+			List<Material> materials = new List<Material>();
+			List<WorkHours> workHours = new List<WorkHours>();
+			List<AdditionalMaterials> additionalMaterials = new List<AdditionalMaterials>();
+
+			foreach(Employee employee in AssignedEmployees)
 			{
-				worksheet = new Worksheet(WorksheetID, Customer, WorkDescription, Workplace, 
-					StartDateTime, EndDateTime, IsGuarentee, _status);
-			}
-			else
-			{
-				worksheet = new Worksheet(Customer, WorkDescription, Workplace,
-					StartDateTime, EndDateTime, IsGuarentee, _status);
+				assignedEmployees.Add(employee);
 			}
 
 			if(IsAuxiliaryMaterialsChecked)
 			{
-				worksheet.AddAdditonalMaterial(AdditionalMaterials.AuxiliaryMaterials);
+				additionalMaterials.Add(AdditionalMaterials.AuxiliaryMaterials);
 			}
 			if(IsServiceVehicleChecked)
 			{
-				worksheet.AddAdditonalMaterial(AdditionalMaterials.ServiceVehicle);
+				additionalMaterials.Add(AdditionalMaterials.ServiceVehicle);
+			}
+
+			if(WorksheetID != 0)
+			{
+				worksheet = new Worksheet(
+					WorksheetID, 
+					Customer, 
+					WorkDescription, 
+					Workplace,
+					StartDateTime, 
+					EndDateTime, 
+					IsGuarentee, 
+					_status,
+					images,
+					assignedEmployees,
+					materials,
+					workHours,
+					additionalMaterials
+					);
+			}
+			else
+			{
+				worksheet = new Worksheet(
+					Customer,
+					WorkDescription,
+					Workplace,
+					StartDateTime,
+					EndDateTime,
+					IsGuarentee,
+					_status,
+					images,
+					assignedEmployees,
+					materials,
+					workHours,
+					additionalMaterials
+					);
 			}
 
 			return worksheet;
@@ -286,7 +323,7 @@ namespace ViewModel
 		public string SaveWorksheet()
 		{
 			// Save worksheet in Database
-			worksheetRepository.Update( GetWorksheet() );
+			worksheetRepository.Update(GetWorksheet());
 
 			//After saving to the database, create a PDF and return its path to view.
 			BuildPDF buildPDF = new BuildPDF();

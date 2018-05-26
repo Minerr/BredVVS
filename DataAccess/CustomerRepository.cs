@@ -46,13 +46,13 @@ namespace DataAccess
 	        {
 		        foreach (object[] row in table)
 		        {
-					string firstName = row[1].ToString();
-					string lastName = row[2].ToString();
-					string street = row[3].ToString();
-			        string ZIPcode = row[4].ToString();
-					string city = row[5].ToString();
-					string phoneNumber = row[6].ToString();
-					string email = row[7].ToString();
+					string firstName = row[0].ToString();
+					string lastName = row[1].ToString();
+					string street = row[2].ToString();
+			        string ZIPcode = row[3].ToString();
+					string city = row[4].ToString();
+					string phoneNumber = row[5].ToString();
+					string email = row[6].ToString();
 
 					Address address = new Address(street, ZIPcode, city);
 			        Name name = new Name(firstName, lastName);

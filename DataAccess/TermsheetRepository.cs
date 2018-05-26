@@ -22,7 +22,7 @@ namespace DataAccess
 			command.Parameters.Add(new SqlParameter("@EndDate", termsheet.EndDate));
 			command.Parameters.Add(new SqlParameter("@Entrepreneur", termsheet.Entrepreneur));
 			command.Parameters.Add(new SqlParameter("@WorkDescription", termsheet.WorkDescription));
-			command.Parameters.Add(new SqlParameter("@PaymentType", termsheet.PaymentType));
+			command.Parameters.Add(new SqlParameter("@PaymentType", termsheet.PaymentType.ToString()));
 			command.Parameters.Add(new SqlParameter("@IsDraft", termsheet.IsDraft));
 
 			int termsheetID = Convert.ToInt32(DatabaseController.ExecuteScalarSP(command));

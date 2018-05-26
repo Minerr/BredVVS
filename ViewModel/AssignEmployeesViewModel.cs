@@ -105,7 +105,6 @@ namespace ViewModel
 
 		public void SaveAssignedEmployees()
 		{
-
 			_worksheetVM.AssignedEmployees = AssignedEmployees;
 		}
 

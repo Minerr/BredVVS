@@ -56,22 +56,7 @@ namespace DataAccess
 
 			if(table?.Count > 0) // If the list is not null or empty
 			{
-				object[] row = table[0];
-				
-				int customerID = Convert.ToInt32(row[0]);
-				string workplace = row[1].ToString();
-				string workDescription = row[2].ToString();
-				DateTime startDateTime = Convert.ToDateTime(row[3]);
-				DateTime endDateTime = Convert.ToDateTime(row[4]);
-				bool isGuarantee = Convert.ToBoolean(row[5]);
-				Status status;
-				Enum.TryParse(row[6].ToString(), out status);
-
-				Customer customer = customerRepository.Retrieve(customerID);
-
-				worksheet = new Worksheet(ID, customer, workDescription, 
-					workplace, startDateTime, endDateTime, isGuarantee, status);
-
+				worksheet = ConvertRowToWorksheet(table[0]);
 			}
 
 			return worksheet;
@@ -136,29 +121,59 @@ namespace DataAccess
 			command.Parameters.Add(new SqlParameter("@EmployeeID", employeeID));
 			List<object[]> table = DatabaseController.ExecuteReaderSP(command);
 
-			CustomerRepository customerRepository = new CustomerRepository();
 
-			if(table != null)
+			if(table?.Count > 0) // If the list is not null or empty
 			{
 				foreach(object[] row in table)
 				{
-					int worksheetID = Convert.ToInt32(row[0]);
-					int customerID = Convert.ToInt32(row[1]);
-					string workplace = row[2].ToString();
-					string workDescription = row[3].ToString();
-					DateTime startDateTime = Convert.ToDateTime(row[4]);
-					DateTime endDateTime = Convert.ToDateTime(row[5]);
-					bool isGuarantee = Convert.ToBoolean(row[6]);
-					Status status;
-					Enum.TryParse(row[7].ToString(), out status);
-
-					Customer customer = customerRepository.Retrieve(customerID);
-
-					worksheets.Add(new Worksheet(worksheetID, customer, workDescription, workplace, startDateTime, endDateTime, isGuarantee, status));
+					worksheets.Add(ConvertRowToWorksheet(row));
 				}
 			}
 
 			return worksheets;
+		}
+
+
+		private Worksheet ConvertRowToWorksheet(object[] row)
+		{
+			CustomerRepository customerRepository = new CustomerRepository();
+
+			int worksheetID = Convert.ToInt32(row[0]);
+			int customerID = Convert.ToInt32(row[1]);
+			string workplace = row[2].ToString();
+			string workDescription = row[3].ToString();
+			DateTime startDateTime = Convert.ToDateTime(row[4]);
+			DateTime endDateTime = Convert.ToDateTime(row[5]);
+			bool isGuarantee = Convert.ToBoolean(row[6]);
+			Status status;
+			Enum.TryParse(row[7].ToString(), out status);
+
+			Customer customer = customerRepository.Retrieve(customerID);
+
+			List<Image> images = new List<Image>(); //TODO: Get imageDocumentation
+			List<Employee> assignedEmployees = new List<Employee>(); // TODO: Get Assigned employees
+			List<Material> materials = new List<Material>(); // TODO: Get materials
+			List<WorkHours> workHours = new List<WorkHours>(); // TODO: Get workhours
+			List<AdditionalMaterials> additionalMaterials = new List<AdditionalMaterials>(); // TODO: Get additional materials
+
+			Worksheet worksheet = 
+				new Worksheet(
+					worksheetID,
+					customer,
+					workDescription,
+					workplace,
+					startDateTime,
+					endDateTime,
+					isGuarantee,
+					status,
+					images,
+					assignedEmployees,
+					materials,
+					workHours,
+					additionalMaterials
+				);
+
+			return worksheet;
 		}
 	}
 }
