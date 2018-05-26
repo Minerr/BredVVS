@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-	public class Material
+	public class Material : RepositoryElement
     {
-        public int ID { get; private set; }
 	    public string Type { get; set; }
 	    public string Description { get; set; }
 
-        public Material(int ID, string type, string description)
+        public Material(int ID, string type, string description) : base(ID)
         {
-			this.ID = ID;
             Type = type;
             Description = description;
         }

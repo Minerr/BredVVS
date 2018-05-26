@@ -54,11 +54,11 @@ namespace DataAccess
             throw new NotImplementedException();
         }
 
-	    public List<Worksheet> RetrieveEmployeeWorksheetsByCredentials(int employeeID)
+	    public List<Worksheet> RetrieveAssignedWorksheetsByEmployeeID(int employeeID)
 	    {
 		    List<Worksheet> worksheets = new List<Worksheet>();
 
-		    SqlCommand command = new SqlCommand("spGetFitterWorksheetsByCredentials");
+		    SqlCommand command = new SqlCommand("spGetAssignedWorksheetsByEmployeeID");
 		    command.CommandType = CommandType.StoredProcedure;
 
 		    command.Parameters.Add(new SqlParameter("@EmployeeID", employeeID));

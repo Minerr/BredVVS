@@ -9,12 +9,12 @@ namespace DataAccess
 {
     public interface IRepository<T> where T : RepositoryElement
     {
-        T Create(T type);
+        T Create(T element);
 
         T Retrieve(int ID);
 
-        void Update(T type);
+        void Update(T element);
 
-        void Delete(T type);
+        void Delete(T element);
     }
 }

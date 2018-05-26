@@ -9,7 +9,6 @@ namespace Model
 {
 	 public class Customer : RepositoryElement
 	{
-		public int ID { get; set; }
 		public Name Name { get; set; }
 		public string Address { get; set; }
 		public string ZIPcode { get; set; }
@@ -17,11 +16,7 @@ namespace Model
 		public string PhoneNumber { get; set; }
 		public string Email { get; set; }
 
-		public Customer()
-		{
-			Name = new Name();
-		}
-		public Customer(Name name, string address, string ZIPcode, string city, string phoneNumber, string email)
+		public Customer(Name name, string address, string ZIPcode, string city, string phoneNumber, string email) : base()
 		{
 			Name = name;
 			Address = address;
@@ -31,9 +26,8 @@ namespace Model
 			Email = email;
 		}
 
-		public Customer(int ID, Name name, string address, string ZIPcode, string city, string phoneNumer, string email)
+		public Customer(int ID, Name name, string address, string ZIPcode, string city, string phoneNumer, string email) : base(ID)
 		{
-			this.ID = ID;
 			Name = name;
 			Address = address;
 			this.ZIPcode = ZIPcode;

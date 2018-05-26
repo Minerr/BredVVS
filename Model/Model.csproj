@@ -46,14 +46,14 @@
     <Compile Include="Address.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Employee.cs" />
-    <Compile Include="Fitter.cs" />
+    <Compile Include="EmployeeType.cs" />
     <Compile Include="Image.cs" />
     <Compile Include="Material.cs" />
     <Compile Include="Name.cs" />
-    <Compile Include="OfficeWorker.cs" />
     <Compile Include="Payment.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QualificationType.cs" />
     <Compile Include="RepositoryElement.cs" />
     <Compile Include="Status.cs" />
     <Compile Include="Termsheet.cs" />

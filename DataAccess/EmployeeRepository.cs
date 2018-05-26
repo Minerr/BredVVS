@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace DataAccess
 {
-	public class EmployeeRepository : IRepository<Employee>
+	public class EmployeeRepository : IEmployeeRepository
 	{
 		public Employee Create(Employee employee)
 		{
@@ -94,12 +94,7 @@ namespace DataAccess
 			DatabaseController.ExecuteNonQuerySP(command);
 		}
 
-		public Employee GetEmployeeByCredentials(int ID, string pass)
-		{
-			return null;
-		}
-
-		public List<Fitter> GetAllFitters()
+		public List<Fitter> GetEmployeesByType()
 		{
 			List<Fitter> fitters = new List<Fitter>();
 
@@ -108,9 +103,9 @@ namespace DataAccess
 
 			List<object[]> table = DatabaseController.ExecuteReaderSP(command);
 
-			if (table != null)
+			if(table != null)
 			{
-				foreach (object[] row in table)
+				foreach(object[] row in table)
 				{
 					int ID = Convert.ToInt32(row[0]);
 					string firstName = row[1].ToString();

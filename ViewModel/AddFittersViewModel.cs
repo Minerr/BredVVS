@@ -11,11 +11,11 @@ namespace ViewModel
 {
 	public class AddFittersViewModel : ViewModelBase
 	{
-		public ObservableCollection<Fitter> AvailableFitters { get; set; }
-		public ObservableCollection<Fitter> AssignedFitters { get; set; }
+		public ObservableCollection<Employee> AvailableFitters { get; set; }
+		public ObservableCollection<Employee> AssignedFitters { get; set; }
 
-		private Fitter _selectedAvailableFitter;
-		public Fitter SelectedAvailableFitter
+		private Employee _selectedAvailableFitter;
+		public Employee SelectedAvailableFitter
 		{
 			get { return _selectedAvailableFitter; }
 			set
@@ -26,8 +26,8 @@ namespace ViewModel
 			}
 		}
 
-		private Fitter _selectedAssignedFitter;
-		public Fitter SelectedAssignedFitter
+		private Employee _selectedAssignedFitter;
+		public Employee SelectedAssignedFitter
 		{
 			get { return _selectedAssignedFitter; }
 			set
@@ -43,10 +43,9 @@ namespace ViewModel
 
 		private WorksheetViewModel _worksheetVM;
 
-		public AddFittersViewModel(WorksheetViewModel worksheetVM)
+		public AddFittersViewModel(List<Employee> assignedEmployees)
 		{
-			_worksheetVM = worksheetVM;
-			AssignedFitters = CloneAssignedFitters(worksheetVM.AssignedFitters);
+			AssignedFitters = CloneAssignedFitters(assignedEmployees);
 			AvailableFitters = RetrieveAvailableFitters();
 
 			CanSelectFitter = false;
@@ -70,7 +69,7 @@ namespace ViewModel
 			List<Fitter> allFitters = new List<Fitter>();
 			EmployeeRepository repos = new EmployeeRepository();
 
-			allFitters.AddRange(repos.GetAllFitters());
+			allFitters.AddRange(repos.GetEmployeesByType());
 
 			foreach(Fitter fitter in allFitters)
 			{

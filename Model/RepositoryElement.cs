@@ -8,5 +8,16 @@ namespace Model
 {
 	public abstract class RepositoryElement
 	{
+		public int ID { get; set; }
+
+		public RepositoryElement()
+		{
+		}
+
+		public RepositoryElement(int ID)
+		{
+			this.ID = ID;
+		}
+
 	}
 }

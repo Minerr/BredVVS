@@ -24,7 +24,7 @@ namespace ViewModel
 			WorksheetRepository repos = new WorksheetRepository();
 			List<Worksheet> worksheets = new List<Worksheet>();
 
-			worksheets.AddRange(repos.RetrieveEmployeeWorksheetsByCredentials(ClientInfo.Instance.Employee.ID));
+			worksheets.AddRange(repos.RetrieveAssignedWorksheetsByEmployeeID(ClientInfo.Instance.Employee.ID));
 			WorksheetList = worksheets;
 		}
 

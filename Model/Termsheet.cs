@@ -8,7 +8,6 @@ namespace Model
 {
 	public class Termsheet : RepositoryElement
 	{
-        public int ID {get; set;}
         public Customer Customer {get; set; }
 		public DateTime AcceptDate {get; set;}
 		public DateTime StartDate {get; set;}
@@ -19,8 +18,8 @@ namespace Model
 		public PaymentType PaymentType { get; set; }
 		public bool IsDraft { get; set; }
 
-		public Termsheet(Customer customer, DateTime acceptDate, DateTime startDate, DateTime endDate, int worksheetID, string entrepreneur, string workDescription, PaymentType paymentType, bool isDraft)
-        {
+		public Termsheet(Customer customer, DateTime acceptDate, DateTime startDate, DateTime endDate, int worksheetID, string entrepreneur, string workDescription, PaymentType paymentType, bool isDraft) : base()
+		{
             Customer = customer;
 			AcceptDate = acceptDate;
 			StartDate = startDate;
@@ -32,6 +31,18 @@ namespace Model
 			IsDraft = isDraft;
 		}
 
+		public Termsheet(int ID, Customer customer, DateTime acceptDate, DateTime startDate, DateTime endDate, int worksheetID, string entrepreneur, string workDescription, PaymentType paymentType, bool isDraft) : base(ID)
+		{
+			Customer = customer;
+			AcceptDate = acceptDate;
+			StartDate = startDate;
+			EndDate = endDate;
+			WorksheetID = worksheetID;
+			Entrepreneur = entrepreneur;
+			WorkDescription = workDescription;
+			PaymentType = paymentType;
+			IsDraft = isDraft;
+		}
 
-    }
+	}
 }
