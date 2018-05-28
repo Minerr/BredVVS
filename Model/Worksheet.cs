@@ -6,82 +6,80 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-	public class Worksheet
-    {
-        public int ID { get; private set; }
-        public Customer Customer { get; set; }
-		public List<Image> ImageDocumentation { get; set; }
-		public List<Fitter> AssignedFitters { get; set; }
+	public class Worksheet : RepositoryElement
+	{
+		public Customer Customer { get; set; }
+		public List<Image> ImageDocumentation { get; }
+		public List<Employee> AssignedEmployees { get; }
 		public string WorkDescription { get; set; }
 		public string Workplace { get; set; }
 		public DateTime StartDateTime { get; set; }
 		public DateTime EndDateTime { get; set; }
-		public List<Material> Materials { get; set; }
-		public List<WorkHours> WorkHours { get; set; }
+		public List<Material> Materials { get; }
+		public List<WorkHours> WorkHours { get; }
 		public bool IsGuarantee { get; set; }
 		public Status Status { get; set; }
-		public List<AdditionalMaterials> AdditionalMaterials { get; set; }
+		public List<AdditionalMaterials> AdditionalMaterials { get; }
 
-		public Worksheet()
-        {
+		public Worksheet(
+				Customer customer,
+				string workDescription,
+				string workplace,
+				DateTime startDateTime,
+				DateTime endDateTime,
+				bool isGuarantee,
+				Status status,
+				List<Image> images,
+				List<Employee> assignedEmployees,
+				List<Material> materials,
+				List<WorkHours> workHours,
+				List<AdditionalMaterials> additionalMaterials
+			) : base()
+		{
 			// Init properties
-
-			Customer = new Customer();
-			ImageDocumentation = new List<Image>();
-			AssignedFitters = new List<Fitter>();
-			WorkDescription = "";
-			Workplace = "";
-			StartDateTime = new DateTime();
-			EndDateTime = new DateTime();
-			Materials = new List<Material>();
-			WorkHours = new List<WorkHours>();
-			IsGuarantee = false;
-			Status = Status.Waiting;
-			AdditionalMaterials = new List<AdditionalMaterials>();
+			Customer = customer;
+			ImageDocumentation = images;
+			AssignedEmployees = assignedEmployees;
+			WorkDescription = workDescription;
+			Workplace = workplace;
+			StartDateTime = startDateTime;
+			EndDateTime = endDateTime;
+			Materials = materials;
+			WorkHours = workHours;
+			IsGuarantee = isGuarantee;
+			Status = status;
+			AdditionalMaterials = additionalMaterials;
 		}
 
-	    public Worksheet(int ID, string workplace, Name name)
-	    {
-			Customer = new Customer();
-		    this.ID = ID;
-		    Workplace = workplace;
-		    Customer.Name = name;
-	    }
-
-        public void AddImage(Image image)
-        {
-
-        }
-
-        public void AddFitter(Fitter fitter)
-        {
-
-        }
-
-        public void AddMaterial(Material material)
-        {
-			
-        }
-
-        public void AddWorkHours(WorkHours workHours)
-        {
-
-        }
-
-		public void AddAdditonalMaterial(AdditionalMaterials additionalMaterial)
+		public Worksheet(
+				int ID,
+				Customer customer,
+				string workDescription,
+				string workplace,
+				DateTime startDateTime,
+				DateTime endDateTime,
+				bool isGuarantee,
+				Status status,
+				List<Image> images,
+				List<Employee> assignedEmployees,
+				List<Material> materials,
+				List<WorkHours> workHours,
+				List<AdditionalMaterials> additionalMaterials
+			) : base(ID)
 		{
-			if(!AdditionalMaterials.Contains(additionalMaterial))
-			{
-				AdditionalMaterials.Add(additionalMaterial);
-			}
-		}
-
-		public void RemoveAdditonalMaterial(AdditionalMaterials additionalMaterial)
-		{
-			if(AdditionalMaterials.Contains(additionalMaterial))
-			{
-				AdditionalMaterials.Remove(additionalMaterial);
-			}
+			// Init properties
+			Customer = customer;
+			ImageDocumentation = images;
+			AssignedEmployees = assignedEmployees;
+			WorkDescription = workDescription;
+			Workplace = workplace;
+			StartDateTime = startDateTime;
+			EndDateTime = endDateTime;
+			Materials = materials;
+			WorkHours = workHours;
+			IsGuarantee = isGuarantee;
+			Status = status;
+			AdditionalMaterials = additionalMaterials;
 		}
 	}
 }

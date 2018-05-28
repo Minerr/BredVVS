@@ -1,18 +1,18 @@
-﻿<Window x:Class="View.Windows.AddFittersWindow"
+﻿<Window x:Class="View.Windows.AssignEmployeesWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View.Windows"
         mc:Ignorable="d"
-        Title="AddFitterWindow" Height="400" Width="600">
+        Title="Add Fitter Window" Height="400" Width="600">
     <Grid>
         <StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10,0">
                 <Grid Width="230">
                     <StackPanel>
                         <Label Content="Tilgængelige montører"/>
-                        <ListView Name="AllFittersListBox" Height="280" ItemsSource="{Binding AvailableFitters}" SelectedItem="{Binding SelectedAvailableFitter}">
+                        <ListView Name="AllFittersListBox" Height="280" ItemsSource="{Binding AvailableEmployees}" SelectedItem="{Binding SelectedAvailableEmployee}">
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="70"/>
@@ -33,15 +33,15 @@
                             </Style>
                         </StackPanel.Resources>
 
-                        <Button x:Name="SelectFitterButton" Content="-&gt;" IsEnabled="{Binding CanSelectFitter}" Click="SelectFitterButton_Click"/>
-                        <Button x:Name="RemoveFitterButton" Content="&lt;-" IsEnabled="{Binding CanRemoveFitter}" Click="RemoveFitterButton_Click"/>
+                        <Button x:Name="SelectFitterButton" Content="-&gt;" IsEnabled="{Binding CanSelectEmployee}" Click="SelectFitterButton_Click"/>
+                        <Button x:Name="RemoveFitterButton" Content="&lt;-" IsEnabled="{Binding CanRemoveEmployee}" Click="RemoveFitterButton_Click"/>
                     </StackPanel>
                 </Grid>
 
                 <Grid  Width="230">
                     <StackPanel>
                         <Label Content="Valgte montører"/>
-                        <ListView x:Name="FittersToAddListBox" Height="280" ItemsSource="{Binding AssignedFitters}" SelectedItem="{Binding SelectedAssignedFitter}">
+                        <ListView x:Name="FittersToAddListBox" Height="280" ItemsSource="{Binding AssignedEmployees}" SelectedItem="{Binding SelectedAssignedEmployee}">
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="70"/>

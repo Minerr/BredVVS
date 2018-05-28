@@ -16,14 +16,14 @@
                 <ListView x:Name="CustomerListView" ItemsSource="{Binding CustomerList}" SelectedItem="{Binding SelectedCustomer}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="Selector_OnSelectionChanged">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Kundenummer" DisplayMemberBinding="{Binding CustomerID}" Width="100"/>
+                            <GridViewColumn Header="Kundenummer" DisplayMemberBinding="{Binding ID}" Width="85"/>
                             <GridViewColumn Header="Fornavn" DisplayMemberBinding="{Binding Name.FirstName}" Width="75"/>
-                            <GridViewColumn Header="Efternavn" DisplayMemberBinding="{Binding Name.LastName}" Width="100"/>
-                            <GridViewColumn Header="Adresse" DisplayMemberBinding="{Binding Address}" Width="200"/>
-                            <GridViewColumn Header="Postnummer" DisplayMemberBinding="{Binding ZIPcode}" Width="80"/>
-                            <GridViewColumn Header="By" DisplayMemberBinding="{Binding City}" Width="100"/>
-                            <GridViewColumn Header="Telefon nummer" DisplayMemberBinding="{Binding PhoneNumber}" Width="110"/>
-                            <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}" Width="110"/>
+                            <GridViewColumn Header="Efternavn" DisplayMemberBinding="{Binding Name.LastName}" Width="85"/>
+                            <GridViewColumn Header="Adresse" DisplayMemberBinding="{Binding Address.Street}" Width="90"/>
+                            <GridViewColumn Header="Postnummer" DisplayMemberBinding="{Binding Address.ZIPcode}" Width="80"/>
+                            <GridViewColumn Header="By" DisplayMemberBinding="{Binding Address.City}" Width="90"/>
+                            <GridViewColumn Header="Telefon nummer" DisplayMemberBinding="{Binding PhoneNumber}" Width="95"/>
+                            <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}" Width="200"/>
                         </GridView>
                     </ListView.View>
                 </ListView>

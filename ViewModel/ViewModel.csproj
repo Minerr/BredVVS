@@ -50,7 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddFittersViewModel.cs" />
+    <Compile Include="AssignEmployeesViewModel.cs" />
     <Compile Include="AddTaskViewModel.cs" />
     <Compile Include="ClientInfo.cs" />
     <Compile Include="PDFbuilder\BuildPDF.cs" />

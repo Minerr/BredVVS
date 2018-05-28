@@ -22,6 +22,7 @@ namespace ViewModel
 			{
 				_employeeID = value;
 				OnPropertyChanged("EmployeeID");
+				OnPropertyChanged("ErrorMessage");
 			}
 		}
 
@@ -33,7 +34,6 @@ namespace ViewModel
 		public LogInViewModel()
 		{
 			_employeeRepository = new EmployeeRepository();
-			EmployeeID = "10000"; // TODO: remove this before final release.
 		}
 
 		public ViewModelBase LogIn()
@@ -46,22 +46,11 @@ namespace ViewModel
 
 			if(employee != null)
 			{
-				if(employee.GetType() == typeof(OfficeWorker))
+				if(employee.Type == EmployeeType.OfficeWorker)
 				{
 					viewModel = new OfficeWorkerMenuViewModel();
 				}
-				else if(employee.GetType() == typeof(Fitter))
-				{
-					viewModel = new FitterMenuViewModel();
-				}
-			}
-			else //TODO: Remove this before final release
-			{
-				if(EmployeeID == "10000")
-				{
-					viewModel = new OfficeWorkerMenuViewModel();
-				}
-				else if(EmployeeID == "10001")
+				else if(employee.Type == EmployeeType.Fitter)
 				{
 					viewModel = new FitterMenuViewModel();
 				}

@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Model;
 
 namespace DataAccess
 {
-    public interface IRepository<T> 
+    public interface IRepository<T> where T : RepositoryElement
     {
-        void Create(T type);
+        T Create(T element);
 
         T Retrieve(int ID);
 
-        void Update(T type);
+        void Update(T element);
 
-        void Delete(T type);
+        void Delete(T element);
     }
 }

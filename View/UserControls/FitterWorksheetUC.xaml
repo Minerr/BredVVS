@@ -12,7 +12,7 @@
             <Label Name="WorksheetIDLabel" Content="{Binding WorksheetID, Mode=OneWay}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="418,10,0,0" Width="193" FontSize="22" Height="39"/>
 
             <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="194" Margin="10,59,0,0" VerticalAlignment="Top" Width="245">
-                <TextBox Name="CustomerInfoTextBox" Text="{Binding Customer, Mode=OneWay}" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="225" Margin="9,23,0,0" Height="78" TextWrapping="Wrap" IsEnabled="False"/>
+                <TextBox Name="CustomerInfoTextBox" Text="{Binding CustomerInfo, Mode=OneWay}" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="225" Margin="9,23,0,0" Height="78" TextWrapping="Wrap" IsEnabled="False"/>
             </Border>
             <Label Content="Arbejdssted" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="13,159,0,0" Width="133"/>
             <TextBox x:Name="WorkplaceTextBox" Text="{Binding Workplace}" BorderThickness="0"  HorizontalAlignment="Left" Height="57" VerticalAlignment="Top" Width="221" Margin="23,186,0,0" TextWrapping="Wrap" IsEnabled="False"/>

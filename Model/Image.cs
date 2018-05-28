@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-	public class Image
-    {
-		public int ID { get; set; }
+	public class Image : RepositoryElement
+	{
 		public DateTime DateTime { get; set; }
         public string GPSLocation { get; set; }
 		public string Description { get; set; }
@@ -16,9 +15,8 @@ namespace Model
 		public string WorksheetID { get; set; }
 		public string Type { get; set; }
 
-		public Image(int ID, DateTime dateTime, string GPSlocation, string description, int employeeID, string type)
-        {
-			this.ID = ID;
+		public Image(int ID, DateTime dateTime, string GPSlocation, string description, int employeeID, string type) : base(ID)
+		{
 			DateTime = dateTime;
             this.GPSLocation = GPSlocation;
 			Description  = description;

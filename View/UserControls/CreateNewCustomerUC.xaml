@@ -8,30 +8,30 @@
              d:DesignHeight="600" d:DesignWidth="800">
     <Grid Name="MainGrid">
         <Grid Margin="95,94,0,0">
-            <Label Content="Telefon:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="168,59,0,0"/>
-            <TextBox x:Name="PhoneNumberTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding Customer.PhoneNumber, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="180" Margin="228,62,0,0" TextChanged="TextBoxChanged"/>
+            <Label Content="Fornavn(e):" HorizontalAlignment="Left" Margin="150,68,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="FirstNameTextBox"  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="200" Margin="226,71,0,0" TextChanged="TextBoxChanged"/>
+            
+            <Label Content="Efternavn:" HorizontalAlignment="Left" Margin="157,97,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="LastNameTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="200" Margin="226,99,0,0" TextChanged="TextBoxChanged"/>
 
-            <Label Content="Fornavn(e):" HorizontalAlignment="Left" Margin="153,90,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="FirstNameTextBox"  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding Customer.Name.FirstName, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="180" Margin="228,94,0,0" TextChanged="TextBoxChanged"/>
+            <Label Content="Adresse:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="165,123,0,0"/>
+            <TextBox x:Name="AddresseTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding StreetAddress, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="200" Margin="226,127,0,0" TextChanged="TextBoxChanged"/>
 
-            <Label Content="Efternavn:" HorizontalAlignment="Left" Margin="159,121,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="LastNameTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding Customer.Name.LastName, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="180" Margin="228,125,0,0" TextChanged="TextBoxChanged"/>
+            <Label Content="Postnummer:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="139,151,0,0"/>
+            <TextBox x:Name="ZIPcodeTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding ZIPcode, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="200" Margin="226,155,0,0" TextChanged="TextBoxChanged"/>
 
-            <Label Content="Postnummer:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="139,152,0,0"/>
-            <TextBox x:Name="ZIPcodeTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding Customer.ZIPcode, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="180" Margin="228,156,0,0" TextChanged="TextBoxChanged"/>
+            <Label Content="By:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="194,180,0,0"/>
+            <TextBox x:Name="CityTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding City, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="200" Margin="226,183,0,0" TextChanged="TextBoxChanged"/>
+            
+            <Label Content="Telefon:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="170,208,0,0"/>
+            <TextBox x:Name="PhoneNumberTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding PhoneNumber, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="200" Margin="226,211,0,0" TextChanged="TextBoxChanged"/>
 
-            <Label Content="By:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="194,183,0,0"/>
-            <TextBox x:Name="CityTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding Customer.City, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="180" Margin="228,186,0,0" TextChanged="TextBoxChanged"/>
+            <Label Content="Email:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="180,237,0,0"/>
+            <TextBox x:Name="EmailTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="200" Margin="226,239,0,0" TextChanged="TextBoxChanged"/>
 
-            <Label Content="Adresse:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="165,214,0,0"/>
-            <TextBox x:Name="AddresseTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding Customer.Address, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="180" Margin="228,218,0,0" TextChanged="TextBoxChanged"/>
+            <Button x:Name="SaveCustomerButton" Content="Gem kunde" HorizontalAlignment="Left" Margin="246,291,0,0" VerticalAlignment="Top" Height="24" Width="75" IsEnabled="False" Click="SaveCustomerButton_Click"/>
 
-            <Label Content="Email:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="178,246,0,0"/>
-            <TextBox x:Name="EmailTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding Customer.Email, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="180" Margin="228,248,0,0" TextChanged="TextBoxChanged"/>
-
-            <Button x:Name="SaveCustomerButton" Content="Gem kunde" HorizontalAlignment="Left" Margin="228,306,0,0" VerticalAlignment="Top" Height="24" Width="75" IsEnabled="False" Click="SaveCustomerButton_Click"/>
-
-            <Button x:Name="CancelButton" Content="Annuller" HorizontalAlignment="Left" Margin="333,306,0,0" VerticalAlignment="Top" Width="75" Height="24" Click="CancelButton_Click"/>
+            <Button x:Name="CancelButton" Content="Annuller" HorizontalAlignment="Left" Margin="340,291,0,0" VerticalAlignment="Top" Width="75" Height="24" Click="CancelButton_Click"/>
 
         </Grid>
     </Grid>

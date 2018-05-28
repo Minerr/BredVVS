@@ -6,20 +6,24 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public abstract class Employee
+    public class Employee : RepositoryElement
     {
-        public int ID { get; private set; }
         public Name Name { get; set; }
+        public EmployeeType Type { get; set; }
+		public List<QualificationType> Qualifications { get; }
 
-		public Employee(Name name)
+		public Employee(Name name, EmployeeType employeeType, List<QualificationType> qualifications) : base()
 		{
 			Name = name;
+			Type = employeeType;
+			Qualifications = qualifications ?? new List<QualificationType>();
 		}
 
-		public Employee(int ID, Name name)
+		public Employee(int ID, Name name, EmployeeType type, List<QualificationType> qualifications) : base(ID)
 		{
-			this.ID = ID;
 			Name = name;
+			Type = type;
+			Qualifications = qualifications ?? new List<QualificationType>();
 		}
 
 		public override bool Equals(object other)
@@ -37,6 +41,11 @@ namespace Model
 		public override int GetHashCode()
 		{
 			return ID.GetHashCode() ^ Name.GetHashCode();
+		}
+
+		public override string ToString()
+		{
+			return ID + ";" + Name.FullName + ";" + Type;
 		}
 	}
 }

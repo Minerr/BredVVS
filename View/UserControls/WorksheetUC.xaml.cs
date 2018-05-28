@@ -24,11 +24,6 @@ namespace View.UserControls
 	public partial class WorksheetUC : UserControl
 	{
 		private WorksheetViewModel _worksheetVM;
-		public WorksheetUC()
-		{
-			_worksheetVM = new WorksheetViewModel();
-			Init();
-		}
 
 		public WorksheetUC(WorksheetViewModel viewModel)
 		{
@@ -47,14 +42,11 @@ namespace View.UserControls
 
 		}
 
-		private void CreateTermsheetButton_Click(object sender, RoutedEventArgs e)
-		{
-			PageCommands.Instance.GoTo(new TermsheetUC(_worksheetVM.CreateNewTermsheet()));
-		}
-
 		private void SaveWorksheetButton_Click(object sender, RoutedEventArgs e)
 		{
-			_worksheetVM.CreateWorksheet();
+			string filePath = _worksheetVM.SaveWorksheet();
+			System.Diagnostics.Process.Start(filePath);
+			PageCommands.Instance.GoTo(new OfficeWorkerMenuUC());
 		}
 
 		private void AddMaterialsButton_Click(object sender, RoutedEventArgs e)
@@ -64,7 +56,8 @@ namespace View.UserControls
 
 		private void CancelButton_Click(object sender, RoutedEventArgs e)
 		{
-			PageCommands.Instance.GoTo(new OfficeWorkerMenuUC()); // TODO: Create categorized GoBack method
+			_worksheetVM.CancelWorksheet();
+			PageCommands.Instance.GoTo(new OfficeWorkerMenuUC());
 		}
 
 		private void RemoveSelectedHourButton_Click(object sender, RoutedEventArgs e)
@@ -89,7 +82,7 @@ namespace View.UserControls
 
 		private void AddRemoveFitterButton_Click(object sender, RoutedEventArgs e)
 		{
-			AddFittersWindow addFittersWindow = new AddFittersWindow(_worksheetVM);
+			AssignEmployeesWindow addFittersWindow = new AssignEmployeesWindow(_worksheetVM.AssignEmployees());
 			addFittersWindow.Show();
 		}
 

@@ -39,19 +39,24 @@ namespace View.UserControls
 		{
 			InitializeComponent();
 			DataContext = _fitterMenuVM;
-
-			_fitterMenuVM.RetrieveAllEmployeeWorksheets();
 		}
 
 
 		private void SelectWorksheetButton_Click(object sender, RoutedEventArgs e)
 		{
-
+			
+			PageCommands.Instance.GoTo(new FitterWorksheetUC( _fitterMenuVM.SelectWorksheet() ));
 		}
 
 		private void LogOutButton_Click(object sender, RoutedEventArgs e)
 		{
 			PageCommands.Instance.GoTo(new LogInUC());
+		}
+
+		private void WorksheetListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			bool isEnabled = _fitterMenuVM.IsWorksheetSelected();
+			SelectWorksheetButton.IsEnabled = isEnabled;
 		}
 	}
 }

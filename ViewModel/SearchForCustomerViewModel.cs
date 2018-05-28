@@ -35,21 +35,12 @@ namespace ViewModel
 		public void RetrieveCustomers(string keyword)
 		{
 			CustomerRepository repos = new CustomerRepository();
-			
-			List<Customer> customers = new List<Customer>();
-			//TODO: Remove fake data before final release
-			//customers.Add(new Customer(new Name("Tim", "Timsen"), "Skt. Knudsgade 111", "5000", "Odense", "12345654", "Timmy@gmail.com"));
-
-			customers.AddRange(repos.RetrieveCustomerByKeyword(keyword));
-			CustomerList = customers;
-
-
+			CustomerList = repos.RetrieveCustomerByKeyword(keyword);
 		}
 
 		public WorksheetViewModel SelectCustomer()
 		{
-			WorksheetViewModel worksheetVM = new WorksheetViewModel();
-			worksheetVM.Customer = SelectedCustomer;
+			WorksheetViewModel worksheetVM = new WorksheetViewModel(SelectedCustomer);
 			return worksheetVM;
 		}
 	}

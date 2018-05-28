@@ -23,12 +23,6 @@ namespace View.UserControls
     public partial class TermsheetUC : UserControl
     {
         private TermsheetViewModel _termsheetVM;
-		public TermsheetUC()
-		{
-            _termsheetVM = new TermsheetViewModel();
-			Init();
-
-		}
 
 		public TermsheetUC(TermsheetViewModel viewModel)
 		{
@@ -84,6 +78,9 @@ namespace View.UserControls
 
 		private void SaveTermsheetButton_Click(object sender, RoutedEventArgs e)
 		{
+			_termsheetVM.SaveTermsheet();
+			PageCommands.Instance.GoTo(new FitterWorksheetUC(_termsheetVM.GoBack()));
+		}
 
 		}
 
@@ -92,6 +89,9 @@ namespace View.UserControls
 			_termsheetVM.CalculateVATAndTotal(_termsheetVM.PriceExVAT);
 		}
 
+		private void CancelButton_Click(object sender, RoutedEventArgs e)
+		{
+			PageCommands.Instance.GoTo(new FitterWorksheetUC(_termsheetVM.GoBack()));
 		private void TotalPriceTextBox_LostFocus(object sender, RoutedEventArgs e)
 		{
 			_termsheetVM.CalculateVATAndPrice(_termsheetVM.TotalPrice);

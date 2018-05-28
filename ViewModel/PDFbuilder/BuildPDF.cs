@@ -155,7 +155,7 @@ namespace ViewModel.PDFbuilder
 			_elementCounter++;
 		}
 
-		public void Save(string path)
+		public string Save(string path)
 		{
 			float currentPageHeight = _pagePaddingLeft;
 			int prevElementCount = 0;
@@ -229,6 +229,8 @@ namespace ViewModel.PDFbuilder
 
 			_path = path;
 			_spirePDF.SaveToFile(path, FileFormat.PDF);
+
+			return path;
 		}
 
 		private float GetElementHorizontalPosition(PdfTextAlignment textAlignment)
@@ -250,15 +252,6 @@ namespace ViewModel.PDFbuilder
 		private static void Table_BeginRowLayout(object sender, BeginRowLayoutEventArgs args)
 		{
 			args.MinimalHeight = 15f;
-		}
-
-
-		public void Open()
-		{
-			if(!string.IsNullOrEmpty(_path))
-			{
-				System.Diagnostics.Process.Start(_path);
-			}
 		}
 	}
 }

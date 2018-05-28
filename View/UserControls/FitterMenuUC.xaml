@@ -10,7 +10,7 @@
         <Grid>
 
             <Grid Margin="89,91,93,216">
-                <ListView x:Name="WorksheetListView" ItemsSource="{Binding WorksheetList}" SelectedItem="{Binding SelectedWorksheet}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListView x:Name="WorksheetListView" ItemsSource="{Binding WorksheetList}" SelectedItem="{Binding SelectedWorksheet}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="WorksheetListView_SelectionChanged">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Projektnummer" DisplayMemberBinding="{Binding ID}" Width="200"/>

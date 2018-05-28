@@ -12,18 +12,24 @@ namespace ViewModel
 	{
 		public List<Worksheet> WorksheetList { get; set; }
 
+		public Worksheet SelectedWorksheet { get; set; }
+
 		public FitterMenuViewModel()
-		{
-
-		}
-
-		public void RetrieveAllEmployeeWorksheets()
 		{
 			WorksheetRepository repos = new WorksheetRepository();
 			List<Worksheet> worksheets = new List<Worksheet>();
 
-			worksheets.AddRange(repos.RetrieveEmployeeWorksheetsByCredentials(ClientInfo.Instance.Employee.ID));
-			WorksheetList = worksheets;
+			WorksheetList = repos.RetrieveAssignedWorksheetsByEmployeeID(ClientInfo.Instance.Employee.ID);
+		}
+
+		public FitterWorksheetViewModel SelectWorksheet()
+		{
+			return new FitterWorksheetViewModel(SelectedWorksheet);
+		}
+
+		public bool IsWorksheetSelected()
+		{
+			return (SelectedWorksheet != null);
 		}
 	}
 }
