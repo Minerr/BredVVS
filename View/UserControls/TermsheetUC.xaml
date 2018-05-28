@@ -19,18 +19,18 @@
 
                 <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="154" Margin="351,49,0,0" VerticalAlignment="Top" Width="412"/>
                 <Label Content="Virksomhed" HorizontalAlignment="Left" Margin="360,49,0,0" VerticalAlignment="Top" Width="119"/>
-                <TextBox x:Name="FirmNameTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125" Margin="369,75,0,0" IsEnabled="False"/>
+                <TextBox x:Name="FirmNameTextBox" Text="{Binding FirmName}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="125" Margin="369,75,0,0" IsEnabled="False"/>
                 <Label Content="Adresse" HorizontalAlignment="Left" Margin="369,98,0,0" VerticalAlignment="Top"/>
-                <TextBox x:Name="FirmAddressTextBox" HorizontalAlignment="Left" Height="73" Margin="369,119,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="130" IsEnabled="False"/>
+                <TextBox x:Name="FirmAddressTextBox" Text="{Binding FirmAddress}" HorizontalAlignment="Left" Height="73" Margin="369,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" IsEnabled="False"/>
                 <Label Content="Telefon" HorizontalAlignment="Left" Margin="499,49,0,0" VerticalAlignment="Top"/>
-                <TextBox x:Name="FirmPhonenumberTextBox" HorizontalAlignment="Left" Height="23" Margin="510,75,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+                <TextBox x:Name="FirmPhonenumberTextBox" Text="{Binding FirmPhoneNumber}" HorizontalAlignment="Left" Height="23" Margin="510,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
                 <Label Content="CVR" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="504,98,0,0"/>
-                <TextBox x:Name="FirmCVRTextBox" HorizontalAlignment="Left" Height="23" Margin="510,119,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.142,-1.043" IsEnabled="False"/>
+                <TextBox x:Name="FirmCVRTextBox" Text="{Binding FirmCVR}"  HorizontalAlignment="Left" Height="23" Margin="510,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.142,-1.043" IsEnabled="False"/>
 
                 <Label Content="Referencenummer" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="635,49,0,0" Width="142"/>
                 <TextBox x:Name="ReferenceNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="643,75,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="111"/>
                 <Label Content="Dato" HorizontalAlignment="Left" Margin="635,98,0,0" VerticalAlignment="Top"/>
-                <TextBox x:Name="CurrentDateTextBox" HorizontalAlignment="Left" Height="23" Margin="643,119,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="111" IsEnabled="False"/>
+                <TextBox x:Name="CurrentDateTextBox" Text="{Binding CurrentDate}" HorizontalAlignment="Left" Height="23" Margin="643,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="111" IsEnabled="False"/>
 
                 <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="229" Margin="10,208,0,0" VerticalAlignment="Top" Width="753">
                     <ListView x:Name="TaskListBox" ItemsSource="{Binding SelectedTasksList}" SelectedItem="{Binding SelectedTask}" HorizontalAlignment="Left" Height="136" VerticalAlignment="Top" Width="737" Margin="9,82,0,0" SelectionChanged="Selector_OnSelectionChanged"/>

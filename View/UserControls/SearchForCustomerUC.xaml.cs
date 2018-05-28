@@ -42,23 +42,7 @@ namespace View.UserControls
 
         private void SearchForCustomerButton_Click(object sender, RoutedEventArgs e)
         {
-
-			_searchForCustomerVM.RetrieveCustomers(SearchForCustomerTextBox.Text); //TODO: refactor to databinding
-
-        }
-
-        private void Selector_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (CustomerListView.SelectedItem != null)
-            {
-                SelectCustomerButton.IsEnabled = true;
-                EditCustomerButton.IsEnabled = true;
-            }
-            else
-            {
-                SelectCustomerButton.IsEnabled = false;
-                EditCustomerButton.IsEnabled = false;
-            }
+			_searchForCustomerVM.RetrieveCustomers();
         }
 
         private void SelectCustomerButton_Click(object sender, RoutedEventArgs e)

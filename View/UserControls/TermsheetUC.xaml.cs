@@ -34,19 +34,7 @@ namespace View.UserControls
 		{
 			InitializeComponent();
 			DataContext = _termsheetVM;
-
-			GetFirmInfo();
 		}
-
-		private void GetFirmInfo()
-		{
-			FirmNameTextBox.Text = "Bred Vvs";
-			FirmAddressTextBox.Text = "Nørrevej 45 C" + "\n" + "6340 Kruså";
-			FirmPhonenumberTextBox.Text = "74 67 15 12";
-			FirmCVRTextBox.Text = "34 22 35 72";
-			CurrentDateTextBox.Text = DateTime.Now.ToString("dd/MM/yyyy");
-		}
-
 
 		private void AddTaskButton_Click(object sender, RoutedEventArgs e)
 		{

@@ -9,7 +9,7 @@
     <Grid Name="MainGrid">
         <Grid>
             <Button x:Name="CreateNewCustomerButton" Content="Opret ny kunde" HorizontalAlignment="Left" Margin="515,48,0,0" VerticalAlignment="Top" Width="147" Height="24" RenderTransformOrigin="0.485,-1.022" Click="CreateNewCustomerButton_Click"/>
-            <TextBox x:Name="SearchForCustomerTextBox"  Text="Søg på kunde" HorizontalAlignment="Left" Height="24" Padding="3" Margin="130,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="306"/>
+            <TextBox x:Name="SearchForCustomerTextBox"  Text="{Binding Keyword}" HorizontalAlignment="Left" Height="24" Padding="3" Margin="130,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="306" />
             <Button x:Name="SearchForCustomerButton" Content="Søg" HorizontalAlignment="Left" Margin="441,48,0,0" VerticalAlignment="Top" Width="69" Height="24" Click="SearchForCustomerButton_Click"/>
 
             <Grid Margin="10,77,10,49">
@@ -28,8 +28,8 @@
                     </ListView.View>
                 </ListView>
             </Grid>
-            <Button x:Name="EditCustomerButton" Content="Redigér kunde" HorizontalAlignment="Left" Margin="441,525,0,0" VerticalAlignment="Top" Height="24" Width="108" IsEnabled="False"/>
-            <Button x:Name="SelectCustomerButton" Content="Vælg kunde" HorizontalAlignment="Left" Margin="554,525,0,0" VerticalAlignment="Top" Height="24" Width="108" IsEnabled="False" Click="SelectCustomerButton_Click"/>
+            <Button x:Name="EditCustomerButton" Content="Redigér kunde" HorizontalAlignment="Left" Margin="441,525,0,0" VerticalAlignment="Top" Height="24" Width="108" IsEnabled="{Binding EnableButtons}"/>
+            <Button x:Name="SelectCustomerButton" Content="Vælg kunde" HorizontalAlignment="Left" Margin="554,525,0,0" VerticalAlignment="Top" Height="24" Width="108" IsEnabled="{Binding EnableButtons}" Click="SelectCustomerButton_Click"/>
             <Button x:Name="CancelButton" Content="Annuller" HorizontalAlignment="Left" Margin="667,525,0,0" VerticalAlignment="Top" Width="93" Height="24" Click="CancelButton_Click"/>
         </Grid>
     </Grid>

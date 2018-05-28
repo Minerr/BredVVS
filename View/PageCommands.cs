@@ -27,7 +27,12 @@ namespace View
 		}
 		#endregion
 
-		public Window MainWindow { get; set; }
+
+		private Grid _mainGrid;
+		public Window MainWindow
+		{
+			set { _mainGrid = value.FindName("MainGrid") as Grid; }
+		}
 
 
 		private PageCommands()
@@ -37,12 +42,10 @@ namespace View
 
 		public void GoTo(UserControl newPage)
 		{
-			if(MainWindow != null)
+			if(_mainGrid != null)
 			{
-				Grid mainGrid = MainWindow.FindName("MainGrid") as Grid;
-
-				mainGrid.Children.Clear();
-				mainGrid.Children.Add(newPage);
+				_mainGrid.Children.Clear();
+				_mainGrid.Children.Add(newPage);
 			}
 		}
 	}

@@ -256,17 +256,12 @@ namespace ViewModel
 		{
 			Worksheet worksheet = null;
 
-			List<Image> images = new List<Image>();
-			List<Employee> assignedEmployees = new List<Employee>();
-			List<Material> materials = new List<Material>();
-			List<WorkHours> workHours = new List<WorkHours>();
+			List<Image> images = new List<Image>(Images);
+			List<Employee> assignedEmployees = new List<Employee>(AssignedEmployees);
+			List<Material> materials = new List<Material>(Materials);
+			List<WorkHours> workHours = new List<WorkHours>(WorkHours);
+
 			List<AdditionalMaterials> additionalMaterials = new List<AdditionalMaterials>();
-
-			foreach(Employee employee in AssignedEmployees)
-			{
-				assignedEmployees.Add(employee);
-			}
-
 			if(IsAuxiliaryMaterialsChecked)
 			{
 				additionalMaterials.Add(AdditionalMaterials.AuxiliaryMaterials);
