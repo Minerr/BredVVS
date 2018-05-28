@@ -17,16 +17,16 @@ using View.Windows;
 
 namespace View.UserControls
 {
-    /// <summary>
-    /// Interaction logic for TermsheetUC.xaml
-    /// </summary>
-    public partial class TermsheetUC : UserControl
-    {
-        private TermsheetViewModel _termsheetVM;
+	/// <summary>
+	/// Interaction logic for TermsheetUC.xaml
+	/// </summary>
+	public partial class TermsheetUC : UserControl
+	{
+		private TermsheetViewModel _termsheetVM;
 
 		public TermsheetUC(TermsheetViewModel viewModel)
 		{
-            _termsheetVM = viewModel;
+			_termsheetVM = viewModel;
 			Init();
 		}
 
@@ -38,43 +38,43 @@ namespace View.UserControls
 			GetFirmInfo();
 		}
 
-        private void GetFirmInfo()
-        {
-            FirmNameTextBox.Text = "Bred Vvs";
-            FirmAddressTextBox.Text = "Nørrevej 45 C" + "\n" + "6340 Kruså";
-            FirmPhonenumberTextBox.Text = "74 67 15 12";
-            FirmCVRTextBox.Text = "34 22 35 72";
-            CurrentDateTextBox.Text = DateTime.Now.ToString("dd/MM/yyyy");
-        }
+		private void GetFirmInfo()
+		{
+			FirmNameTextBox.Text = "Bred Vvs";
+			FirmAddressTextBox.Text = "Nørrevej 45 C" + "\n" + "6340 Kruså";
+			FirmPhonenumberTextBox.Text = "74 67 15 12";
+			FirmCVRTextBox.Text = "34 22 35 72";
+			CurrentDateTextBox.Text = DateTime.Now.ToString("dd/MM/yyyy");
+		}
 
 
-        private void AddTaskButton_Click(object sender, RoutedEventArgs e)
-        {
-            AddTaskWindow addTaskView = new AddTaskWindow(_termsheetVM);
-            addTaskView.Show();
-        }
+		private void AddTaskButton_Click(object sender, RoutedEventArgs e)
+		{
+			AddTaskWindow addTaskView = new AddTaskWindow(_termsheetVM);
+			addTaskView.Show();
+		}
 
-        private void RemoveTaskButton_Click(object sender, RoutedEventArgs e)
-        {
-            _termsheetVM.RemoveTask();
-        }
+		private void RemoveTaskButton_Click(object sender, RoutedEventArgs e)
+		{
+			_termsheetVM.RemoveTask();
+		}
 
-        private void AddSignature_Click(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
+		private void AddSignature_Click(object sender, RoutedEventArgs e)
+		{
+			throw new NotImplementedException();
+		}
 
-	    private void Selector_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
-	    {
-		    if (TaskListBox.SelectedItem != null)
-		    {
-			    RemoveTaskButton.IsEnabled = true;
-		    }
-		    else
-		    {
-			    RemoveTaskButton.IsEnabled = false;
-		    }
-	    }
+		private void Selector_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			if(TaskListBox.SelectedItem != null)
+			{
+				RemoveTaskButton.IsEnabled = true;
+			}
+			else
+			{
+				RemoveTaskButton.IsEnabled = false;
+			}
+		}
 
 		private void SaveTermsheetButton_Click(object sender, RoutedEventArgs e)
 		{
@@ -82,19 +82,10 @@ namespace View.UserControls
 			PageCommands.Instance.GoTo(new FitterWorksheetUC(_termsheetVM.GoBack()));
 		}
 
-		}
-
-		private void PriceTextBox_LostFocus(object sender, RoutedEventArgs e)
-		{
-			_termsheetVM.CalculateVATAndTotal(_termsheetVM.PriceExVAT);
-		}
-
 		private void CancelButton_Click(object sender, RoutedEventArgs e)
 		{
 			PageCommands.Instance.GoTo(new FitterWorksheetUC(_termsheetVM.GoBack()));
-		private void TotalPriceTextBox_LostFocus(object sender, RoutedEventArgs e)
-		{
-			_termsheetVM.CalculateVATAndPrice(_termsheetVM.TotalPrice);
+
 		}
 	}
 }

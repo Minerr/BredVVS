@@ -64,9 +64,9 @@
                 <RadioButton x:Name="EstimateRadioButton"  Content="Overslag" IsChecked="{Binding IsEstimateChecked}" GroupName="Payment"  HorizontalAlignment="Left" Margin="20,468,0,0" VerticalAlignment="Top"/>
                 <RadioButton x:Name="BillRadioButton" Content="Regning" IsChecked="{Binding IsBillChecked}" GroupName="Payment"  HorizontalAlignment="Left" Margin="20,488,0,0" VerticalAlignment="Top"/>
                 <RadioButton x:Name="OfferRadioButton" Content="Tilbud" IsChecked="{Binding IsOfferChecked}" GroupName="Payment"  HorizontalAlignment="Left" Margin="20,508,0,0" VerticalAlignment="Top"/>
-                <TextBox x:Name="PriceTextBox" HorizontalAlignment="Left" Height="23" Margin="236,446,0,0" TextWrapping="Wrap" Text="{Binding PriceExVAT, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120" LostFocus="PriceTextBox_LostFocus"/>
+                <TextBox x:Name="PriceTextBox" HorizontalAlignment="Left" Height="23" Margin="236,446,0,0" TextWrapping="Wrap" Text="{Binding PriceWithoutVAT, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
                 <TextBox x:Name="VATTextBox"  HorizontalAlignment="Left" Height="23" Margin="236,474,0,0" TextWrapping="Wrap" Text="{Binding VAT, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
-                <TextBox x:Name="TotalPriceTextBox" HorizontalAlignment="Left" Height="23" Margin="236,502,0,0" TextWrapping="Wrap" Text="{Binding TotalPrice, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120" LostFocus="TotalPriceTextBox_LostFocus"/>
+                <TextBox x:Name="TotalPriceTextBox" HorizontalAlignment="Left" Height="23" Margin="236,502,0,0" TextWrapping="Wrap" Text="{Binding TotalPrice, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120" />
                 <Label Content="Pris" HorizontalAlignment="Left" Margin="193,446,0,0" VerticalAlignment="Top"/>
                 <Label Content="Moms" HorizontalAlignment="Left" Margin="193,474,0,0" VerticalAlignment="Top"/>
                 <Label Content="I alt" HorizontalAlignment="Left" Margin="193,499,0,0" VerticalAlignment="Top"/>

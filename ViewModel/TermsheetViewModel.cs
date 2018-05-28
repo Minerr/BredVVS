@@ -13,6 +13,11 @@ namespace ViewModel
 {
 	public class TermsheetViewModel : ViewModelBase
 	{
+		private double _totalPrice;
+		private double _VAT;
+		private double _priceWithoutVAT;
+
+
 		private DateTime _acceptDate;
 		public DateTime AcceptDate
 		{
@@ -48,17 +53,17 @@ namespace ViewModel
 		public Customer Customer { get; set; }
 		public int WorksheetID { get; set; }
 		public string Entrepreneur { get; set; }
+
 		public double TotalPrice
 		{
 			get
 			{
-				return totalPrice;
+				CalculateVATAndPrice(_totalPrice);
+				return _totalPrice;
 			}
 			set
 			{
-				totalPrice = value;
-				OnPropertyChanged("VAT");
-				OnPropertyChanged("PriceExVAT");
+				_totalPrice = value;
 				OnPropertyChanged("TotalPrice");
 			}
 		}
@@ -66,25 +71,25 @@ namespace ViewModel
 		{
 			get
 			{
-				return vat;
+				return _VAT;
 			}
 			set
 			{
-				vat = value;
+				_VAT = value;
+				OnPropertyChanged("VAT");
 			}
 		}
-		public double PriceExVAT
+		public double PriceWithoutVAT
 		{
 			get
 			{
-				return priceExVAT;
+				CalculateVATAndTotal(_priceWithoutVAT);
+				return _priceWithoutVAT;
 			}
 			set
 			{
-				priceExVAT = value;
-				OnPropertyChanged("VAT");
+				_priceWithoutVAT = value;
 				OnPropertyChanged("PriceExVAT");
-				OnPropertyChanged("TotalPrice");
 			}
 		}
 
@@ -112,13 +117,13 @@ namespace ViewModel
 		{
 			get
 			{
-				return (termsheetPayment == PaymentType.Estimate);
+				return (_termsheetPayment == PaymentType.FixedPrice);
 			}
 			set
 			{
 				if (value)
 				{
-					termsheetPayment = PaymentType.Estimate;
+					_termsheetPayment = PaymentType.FixedPrice;
 				}
 
 				OnPropertyChanged("IsFixedPriceChecked");
@@ -212,21 +217,21 @@ namespace ViewModel
 			return new FitterWorksheetViewModel(_worksheet);
 		}
 	
-		public void CalculateVATAndTotal(double Price)
+		private void CalculateVATAndTotal(double Price)
 		{
 			CalculateVAT(Price);
-			totalPrice = Price + vat;
+			TotalPrice = Price + VAT;
 		}
 
-		public void CalculateVATAndPrice(double TotalPrice)
+		private void CalculateVATAndPrice(double TotalPrice)
 		{
-			priceExVAT = TotalPrice / 1.25;
-			CalculateVAT(priceExVAT);
+			PriceWithoutVAT = TotalPrice / 1.25;
+			CalculateVAT(PriceWithoutVAT);
 		}
 
-		public void CalculateVAT(double amount)
+		private void CalculateVAT(double amount)
 		{
-			vat = amount * 0.25;
+			VAT = amount * 0.25;
 		}
 	}
 }
