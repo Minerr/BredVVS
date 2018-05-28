@@ -46,13 +46,11 @@ namespace View.UserControls
 
         private void GetFirmInfo()
         {
-            DateTime currentDate = DateTime.Today;
-
             FirmNameTextBox.Text = "Bred Vvs";
             FirmAddressTextBox.Text = "Nørrevej 45 C" + "\n" + "6340 Kruså";
             FirmPhonenumberTextBox.Text = "74 67 15 12";
             FirmCVRTextBox.Text = "34 22 35 72";
-            CurrentDatePicker.Text = currentDate.ToString();
+            CurrentDateTextBox.Text = DateTime.Now.ToString("dd/MM/yyyy");
         }
 
 
@@ -87,6 +85,16 @@ namespace View.UserControls
 		private void SaveTermsheetButton_Click(object sender, RoutedEventArgs e)
 		{
 
+		}
+
+		private void PriceTextBox_LostFocus(object sender, RoutedEventArgs e)
+		{
+			_termsheetVM.CalculateVATAndTotal(_termsheetVM.PriceExVAT);
+		}
+
+		private void TotalPriceTextBox_LostFocus(object sender, RoutedEventArgs e)
+		{
+			_termsheetVM.CalculateVATAndPrice(_termsheetVM.TotalPrice);
 		}
 	}
 }

@@ -8,7 +8,7 @@ namespace Model
 {
 	public enum PaymentType
 	{
-		FixedPrice,
+		Estimate,
 		Bill,
 		Offer
 

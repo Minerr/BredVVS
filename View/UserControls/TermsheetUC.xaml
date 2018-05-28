@@ -30,7 +30,7 @@
                 <Label Content="Referencenummer" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="635,49,0,0" Width="142"/>
                 <TextBox x:Name="ReferenceNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="643,75,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="111"/>
                 <Label Content="Dato" HorizontalAlignment="Left" Margin="635,98,0,0" VerticalAlignment="Top"/>
-                <DatePicker x:Name="CurrentDatePicker" HorizontalAlignment="Left" Margin="643,119,0,0" VerticalAlignment="Top" IsEnabled="False" Width="111"/>
+                <TextBox x:Name="CurrentDateTextBox" HorizontalAlignment="Left" Height="23" Margin="643,119,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="111" IsEnabled="False"/>
 
                 <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="229" Margin="10,208,0,0" VerticalAlignment="Top" Width="753">
                     <ListView x:Name="TaskListBox" ItemsSource="{Binding SelectedTasksList}" SelectedItem="{Binding SelectedTask}" HorizontalAlignment="Left" Height="136" VerticalAlignment="Top" Width="737" Margin="9,82,0,0" SelectionChanged="Selector_OnSelectionChanged"/>
@@ -40,7 +40,7 @@
                 <TextBox x:Name="CustomerTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding Customer}" VerticalAlignment="Top" Width="130" Margin="118,227,0,0"/>
                 <Label Content="Entreprenør:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,245,0,0"/>
                 <TextBox x:Name="EntrepreneurTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding Entrepreneur}" VerticalAlignment="Top" Width="130" Margin="118,249,0,0"/>
-                <TextBlock HorizontalAlignment="Left" Margin="20,271,0,0" TextWrapping="Wrap" Text="Om udførslen af:" VerticalAlignment="Top"/>
+                <TextBlock HorizontalAlignment="Left" Margin="20,271,0,0" TextWrapping="Wrap" Text="Om udførsel af:" VerticalAlignment="Top"/>
                 <Button x:Name="AddTaskButton" Content="Tilføj Opgave" HorizontalAlignment="Left" Margin="566,267,0,0" VerticalAlignment="Top" Width="86" Click="AddTaskButton_Click"/>
                 <Button x:Name="RemoveTaskButton" Content="Fjern Opgave" HorizontalAlignment="Left" VerticalAlignment="Top" Width="85" Margin="660,267,0,0" Click="RemoveTaskButton_Click" IsEnabled="False"/>
 
@@ -52,30 +52,38 @@
                 <Label Content="Kunde" HorizontalAlignment="Left" Margin="318,625,0,0" VerticalAlignment="Top" Width="46"/>
                 <Button Content="Underskrift" HorizontalAlignment="Left" Margin="335,651,0,0" VerticalAlignment="Top" Width="75" Click="AddSignature_Click"/>
 
-                <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="88" VerticalAlignment="Top" Width="354" Margin="10,442,0,0"/>
+                <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="88" VerticalAlignment="Top" Width="354" Margin="10,442,0,0">
+                    
+                </Border>
                 <Label Content="Periode:" HorizontalAlignment="Left" Margin="406,211,0,0" VerticalAlignment="Top" Height="28" Width="53"/>
                 <DatePicker SelectedDate="{Binding StartDate}" HorizontalAlignment="Left" Margin="459,213,0,0" VerticalAlignment="Top"/>
                 <Label Content="til" HorizontalAlignment="Left" Margin="589,213,0,0" VerticalAlignment="Top"/>
                 <DatePicker SelectedDate="{Binding EndDate}" HorizontalAlignment="Left" Margin="622,213,0,0" VerticalAlignment="Top"/>
 
                 <Label Content="Betaling:" HorizontalAlignment="Left" Margin="10,442,0,0" VerticalAlignment="Top" Width="70"/>
-                <RadioButton x:Name="FixedPriceRadioButton" Content="Fast Pris" IsChecked="{Binding IsFixedPriceChecked}" GroupName="Payment"  HorizontalAlignment="Left" Margin="20,468,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="EstimateRadioButton"  Content="Overslag" IsChecked="{Binding IsEstimateChecked}" GroupName="Payment"  HorizontalAlignment="Left" Margin="20,468,0,0" VerticalAlignment="Top"/>
                 <RadioButton x:Name="BillRadioButton" Content="Regning" IsChecked="{Binding IsBillChecked}" GroupName="Payment"  HorizontalAlignment="Left" Margin="20,488,0,0" VerticalAlignment="Top"/>
                 <RadioButton x:Name="OfferRadioButton" Content="Tilbud" IsChecked="{Binding IsOfferChecked}" GroupName="Payment"  HorizontalAlignment="Left" Margin="20,508,0,0" VerticalAlignment="Top"/>
-
+                <TextBox x:Name="PriceTextBox" HorizontalAlignment="Left" Height="23" Margin="236,446,0,0" TextWrapping="Wrap" Text="{Binding PriceExVAT, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120" LostFocus="PriceTextBox_LostFocus"/>
+                <TextBox x:Name="VATTextBox"  HorizontalAlignment="Left" Height="23" Margin="236,474,0,0" TextWrapping="Wrap" Text="{Binding VAT, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="TotalPriceTextBox" HorizontalAlignment="Left" Height="23" Margin="236,502,0,0" TextWrapping="Wrap" Text="{Binding TotalPrice, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120" LostFocus="TotalPriceTextBox_LostFocus"/>
+                <Label Content="Pris" HorizontalAlignment="Left" Margin="193,446,0,0" VerticalAlignment="Top"/>
+                <Label Content="Moms" HorizontalAlignment="Left" Margin="193,474,0,0" VerticalAlignment="Top"/>
+                <Label Content="I alt" HorizontalAlignment="Left" Margin="193,499,0,0" VerticalAlignment="Top"/>
                 <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="88" VerticalAlignment="Top" Width="394" Margin="369,442,0,0"/>
                 <Label Content="Betalingsbetingelser:" HorizontalAlignment="Left" Margin="369,442,0,0" VerticalAlignment="Top" Width="121"/>
-                <CheckBox Content="AB 92P" HorizontalAlignment="Left" Margin="380,468,0,0" VerticalAlignment="Top"/>
+                <CheckBox Content="AB 92" HorizontalAlignment="Left" Margin="380,468,0,0" VerticalAlignment="Top"/>
                 <CheckBox Content="Andet:" HorizontalAlignment="Left" Margin="380,488,0,0" VerticalAlignment="Top"/>
                 <TextBox HorizontalAlignment="Left" Height="34" Margin="443,489,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="311"/>
 
                 <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="90" Margin="10,530,0,0" VerticalAlignment="Top" Width="753"/>
                 <TextBlock HorizontalAlignment="Left" Margin="17,535,0,0" TextWrapping="Wrap" Text="For nærværende aftale gælder i øvrigt følgende grundlag og rangfølge:" VerticalAlignment="Top" Width="393"/>
                 <CheckBox Content="Standard forbehold (Vedlægges)" HorizontalAlignment="Left" Margin="20,556,0,0" VerticalAlignment="Top"/>
-                <CheckBox Content="AP 92P" HorizontalAlignment="Left" Margin="20,576,0,0" VerticalAlignment="Top"/>
+                <CheckBox Content="AP 92" HorizontalAlignment="Left" Margin="20,576,0,0" VerticalAlignment="Top"/>
                 <CheckBox Content="Eventuelt andet skriftligt grundlag" HorizontalAlignment="Left" Margin="20,596,0,0" VerticalAlignment="Top"/>
                 <Button x:Name="SaveTermsheetButton" Content="Gem"  HorizontalAlignment="Left" Margin="660,653,0,0" VerticalAlignment="Top" Width="75" Click="SaveTermsheetButton_Click"/>
             </Grid>
         </ScrollViewer>
+       
     </Grid>
 </UserControl>

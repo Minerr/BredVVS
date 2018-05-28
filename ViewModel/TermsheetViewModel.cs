@@ -13,12 +13,54 @@ namespace ViewModel
 {
 	public class TermsheetViewModel : ViewModelBase
 	{
+		private double totalPrice;
+		private double vat;
+		private double priceExVAT;
 		public DateTime AcceptDate { get; set; }
 		public DateTime StartDate { get; set; }
 		public DateTime EndDate { get; set; }
 		public Customer Customer { get; set; }
 		public int WorksheetID { get; set; }
 		public string Entrepreneur { get; set; }
+		public double TotalPrice
+		{
+			get
+			{
+				return totalPrice;
+			}
+			set
+			{
+				totalPrice = value;
+				OnPropertyChanged("VAT");
+				OnPropertyChanged("PriceExVAT");
+				OnPropertyChanged("TotalPrice");
+			}
+		}
+		public double VAT
+		{
+			get
+			{
+				return vat;
+			}
+			set
+			{
+				vat = value;
+			}
+		}
+		public double PriceExVAT
+		{
+			get
+			{
+				return priceExVAT;
+			}
+			set
+			{
+				priceExVAT = value;
+				OnPropertyChanged("VAT");
+				OnPropertyChanged("PriceExVAT");
+				OnPropertyChanged("TotalPrice");
+			}
+		}
 
 
 		private ObservableCollection<string> _tasks;
@@ -39,17 +81,17 @@ namespace ViewModel
 
 		private PaymentType termsheetPayment;
 
-		public bool IsFixedPriceChecked
+		public bool IsEstimateChecked
 		{
 			get
 			{
-				return (termsheetPayment == PaymentType.FixedPrice);
+				return (termsheetPayment == PaymentType.Estimate);
 			}
 			set
 			{
 				if (value)
 				{
-					termsheetPayment = PaymentType.FixedPrice;
+					termsheetPayment = PaymentType.Estimate;
 				}
 			}
 		}
@@ -108,6 +150,23 @@ namespace ViewModel
 			Termsheet termsheet = new Termsheet(Customer, StartDate, EndDate, WorksheetID, Entrepreneur, workDescription, termsheetPayment);
 			TermsheetRepository termsheetRepository = new TermsheetRepository();
 			termsheetRepository.Create(termsheet);
+		}
+	
+		public void CalculateVATAndTotal(double Price)
+		{
+			CalculateVAT(Price);
+			totalPrice = Price + vat;
+		}
+
+		public void CalculateVATAndPrice(double TotalPrice)
+		{
+			priceExVAT = TotalPrice / 1.25;
+			CalculateVAT(priceExVAT);
+		}
+
+		public void CalculateVAT(double amount)
+		{
+			vat = amount * 0.25;
 		}
 	}
 }
