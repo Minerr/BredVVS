@@ -180,7 +180,7 @@ namespace ViewModel
 					_termsheetPayment = PaymentType.Estimate;
 				}
 
-				OnPropertyChanged("IsFixedPriceChecked");
+				OnPropertyChanged("IsEstimateChecked");
 				OnPropertyChanged("IsBillChecked");
 				OnPropertyChanged("IsOfferChecked");
 			}
@@ -199,7 +199,7 @@ namespace ViewModel
 					_termsheetPayment = PaymentType.Bill;
 				}
 
-				OnPropertyChanged("IsFixedPriceChecked");
+				OnPropertyChanged("IsEstimateChecked");
 				OnPropertyChanged("IsBillChecked");
 				OnPropertyChanged("IsOfferChecked");
 			}
@@ -218,7 +218,7 @@ namespace ViewModel
 					_termsheetPayment = PaymentType.Offer;
 				}
 
-				OnPropertyChanged("IsFixedPriceChecked");
+				OnPropertyChanged("IsEstimateChecked");
 				OnPropertyChanged("IsBillChecked");
 				OnPropertyChanged("IsOfferChecked");
 			}
