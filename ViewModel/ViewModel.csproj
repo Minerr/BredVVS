@@ -33,12 +33,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationFramework" />
-    <Reference Include="Spire.License, Version=1.3.6.40, Culture=neutral, PublicKeyToken=b1144360237c8b3f, processorArchitecture=MSIL">
-      <HintPath>..\packages\FreeSpire.PDF.4.3\lib\net40\Spire.License.dll</HintPath>
-    </Reference>
-    <Reference Include="Spire.Pdf, Version=4.3.0.20040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
-      <HintPath>..\packages\FreeSpire.PDF.4.3\lib\net40\Spire.Pdf.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -53,17 +47,11 @@
     <Compile Include="AssignEmployeesViewModel.cs" />
     <Compile Include="AddTaskViewModel.cs" />
     <Compile Include="ClientInfo.cs" />
-    <Compile Include="PDFbuilder\BuildPDF.cs" />
     <Compile Include="CreateNewCustomerViewModel.cs" />
     <Compile Include="FitterMenuViewModel.cs" />
     <Compile Include="FitterWorksheetViewModel.cs" />
     <Compile Include="LogInViewModel.cs" />
     <Compile Include="OfficeWorkerMenuViewModel.cs" />
-    <Compile Include="PDFbuilder\PDFelement.cs" />
-    <Compile Include="PDFbuilder\PDFline.cs" />
-    <Compile Include="PDFbuilder\PDFdocument.cs" />
-    <Compile Include="PDFbuilder\PDFsplitLine.cs" />
-    <Compile Include="PDFbuilder\PDFtable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchForCustomerViewModel.cs" />

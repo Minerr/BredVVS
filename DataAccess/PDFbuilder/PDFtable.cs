@@ -7,7 +7,7 @@ using System.Drawing;
 using Spire.Pdf.Graphics;
 using System.Data;
 
-namespace ViewModel.PDFbuilder
+namespace DataAccess.PDFbuilder
 {
 	internal class PDFtable : PDFelement
 	{

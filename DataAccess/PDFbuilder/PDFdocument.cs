@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ViewModel.PDFbuilder
+namespace DataAccess.PDFbuilder
 {
 	internal class PDFdocument
 	{
@@ -15,18 +15,9 @@ namespace ViewModel.PDFbuilder
 			Content = new Queue<PDFelement>();
 		}
 
-		public void AddLine(PDFline line)
+		public void AddElement(PDFelement element)
 		{
-			Content.Enqueue(line);
-		}
-
-		public void AddTable(PDFtable table)
-		{
-			Content.Enqueue(table);
-		}
-		public void AddSplitLine(PDFsplitLine splitLine)
-		{
-			Content.Enqueue(splitLine);
+			Content.Enqueue(element);
 		}
 	}
 }

@@ -27,17 +27,14 @@ namespace View
 		}
 		#endregion
 
-
 		private Grid _mainGrid;
 		public Window MainWindow
 		{
 			set { _mainGrid = value.FindName("MainGrid") as Grid; }
 		}
 
-
 		private PageCommands()
 		{
-
 		}
 
 		public void GoTo(UserControl newPage)

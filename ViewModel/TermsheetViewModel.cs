@@ -171,13 +171,13 @@ namespace ViewModel
 		{
 			get
 			{
-				return (_termsheetPayment == PaymentType.FixedPrice);
+				return (_termsheetPayment == PaymentType.Estimate);
 			}
 			set
 			{
 				if (value)
 				{
-					_termsheetPayment = PaymentType.FixedPrice;
+					_termsheetPayment = PaymentType.Estimate;
 				}
 
 				OnPropertyChanged("IsFixedPriceChecked");
@@ -234,7 +234,7 @@ namespace ViewModel
 			_worksheet = worksheet;
 
 			SelectedTasksList = new ObservableCollection<string>();
-			_termsheetPayment = PaymentType.FixedPrice;
+			_termsheetPayment = PaymentType.Estimate;
 			Entrepreneur = "";
 			AcceptDate = DateTime.Now;
 			StartDate = DateTime.Now;
@@ -266,7 +266,7 @@ namespace ViewModel
 				workDescription = workDescription + task + "\n" ;			
 			}
 			Termsheet termsheet = new Termsheet(Customer, AcceptDate, StartDate, EndDate, 
-				WorksheetID, Entrepreneur, workDescription, _termsheetPayment, isDraft);
+				WorksheetID, Entrepreneur, workDescription, _termsheetPayment, isDraft, TotalPrice);
 
 			TermsheetRepository termsheetRepository = new TermsheetRepository();
 			termsheet = termsheetRepository.Create(termsheet);

@@ -10,7 +10,7 @@ using Microsoft.Win32;
 using Spire.Pdf.Tables;
 using System.Data;
 
-namespace ViewModel.PDFbuilder
+namespace DataAccess.PDFbuilder
 {
 	public class BuildPDF
 	{
@@ -20,7 +20,6 @@ namespace ViewModel.PDFbuilder
 			Center,
 			Right
 		}
-
 
 		private const float LINE_SPACING = 1.25f;
 
@@ -73,7 +72,7 @@ namespace ViewModel.PDFbuilder
 		public void InsertNewLine(float fontSize, TextAlignment textAlignment, string text)
 		{
 			//TODO: check for bold text
-			_document.AddLine(new PDFline(_elementCounter, fontSize, LINE_SPACING, Color.Black, ConvertTextAlignment(textAlignment), false, text));
+			_document.AddElement(new PDFline(_elementCounter, fontSize, LINE_SPACING, Color.Black, ConvertTextAlignment(textAlignment), false, text));
 			_elementCounter++;
 		}
 
@@ -89,7 +88,7 @@ namespace ViewModel.PDFbuilder
 			PDFline rightLine = new PDFline(
 				_elementCounter, fontSize, LINE_SPACING, Color.Black, PdfTextAlignment.Right, false, textRight);
 
-			_document.AddSplitLine(new PDFsplitLine(leftLine, rightLine));
+			_document.AddElement(new PDFsplitLine(leftLine, rightLine));
 
 			_elementCounter++;
 		}
@@ -151,7 +150,7 @@ namespace ViewModel.PDFbuilder
 				dataTable.Rows.Add(item.ToString().Split(';'));
 			}
 
-			_document.AddTable(new PDFtable(_elementCounter, fontSize, cellPadding, Color.Black, dataTable));
+			_document.AddElement(new PDFtable(_elementCounter, fontSize, cellPadding, Color.Black, dataTable));
 			_elementCounter++;
 		}
 

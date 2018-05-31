@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Spire.Pdf.Graphics;
 
-namespace ViewModel.PDFbuilder
+namespace DataAccess.PDFbuilder
 {
 	internal abstract class PDFelement
 	{

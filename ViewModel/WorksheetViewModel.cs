@@ -8,7 +8,7 @@ using System.ComponentModel;
 using System.Collections.ObjectModel;
 using Model;
 using DataAccess;
-using ViewModel.PDFbuilder;
+using DataAccess.PDFbuilder;
 
 namespace ViewModel
 {
