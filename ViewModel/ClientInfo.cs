@@ -27,7 +27,6 @@ namespace ViewModel
 
 		private ClientInfo()
 		{
-			
 		}
 	}
 }

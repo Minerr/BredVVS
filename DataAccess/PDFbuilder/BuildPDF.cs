@@ -26,10 +26,8 @@ namespace DataAccess.PDFbuilder
 		private float _pageMaxHeight;
 		private float _pageMaxWidth;
 		private float _pagePaddingLeft;
-
 		private string _path;
 		private int _elementCounter;
-
 		private PDFdocument _document;
 
 		private PdfDocument _spirePDF;
@@ -68,19 +66,16 @@ namespace DataAccess.PDFbuilder
 
 			return result;
 		}
-
 		public void InsertNewLine(float fontSize, TextAlignment textAlignment, string text)
 		{
 			//TODO: check for bold text
 			_document.AddElement(new PDFline(_elementCounter, fontSize, LINE_SPACING, Color.Black, ConvertTextAlignment(textAlignment), false, text));
 			_elementCounter++;
 		}
-
 		public void InsertNewLine(float fontSize, string text)
 		{
 			InsertNewLine(fontSize, TextAlignment.Left, text);
 		}
-
 		public void InsertNewSplitLine(float fontSize, string textLeft, string textRight)
 		{
 			PDFline leftLine = new PDFline(
@@ -92,7 +87,6 @@ namespace DataAccess.PDFbuilder
 
 			_elementCounter++;
 		}
-
 		public void InsertNewTextBlock(float fontSize, TextAlignment textAlignment, string text)
 		{
 			//Split at newline
@@ -132,7 +126,6 @@ namespace DataAccess.PDFbuilder
 				}
 			}
 		}
-
 		public void InsertNewTable<T>(float fontSize, float cellPadding, List<string> headers, IEnumerable<T> list)
 		{
 			// Build string table:
@@ -153,7 +146,6 @@ namespace DataAccess.PDFbuilder
 			_document.AddElement(new PDFtable(_elementCounter, fontSize, cellPadding, Color.Black, dataTable));
 			_elementCounter++;
 		}
-
 		public string Save(string path)
 		{
 			float currentPageHeight = _pagePaddingLeft;
@@ -231,7 +223,6 @@ namespace DataAccess.PDFbuilder
 
 			return path;
 		}
-
 		private float GetElementHorizontalPosition(PdfTextAlignment textAlignment)
 		{
 			float posX = 0;
@@ -246,8 +237,6 @@ namespace DataAccess.PDFbuilder
 			}
 			return posX;
 		}
-
-
 		private static void Table_BeginRowLayout(object sender, BeginRowLayoutEventArgs args)
 		{
 			args.MinimalHeight = 15f;
