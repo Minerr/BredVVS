@@ -54,8 +54,7 @@ namespace ViewModel
 
 		public TermsheetViewModel CreateNewTermsheet()
 		{
-			TermsheetViewModel termsheetVM = new TermsheetViewModel(_worksheet);
-			return termsheetVM;
+			return new TermsheetViewModel(_worksheet);
 		}
 	}
 }

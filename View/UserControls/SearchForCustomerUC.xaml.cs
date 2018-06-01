@@ -60,5 +60,5 @@ namespace View.UserControls
 			PageCommands.Instance.GoTo(new OfficeWorkerMenuUC());
 
 		}
-    }
+	}
 }

@@ -112,7 +112,7 @@ namespace ViewModel
 		{
 			get
 			{
-				CalculateVATAndPrice(_totalPrice);
+				//CalculateVATAndPrice(_totalPrice);
 				return _totalPrice;
 			}
 			set
@@ -137,13 +137,13 @@ namespace ViewModel
 		{
 			get
 			{
-				CalculateVATAndTotal(_priceWithoutVAT);
+				//CalculateVATAndTotal(_priceWithoutVAT);
 				return _priceWithoutVAT;
 			}
 			set
 			{
 				_priceWithoutVAT = value;
-				OnPropertyChanged("PriceExVAT");
+				OnPropertyChanged("PriceWithoutVAT");
 			}
 		}
 
@@ -179,10 +179,6 @@ namespace ViewModel
 				{
 					_termsheetPayment = PaymentType.Estimate;
 				}
-
-				OnPropertyChanged("IsEstimateChecked");
-				OnPropertyChanged("IsBillChecked");
-				OnPropertyChanged("IsOfferChecked");
 			}
 		}
 
@@ -198,10 +194,6 @@ namespace ViewModel
 				{
 					_termsheetPayment = PaymentType.Bill;
 				}
-
-				OnPropertyChanged("IsEstimateChecked");
-				OnPropertyChanged("IsBillChecked");
-				OnPropertyChanged("IsOfferChecked");
 			}
 		}
 
@@ -217,10 +209,6 @@ namespace ViewModel
 				{
 					_termsheetPayment = PaymentType.Offer;
 				}
-
-				OnPropertyChanged("IsEstimateChecked");
-				OnPropertyChanged("IsBillChecked");
-				OnPropertyChanged("IsOfferChecked");
 			}
 		}
 
@@ -277,21 +265,21 @@ namespace ViewModel
 			return new FitterWorksheetViewModel(_worksheet);
 		}
 	
-		private void CalculateVATAndTotal(double Price)
-		{
-			CalculateVAT(Price);
-			TotalPrice = Price + VAT;
-		}
+		//private void CalculateVATAndTotal(double Price)
+		//{
+		//	CalculateVAT(Price);
+		//	TotalPrice = Price + VAT;
+		//}
 
-		private void CalculateVATAndPrice(double TotalPrice)
-		{
-			PriceWithoutVAT = TotalPrice / 1.25;
-			CalculateVAT(PriceWithoutVAT);
-		}
+		//private void CalculateVATAndPrice(double TotalPrice)
+		//{
+		//	PriceWithoutVAT = TotalPrice / 1.25;
+		//	CalculateVAT(PriceWithoutVAT);
+		//}
 
-		private void CalculateVAT(double amount)
-		{
-			VAT = amount * 0.25;
-		}
+		//private void CalculateVAT(double amount)
+		//{
+		//	VAT = amount * 0.25;
+		//}
 	}
 }
